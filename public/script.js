@@ -1,27 +1,45 @@
-// client-side js, loaded by index.html
+ // client-side js, loaded by index.html
 // run by the browser each time the page is loaded
 
 
-const dreamsList = document.getElementById("dreams");
-console.log(dreamsList);
+const batimentsList = document.getElementById("batiments");
+const batimentsForm = document.querySelector("form");
+console.log(batimentsList);
 
 function appendNewItemOnMap(item) {
   const newListItem = document.createElement("li");
   newListItem.innerText = item;
-  dreamsList.appendChild(newListItem);
+  batimentsList.appendChild(newListItem);
 }
 
 fetch("/map")
   .then(response => response.json()) // parse the JSON from the server
   .then(map => {
     // remove the loading text
-    dreamsList.firstElementChild.remove();
+    batimentsList.firstElementChild.remove();
   
     // get first player map
     let player1map = map.player1;
     console.log(player1map);
     appendNewItemOnMap(JSON.stringify(player1map));
     
+    batimentsForm.addEventListener("submit", event => {
+        // stop our form submission from refreshing the page
+        event.preventDefault();
+
+        // get dream value and add it to the list
+        let newBatiment = {
+          batimentsForm.elements.batiment.value:[1,2];
+        }
+        
+                                  
+        //map.push(newBatiment);
+        appendNewItemOnMap(newBatiment);
+
+        // reset form
+        batimentsForm.reset();
+        batimentsForm.elements.batiment.focus();
+      });
   });
 
 /*

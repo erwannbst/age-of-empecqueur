@@ -18,31 +18,26 @@
     <script src="/script.js" defer></script>
   </head>
   <body>
-    <header>
-      <h1>A Dream of the Future</h1>
-    </header>
+      <h1>Clash of Empire</h1>
 
     <main>
-      <h2>Oh hi,</h2>
-
-      <p>Tell me your hopes and dreams:</p>
-
       <form>
         <label>
-          New Dream
-          <input name="dream" type="text" maxlength="100" required placeholder="Dreams!">
+          Nouveau batiment
+          <input name="batiment" type="text" maxlength="100" value="Trinquette" required placeholder="Nom du batiment">
+          <input name="x_position" type="text" maxlength="100" value="10" required placeholder="x">
+          <input name="y_position" type="text" maxlength="100" value="20" required placeholder="y">
         </label>
-        <button type="submit" id="submit-dream">Add Dream</button>
+        <button type="submit" id="submit-dream">Ajouter un batiment</button>
       </form>
 
       <section class="dreams">
-        <ul id="dreams">
-          <em>loading dreams&hellip;</em>
+        <ul id="batiments">
+          <em>loading items&hellip;</em>
         </ul>
       </section>
     </main>
 
-    <footer>Made with <a href="https://glitch.com">Glitch</a>!</footer>
 
     <!-- include the Glitch button to show what the webpage is about and
           to make it easier for folks to view source and remix -->
