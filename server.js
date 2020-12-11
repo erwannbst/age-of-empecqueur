@@ -3,12 +3,10 @@
 
 // we've started you off with Express (https://expressjs.com/)
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
-const express = require("express");
-const socket = require("socket.io");
-const app = express();
-var http = require('http').createServer(app);
-var io = require('socket.io')(app);
-
+var express = require('express');
+var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 // our default array of dreams
 var map = {
   player1:{
@@ -22,6 +20,13 @@ var map = {
     }
   }
 }
+
+io.on('connection', (socket) => {
+   socket.on('doc', function(data){
+       io.sockets.emit('doc', data);
+      console.log(data);
+   });
+});
 
 // make all the files in 'public' available
 // https://expressjs.com/en/starter/static-files.html
@@ -47,12 +52,4 @@ app.get("/addBatiment", (request, response) => {
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
-});
-
-var io = socket(listener);
-io.on('connection', (socket) => {
-   socket.on('doc', function(data){
-       io.sockets.emit('doc', data);
-      console.log(data);
-   });
 });

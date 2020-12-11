@@ -5,6 +5,7 @@
 const batimentsList = document.getElementById("batiments");
 const batimentsForm = document.querySelector("form");
 const buttonRefresh = document.getElementById("sumbitRefresh");
+var sok = io();
 var socket = io.connect('https://ageof.glitch.me');
 
 var message = document.getElementById('message')
@@ -25,10 +26,11 @@ function emit(event){
     });
   }
 }
+
 socket.on('doc', function(data){
  if(data)
  {
-   //console.log(data.message);
+   console.log(data.message);
    $("#hello").append(data.message);
  }
 });
