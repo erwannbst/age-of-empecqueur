@@ -1,10 +1,10 @@
- // client-side js, loaded by index.html
+// client-side js, loaded by index.html
 // run by the browser each time the page is loaded
 
 
 const batimentsList = document.getElementById("batiments");
 const batimentsForm = document.querySelector("form");
-
+const buttonRefresh = document.getElementById("sumbitRefresh");
 
 function appendNewItemOnMap(item) {
   const newListItem = document.createElement("li");
@@ -39,6 +39,15 @@ batimentsForm.addEventListener("submit", event => {
   batimentsForm.elements.batiment.focus();
 });
 
+
+document.getElementById("submitRefresh").addEventListener("click", event => {
+  // stop our form submission from refreshing the page
+  event.preventDefault();
+
+  fetch("/map")
+    .then(response => response.json()) // parse the JSON from the server
+    .then(map => updateMap(map));
+});
 fetch("/map")
     .then(response => response.json()) // parse the JSON from the server
     .then(map => updateMap(map));
