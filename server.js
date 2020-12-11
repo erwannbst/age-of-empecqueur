@@ -7,11 +7,18 @@ const express = require("express");
 const app = express();
 
 // our default array of dreams
-const dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
+const map = {
+  player1:{
+    hdv:{
+      position: [10,48]
+    }
+  },
+  player2:{
+    hdv:{
+      position: [90,48]
+    }
+  }
+}
 
 // make all the files in 'public' available
 // https://expressjs.com/en/starter/static-files.html
@@ -23,9 +30,9 @@ app.get("/", (request, response) => {
 });
 
 // send the default array of dreams to the webpage
-app.get("/dreams", (request, response) => {
+app.get("/map", (request, response) => {
   // express helps us take JS objects and send them as JSON
-  response.json(dreams);
+  response.json(map);
 });
 
 // listen for requests :)
