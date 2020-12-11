@@ -5,6 +5,7 @@
 const batimentsList = document.getElementById("batiments");
 const batimentsForm = document.querySelector("form");
 const buttonRefresh = document.getElementById("sumbitRefresh");
+var socket = io.connect('https://simple-doc-editor.glitch.me');
 
 function appendNewItemOnMap(item) {
   const newListItem = document.createElement("li");

@@ -4,6 +4,7 @@
 // we've started you off with Express (https://expressjs.com/)
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
+const socket = require("socket.io");
 const app = express();
 
 // our default array of dreams
@@ -44,4 +45,12 @@ app.get("/addBatiment", (request, response) => {
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
+});
+
+var io = socket(listener);
+io.on('connection', (socket) => {
+   socket.on('doc', function(data){
+       io.sockets.emit('doc', data);
+      console.log(data);
+   });
 });
