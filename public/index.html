@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Socket.IO Chat Example</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <form>
+    <label>
+      Nouveau batiment
+      <input name="batiment" type="text" maxlength="100" value="Trinquette" required placeholder="Nom du batiment">
+      <input name="x_position" type="text" maxlength="100" value="10" required placeholder="x">
+      <input name="y_position" type="text" maxlength="100" value="20" required placeholder="y">
+    </label>
+    <button type="submit" id="submit-dream">Ajouter un batiment</button>
+  </form>
+  
+  
+  
+  <ul class="pages">
+    <li class="chat page">
+      <div class="chatArea">
+        <ul class="messages"></ul>
+      </div>
+      <input class="inputMessage" placeholder="Type here..."/>
+    </li>
+    <li class="login page">
+      <div class="form">
+        <h3 class="title">What's your nickname?</h3>
+        <input class="usernameInput" type="text" maxlength="14" />
+      </div>
+    </li>
+  </ul>
+
+  <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/main.js"></script>
+</body>
+</html>
