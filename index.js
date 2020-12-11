@@ -25,9 +25,8 @@ io.on('connection', function (socket) {
   });
   
   socket.on('add batiment', function(data) {
-    io.emit('ping');
-    socket.broadcast.emit('ping');
-    socket.broadcast.emit('new batiment', {
+    //io.emit('ping');
+    io.emit('batiment added', {
       name: data,
     });
   });
