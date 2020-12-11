@@ -12,12 +12,8 @@ server.listen(port, function () {
 // Routing
 app.use(express.static('public'));
 
-// Chatroom
-
-var numUsers = 0;
 
 io.on('connection', function (socket) {
-  //var addedUser = false;
 
   // when the client emits 'new message', this listens and executes
   socket.on('new message', function (data) {
@@ -29,28 +25,11 @@ io.on('connection', function (socket) {
   });
   
   socket.on('add batiment', function(data) {
+    io.emit('ping');
     socket.broadcast.emit('ping');
     socket.broadcast.emit('new batiment', {
       name: data,
     });
   });
-
-  // when the client emits 'add user', this listens and executes
-  /*socket.on('add user', function (username) {
-    if (addedUser) return;
-
-    // we store the username in the socket session for this client
-    socket.username = username;
-    ++numUsers;
-    addedUser = true;
-    socket.emit('login', {
-      numUsers: numUsers
-    });
-    // echo globally (all clients) that a person has connected
-    socket.broadcast.emit('user joined', {
-      username: socket.username,
-      numUsers: numUsers
-    });
-  });*/
 
 });
