@@ -1,7 +1,30 @@
 // client-side js, loaded by index.html
 // run by the browser each time the page is loaded
 
-console.log("hello world :o");
+
+const dreamsList = document.getElementById("dreams");
+console.log(dreamsList);
+
+function appendNewItemOnMap(item) {
+  const newListItem = document.createElement("li");
+  newListItem.innerText = item;
+  dreamsList.appendChild(newListItem);
+}
+
+fetch("/map")
+  .then(response => response.json()) // parse the JSON from the server
+  .then(map => {
+    // remove the loading text
+    dreamsList.firstElementChild.remove();
+  
+    // get first player map
+    let player1map = map.player1;
+    console.log(player1map);
+    appendNewItemOnMap(JSON.stringify(player1map));
+    
+  });
+
+/*
 
 // define variables that reference elements on our page
 const dreamsList = document.getElementById("dreams");
@@ -15,7 +38,7 @@ function appendNewDream(dream) {
 }
 
 // fetch the initial list of dreams
-fetch("/dreams")
+fetch("/map")
   .then(response => response.json()) // parse the JSON from the server
   .then(dreams => {
     // remove the loading text
@@ -39,3 +62,4 @@ fetch("/dreams")
       dreamsForm.elements.dream.focus();
     });
   });
+*/
