@@ -17,7 +17,7 @@ app.use(express.static('public'));
 var numUsers = 0;
 
 io.on('connection', function (socket) {
-  var addedUser = false;
+  //var addedUser = false;
 
   // when the client emits 'new message', this listens and executes
   socket.on('new message', function (data) {
@@ -29,13 +29,14 @@ io.on('connection', function (socket) {
   });
   
   socket.on('add batiment', function(data) {
+    socket.broadcast.emit('ping');
     socket.broadcast.emit('new batiment', {
       name: data,
     });
   });
 
   // when the client emits 'add user', this listens and executes
-  socket.on('add user', function (username) {
+  /*socket.on('add user', function (username) {
     if (addedUser) return;
 
     // we store the username in the socket session for this client
@@ -50,6 +51,6 @@ io.on('connection', function (socket) {
       username: socket.username,
       numUsers: numUsers
     });
-  });
+  });*/
 
 });

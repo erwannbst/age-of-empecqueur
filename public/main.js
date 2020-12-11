@@ -209,6 +209,11 @@ const batimentsForm = document.querySelector("form");
     addChatMessage(data);
   });
   */
+
+socket.on('new message', function (data) {
+ console.log(data);
+  });
+
 document.getElementById("buttonAddBatiment").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   let newBatiment = batimentsForm.elements.batimentName.value
@@ -220,5 +225,9 @@ function addBatiment(data){
 }
 
 socket.on('add batiment', function (data) {
-  addBatiment(data);
+  addBatiment(data.name);
+});
+
+socket.on('ping', function (data) {
+  console.log('ping');
 });
