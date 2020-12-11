@@ -4,6 +4,7 @@
 
 const batimentsList = document.getElementById("batiments");
 const batimentsForm = document.querySelector("form");
+
 console.log(batimentsList);
 
 function appendNewItemOnMap(item) {
@@ -20,7 +21,6 @@ fetch("/map")
   
     // get first player map
     let player1map = map.player1;
-    console.log(player1map);
     appendNewItemOnMap(JSON.stringify(player1map));
     
     batimentsForm.addEventListener("submit", event => {
@@ -28,9 +28,7 @@ fetch("/map")
         event.preventDefault();
 
         // get dream value and add it to the list
-        let newBatiment = {
-          batimentsForm.elements.batiment.value:[1,2];
-        }
+        let newBatiment = batimentsForm.elements.batiment.value
         
                                   
         //map.push(newBatiment);

@@ -7,7 +7,7 @@ const express = require("express");
 const app = express();
 
 // our default array of dreams
-const map = {
+var map = {
   player1:{
     hdv:{
       position: [10,48]
@@ -33,6 +33,12 @@ app.get("/", (request, response) => {
 app.get("/map", (request, response) => {
   // express helps us take JS objects and send them as JSON
   response.json(map);
+});
+
+// send the default array of dreams to the webpage
+app.get("/addBatiment", (request, response) => {
+  map.player1.trinquette.player1 = {position: 2,3}
+  response.send(200);
 });
 
 // listen for requests :)
