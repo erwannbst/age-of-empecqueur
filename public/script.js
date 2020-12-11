@@ -5,7 +5,33 @@
 const batimentsList = document.getElementById("batiments");
 const batimentsForm = document.querySelector("form");
 const buttonRefresh = document.getElementById("sumbitRefresh");
-var socket = io.connect('https://simple-doc-editor.glitch.me');
+var socket = io.connect('https://ageof.glitch.me');
+
+var message = document.getElementById('message')
+
+function emit(event){
+  var code = event.keyCode;
+   console.log(code); 
+
+  if(code != 8 && code != 46)
+    var msglen = $("#message").val().length;
+    if($("#message").val() == "")
+  {
+   //  alert("please give some input inside the textbox");
+  }
+  else{
+    socket.emit('doc', {
+        message: $("#message").val()[msglen - 1]
+    });
+  }
+}
+socket.on('doc', function(data){
+ if(data)
+ {
+   //console.log(data.message);
+   $("#hello").append(data.message);
+ }
+});
 
 function appendNewItemOnMap(item) {
   const newListItem = document.createElement("li");
@@ -45,10 +71,8 @@ document.getElementById("submitRefresh").addEventListener("click", event => {
   // stop our form submission from refreshing the page
   event.preventDefault();
 
-  fetch("/map")
-    .then(response => response.json()) // parse the JSON from the server
-    .then(map => updateMap(map));
 });
+
 fetch("/map")
     .then(response => response.json()) // parse the JSON from the server
     .then(map => updateMap(map));

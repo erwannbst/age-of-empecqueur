@@ -6,6 +6,8 @@
 const express = require("express");
 const socket = require("socket.io");
 const app = express();
+var http = require('http').createServer(app);
+var io = require('socket.io')(app);
 
 // our default array of dreams
 var map = {
