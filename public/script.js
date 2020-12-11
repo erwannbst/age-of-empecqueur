@@ -5,7 +5,6 @@
 const batimentsList = document.getElementById("batiments");
 const batimentsForm = document.querySelector("form");
 
-console.log(batimentsList);
 
 function appendNewItemOnMap(item) {
   const newListItem = document.createElement("li");
@@ -13,33 +12,36 @@ function appendNewItemOnMap(item) {
   batimentsList.appendChild(newListItem);
 }
 
-fetch("/map")
-  .then(response => response.json()) // parse the JSON from the server
-  .then(map => {
+function updateMap(map){
     // remove the loading text
     batimentsList.firstElementChild.remove();
-  
+
     // get first player map
     let player1map = map.player1;
     appendNewItemOnMap(JSON.stringify(player1map));
-    
-    batimentsForm.addEventListener("submit", event => {
-        // stop our form submission from refreshing the page
-        event.preventDefault();
+}
 
-        // get dream value and add it to the list
-        let newBatiment = batimentsForm.elements.batiment.value
-        
-                                  
-        //map.push(newBatiment);
-        appendNewItemOnMap(newBatiment);
+batimentsForm.addEventListener("submit", event => {
+  // stop our form submission from refreshing the page
+  event.preventDefault();
 
-        // reset form
-        batimentsForm.reset();
-        batimentsForm.elements.batiment.focus();
-      });
-  });
+  // get dream value and add it to the list
+  let newBatiment = batimentsForm.elements.batiment.value
 
+  fetch("/addBatiment?text=" + newBatiment)
+    .then(response => response.json()) // parse the JSON from the server
+    .then(map => {updateMap(map); console.log(map);})
+  //map.push(newBatiment);
+  appendNewItemOnMap(newBatiment);
+
+  // reset form
+  batimentsForm.reset();
+  batimentsForm.elements.batiment.focus();
+});
+
+fetch("/map")
+    .then(response => response.json()) // parse the JSON from the server
+    .then(map => updateMap(map));
 /*
 
 // define variables that reference elements on our page

@@ -37,8 +37,8 @@ app.get("/map", (request, response) => {
 
 // send the default array of dreams to the webpage
 app.get("/addBatiment", (request, response) => {
-  map.player1.trinquette.player1 = {position: 2,3}
-  response.send(200);
+  map.player1.trinquette.player1 = request.data.text;
+  response.json(map);
 });
 
 // listen for requests :)
