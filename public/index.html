@@ -9,13 +9,18 @@
   <form>
     <label>
       Nouveau batiment
-      <input name="batiment" type="text" maxlength="100" value="Trinquette" required placeholder="Nom du batiment">
+      <input name="batimentName" type="text" maxlength="100" value="Trinquette" required placeholder="Nom du batiment">
       <input name="x_position" type="text" maxlength="100" value="10" required placeholder="x">
       <input name="y_position" type="text" maxlength="100" value="20" required placeholder="y">
     </label>
-    <button type="submit" id="submit-dream">Ajouter un batiment</button>
+    <button type="submit" id="buttonAddBatiment">Ajouter un batiment</button>
   </form>
   
+  <section class="batiments">
+    <ul id="batiments">
+      <em>loading items&hellip;</em>
+    </ul>
+  </section>
   
   
   <ul class="pages">

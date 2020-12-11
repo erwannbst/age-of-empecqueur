@@ -27,6 +27,12 @@ io.on('connection', function (socket) {
       message: data
     });
   });
+  
+  socket.on('add batiment', function(data) {
+    socket.broadcast.emit('new batiment', {
+      name: data,
+    });
+  });
 
   // when the client emits 'add user', this listens and executes
   socket.on('add user', function (username) {

@@ -1,6 +1,8 @@
 /* global io */
 
-$(function() {
+const batimentsList = document.getElementById("batiments");
+const batimentsForm = document.querySelector("form");
+//function() {
   /*var FADE_TIME = 150; // ms
   var TYPING_TIMER_LENGTH = 400; // ms
   var COLORS = [
@@ -68,7 +70,8 @@ $(function() {
       // tell server to execute 'new message' and send along one parameter
       socket.emit('new message', message);
     }
-  }
+    
+}
 
   // Log a message
   function log (message, options) {
@@ -100,8 +103,7 @@ $(function() {
 
     addMessageElement($messageDiv, options);
   }
-*/
-/
+  
   // Adds a message element to the messages and scrolls to the bottom
   // el - The element to add as a message
   // options.fade - If the element should fade-in (default = true)
@@ -137,33 +139,7 @@ $(function() {
   function cleanInput (input) {
     return $('<div/>').text(input).text();
   }
-
-  // Updates the typing event
-  function updateTyping () {
-    if (connected) {
-      if (!typing) {
-        typing = true;
-        socket.emit('typing');
-      }
-      lastTypingTime = (new Date()).getTime();
-
-      setTimeout(function () {
-        var typingTimer = (new Date()).getTime();
-        var timeDiff = typingTimer - lastTypingTime;
-        if (timeDiff >= TYPING_TIMER_LENGTH && typing) {
-          socket.emit('stop typing');
-          typing = false;
-        }
-      }, TYPING_TIMER_LENGTH);
-    }
-  }
-
-  // Gets the 'X is typing' messages of a user
-  function getTypingMessages (data) {
-    return $('.typing.message').filter(function (i) {
-      return $(this).data('username') === data.username;
-    });
-  }
+  
 
   // Gets the color of a username through our hash function
   function getUsernameColor (username) {
@@ -194,8 +170,8 @@ $(function() {
         setUsername();
       }
     }
-  });
-
+  });*/
+/*
   $inputMessage.on('input', function() {
     updateTyping();
   });
@@ -211,10 +187,12 @@ $(function() {
   $inputMessage.click(function () {
     $inputMessage.focus();
   });
+  */
 
   // Socket events
 
   // Whenever the server emits 'login', log the login message
+/*
   socket.on('login', function (data) {
     connected = true;
     // Display the welcome message
@@ -223,9 +201,24 @@ $(function() {
       prepend: true
     });
     addParticipantsMessage(data);
-  });
+  });*/
 
   // Whenever the server emits 'new message', update the chat body
+/*
   socket.on('new message', function (data) {
     addChatMessage(data);
   });
+  */
+document.getElementById("buttonAddBatiment").addEventListener("click", event => {
+  event.preventDefault(); // stop our form submission from refreshing the page
+  let newBatiment = batimentsForm.elements.batimentName.value
+  socket.emit('add batiment', newBatiment);
+});
+
+function addBatiment(data){
+  batimentsList.appendChild(data.name);
+}
+
+socket.on('add batiment', function (data) {
+  addBatiment(data);
+});
