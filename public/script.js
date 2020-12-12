@@ -60,6 +60,8 @@ function drawBatiment(data){ //Appelée par le serveur quand un batiment a été
     ctx.fillText (data.nom, data.x, data.y);
 }
 
+function setGold
+
 function gotConnected(id){
   
 }

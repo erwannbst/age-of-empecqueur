@@ -11,6 +11,7 @@
       }
       #game-container {
         width : 100%;
+        display: flex;
       }
       canvas {
         background: #013333 no-repeat;
@@ -46,12 +47,14 @@
     </ul>
   </section>
 -->
+    <h1 id="status">Déconnecté</h1>
     <div id="game-container">
       <div id="map">
         <canvas id="myCanvas"></canvas>
         <script src="script.js"></script>
       </div>
       <div id="menu">
+        <div id="gold"></div>
         <div id="output" class="text"></div>
         <button>Click me</button>
       </div>
