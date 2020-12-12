@@ -9,7 +9,7 @@ app.use(express.static('public'));
 
 var players = [];
 var games = {};
-
+/*
 app.get("/createGame", (request, response) => {
   var server = require('http').createServer(app);
   var io = require('socket.io')(server);
@@ -55,6 +55,10 @@ app.get("/createGame", (request, response) => {
 
   });
   response.json(200);
+});
+*/
+app.get("/", (request, response) => {
+  response.sendFile(__dirname + "/views/index.html");
 });
 
 
