@@ -13,12 +13,24 @@ var playerY = 0;
 var connected = false;
 var username = "";
 var img = new Image();
-var hdv = new Image();
+var hdvImg = new Image();
+var caserneImg = new Image();
+var trinquetteImg = new Image();
+var extracteurImg = new Image();
+var portugaisImg= new Image();
 
 img.src =
   "https://cdn.glitch.com/d4bfa1e1-3618-4fd0-bc6f-635c34b0e5d1%2Fplayer.png";
-hdv.src =
+hdvImg.src =
   "https://cdn.glitch.com/d4bfa1e1-3618-4fd0-bc6f-635c34b0e5d1%2F393-3937430_comments-th8-clash-of-clans-png.png?v=1607726161883";
+caserneImg.src =
+  "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fcaserne.png?1607802341303";
+trinquetteImg.src =
+  "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Ftavern-clip-art_f.jpg.png?1607802654820";
+extracteurImg.src =
+  "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fmine.png?1607802350272";
+portugaisImg.src =
+  "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcabane.png?1607802344274";
 
 var tabBatiment = [];
 function Batiment(nom, coordX, coordY) {
@@ -84,48 +96,29 @@ function draw() {
 }
 
 function drawRectangle(nomBat, coordX, coordY) {
-  let height, width, color;
   switch (nomBat) {
     case "caserne":
-      height = 50;
-      width = 50;
-      color = "brown";
+      ctx.drawImage(caserneImg,coordX,coordY,50,50);
       break;
     case "trinquette":
-      height = 40;
-      width = 70;
-      color = "pink";
+      ctx.drawImage(trinquetteImg,coordX,coordY,50,50);
       break;
     case "portugais":
-      height = 20;
-      width = 20;
-      color = "black";
+      ctx.drawImage(portugaisImg,coordX,coordY,50,50);
       break;
     case "extracteur":
-      height = 40;
-      width = 40;
-      color = "yellow";
+      ctx.drawImage(extracteurImg,coordX,coordY,50,50);
       break;
     case "mur":
-      height = 10;
-      width = 70;
-      color = "black";
+      ctx.beginPath();
+      ctx.lineWidth = "4";
+      ctx.fillStyle = "black";
+      ctx.fillRect(coordX, coordY, 10, 70);
+      ctx.fillText(nomBat, coordX, coordY);
       break;
     case "hdv":
-      height = 70;
-      width = 70;
-      color = "white";
+      ctx.drawImage(hdvImg,coordX,coordY,50,50);
       break;
-  }
-
-  if (nomBat != "hdv") {
-    ctx.beginPath();
-    ctx.lineWidth = "4";
-    ctx.fillStyle = color;
-    ctx.fillRect(coordX, coordY, width, height);
-    ctx.fillText(nomBat, coordX, coordY);
-  } else {
-    ctx.drawImage(hdv,coordX,coordY,50,50);
   }
 }
 
