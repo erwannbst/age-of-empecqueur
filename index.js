@@ -20,9 +20,10 @@ io.on('connection', function (socket) {
   // when the client emits 'new message', this listens and executes
   socket.on('add player', function (username) {
     // we tell the client to execute 'new message'
-    if(players.length<2){
+    if(players.length<10){
       players.push(username)
-      socket.broadcast.emit('connected');
+      socket.broadcast.emit('new connection', players);
+      socket.emit('connected', username);
     }
   });
   

@@ -16,8 +16,13 @@ var img = new Image();
 var hdv = new Image();
 
 var tabBatiment = [];
-var Batiment = new Object();
-Batiment.nom = "base";
+function createNewBat(nom,coordX,coordY,width,height){
+  this.nom = nom;
+  this.coordX = coordX;
+  this.coordY = coordY;
+  this.width = width;
+  this.height = height;
+}
 
 ctx.strokeStyle = "black";
 ctx.fillStyle = "white";
@@ -47,10 +52,13 @@ canvas.addEventListener(
   function(event) {
     //document.getElementById("output").innerHTML = "click";
     //drawRectangle(playerX, playerY, -50, -5);
-    tabBatiment.push(new Batiment())
+    tabBatiment.push(new Batiment();
+    console.log(Batiment);
   },
   false
 );
+
+
 
 function drawRectangle(x, y, width, height) {
   ctx.beginPath();
@@ -75,9 +83,11 @@ function setGoldAmount(amount) {
   document.getElementById("gold").innerHTML = "Gold = " + amount;
 }
 
-function gotConnected(id) {
+function gotConnected(usname) {
   connected = true;
-  ocument.getElementById("stat").innerHTML = "Connected";
+  username = usname
+  document.getElementById("status").innerHTML = "Connected as " + username;
+  document.getElementById("connexion").style.display = "none";
 }
 
 /********************** DOCUMENTATION API ***********************
@@ -91,12 +101,16 @@ draw();
 
 document.getElementById("buttonLogin").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
-  let username = loginForm.elements.username.value;
-  socket.emit('add player', username);
+  let usname = loginForm.elements.username.value;
+  socket.emit('add player', usname);
 });
 
-socket.on('connected', function () {
-  gotConnected();
+socket.on('connected', function (usname) {
+  gotConnected(usname);
+});
+
+socket.on('new connection', function (players) {
+  alert(players);
 });
 
 socket.on('draw batiment', function (data) {
