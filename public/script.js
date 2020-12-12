@@ -23,7 +23,6 @@ img.src =
 hdv.src =
   "https://cdn.glitch.com/d4bfa1e1-3618-4fd0-bc6f-635c34b0e5d1%2F393-3937430_comments-th8-clash-of-clans-png.png?v=1607726161883";
 
-
 var tabBatiment = [];
 function Batiment(nom, coordX, coordY) {
   this.nom = nom;
@@ -34,7 +33,6 @@ function Batiment(nom, coordX, coordY) {
 //----------------------------------PARTIE MENU------------------------------------------//
 
 let batSelect;
-
 
 const btnSelectBat = document.querySelector("#boutonSelectionBatiment");
 // handle click button
@@ -47,7 +45,6 @@ btnSelectBat.onclick = function() {
     }
   }
 };
-
 
 //-------------------------------------------------------MOUSE-----------------------------------------------------------//
 document.addEventListener("mousemove", mouseMoveHandler);
@@ -62,11 +59,7 @@ canvas.addEventListener(
   "click",
   function(event) {
     //devra etre supprimé après test
-    var bat = new Batiment(
-      batSelect,
-      playerX,
-      playerY,
-    );
+    var bat = new Batiment(batSelect, playerX, playerY);
     tabBatiment.push(bat);
     //trinquette 40 et 60 devront être changé en variable lors de la selection
     //dans le menu
@@ -78,36 +71,68 @@ canvas.addEventListener(
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
 
-
-
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  if(batSelect!=null){drawRectangle(batSelect, playerX, playerY);}
+  if (batSelect != null) {
+    drawRectangle(batSelect, playerX, playerY);
+  }
   for (var i = 0; i < tabBatiment.length; i++) {
     drawRectangle(
       tabBatiment[i].nom,
       tabBatiment[i].coordX,
-      tabBatiment[i].coordY,
+      tabBatiment[i].coordY
     );
   }
   requestAnimationFrame(draw);
 }
 
-function drawRectangle(nomBat, x, y) {
-  
-  switch(nom){
-      
+function drawRectangle(nomBat, coordX, coordY) {
+  let height, width, color;
+  switch (nomBat) {
+    case "caserne":
+      height = 50;
+      width = 50;
+      color = "brown";
+      break;
+    case "trinquette":
+      height = 40;
+      width = 70;
+      color = "pink";
+      break;
+    case "portugais":
+      height = 20;
+      width = 20;
+      color = "gray";
+      break;
+    case "extracteur":
+      height = 40;
+      width = 40;
+      color = "yellow";
+      break;
+    case "mur":
+      height = 10;
+      width = 70;
+      color = "black";
+      break;
+    case "taverne":
+      height = 50;
+      width = 50;
+      color = "orange";
+      break;
+    case "hdv":
+      height = 50;
+      width = 50;
+      color = "brown";
+      break;
   }
-  
+
   ctx.beginPath();
   ctx.lineWidth = "4";
   ctx.strokeStyle = "red";
-  ctx.rect(x, y, width, height);
-  ctx.fillText(nom, x, y);
+  ctx.rect(coordX, coordY, width, height);
+  ctx.fillText(nomBat, coordX, coordY);
   ctx.stroke();
 }
-
-
 
 function drawBatiment(data) {
   //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
