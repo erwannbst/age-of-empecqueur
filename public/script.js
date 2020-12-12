@@ -102,7 +102,7 @@ function drawRectangle(nomBat, coordX, coordY) {
     case "portugais":
       height = 20;
       width = 20;
-      color = "gray";
+      color = "black";
       break;
     case "extracteur":
       height = 40;
@@ -114,22 +114,17 @@ function drawRectangle(nomBat, coordX, coordY) {
       width = 70;
       color = "black";
       break;
-    case "taverne":
-      height = 50;
-      width = 50;
-      color = "orange";
-      break;
     case "hdv":
-      height = 50;
-      width = 50;
-      color = "brown";
+      height = 70;
+      width = 70;
+      color = "white";
       break;
   }
 
   ctx.beginPath();
   ctx.lineWidth = "4";
-  ctx.strokeStyle = "red";
-  ctx.rect(coordX, coordY, width, height);
+  ctx.fillStyle = color;
+  ctx.fillRect(coordX, coordY, width, height);
   ctx.fillText(nomBat, coordX, coordY);
   ctx.stroke();
 }
