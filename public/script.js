@@ -16,13 +16,32 @@ var img = new Image();
 var hdv = new Image();
 
 var tabBatiment = [];
-function Batiment(nom,coordX,coordY,width,height){
+function Batiment(nom, coordX, coordY, width, height) {
   this.nom = nom;
   this.coordX = coordX;
   this.coordY = coordY;
   this.width = width;
   this.height = height;
 }
+
+//----------------------------------PARTIE MENU------------------------------------------//
+
+let batSelect;
+
+
+const btnSelectBat = document.querySelector("#boutonSelectionBatiment");
+// handle click button
+btnSelectBat.onclick = function() {
+  const rbs = document.querySelectorAll('input[name="bat"]');
+  for (const rb of rbs) {
+    if (rb.checked) {
+      batSelect = rb.value;
+      break;
+    }
+  }
+};
+
+//----------------------------------PARTIE MENU------------------------------------------//
 
 ctx.strokeStyle = "black";
 ctx.fillStyle = "white";
@@ -43,15 +62,15 @@ function mouseMoveHandler(e) {
 // DRAW
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawRectangle("test",playerX, playerY, 50, 50, "red");
-  for(var i = 0; i < tabBatiment.length; i++){
+  if(batSelect!=null){drawRectangle(batSelect, playerX, playerY, 50, 50, "red");}
+  for (var i = 0; i < tabBatiment.length; i++) {
     drawRectangle(
       tabBatiment[i].nom,
       tabBatiment[i].coordX,
       tabBatiment[i].coordY,
       tabBatiment[i].width,
-      tabBatiment[i].height,
-    )
+      tabBatiment[i].height
+    );
   }
   requestAnimationFrame(draw);
 }
@@ -61,8 +80,18 @@ canvas.addEventListener(
   function(event) {
     //document.getElementById("output").innerHTML = "click";
     //drawRectangle(playerX, playerY, -50, -5);
-    var bat = new Batiment("hdv",playerX,playerY,40,60);
+
+    var bat = new Batiment(
+      batSelect,
+      playerX,
+      playerY,
+      40,
+      60
+    );
     tabBatiment.push(bat);
+    //trinquette 40 et 60 devront être changé en variable lors de la selection
+    //dans le menu
+    createBatiment("trinquette", playerX, playerY, 40, 60);
     console.log(tabBatiment);
   },
   false
@@ -94,7 +123,7 @@ function setGoldAmount(amount) {
 
 function gotConnected(usname) {
   connected = true;
-  username = usname
+  username = usname;
   document.getElementById("status").innerHTML = "Connected as " + username;
   document.getElementById("connexion").style.display = "none";
 }
@@ -111,34 +140,34 @@ draw();
 document.getElementById("buttonCreate").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   let usname = loginForm.elements.username.value;
-  socket.emit('createGame', usname);
+  socket.emit("createGame", usname);
 });
 
 document.getElementById("buttonConnect").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   let usname = loginForm.elements.username.value;
   let gameCode = loginForm.elements.gameCode.value;
-  socket.emit('add player', {usname, gameCode});
+  socket.emit("add player", { usname, gameCode });
 });
 
-socket.on('connected', function (usname) {
+socket.on("connected", function(usname) {
   gotConnected(usname);
 });
 
-socket.on('new connection', function (players) {
+socket.on("new connection", function(players) {
   alert(players);
 });
 
-socket.on('draw batiment', function (data) {
+socket.on("draw batiment", function(data) {
   drawBatiment(data);
 });
 
-socket.on('ping', function (data) {
-  console.log('ping');
+socket.on("ping", function(data) {
+  console.log("ping");
 });
 
-function createBatiment(data){
-  socket.emit('create batiment', data);
+function createBatiment(data) {
+  socket.emit("create batiment", data);
 }
 
 /*
