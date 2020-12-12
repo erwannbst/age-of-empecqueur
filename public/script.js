@@ -63,6 +63,9 @@ canvas.addEventListener(
     //drawRectangle(playerX, playerY, -50, -5);
     var bat = new Batiment("hdv",playerX,playerY,40,60);
     tabBatiment.push(bat);
+    //trinquette 40 et 60 devront être changé en variable lors de la selection 
+    //dans le menu
+    createBatiment("trinquette",playerX,playerY,40,60); 
     console.log(tabBatiment);
   },
   false
