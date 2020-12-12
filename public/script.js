@@ -25,12 +25,10 @@ hdv.src =
 
 
 var tabBatiment = [];
-function Batiment(nom, coordX, coordY, width, height) {
+function Batiment(nom, coordX, coordY) {
   this.nom = nom;
   this.coordX = coordX;
   this.coordY = coordY;
-  this.width = width;
-  this.height = height;
 }
 
 //----------------------------------PARTIE MENU------------------------------------------//
@@ -50,8 +48,6 @@ btnSelectBat.onclick = function() {
   }
 };
 
-function SelectGoodBat(nomBat)
-
 
 //-------------------------------------------------------MOUSE-----------------------------------------------------------//
 document.addEventListener("mousemove", mouseMoveHandler);
@@ -70,35 +66,39 @@ canvas.addEventListener(
       batSelect,
       playerX,
       playerY,
-      40,
-      60
     );
     tabBatiment.push(bat);
     //trinquette 40 et 60 devront être changé en variable lors de la selection
     //dans le menu
-    createBatiment(batSelect, playerX, playerY, 40, 60);
+    createBatiment(batSelect, playerX, playerY);
     console.log(tabBatiment);
   },
   false
 );
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
+
+
+
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  if(batSelect!=null){drawRectangle(batSelect, playerX, playerY, 50, 50, "red");}
+  if(batSelect!=null){drawRectangle(batSelect, playerX, playerY);}
   for (var i = 0; i < tabBatiment.length; i++) {
     drawRectangle(
       tabBatiment[i].nom,
       tabBatiment[i].coordX,
       tabBatiment[i].coordY,
-      tabBatiment[i].width,
-      tabBatiment[i].height
     );
   }
   requestAnimationFrame(draw);
 }
 
-function drawRectangle(nom, x, y, width, height) {
+function drawRectangle(nomBat, x, y) {
+  
+  switch(nom){
+      
+  }
+  
   ctx.beginPath();
   ctx.lineWidth = "4";
   ctx.strokeStyle = "red";
@@ -114,7 +114,7 @@ function drawBatiment(data) {
   console.log("drawing batiment " + JSON.stringify(data));
   // data:{nom: "nomDuBatiment", x: 0, y: 0, width, height}
 
-  drawRectangle(data.nom, data.x, data.y, data.width, data.height);
+  drawRectangle(data.nom, data.x, data.y);
 }
 //-------------------------------------------------------DRAW------------------------------------------------------------//
 
