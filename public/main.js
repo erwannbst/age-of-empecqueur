@@ -5,7 +5,6 @@ const batimentsForm = document.querySelector("form");
 
 var socket = io();
 
-
 document.getElementById("buttonAddBatiment").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   let batimentName = batimentsForm.elements.batimentName.value

@@ -1,7 +1,58 @@
 // client-side js, loaded by index.html
 // run by the browser each time the page is loaded
 
+// INIT
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+canvas.width = 1600;
+canvas.height = 900;
+var playerX = 0;
+var playerY = 0;
+var img = new Image();
+var hdv = new Image();
+img.src =
+  "https://cdn.glitch.com/d4bfa1e1-3618-4fd0-bc6f-635c34b0e5d1%2Fplayer.png";
+hdv.src =
+  "https://cdn.glitch.com/d4bfa1e1-3618-4fd0-bc6f-635c34b0e5d1%2F393-3937430_comments-th8-clash-of-clans-png.png?v=1607726161883";
 
+// MOUSE
+document.addEventListener("mousemove", mouseMoveHandler);
+function mouseMoveHandler(e) {
+  playerX = e.pageX;
+  playerY = e.pageY;
+  document.getElementById("output").innerHTML =
+    "Mouse:  <br />" + " x: " + playerX + ", y: " + playerY +"<br />";
+}
+// DRAW
+function draw() {
+  //ctx.clearRect(playerX, playerY, 92, 110);
+  //drawRectangle(playerX,playerY,50,50,"red");
+  requestAnimationFrame(draw);
+}
+//CLICK
+canvas.addEventListener(
+  "click",
+  function(event) {
+    document.getElementById("output").innerHTML = "click";
+    drawRectangle(playerX, playerY, -50, -50, "red");
+  },
+  false
+);
+
+function drawRectangle(x, y, width, height, color) {
+  ctx.beginPath();
+  ctx.lineWidth = "4";
+  ctx.strokeStyle = color;
+  ctx.rect(x, y, width, height);
+  ctx.stroke();
+}
+
+draw();
+
+function addBatiment(data){ // data:{nom: "nomDuBatiment", x: 0, y: 0, width, height}
+    
+}
+/*
 const batimentsList = document.getElementById("batiments");
 const batimentsForm = document.querySelector("form");
 const buttonRefresh = document.getElementById("sumbitRefresh");

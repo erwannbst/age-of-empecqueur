@@ -4,8 +4,32 @@
   <meta charset="UTF-8">
   <title>Socket.IO Chat Example</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      div {
+        position: absolute;
+      }
+      canvas {
+        z-index: 1;
+        background: #013333 no-repeat;
+        display: block;
+        margin: 0 auto;
+      }
+      div.text {
+        z-index: 2;
+        left: 0px;
+        top: 0px;
+        color: white;
+      }
+    </style>
+  <script src="/main.js"></script>
+  
 </head>
 <body>
+  <!--
   <form>
     <label>
       Nouveau batiment
@@ -21,9 +45,16 @@
       <em>loading items&hellip;</em>
     </ul>
   </section>
-
+-->
+  <div id="game_container">
+      <canvas id="myCanvas"></canvas>
+      <script src="script.js"></script>
+      <div id="output" class="text"></div>
+    
+      <d
+  </div>
+  
   <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="/main.js"></script>
 </body>
 </html>

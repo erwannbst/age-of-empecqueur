@@ -3,6 +3,7 @@
 
 // we've started you off with Express (https://expressjs.com/)
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
+/*
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
@@ -39,6 +40,7 @@ app.get("/", (request, response) => {
 });*/
 
 // send the default array of dreams to the webpage
+/*
 app.get("/map", (request, response) => {
   // express helps us take JS objects and send them as JSON
   response.json(map);
@@ -54,3 +56,4 @@ app.get("/addBatiment", (request, response) => {
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
+*/

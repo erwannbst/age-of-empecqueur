@@ -18,6 +18,29 @@
     <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/script.js" defer></script>
+    
+     <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      div{
+        position:absolute;
+      }
+      canvas {
+        z-index: 1;
+        background: #013333 no-repeat;
+        display: block;
+        margin: 0 auto;
+      }
+      div.text {
+        z-index: 2;
+        left: 0px;
+        top: 0px;
+        color: white;
+      }
+    </style>
+    
   </head>
   <body>
       <h1>Clash of Empire</h1>
@@ -40,7 +63,14 @@
         </ul>
       </section>
     </main>
+    <div id="game_container">
+      <canvas id="myCanvas"></canvas>
 
+      <script src="script.js"></script>
+
+      <div id="output" class="text"></div>
+    </div>
+    
 
     <!-- include the Glitch button to show what the webpage is about and
           to make it easier for folks to view source and remix -->
