@@ -26,9 +26,8 @@ io.on('connection', function (socket) {
   
   socket.on('add batiment', function(data) {
     //io.emit('ping');
-    io.emit('batiment added', {
-      name: data,
-    });
+    let details = {nom: "Trinquette", x: 10, y: 100, width: 50, height: 50}
+    io.emit('draw batiment', {details});
   });
 
 });

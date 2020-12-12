@@ -10,6 +10,11 @@ var playerX = 0;
 var playerY = 0;
 var img = new Image();
 var hdv = new Image();
+
+ctx.strokeStyle = 'black';
+ctx.fillStyle = 'black';
+
+
 img.src =
   "https://cdn.glitch.com/d4bfa1e1-3618-4fd0-bc6f-635c34b0e5d1%2Fplayer.png";
 hdv.src =
@@ -34,24 +39,31 @@ canvas.addEventListener(
   "click",
   function(event) {
     document.getElementById("output").innerHTML = "click";
-    drawRectangle(playerX, playerY, -50, -50, "red");
+    drawRectangle(playerX, playerY, -50, -5);
   },
   false
 );
 
-function drawRectangle(x, y, width, height, color) {
+function drawRectangle(x, y, width, height) {
   ctx.beginPath();
   ctx.lineWidth = "4";
-  ctx.strokeStyle = color;
+  ctx.strokeStyle = "red";
   ctx.rect(x, y, width, height);
   ctx.stroke();
 }
 
+function addBatiment(data){ //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
+  // data:{nom: "nomDuBatiment", x: 0, y: 0, width, height}
+    drawRectangle(data.x, data.y, data.width, data.height);
+    ctx.font = '40px Verdana';
+    context.fillText (context.font, 350, 80);
+}
+
+
+
 draw();
 
-function addBatiment(data){ // data:{nom: "nomDuBatiment", x: 0, y: 0, width, height}
-    
-}
+
 /*
 const batimentsList = document.getElementById("batiments");
 const batimentsForm = document.querySelector("form");
