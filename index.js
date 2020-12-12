@@ -54,7 +54,7 @@ app.get("/createGame", (request, response) => {
     });
 
   });
-  response.send(200);
+  response.json(200);
 });
 
 
