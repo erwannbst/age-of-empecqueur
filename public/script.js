@@ -15,9 +15,6 @@ var username = "";
 var img = new Image();
 var hdv = new Image();
 
-ctx.strokeStyle = "black";
-ctx.fillStyle = "white";
-
 img.src =
   "https://cdn.glitch.com/d4bfa1e1-3618-4fd0-bc6f-635c34b0e5d1%2Fplayer.png";
 hdv.src =
@@ -121,12 +118,15 @@ function drawRectangle(nomBat, coordX, coordY) {
       break;
   }
 
-  ctx.beginPath();
-  ctx.lineWidth = "4";
-  ctx.fillStyle = color;
-  ctx.fillRect(coordX, coordY, width, height);
-  ctx.fillText(nomBat, coordX, coordY);
-  ctx.stroke();
+  if (nomBat != "hdv") {
+    ctx.beginPath();
+    ctx.lineWidth = "4";
+    ctx.fillStyle = color;
+    ctx.fillRect(coordX, coordY, width, height);
+    ctx.fillText(nomBat, coordX, coordY);
+  } else {
+    ctx.drawImage(hdv,coordX,coordY,50,50);
+  }
 }
 
 function drawBatiment(data) {
