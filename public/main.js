@@ -1,10 +1,8 @@
-/* global io, addBatiment */
+/* global socket, addBatiment */
 
 const batimentsList = document.getElementById("batiments");
 const batimentsForm = document.querySelector("form");
 
-var socket = io();
-//var sodd = io();
 /*
 document.getElementById("buttonAddBatiment").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
@@ -20,7 +18,6 @@ function addBatiment(data){
 }*/
 
 socket.on('draw batiment', function (data) {
-  console.log("data");
   addBatiment(data);
 });
 

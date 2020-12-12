@@ -12,7 +12,7 @@ var img = new Image();
 var hdv = new Image();
 
 ctx.strokeStyle = 'black';
-ctx.fillStyle = 'black';
+ctx.fillStyle = 'white';
 
 
 img.src =
@@ -49,14 +49,15 @@ function drawRectangle(x, y, width, height) {
   ctx.lineWidth = "4";
   ctx.strokeStyle = "red";
   ctx.rect(x, y, width, height);
+  ctx.fillText ("batiment crée", x, y);
   ctx.stroke();
 }
 
 function addBatiment(data){ //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
+  console.log("adding batiment " + JSON.stringify(data));
   // data:{nom: "nomDuBatiment", x: 0, y: 0, width, height}
     drawRectangle(data.x, data.y, data.width, data.height);
-    ctx.font = '40px Verdana';
-    context.fillText (context.font, 350, 80);
+    ctx.fillText (data.nom, data.x, data.y);
 }
 
 
