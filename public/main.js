@@ -1,4 +1,4 @@
-/* global socket, addBatiment */
+/* global socket, drawBatiment */
 
 const batimentsList = document.getElementById("batiments");
 const batimentsForm = document.querySelector("form");
@@ -18,7 +18,7 @@ function addBatiment(data){
 }*/
 
 socket.on('draw batiment', function (data) {
-  addBatiment(data);
+  drawBatiment(data);
 });
 
 socket.on('ping', function (data) {

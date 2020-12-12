@@ -53,14 +53,23 @@ function drawRectangle(x, y, width, height) {
   ctx.stroke();
 }
 
-function addBatiment(data){ //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
-  console.log("adding batiment " + JSON.stringify(data));
+function drawBatiment(data){ //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
+  console.log("drawing batiment " + JSON.stringify(data));
   // data:{nom: "nomDuBatiment", x: 0, y: 0, width, height}
     drawRectangle(data.x, data.y, data.width, data.height);
     ctx.fillText (data.nom, data.x, data.y);
 }
 
+function gotConnected(id){
+  
+}
 
+/********************** DOCUMENTATION API ***********************
+CRÉER UN BATIMENT
+  createBatiment({nom, x, y})
+      nom = string : "trinquette", "portugais", "hdv", "caserne", "mur", "extracteur"
+
+*********************** DOCUMENTATION API **********************/
 
 draw();
 

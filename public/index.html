@@ -1,34 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Socket.IO Chat Example</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Socket.IO Chat Example</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
       * {
         padding: 0;
         margin: 0;
       }
-      div {
-        position: absolute;
+      #game-container {
+        width : 100%;
       }
       canvas {
-        z-index: 1;
         background: #013333 no-repeat;
         display: block;
         margin: 0 auto;
       }
-      div.text {
-        z-index: 2;
-        left: 0px;
-        top: 0px;
-        color: white;
+      #map, #menu{
+        display: inline-block;
+        vertical align : top;
       }
+      
+      #menu{
+        top: 0px;
+      }
+    
     </style>
-  
-</head>
-<body>
-  <!--
+  </head>
+  <body>
+    <!--
   <form>
     <label>
       Nouveau batiment
@@ -45,18 +46,22 @@
     </ul>
   </section>
 -->
-  <div id="game_container">
-      <canvas id="myCanvas"></canvas>
-      <script src="script.js"></script>
-      <div id="output" class="text"></div>   
-  </div>
-  <div>
-      <button>Click me</button>
-  </div>
-  
-  <script src="/socket.io/socket.io.js"></script>
-  <script>var socket = io();</script>
-  <script src="/main.js"></script>
-  <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
-</body>
+    <div id="game-container">
+      <div id="map">
+        <canvas id="myCanvas"></canvas>
+        <script src="script.js"></script>
+      </div>
+      <div id="menu">
+        <div id="output" class="text"></div>
+        <button>Click me</button>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+    </script>
+    <script src="/main.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+  </body>
 </html>

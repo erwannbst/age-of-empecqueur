@@ -12,9 +12,11 @@ server.listen(port, function () {
 // Routing
 app.use(express.static('public'));
 
+var players = [];
+
 
 io.on('connection', function (socket) {
-
+  console.log('a user connected');
   // when the client emits 'new message', this listens and executes
   socket.on('new message', function (data) {
     // we tell the client to execute 'new message'
