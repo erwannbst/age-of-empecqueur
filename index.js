@@ -63,7 +63,7 @@ app.get("/createGame", (request, response) => {
   });
 
 app.get("/game", (request, response) => {
-  let gameCode = request.data.gameCode
+  let gameCode = "AA"// request.data
   var server = require('http').createServer(app);
   var io = require('socket.io')(server);
   var port = process.env.PORT || 3000;
@@ -107,4 +107,5 @@ app.get("/game", (request, response) => {
     });
 
   });
+  response.sendFile(__dirname + "/public/index.html");
 });
