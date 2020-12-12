@@ -43,7 +43,16 @@ function mouseMoveHandler(e) {
 // DRAW
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawRectangle(playerX, playerY, 50, 50, "red");
+  drawRectangle("test",playerX, playerY, 50, 50, "red");
+  for(var i = 0; i < tabBatiment.length; i++){
+    drawRectangle(
+      tabBatiment[i].nom,
+      tabBatiment[i].coordX,
+      tabBatiment[i].coordY,
+      tabBatiment[i].width,
+      tabBatiment[i].height,
+    )
+  }
   requestAnimationFrame(draw);
 }
 //CLICK
@@ -54,19 +63,19 @@ canvas.addEventListener(
     //drawRectangle(playerX, playerY, -50, -5);
     var bat = new Batiment("hdv",playerX,playerY,40,60);
     tabBatiment.push(bat);
-    console.log(Batiment);
+    console.log(tabBatiment);
   },
   false
 );
 
 
 
-function drawRectangle(x, y, width, height) {
+function drawRectangle(nom, x, y, width, height) {
   ctx.beginPath();
   ctx.lineWidth = "4";
   ctx.strokeStyle = "red";
   ctx.rect(x, y, width, height);
-  ctx.fillText("batiment crée", x, y);
+  ctx.fillText(nom, x, y);
   ctx.stroke();
 }
 
@@ -75,8 +84,7 @@ function drawBatiment(data) {
   console.log("drawing batiment " + JSON.stringify(data));
   // data:{nom: "nomDuBatiment", x: 0, y: 0, width, height}
 
-  drawRectangle(data.x, data.y, data.width, data.height);
-  ctx.fillText(data.nom, data.x, data.y);
+  drawRectangle(data.nom, data.x, data.y, data.width, data.height);
 }
 
 function setGoldAmount(amount) {
@@ -93,17 +101,24 @@ function gotConnected(usname) {
 
 /********************** DOCUMENTATION API ***********************
 CRÉER UN BATIMENT
-  createBatiment({nom, x, y})
+  createBatiment({nom, x, y, width, height})
       nom = string : "trinquette", "portugais", "hdv", "caserne", "mur", "extracteur"
 
 *********************** DOCUMENTATION API **********************/
 
 draw();
 
-document.getElementById("buttonLogin").addEventListener("click", event => {
+document.getElementById("buttonCreate").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   let usname = loginForm.elements.username.value;
-  socket.emit('add player', usname);
+  socket.emit('createGame', usname);
+});
+
+document.getElementById("buttonConnect").addEventListener("click", event => {
+  event.preventDefault(); // stop our form submission from refreshing the page
+  let usname = loginForm.elements.username.value;
+  let gameCode = loginForm.elements.gameCode.value;
+  socket.emit('add player', {usname, gameCode});
 });
 
 socket.on('connected', function (usname) {
@@ -121,6 +136,10 @@ socket.on('draw batiment', function (data) {
 socket.on('ping', function (data) {
   console.log('ping');
 });
+
+function createBatiment(data){
+  socket.emit('create batiment', data);
+}
 
 /*
 const batimentsList = document.getElementById("batiments");

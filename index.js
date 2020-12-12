@@ -13,11 +13,20 @@ server.listen(port, function () {
 app.use(express.static('public'));
 
 var players = [];
+var games = [];
 
 
 io.on('connection', function (socket) {
   console.log('a user connected');
-  // when the client emits 'new message', this listens and executes
+  
+  socket.on('create game', function (username) {
+    // creer une partie
+    if(games.length<10){
+      games.push({player1: username})
+      socket.emit('connected', username);
+    }
+  });
+  
   socket.on('add player', function (username) {
     // we tell the client to execute 'new message'
     if(players.length<10){
