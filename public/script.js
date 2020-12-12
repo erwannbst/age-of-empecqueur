@@ -15,6 +15,15 @@ var username = "";
 var img = new Image();
 var hdv = new Image();
 
+ctx.strokeStyle = "black";
+ctx.fillStyle = "white";
+
+img.src =
+  "https://cdn.glitch.com/d4bfa1e1-3618-4fd0-bc6f-635c34b0e5d1%2Fplayer.png";
+hdv.src =
+  "https://cdn.glitch.com/d4bfa1e1-3618-4fd0-bc6f-635c34b0e5d1%2F393-3937430_comments-th8-clash-of-clans-png.png?v=1607726161883";
+
+
 var tabBatiment = [];
 function Batiment(nom, coordX, coordY, width, height) {
   this.nom = nom;
@@ -41,17 +50,10 @@ btnSelectBat.onclick = function() {
   }
 };
 
-//----------------------------------PARTIE MENU------------------------------------------//
+function SelectGoodBat(nomBat)
 
-ctx.strokeStyle = "black";
-ctx.fillStyle = "white";
 
-img.src =
-  "https://cdn.glitch.com/d4bfa1e1-3618-4fd0-bc6f-635c34b0e5d1%2Fplayer.png";
-hdv.src =
-  "https://cdn.glitch.com/d4bfa1e1-3618-4fd0-bc6f-635c34b0e5d1%2F393-3937430_comments-th8-clash-of-clans-png.png?v=1607726161883";
-
-// MOUSE
+//-------------------------------------------------------MOUSE-----------------------------------------------------------//
 document.addEventListener("mousemove", mouseMoveHandler);
 function mouseMoveHandler(e) {
   playerX = e.pageX;
@@ -59,7 +61,28 @@ function mouseMoveHandler(e) {
   document.getElementById("output").innerHTML =
     "Mouse:  <br />" + " x: " + playerX + ", y: " + playerY + "<br />";
 }
-// DRAW
+//-------------------------------------------------------CLICK------------------------------------------------------------//
+canvas.addEventListener(
+  "click",
+  function(event) {
+    //devra etre supprimé après test
+    var bat = new Batiment(
+      batSelect,
+      playerX,
+      playerY,
+      40,
+      60
+    );
+    tabBatiment.push(bat);
+    //trinquette 40 et 60 devront être changé en variable lors de la selection
+    //dans le menu
+    createBatiment(batSelect, playerX, playerY, 40, 60);
+    console.log(tabBatiment);
+  },
+  false
+);
+
+//-------------------------------------------------------DRAW------------------------------------------------------------//
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if(batSelect!=null){drawRectangle(batSelect, playerX, playerY, 50, 50, "red");}
@@ -74,30 +97,6 @@ function draw() {
   }
   requestAnimationFrame(draw);
 }
-//CLICK
-canvas.addEventListener(
-  "click",
-  function(event) {
-    //document.getElementById("output").innerHTML = "click";
-    //drawRectangle(playerX, playerY, -50, -5);
-
-    var bat = new Batiment(
-      batSelect,
-      playerX,
-      playerY,
-      40,
-      60
-    );
-    tabBatiment.push(bat);
-    //trinquette 40 et 60 devront être changé en variable lors de la selection
-    //dans le menu
-    createBatiment("trinquette", playerX, playerY, 40, 60);
-    console.log(tabBatiment);
-  },
-  false
-);
-
-
 
 function drawRectangle(nom, x, y, width, height) {
   ctx.beginPath();
@@ -108,6 +107,8 @@ function drawRectangle(nom, x, y, width, height) {
   ctx.stroke();
 }
 
+
+
 function drawBatiment(data) {
   //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
   console.log("drawing batiment " + JSON.stringify(data));
@@ -115,6 +116,7 @@ function drawBatiment(data) {
 
   drawRectangle(data.nom, data.x, data.y, data.width, data.height);
 }
+//-------------------------------------------------------DRAW------------------------------------------------------------//
 
 function setGoldAmount(amount) {
   //Appelée par le serveur quand le montant d'or est mis à jour
