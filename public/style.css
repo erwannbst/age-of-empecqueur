@@ -9,13 +9,10 @@ body {
   line-height: 1.5em;
 }
 
-
-
 h1 {
   max-width: calc(100% - 5rem);
   line-height: 1.1;
   position: absolute;
-  width: 100%;
   text-align: center;
   color: white;
 }

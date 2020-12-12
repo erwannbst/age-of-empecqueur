@@ -1,7 +1,9 @@
-/* global socket, drawBatiment */
+/* global socket, drawBatiment, gotConnected */
 
-const batimentsList = document.getElementById("batiments");
-const batimentsForm = document.querySelector("form");
+const loginForm = document.querySelector("form");
+
+var connected = false;
+var username = "";
 
 /*
 document.getElementById("buttonAddBatiment").addEventListener("click", event => {
@@ -16,6 +18,16 @@ function addBatiment(data){
   newListItem.innerText = data.name + ' added at [' + data.pos[0] + ',' + data.pos[1] + ']';
   batimentsList.appendChild(newListItem);
 }*/
+
+document.getElementById("buttonLogin").addEventListener("click", event => {
+  event.preventDefault(); // stop our form submission from refreshing the page
+  let username = loginForm.elements.username.value;
+  socket.emit('add user', username);
+});
+
+socket.on('connected', function () {
+  gotConnected();
+});
 
 socket.on('draw batiment', function (data) {
   drawBatiment(data);

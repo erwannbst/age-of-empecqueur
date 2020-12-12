@@ -30,16 +30,16 @@ function mouseMoveHandler(e) {
 }
 // DRAW
 function draw() {
-  //ctx.clearRect(playerX, playerY, 92, 110);
-  //drawRectangle(playerX,playerY,50,50,"red");
+  ctx.clearRect(playerX, playerY, 50, 50);
+  drawRectangle(playerX,playerY,50,50,"red");
   requestAnimationFrame(draw);
 }
 //CLICK
 canvas.addEventListener(
   "click",
   function(event) {
-    document.getElementById("output").innerHTML = "click";
-    drawRectangle(playerX, playerY, -50, -5);
+    //document.getElementById("output").innerHTML = "click";
+    //drawRectangle(playerX, playerY, -50, -5);
   },
   false
 );
@@ -60,10 +60,12 @@ function drawBatiment(data){ //Appelée par le serveur quand un batiment a été
     ctx.fillText (data.nom, data.x, data.y);
 }
 
-function setGold
+function setGoldAmount(amount){ //Appelée par le serveur quand le montant d'or est mis à jour
+  document.getElementById("gold").innerHTML = "Gold = " + amount;
+}
 
 function gotConnected(id){
-  
+  connected = true;
 }
 
 /********************** DOCUMENTATION API ***********************
