@@ -1,19 +1,26 @@
+/* global socket */
 // client-side js, loaded by index.html
 // run by the browser each time the page is loaded
 
 // INIT
+const loginForm = document.querySelector("form");
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 canvas.width = 1600;
 canvas.height = 900;
 var playerX = 0;
 var playerY = 0;
+var connected = false;
+var username = "";
 var img = new Image();
 var hdv = new Image();
 
-ctx.strokeStyle = 'black';
-ctx.fillStyle = 'white';
+var tabBatiment = [];
+var Batiment = new Object();
+Batiment.nom = "base";
 
+ctx.strokeStyle = "black";
+ctx.fillStyle = "white";
 
 img.src =
   "https://cdn.glitch.com/d4bfa1e1-3618-4fd0-bc6f-635c34b0e5d1%2Fplayer.png";
@@ -26,12 +33,12 @@ function mouseMoveHandler(e) {
   playerX = e.pageX;
   playerY = e.pageY;
   document.getElementById("output").innerHTML =
-    "Mouse:  <br />" + " x: " + playerX + ", y: " + playerY +"<br />";
+    "Mouse:  <br />" + " x: " + playerX + ", y: " + playerY + "<br />";
 }
 // DRAW
 function draw() {
-  ctx.clearRect(playerX, playerY, 50, 50);
-  drawRectangle(playerX,playerY,50,50,"red");
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawRectangle(playerX, playerY, 50, 50, "red");
   requestAnimationFrame(draw);
 }
 //CLICK
@@ -40,6 +47,7 @@ canvas.addEventListener(
   function(event) {
     //document.getElementById("output").innerHTML = "click";
     //drawRectangle(playerX, playerY, -50, -5);
+    tabBatiment.push(new Batiment())
   },
   false
 );
@@ -49,23 +57,27 @@ function drawRectangle(x, y, width, height) {
   ctx.lineWidth = "4";
   ctx.strokeStyle = "red";
   ctx.rect(x, y, width, height);
-  ctx.fillText ("batiment crée", x, y);
+  ctx.fillText("batiment crée", x, y);
   ctx.stroke();
 }
 
-function drawBatiment(data){ //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
+function drawBatiment(data) {
+  //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
   console.log("drawing batiment " + JSON.stringify(data));
   // data:{nom: "nomDuBatiment", x: 0, y: 0, width, height}
-    drawRectangle(data.x, data.y, data.width, data.height);
-    ctx.fillText (data.nom, data.x, data.y);
+
+  drawRectangle(data.x, data.y, data.width, data.height);
+  ctx.fillText(data.nom, data.x, data.y);
 }
 
-function setGoldAmount(amount){ //Appelée par le serveur quand le montant d'or est mis à jour
+function setGoldAmount(amount) {
+  //Appelée par le serveur quand le montant d'or est mis à jour
   document.getElementById("gold").innerHTML = "Gold = " + amount;
 }
 
-function gotConnected(id){
+function gotConnected(id) {
   connected = true;
+  ocument.getElementById("stat").innerHTML = "Connected";
 }
 
 /********************** DOCUMENTATION API ***********************
@@ -77,6 +89,23 @@ CRÉER UN BATIMENT
 
 draw();
 
+document.getElementById("buttonLogin").addEventListener("click", event => {
+  event.preventDefault(); // stop our form submission from refreshing the page
+  let username = loginForm.elements.username.value;
+  socket.emit('add player', username);
+});
+
+socket.on('connected', function () {
+  gotConnected();
+});
+
+socket.on('draw batiment', function (data) {
+  drawBatiment(data);
+});
+
+socket.on('ping', function (data) {
+  console.log('ping');
+});
 
 /*
 const batimentsList = document.getElementById("batiments");

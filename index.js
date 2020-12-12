@@ -18,6 +18,14 @@ var players = [];
 io.on('connection', function (socket) {
   console.log('a user connected');
   // when the client emits 'new message', this listens and executes
+  socket.on('add player', function (username) {
+    // we tell the client to execute 'new message'
+    if(players.length<2){
+      players.push(username)
+      socket.broadcast.emit('connected');
+    }
+  });
+  
   socket.on('new message', function (data) {
     // we tell the client to execute 'new message'
     socket.broadcast.emit('new message', {

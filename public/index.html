@@ -51,13 +51,12 @@
     <div id="game-container">
       <div id="map">
         <canvas id="myCanvas"></canvas>
-        <script src="script.js"></script>
       </div>
       <div id="menu">
         <div id="connexion">
           <form>
             <input placeholder="Nom d'utilisateur" name="username"/>
-            <button>Se connecter à la partie</button>
+            <button id="buttonLogin">Se connecter à la partie</button>
           </form>
         </div>
         <div id="gold"></div>
@@ -70,7 +69,7 @@
     <script>
       var socket = io();
     </script>
-    <script src="/main.js"></script>
+    <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
   </body>
 </html>
