@@ -16,7 +16,7 @@ var img = new Image();
 var hdv = new Image();
 
 var tabBatiment = [];
-function createNewBat(nom,coordX,coordY,width,height){
+function Batiment(nom,coordX,coordY,width,height){
   this.nom = nom;
   this.coordX = coordX;
   this.coordY = coordY;
@@ -52,7 +52,8 @@ canvas.addEventListener(
   function(event) {
     //document.getElementById("output").innerHTML = "click";
     //drawRectangle(playerX, playerY, -50, -5);
-    tabBatiment.push(new Batiment();
+    var bat = new Batiment("hdv",playerX,playerY,40,60);
+    tabBatiment.push(bat);
     console.log(Batiment);
   },
   false
