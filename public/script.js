@@ -82,7 +82,7 @@ canvas.addEventListener(
 );
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
-
+//déplacement de la souris
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (batSelect != null) {
@@ -97,6 +97,8 @@ function draw() {
   }
   requestAnimationFrame(draw);
 }
+
+
 
 function drawRectangle(nomBat, coordX, coordY) {
   switch (nomBat) {
