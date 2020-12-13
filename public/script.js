@@ -26,7 +26,7 @@ murVImg.src =
 murHImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur_horizontal.png?1607872442410";
 hdvImg.src =
-  "https://cdn.glitch.com/d4bfa1e1-3618-4fd0-bc6f-635c34b0e5d1%2F393-3937430_comments-th8-clash-of-clans-png.png?v=1607726161883";
+  "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fhdv_dfous.png?1607876427163";
 caserneImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcasernedofus.png?1607815040102";
 trinquetteImg.src =
