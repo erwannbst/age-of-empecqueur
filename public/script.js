@@ -20,14 +20,23 @@ var extracteurImg = new Image();
 var portugaisImg = new Image();
 var murImg = new Image();
 
-var murState = true;
-
-if (murState == true) {
+function Mur(state, width, height) {
+  this.state = state;
+  this.width = width;
+  this.height = height;
+  this.state = true;
+}
+function ChangeState(state)
+if (Mur.state == true) {
+  Mur.width = 20;
+  Mur.height = 70;
   murImg.src =
     "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur.png?1607820139916";
 } else {
+  Mur.width = 70;
+  Mur.height = 20;
   murImg.src =
-    "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur.png?1607820139916";
+    "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur_horizontal.png?1607872442410";
 }
 
 hdvImg.src =
@@ -55,10 +64,9 @@ let batSelect;
 var selectedBat = document.querySelector("select");
 
 selectedBat.addEventListener("change", function() {
-  if(selectedBat.value == ""){
+  if (selectedBat.value == "") {
     batSelect = null;
-  }
-  else{
+  } else {
     batSelect = selectedBat.value;
   }
   //document.getElementById(batSelect).disabled = true;
@@ -78,8 +86,9 @@ function mouseMoveHandler(e) {
 document.addEventListener("keydown", keyDownHandler, false);
 function keyDownHandler(e) {
   if (batSelect == "mur") {
-    murState.changeState();
-    console.log("state =" + murState);
+    Mur.state = !Mur.state;
+    drawRectangle(batSelect, playerX, playerY);
+    console.log("state =" + Mur.state + "height =" + Mur.height);
   }
 }
 
@@ -133,7 +142,7 @@ function drawRectangle(nomBat, coordX, coordY) {
       ctx.drawImage(extracteurImg, coordX, coordY, 50, 50);
       break;
     case "mur":
-      ctx.drawImage(murImg, coordX, coordY, 20, 70);
+      ctx.drawImage(murImg, coordX, coordY, Mur.width, Mur.height);
       break;
     case "hdv":
       ctx.drawImage(hdvImg, coordX, coordY, 50, 50);
