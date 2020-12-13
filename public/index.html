@@ -10,7 +10,7 @@
         margin: 0;
       }
       #game-container {
-        width : 100%;
+        width: 100%;
         display: flex;
       }
       canvas {
@@ -18,15 +18,15 @@
         display: block;
         margin: 0 auto;
       }
-      #map, #menu{
+      #map,
+      #menu {
         display: inline-block;
-        vertical align : top;
+        verticalalign: top;
       }
-      
-      #menu{
+
+      #menu {
         top: 0px;
       }
-    
     </style>
   </head>
   <body>
@@ -55,14 +55,15 @@
       <div id="menu">
         <div id="connexion">
           <form>
-            <input placeholder="Nom d'utilisateur" name="username"/>
+            <input placeholder="Nom d'utilisateur" name="username" />
             <button id="buttonCreate">Créer une partie</button>
-            <input placeholder="code" name="gameCode"/>
+            <input placeholder="code" name="gameCode" />
             <button id="buttonConnect">Se connecter à la partie</button>
           </form>
         </div>
         <div id="gold"></div>
         <div id="output" class="text"></div>
+        <!--
         <form>
           <label for="name">Batiments : </label><br />
           <input name="bat" type="radio" value="hdv" id="hdv" /> Hotel de ville
@@ -79,6 +80,17 @@
           <br />
           <input type="button" id="boutonSelectionBatiment" value="Placer ">
         </form>
+        -->
+        
+        <select name="pets" id="pet-select">
+          <option value="">Choisis un batiments</option>
+          <option value="hdv">Hotel de ville</option>
+          <option value="extracteur">Extracteurs</option>
+          <option value="mur">Mur</option>
+          <option value="caserne">Caserne</option>
+          <option value="trinquette">Trinquette</option>
+          <option value="portugais">Portugais</option>
+        </select>
       </div>
     </div>
 

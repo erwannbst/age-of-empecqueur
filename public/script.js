@@ -46,17 +46,12 @@ function Batiment(nom, coordX, coordY) {
 
 let batSelect;
 
-const btnSelectBat = document.querySelector("#boutonSelectionBatiment");
-// handle click button
-btnSelectBat.onclick = function() {
-  const rbs = document.querySelectorAll('input[name="bat"]');
-  for (const rb of rbs) {
-    if (rb.checked) {
-      batSelect = rb.value;
-      break;
-    }
-  }
-};
+var selectedBat = document.querySelector('select');
+
+selectedBat.addEventListener('change' ,function(){
+  batSelect = selectedBat.value;
+});
+
 
 //-------------------------------------------------------MOUSE-----------------------------------------------------------//
 document.addEventListener("mousemove", mouseMoveHandler);
