@@ -2,6 +2,10 @@
 // client-side js, loaded by index.html
 // run by the browser each time the page is loaded
 
+
+
+
+
 // INIT
 const loginForm = document.querySelector("form");
 var canvas = document.getElementById("myCanvas");
@@ -19,6 +23,7 @@ var trinquetteImg = new Image();
 var extracteurImg = new Image();
 var portugaisImg= new Image();
 var murImg = new Image();
+
 
 murImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur.png?1607820139916";
