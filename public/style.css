@@ -42,7 +42,6 @@ form button {
   font-size: inherit;
   line-height: 1.4em;
   padding: 0.25em 1em;
-  max-width: 20ch;
 }
 
 form button:hover {
@@ -56,6 +55,10 @@ footer {
 }
 
 select {
+  
+  background-color: #bbbbf2;
+  cursor: pointer;
+  border-radius: .25em;
   margin-top: 10px;
   width : 100%;
   height : 30px;

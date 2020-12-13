@@ -50,6 +50,7 @@ var selectedBat = document.querySelector('select');
 
 selectedBat.addEventListener('change' ,function(){
   batSelect = selectedBat.value;
+  //document.getElementById(batSelect).disabled = true;
 });
 
 
