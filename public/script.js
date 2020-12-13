@@ -2,10 +2,6 @@
 // client-side js, loaded by index.html
 // run by the browser each time the page is loaded
 
-
-
-
-
 // INIT
 const loginForm = document.querySelector("form");
 var canvas = document.getElementById("myCanvas");
@@ -21,7 +17,7 @@ var hdvImg = new Image();
 var caserneImg = new Image();
 var trinquetteImg = new Image();
 var extracteurImg = new Image();
-var portugaisImg= new Image();
+var portugaisImg = new Image();
 var murImg = new Image();
 
 
@@ -38,7 +34,6 @@ extracteurImg.src =
 portugaisImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcabane.png?1607820151355";
 
-
 var tabBatiment = [];
 function Batiment(nom, coordX, coordY) {
   this.nom = nom;
@@ -50,13 +45,12 @@ function Batiment(nom, coordX, coordY) {
 
 let batSelect;
 
-var selectedBat = document.querySelector('select');
+var selectedBat = document.querySelector("select");
 
-selectedBat.addEventListener('change' ,function(){
+selectedBat.addEventListener("change", function() {
   batSelect = selectedBat.value;
   //document.getElementById(batSelect).disabled = true;
 });
-
 
 //-------------------------------------------------------MOUSE-----------------------------------------------------------//
 document.addEventListener("mousemove", mouseMoveHandler);
@@ -67,21 +61,31 @@ function mouseMoveHandler(e) {
     "Mouse:  <br />" + " x: " + playerX + ", y: " + playerY + "<br />";
 }
 
+//-----------------------------------------------------KEYBOARD----------------------------------------------------------//
 
+document.addEventListener("keydown", keyDownHandler, false);
+function keyDownHandler(e) {
+  
+  if (batSelect == 'mur') {
+    console.log("touche");
+  }
+}
 
 //-------------------------------------------------------CLICK------------------------------------------------------------//
 canvas.addEventListener(
   "click",
   function(event) {
+    
+    if (batSelect != null) {
     //devra etre supprimé après test
     var bat = new Batiment(batSelect, playerX, playerY);
     tabBatiment.push(bat);
-    
+
     //
-    
-    
+
     createBatiment(batSelect, playerX, playerY);
     console.log(tabBatiment);
+    }
   },
   false
 );
@@ -103,27 +107,25 @@ function draw() {
   requestAnimationFrame(draw);
 }
 
-
-
 function drawRectangle(nomBat, coordX, coordY) {
   switch (nomBat) {
     case "caserne":
-      ctx.drawImage(caserneImg,coordX,coordY,50,50);
+      ctx.drawImage(caserneImg, coordX, coordY, 50, 50);
       break;
     case "trinquette":
-      ctx.drawImage(trinquetteImg,coordX,coordY,50,50);
+      ctx.drawImage(trinquetteImg, coordX, coordY, 50, 50);
       break;
     case "portugais":
-      ctx.drawImage(portugaisImg,coordX,coordY,50,50);
+      ctx.drawImage(portugaisImg, coordX, coordY, 50, 50);
       break;
     case "extracteur":
-      ctx.drawImage(extracteurImg,coordX,coordY,50,50);
+      ctx.drawImage(extracteurImg, coordX, coordY, 50, 50);
       break;
     case "mur":
-      ctx.drawImage(murImg,coordX,coordY,20,70);
+      ctx.drawImage(murImg, coordX, coordY, 20, 70);
       break;
     case "hdv":
-      ctx.drawImage(hdvImg,coordX,coordY,50,50);
+      ctx.drawImage(hdvImg, coordX, coordY, 50, 50);
       break;
   }
 }
@@ -135,12 +137,6 @@ function drawBatiment(data) {
 
   drawRectangle(data.nom, data.x, data.y);
 }
-
-
-
-
-
-
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
 
