@@ -22,7 +22,7 @@ var murVImg = new Image();
 var murHImg = new Image();
 
 murVImg.src =
-  "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur.png?1607820139916";
+  "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur.png?1607874941836";
 murHImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur_horizontal.png?1607872442410";
 hdvImg.src =
@@ -122,10 +122,10 @@ function drawRectangle(nomBat, coordX, coordY) {
       ctx.drawImage(extracteurImg, coordX, coordY, 50, 50);
       break;
     case "murV":
-      ctx.drawImage(murVImg, coordX, coordY, 20, 70);
+      ctx.drawImage(murVImg, coordX, coordY, 20, 80);
       break;
     case "murH":
-      ctx.drawImage(murHImg, coordX, coordY, 70, 20);
+      ctx.drawImage(murHImg, coordX, coordY, 80, 20);
       break;
     case "hdv":
       ctx.drawImage(hdvImg, coordX, coordY, 50, 50);
