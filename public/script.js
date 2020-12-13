@@ -110,25 +110,25 @@ function draw() {
 function drawRectangle(nomBat, coordX, coordY) {
   switch (nomBat) {
     case "caserne":
-      ctx.drawImage(caserneImg, coordX, coordY, 50, 50);
+      ctx.drawImage(caserneImg, coordX, coordY, 80, 80);
       break;
     case "trinquette":
-      ctx.drawImage(trinquetteImg, coordX, coordY, 50, 50);
+      ctx.drawImage(trinquetteImg, coordX, coordY, 80, 80);
       break;
     case "portugais":
-      ctx.drawImage(portugaisImg, coordX, coordY, 50, 50);
+      ctx.drawImage(portugaisImg, coordX, coordY, 80, 80);
       break;
     case "extracteur":
-      ctx.drawImage(extracteurImg, coordX, coordY, 50, 50);
+      ctx.drawImage(extracteurImg, coordX, coordY, 80, 80);
       break;
     case "murV":
-      ctx.drawImage(murVImg, coordX, coordY, 20, 80);
+      ctx.drawImage(murVImg, coordX, coordY, 30, 110);
       break;
     case "murH":
-      ctx.drawImage(murHImg, coordX, coordY, 80, 20);
+      ctx.drawImage(murHImg, coordX, coordY, 110, 30);
       break;
     case "hdv":
-      ctx.drawImage(hdvImg, coordX, coordY, 50, 50);
+      ctx.drawImage(hdvImg, coordX, coordY, 80, 80);
       break;
   }
 }
