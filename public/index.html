@@ -14,6 +14,7 @@
         display: flex;
       }
       canvas {
+        background: #013333 url(https://nsa40.casimages.com/img/2020/12/13//201213031931357978.jpg)no-repeat;
         display: block;
         margin: 0 auto;
       }
@@ -47,7 +48,7 @@
   </section>
 -->
     <h1 id="status">Déconnecté</h1>
-    
+
     <div id="game-container">
       <div id="map">
         <canvas id="myCanvas"></canvas>
@@ -62,7 +63,7 @@
           </form>
         </div>
         <div id="gold"></div>
-        
+
         <!--
         <form>
           <label for="name">Batiments : </label><br />
@@ -81,7 +82,7 @@
           <input type="button" id="boutonSelectionBatiment" value="Placer ">
         </form>
         -->
-        
+
         <select name="pets" id="select">
           <option value="">Choisis un batiments</option>
           <option value="hdv" id="hdv">Hôtel de ville</option>
@@ -93,7 +94,6 @@
         </select>
         <div id="output" class="text"></div>
       </div>
-      
     </div>
 
     <script src="/socket.io/socket.io.js"></script>

@@ -66,6 +66,9 @@ function mouseMoveHandler(e) {
   document.getElementById("output").innerHTML =
     "Mouse:  <br />" + " x: " + playerX + ", y: " + playerY + "<br />";
 }
+
+
+
 //-------------------------------------------------------CLICK------------------------------------------------------------//
 canvas.addEventListener(
   "click",
