@@ -20,9 +20,16 @@ var extracteurImg = new Image();
 var portugaisImg = new Image();
 var murImg = new Image();
 
+var murState = true;
 
-murImg.src =
-  "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur.png?1607820139916";
+if (murState == true) {
+  murImg.src =
+    "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur.png?1607820139916";
+} else {
+  murImg.src =
+    "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur.png?1607820139916";
+}
+
 hdvImg.src =
   "https://cdn.glitch.com/d4bfa1e1-3618-4fd0-bc6f-635c34b0e5d1%2F393-3937430_comments-th8-clash-of-clans-png.png?v=1607726161883";
 caserneImg.src =
@@ -48,7 +55,12 @@ let batSelect;
 var selectedBat = document.querySelector("select");
 
 selectedBat.addEventListener("change", function() {
-  batSelect = selectedBat.value;
+  if(selectedBat.value == ""){
+    batSelect = null;
+  }
+  else{
+    batSelect = selectedBat.value;
+  }
   //document.getElementById(batSelect).disabled = true;
 });
 
@@ -65,9 +77,9 @@ function mouseMoveHandler(e) {
 
 document.addEventListener("keydown", keyDownHandler, false);
 function keyDownHandler(e) {
-  
-  if (batSelect == 'mur') {
-    console.log("touche");
+  if (batSelect == "mur") {
+    murState.changeState();
+    console.log("state =" + murState);
   }
 }
 
@@ -75,16 +87,15 @@ function keyDownHandler(e) {
 canvas.addEventListener(
   "click",
   function(event) {
-    
     if (batSelect != null) {
-    //devra etre supprimé après test
-    var bat = new Batiment(batSelect, playerX, playerY);
-    tabBatiment.push(bat);
+      //devra etre supprimé après test
+      var bat = new Batiment(batSelect, playerX, playerY);
+      tabBatiment.push(bat);
 
-    //
+      //
 
-    createBatiment(batSelect, playerX, playerY);
-    console.log(tabBatiment);
+      createBatiment(batSelect, playerX, playerY);
+      console.log(tabBatiment);
     }
   },
   false
