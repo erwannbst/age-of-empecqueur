@@ -18,27 +18,13 @@ var caserneImg = new Image();
 var trinquetteImg = new Image();
 var extracteurImg = new Image();
 var portugaisImg = new Image();
-var murImg = new Image();
+var murVImg = new Image();
+var murHImg = new Image();
 
-function Mur(state, width, height) {
-  this.state = state;
-  this.width = width;
-  this.height = height;
-  this.state = true;
-}
-function ChangeState(state)
-if (Mur.state == true) {
-  Mur.width = 20;
-  Mur.height = 70;
-  murImg.src =
-    "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur.png?1607820139916";
-} else {
-  Mur.width = 70;
-  Mur.height = 20;
-  murImg.src =
-    "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur_horizontal.png?1607872442410";
-}
-
+murVImg.src =
+  "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur.png?1607820139916";
+murHImg.src =
+  "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur_horizontal.png?1607872442410";
 hdvImg.src =
   "https://cdn.glitch.com/d4bfa1e1-3618-4fd0-bc6f-635c34b0e5d1%2F393-3937430_comments-th8-clash-of-clans-png.png?v=1607726161883";
 caserneImg.src =
@@ -84,13 +70,7 @@ function mouseMoveHandler(e) {
 //-----------------------------------------------------KEYBOARD----------------------------------------------------------//
 
 document.addEventListener("keydown", keyDownHandler, false);
-function keyDownHandler(e) {
-  if (batSelect == "mur") {
-    Mur.state = !Mur.state;
-    drawRectangle(batSelect, playerX, playerY);
-    console.log("state =" + Mur.state + "height =" + Mur.height);
-  }
-}
+function keyDownHandler(e) {}
 
 //-------------------------------------------------------CLICK------------------------------------------------------------//
 canvas.addEventListener(
@@ -141,8 +121,11 @@ function drawRectangle(nomBat, coordX, coordY) {
     case "extracteur":
       ctx.drawImage(extracteurImg, coordX, coordY, 50, 50);
       break;
-    case "mur":
-      ctx.drawImage(murImg, coordX, coordY, Mur.width, Mur.height);
+    case "murV":
+      ctx.drawImage(murVImg, coordX, coordY, 20, 70);
+      break;
+    case "murH":
+      ctx.drawImage(murHImg, coordX, coordY, 70, 20);
       break;
     case "hdv":
       ctx.drawImage(hdvImg, coordX, coordY, 50, 50);
