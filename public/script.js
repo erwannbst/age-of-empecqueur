@@ -8,6 +8,7 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 canvas.width = 1600;
 canvas.height = 900;
+canvas.toDataURL("https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmap.png?1607820492800");
 var playerX = 0;
 var playerY = 0;
 var connected = false;
