@@ -73,8 +73,10 @@ canvas.addEventListener(
     //devra etre supprimé après test
     var bat = new Batiment(batSelect, playerX, playerY);
     tabBatiment.push(bat);
-    //trinquette 40 et 60 devront être changé en variable lors de la selection
-    //dans le menu
+    
+    //
+    
+    
     createBatiment(batSelect, playerX, playerY);
     console.log(tabBatiment);
   },
@@ -130,6 +132,13 @@ function drawBatiment(data) {
 
   drawRectangle(data.nom, data.x, data.y);
 }
+
+
+
+
+
+
+
 //-------------------------------------------------------DRAW------------------------------------------------------------//
 
 function setGoldAmount(amount) {
