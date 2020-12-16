@@ -154,7 +154,9 @@ function gotConnected(data) {//data: {username, room}
   document.getElementById("status").innerHTML = "Connected as " + username + "#" + data.room;
   document.getElementById("connexion").style.display = "none";
   if(data.otherPlayer == undefined){
-    document.getElementById("room").innerHTML = 
+    document.getElementById("room").innerHTML = "Pas d'autre joueur connecté"
+  }else{
+    document.getElementById("room").innerHTML = "Vous jouez contre " + data.otherPlayer;
   }
 }
 
@@ -171,18 +173,16 @@ document.getElementById("buttonCreate").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   let usname = loginForm.elements.username.value;
   socket.emit("create game", usname);
-  console.log('emited');
 });
 
 document.getElementById("buttonConnect").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
-  let usname = loginForm.elements.username.value;
-  let gameCode = loginForm.elements.gameCode.value;
-  socket.emit("add player", { usname, gameCode });
+  let username = loginForm.elements.username.value;
+  let room = loginForm.elements.gameCode.value;
+  socket.emit("join game", { username, room });
 });
 
-socket.on("connected", function(data) { //data: {username, room}
-  console.log('connected received')
+socket.on("connected", function(data) { //data: {username, room, otherPlayer?}
   gotConnected(data);
 });
 

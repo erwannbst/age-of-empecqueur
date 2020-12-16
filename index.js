@@ -35,12 +35,14 @@ io.on('connection', function (socket) {
     //}
   });
   
-  socket.on('join game', function (username, room) {
-    if(games[room].length<2){
+  socket.on('join game', function (data) { //data: {username, room}
+    let {username, room} = data
+    if(games[room] != undefined && games[room].length == 1){
+      console.log('adding ' + username + " to " + room)
       games[room].push({socketId: socket.id, username})
       socket.join(room);
-      socket.broadcast.emit('new connection', players);
-      socket.emit('connected', username);
+      io.to(room).emit('some event');
+      socket.emit('connected', {username, room, otherPlayer: games[room][1].username});
     }
   });
   
