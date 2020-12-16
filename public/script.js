@@ -148,10 +148,10 @@ function setGoldAmount(amount) {
   document.getElementById("gold").innerHTML = "Gold = " + amount;
 }
 
-function gotConnected(usname) {
+function gotConnected(data) {//data: {username, room}
   connected = true;
-  username = usname;
-  document.getElementById("status").innerHTML = "Connected as " + username;
+  username = data.username;
+  document.getElementById("status").innerHTML = "Connected as " + username + "#" + data.socket.room;
   document.getElementById("connexion").style.display = "none";
 }
 
@@ -177,8 +177,8 @@ document.getElementById("buttonConnect").addEventListener("click", event => {
   socket.emit("add player", { usname, gameCode });
 });
 
-socket.on("connected", function(usname) {
-  gotConnected(usname);
+socket.on("connected", function(data) { //data: {username, room}
+  gotConnected(data);
 });
 
 socket.on("new connection", function(players) {

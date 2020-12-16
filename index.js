@@ -26,16 +26,19 @@ games = {
 io.on('connection', function (socket) {
   console.log('a user connected');
   
-  socket.on('create game', function (username, room) {
-    if(games[room].exi){
-      games.push({player1: username})
-      socket.emit('connected', username);
+  socket.on('create game', function (username) {
+    let room = "ABCD";
+    if(games[room] == undefined){
+      games[room].push({socketId : socket.id,  username});
+      socket.join(room);
+      socket.emit('connected', {username, room});
     }
   });
   
   socket.on('join game', function (username, room) {
     if(games[room].length<2){
-      games[room].push({socket.id, username})
+      games[room].push({socketId: socket.id, username})
+      socket.join(room);
       socket.broadcast.emit('new connection', players);
       socket.emit('connected', username);
     }
