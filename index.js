@@ -27,9 +27,10 @@ io.on('connection', function (socket) {
   console.log('a user connected');
   
   socket.on('create game', function (username) {
-    let room = "ABCE";
+    let room = makeid();
     //if(games[room] == undefined){
       games[room] = [{socketId : socket.id,  username}];
+      
       socket.join(room);
       socket.emit('connected', {username, room});
     //}
@@ -41,8 +42,8 @@ io.on('connection', function (socket) {
       console.log('adding ' + username + " to " + room)
       games[room].push({socketId: socket.id, username})
       socket.join(room);
-      io.to(room).emit('some event');
-      socket.emit('connected', {username, room, otherPlayer: games[room][1].username});
+      io.to(games[room][0].socketId).emit('user joined', username); //Préviens le premier joueur qu'un autre s'est connecté
+      socket.emit('connected', {username, room, otherPlayer: games[room][0].username});
     }
   });
   
@@ -54,10 +55,20 @@ io.on('connection', function (socket) {
     });
   });
   
-  socket.on('add batiment', function(data) {
+  socket.on('create batiment', function(data) {
     //io.emit('ping');
-    let details = {nom: "Trinquette", x: 500, y: 100, width: 50, height: 50}
+    let details = data
     io.emit('draw batiment', details);
   });
 
 });
+
+function makeid() {
+   var result           = '';
+   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < 4; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}

@@ -160,6 +160,11 @@ function gotConnected(data) {//data: {username, room}
   }
 }
 
+function userJoined(username) {//data: {username, room}
+  document.getElementById("room").innerHTML = "Vous jouez contre " + username;
+  alert(username + ' a rejoint la partie');
+}
+
 /********************** DOCUMENTATION API ***********************
 CRÉER UN BATIMENT
   createBatiment({nom, x, y, width, height})
@@ -186,8 +191,8 @@ socket.on("connected", function(data) { //data: {username, room, otherPlayer?}
   gotConnected(data);
 });
 
-socket.on("new connection", function(players) {
-  alert(players);
+socket.on("user joined", function(username) {
+  userJoined(username);
 });
 
 socket.on("draw batiment", function(data) {
