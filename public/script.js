@@ -151,8 +151,11 @@ function setGoldAmount(amount) {
 function gotConnected(data) {//data: {username, room}
   connected = true;
   username = data.username;
-  document.getElementById("status").innerHTML = "Connected as " + username + "#" + data.socket.room;
+  document.getElementById("status").innerHTML = "Connected as " + username + "#" + data.room;
   document.getElementById("connexion").style.display = "none";
+  if(data.otherPlayer == undefined){
+    document.getElementById("room").innerHTML = 
+  }
 }
 
 /********************** DOCUMENTATION API ***********************
@@ -167,7 +170,8 @@ draw();
 document.getElementById("buttonCreate").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   let usname = loginForm.elements.username.value;
-  socket.emit("createGame", usname);
+  socket.emit("create game", usname);
+  console.log('emited');
 });
 
 document.getElementById("buttonConnect").addEventListener("click", event => {
@@ -178,6 +182,7 @@ document.getElementById("buttonConnect").addEventListener("click", event => {
 });
 
 socket.on("connected", function(data) { //data: {username, room}
+  console.log('connected received')
   gotConnected(data);
 });
 

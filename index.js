@@ -27,12 +27,12 @@ io.on('connection', function (socket) {
   console.log('a user connected');
   
   socket.on('create game', function (username) {
-    let room = "ABCD";
-    if(games[room] == undefined){
-      games[room].push({socketId : socket.id,  username});
+    let room = "ABCE";
+    //if(games[room] == undefined){
+      games[room] = [{socketId : socket.id,  username}];
       socket.join(room);
       socket.emit('connected', {username, room});
-    }
+    //}
   });
   
   socket.on('join game', function (username, room) {
