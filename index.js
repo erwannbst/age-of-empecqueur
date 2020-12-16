@@ -15,24 +15,27 @@ server.listen(port, function () {
 app.use(express.static('public'));
 
 var players = [];
-var games = [];
+var games = {};
+/*
+games = {
+  roomId : [{socketId, username}, {socketId2, username2}]
+}
+*/
 
 
 io.on('connection', function (socket) {
   console.log('a user connected');
   
-  socket.on('create game', function (username) {
-    // creer une partie
-    if(games.length<10){
+  socket.on('create game', function (username, room) {
+    if(games[room].exi){
       games.push({player1: username})
       socket.emit('connected', username);
     }
   });
   
-  socket.on('add player', function (username) {
-    // we tell the client to execute 'new message'
-    if(players.length<10){
-      players.push(username)
+  socket.on('join game', function (username, room) {
+    if(games[room].length<2){
+      games[room].push({socket.id, username})
       socket.broadcast.emit('new connection', players);
       socket.emit('connected', username);
     }
