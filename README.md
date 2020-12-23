@@ -20,3 +20,8 @@ Le code du site front sera sur `views/index.html`
 
 Click `Show` in the header to see your app live. Updates to your code will instantly deploy.
 
+
+VICTOR
+
+-faire le survol des zones interdites
+-enlever le placement de batiments quand on est pas connecter a une partie
