@@ -100,6 +100,10 @@ function Batiment(nom, coordX, coordY) {
   this.coordX = coordX;
   this.coordY = coordY;
 }
+function item(x,y){
+  this.x = x;
+  this.y = y;
+}
 
 //----------------------------------PARTIE MENU------------------------------------------//
 
@@ -154,6 +158,12 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (batSelect != null) {
     drawBatimentonMap(batSelect, playerX, playerY);
+    for(var n=0; n<closedMap.length;n++){
+      if(closedMap[n].x == playerX && closedMap[n].y == playerY){
+        ctx.fillRect(playerX, playerY, RenduBatiments[batSelect].width, RenduBatiments[batSelect].height);
+        ctx.fillStyle = "rgba(255,0,0,0.5)";
+      }
+    }
     //ctx.fillRect(playerX, playerY, RenduBatiments[batSelect].width, RenduBatiments[batSelect].height);
     //ctx.fillStyle = "rgba(255,0,0,0.5)";
   }
@@ -241,13 +251,13 @@ function drawBatimentonMap(nomBat, coordX, coordY) {
 }
 
 function AddClosedMap(nomBat, batX, batY) {
-  console.log("function AddClosedMap called" + RenduBatiments[nomBat].height);
-  for (var x = batX; x < batX + RenduBatiments[nomBat].width; x++) {
-    console.log("1");
+  console.log("function AddClosedMap called" + nomBat);
+  for (var y = batX; y < batX + RenduBatiments[nomBat].width; y++) {
     // pour chaque pixel horizontal
-    for (var y = batY; y < 2000; y++) {
+    for (var z = batY; z < batY + RenduBatiments[nomBat].height; z++) {
       // pour chaque pixel vertical
-      console.log("2");
+      var batBuffer = new item(y, z);
+      closedMap.push(batBuffer);
     }
   }
 }
@@ -259,7 +269,8 @@ function drawBatiment(data) {
   var batBuffer = new Batiment(data.nom, data.x, data.y);
   console.log(batBuffer);
   map[data.playerId].push(batBuffer);
-  AddClosedMap(data.nom, data.x, data.Y);
+  AddClosedMap(data.nom, data.x, data.y);
+  console.log(closedMap);
 }
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
