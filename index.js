@@ -19,11 +19,17 @@ var games = {};
 /*
 games = {
   roomId : {
-    player1: {socketId, username},
-    player2: {socketId2, username2},
-    map : [
-      {buildingName, x, y},
-    ]
+    playerNumber 
+    playerId: username,
+    playerId2: username,
+    map : {
+      playerId: [
+        {buildingName, x, y},
+      ],
+      playerId2: [
+        {buildingName, x, y},
+      ]
+    }
 }
 */
 
@@ -34,7 +40,7 @@ io.on('connection', function (socket) {
   socket.on('create game', function (username) {
     let room = makeid();
     //if(games[room] == undefined){
-      games[room] = {player1: {socketId : socket.id, username}};
+      games[room][socket.id] = username;
       players[socket.id] = room;
       socket.join(room);
       socket.emit('connected', {username, room});
@@ -43,7 +49,7 @@ io.on('connection', function (socket) {
   
   socket.on('join game', function (data) { //data: {username, room}
     let {username, room} = data
-    if(games[room] != undefined && games[room].player1 != undefined && games[room].player2 == undefined){
+    if(games[room] != undefined && games[room][player] != undefined && games[room].player2 == undefined){
       console.log('adding ' + username + " to " + room)
       games[room].player2 = {socketId: socket.id, username};
       players[socket.id] = room;
@@ -61,10 +67,10 @@ io.on('connection', function (socket) {
     });
   });
   
-  socket.on('create batiment', function(data) {
+  socket.on('create batiment', function(data) { // data:{nom: "nomDuBatiment", x: 0, y: 0}
     let room = players[socket.id]
-    games[room].map
-    io.emit('draw batiment', data);
+    games[room].map.append(data)
+    io.to(room).emit('draw batiment', data);
   });
 
 });

@@ -37,9 +37,21 @@ portugaisImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcabane.png?1607820151355";
 
 
+/*
+map : {
+      playerId: [
+        {buildingName, x, y},
+      ],
+      playerId2: [
+        {buildingName, x, y},
+      ]
+    }
+*/
 
-var tabMonBatiment = [];
-var tabSonBatiment = [];
+var map = {
+  player1: [],
+  player2: [],
+}
 
 function Batiment(nom, coordX, coordY) {
   this.nom = nom;
@@ -84,13 +96,11 @@ canvas.addEventListener(
   function(event) {
     if (batSelect != null) {
       //devra etre supprimé après test
-      var bat = new Batiment(batSelect, playerX, playerY);
-      tabMonBatiment.push(bat);
-
+    
       //
 
       createBatiment(batSelect, playerX, playerY);
-      console.log(tabMonBatiment);
+      console.log(map.player1);
     }
   },
   false
@@ -103,18 +113,18 @@ function draw() {
   if (batSelect != null) {
     drawRectangle(batSelect, playerX, playerY);
   }
-  for (var i = 0; i < tabMonBatiment.length; i++) {
+  for (var i = 0; i < map.player1.length; i++) {
     drawRectangle(
-      tabMonBatiment[i].nom,
-      tabMonBatiment[i].coordX,
-      tabMonBatiment[i].coordY
+      map.player1[i].nom,
+      map.player1[i].coordX,
+      map.player1[i].coordY
     );
   }
-  for (var i = 0; i < tabSonBatiment.length; i++) {
+  for (var i = 0; i < map.player2.length; i++) {
     drawRectangle(
-      tabSonBatiment[i].nom,
-      tabSonBatiment[i].coordX,
-      tabSonBatiment[i].coordY
+      map.player2[i].nom,
+      map.player2[i].coordX,
+      map.player2[i].coordY
     );
   }
   requestAnimationFrame(draw);
@@ -146,12 +156,11 @@ function drawRectangle(nomBat, coordX, coordY) {
   }
 }
 
-function drawBatiment(data) {
-  //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
+function drawBatiment(data) { //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
   console.log("drawing batiment " + JSON.stringify(data));
-  // data:{nom: "nomDuBatiment", x: 0, y: 0, width, height}
-
-  drawRectangle(data.nom, data.x, data.y);
+  // data:{nom: "nomDuBatiment", x: 0, y: 0}
+  var bat = new Batiment(data.nom, data.x, data.y);
+  map.player2.push(bat);
 }
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
