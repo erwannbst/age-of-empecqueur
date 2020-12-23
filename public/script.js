@@ -36,6 +36,43 @@ extracteurImg.src =
 portugaisImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcabane.png?1607820151355";
 
+var RenduBatiments = {
+  murHorizontal: {
+    image: murHImg,
+    height: 30,
+    width: 110
+  },
+  murVertical: {
+    image: murVImg,
+    height: 110,
+    width: 30
+  },
+  hdv: {
+    image: hdvImg,
+    height: 80,
+    width: 80
+  },
+  portugais: {
+    image: portugaisImg,
+    height: 80,
+    width: 80
+  },
+  caserne: {
+    image: caserneImg,
+    height: 80,
+    width: 80
+  },
+  trinquette: {
+    image: trinquetteImg,
+    height: 80,
+    width: 80
+  },
+  extracteur: {
+    image: extracteurImg,
+    height: 80,
+    width: 80
+  }
+};
 
 /*
 map : {
@@ -50,16 +87,14 @@ map : {
 
 var map = {
   player1: [],
-  player2: [],
-}
+  player2: []
+};
 
 function Batiment(nom, coordX, coordY) {
   this.nom = nom;
   this.coordX = coordX;
   this.coordY = coordY;
 }
-
-
 
 //----------------------------------PARTIE MENU------------------------------------------//
 
@@ -96,7 +131,7 @@ canvas.addEventListener(
   function(event) {
     if (batSelect != null) {
       //devra etre supprimé après test
-    
+
       //
 
       createBatiment(batSelect, playerX, playerY);
@@ -112,8 +147,8 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (batSelect != null) {
     drawBatimentonMap(batSelect, playerX, playerY);
-    ctx.fillRect(playerX,playerY,30,30);
-    ctx.fillStyle = 'rgba(255,0,0,0.5)';
+    ctx.fillRect(playerX, playerY, 30, 30);
+    ctx.fillStyle = "rgba(255,0,0,0.5)";
   }
   for (var i = 0; i < map.player1.length; i++) {
     drawBatimentonMap(
@@ -135,30 +170,31 @@ function draw() {
 function drawBatimentonMap(nomBat, coordX, coordY) {
   switch (nomBat) {
     case "caserne":
-      ctx.drawImage(caserneImg, coordX, coordY, 80, 80);
+      ctx.drawImage(RenduBatiments.caserne.image, coordX, coordY, RenduBatiments.caserne.width, RenduBatiments.caserne.height);
       break;
     case "trinquette":
-      ctx.drawImage(trinquetteImg, coordX, coordY, 80, 80);
+      ctx.drawImage(RenduBatiments.trinquette.image, coordX, coordY, RenduBatiments.trinquette.width, RenduBatiments.trinquette.height);
       break;
     case "portugais":
-      ctx.drawImage(portugaisImg, coordX, coordY, 80, 80);
+      ctx.drawImage(RenduBatiments.portugais.image, coordX, coordY, RenduBatiments.portugais.width, RenduBatiments.portugais.height);
       break;
     case "extracteur":
-      ctx.drawImage(extracteurImg, coordX, coordY, 80, 80);
+      ctx.drawImage(RenduBatiments.extracteur.image, coordX, coordY, RenduBatiments.extracteur.width, RenduBatiments.extracteur.height);
       break;
     case "murV":
-      ctx.drawImage(murVImg, coordX, coordY, 30, 110);
+      ctx.drawImage(RenduBatiments.murVertical.image, coordX, coordY, RenduBatiments.murVertical.width, RenduBatiments.murVertical.height);
       break;
     case "murH":
-      ctx.drawImage(murHImg, coordX, coordY, 110, 30);
+      ctx.drawImage(RenduBatiments.murHorizontal.image, coordX, coordY, RenduBatiments.murHorizontal.width, RenduBatiments.murHorizontal.height);
       break;
     case "hdv":
-      ctx.drawImage(hdvImg, coordX, coordY, 80, 80);
+      ctx.drawImage(RenduBatiments.hdv.image, coordX, coordY, RenduBatiments.hdv.width, RenduBatiments.hdv.image);
       break;
   }
 }
 
-function drawBatiment(data) { //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
+function drawBatiment(data) {
+  //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
   console.log("drawing batiment " + JSON.stringify(data));
   // data:{nom: "nomDuBatiment", x: 0, y: 0}
   var bat = new Batiment(data.nom, data.x, data.y);
@@ -172,21 +208,25 @@ function setGoldAmount(amount) {
   document.getElementById("gold").innerHTML = "Gold = " + amount;
 }
 
-function gotConnected(data) {//data: {username, room}
+function gotConnected(data) {
+  //data: {username, room}
   connected = true;
   username = data.username;
-  document.getElementById("status").innerHTML = "Connected as " + username + "#" + data.room;
+  document.getElementById("status").innerHTML =
+    "Connected as " + username + "#" + data.room;
   document.getElementById("connexion").style.display = "none";
-  if(data.otherPlayer == undefined){
-    document.getElementById("room").innerHTML = "Pas d'autre joueur connecté"
-  }else{
-    document.getElementById("room").innerHTML = "Vous jouez contre " + data.otherPlayer;
+  if (data.otherPlayer == undefined) {
+    document.getElementById("room").innerHTML = "Pas d'autre joueur connecté";
+  } else {
+    document.getElementById("room").innerHTML =
+      "Vous jouez contre " + data.otherPlayer;
   }
 }
 
-function userJoined(username) {//data: {username, room}
+function userJoined(username) {
+  //data: {username, room}
   document.getElementById("room").innerHTML = "Vous jouez contre " + username;
-  alert(username + ' a rejoint la partie');
+  alert(username + " a rejoint la partie");
 }
 
 /********************** DOCUMENTATION API ***********************
@@ -211,7 +251,8 @@ document.getElementById("buttonConnect").addEventListener("click", event => {
   socket.emit("join game", { username, room });
 });
 
-socket.on("connected", function(data) { //data: {username, room, otherPlayer?}
+socket.on("connected", function(data) {
+  //data: {username, room, otherPlayer?}
   gotConnected(data);
 });
 

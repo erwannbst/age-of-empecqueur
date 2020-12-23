@@ -71,10 +71,10 @@ io.on('connection', function (socket) {
   socket.on('create batiment', function(data) { // data:{nom: "nomDuBatiment", x: 0, y: 0}
     let roomsValues = socket.rooms.values();
     let id = roomsValues.next()
-    let room = roomsValues.next()
-    console.log("Room : " + room.value);
+    let room = roomsValues.next().value
+    console.log("Room : '" + room + "'");
     console.log(games[room])
-    console.log(games)
+    console.log("Socket.id : '" + socket.id + "'");
     games[room].map[socket.id].push(data)
     io.to(room).emit('draw batiment', data);
   });
