@@ -14,14 +14,16 @@ server.listen(port, function () {
 // Routing
 app.use(express.static('public'));
 
-var players = [];
+var players = {};
 var games = {};
 /*
 games = {
   roomId : {
     player1: {socketId, username},
     player2: {socketId2, username2},
-    map : {}
+    map : [
+      {buildingName, x, y},
+    ]
 }
 */
 
@@ -33,6 +35,7 @@ io.on('connection', function (socket) {
     let room = makeid();
     //if(games[room] == undefined){
       games[room] = {player1: {socketId : socket.id, username}};
+      players[socket.id] = room;
       socket.join(room);
       socket.emit('connected', {username, room});
     //}
@@ -43,6 +46,7 @@ io.on('connection', function (socket) {
     if(games[room] != undefined && games[room].player1 != undefined && games[room].player2 == undefined){
       console.log('adding ' + username + " to " + room)
       games[room].player2 = {socketId: socket.id, username};
+      players[socket.id] = room;
       socket.join(room);
       io.to(games[room].player1.socketId).emit('user joined', username); //Préviens le premier joueur qu'un autre s'est connecté
       socket.emit('connected', {username, room, otherPlayer: games[room].player1.username});
@@ -58,10 +62,8 @@ io.on('connection', function (socket) {
   });
   
   socket.on('create batiment', function(data) {
-    //let room = socket.rooms.entries();
-    let room = socket.adapter.rooms;
-    //console.log(socket.rooms);
-    console.log(room);
+    let room = players[socket.id]
+    games[room].map
     io.emit('draw batiment', data);
   });
 
