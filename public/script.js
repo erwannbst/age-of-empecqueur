@@ -105,6 +105,8 @@ function Batiment(nom, coordX, coordY) {
 
 let batSelect;
 
+if(players == null)document.getElementById("select")
+
 var selectedBat = document.querySelector("select");
 
 selectedBat.addEventListener("change", function() {
