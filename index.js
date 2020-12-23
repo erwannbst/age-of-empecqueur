@@ -53,9 +53,9 @@ io.on('connection', function (socket) {
       console.log('adding ' + username + " to " + room)
       console.log(games[room])
       let newPlayer = {playerId: socket.id, username};
-      games[room].players.append(newPlayer);
+      games[room].players.push(newPlayer);
       socket.join(room);
-      io.to(room).broadcast.emit('user joined', username); //Préviens le premier joueur qu'un autre s'est connecté
+      io.to(games[room].players[0].playerId).emit('user joined', username); //Préviens le premier joueur qu'un autre s'est connecté
       socket.emit('connected', {username, room, otherPlayer: games[room].players[1].username});
     }
   });
@@ -69,9 +69,13 @@ io.on('connection', function (socket) {
   });
   
   socket.on('create batiment', function(data) { // data:{nom: "nomDuBatiment", x: 0, y: 0}
-    let room = players[socket.id]
-    games[room].map.append(data)
-    io.to(room).emit('draw batiment', data);
+    let roomsValues = socket.rooms.values().next();
+    let room = socket.rooms.values().next();
+    for(let i=0;i<socket.rooms.size;i++){  
+      console.log(roomsValues.next())
+    }
+    //games[room].map.push(data)
+    //io.to(room).emit('draw batiment', data);
   });
 
 });

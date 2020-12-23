@@ -68,6 +68,6 @@ select {
 }
 
 #footer {
-  justify-content: center;
+  text-align: center;
   margin-top: 1em;
 }
