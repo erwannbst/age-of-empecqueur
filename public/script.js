@@ -140,6 +140,7 @@ canvas.addEventListener(
       //
       createBatiment({nom: batSelect, x: playerX, y: playerY});
       console.log(map);
+      batSelect = null;
     }
   },
   false
@@ -220,14 +221,16 @@ function gotConnected(data) {
     document.getElementById("room").innerHTML = "Pas d'autre joueur connecté";
   } else {
     document.getElementById("room").innerHTML =
-      "Vous jouez contre " + data.otherPlayer;
+      "Vous jouez contre " + data.otherPlayer.username;
+    players.push(data.otherPlayer.playerId);
+    map[data.otherPlayer.playerId] = [];
   }
 }
 
 function userJoined(user) {
   //user: {username, playerId}
   map[user.playerId] = [];
-  players.push(socket.id);
+  players.push(user.playerId);
   document.getElementById("room").innerHTML = "Vous jouez contre " + user.username;
   alert(user.username + " a rejoint la partie");
 }

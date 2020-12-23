@@ -57,7 +57,7 @@ io.on('connection', function (socket) {
       games[room].map[socket.id] = [];
       socket.join(room);
       io.to(games[room].players[0].playerId).emit('user joined', newPlayer); //Préviens le premier joueur qu'un autre s'est connecté
-      socket.emit('connected', {username, room, otherPlayer: games[room].players[1].username});
+      socket.emit('connected', {username, room, otherPlayer: games[room].players[0]});
     }
   });
   
