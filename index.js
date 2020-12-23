@@ -58,8 +58,9 @@ io.on('connection', function (socket) {
   });
   
   socket.on('create batiment', function(data) {
-    let room = socket.rooms.entries();
-    console.log(socket.rooms);
+    //let room = socket.rooms.entries();
+    let room = socket.adapter.rooms;
+    //console.log(socket.rooms);
     console.log(room);
     io.emit('draw batiment', data);
   });

@@ -36,12 +36,18 @@ extracteurImg.src =
 portugaisImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcabane.png?1607820151355";
 
-var tabBatiment = [];
+
+
+var tabMonBatiment = [];
+var tabSonBatiment = [];
+
 function Batiment(nom, coordX, coordY) {
   this.nom = nom;
   this.coordX = coordX;
   this.coordY = coordY;
 }
+
+
 
 //----------------------------------PARTIE MENU------------------------------------------//
 
@@ -79,12 +85,12 @@ canvas.addEventListener(
     if (batSelect != null) {
       //devra etre supprimé après test
       var bat = new Batiment(batSelect, playerX, playerY);
-      tabBatiment.push(bat);
+      tabMonBatiment.push(bat);
 
       //
 
       createBatiment(batSelect, playerX, playerY);
-      console.log(tabBatiment);
+      console.log(tabMonBatiment);
     }
   },
   false
@@ -97,11 +103,18 @@ function draw() {
   if (batSelect != null) {
     drawRectangle(batSelect, playerX, playerY);
   }
-  for (var i = 0; i < tabBatiment.length; i++) {
+  for (var i = 0; i < tabMonBatiment.length; i++) {
     drawRectangle(
-      tabBatiment[i].nom,
-      tabBatiment[i].coordX,
-      tabBatiment[i].coordY
+      tabMonBatiment[i].nom,
+      tabMonBatiment[i].coordX,
+      tabMonBatiment[i].coordY
+    );
+  }
+  for (var i = 0; i < tabSonBatiment.length; i++) {
+    drawRectangle(
+      tabSonBatiment[i].nom,
+      tabSonBatiment[i].coordX,
+      tabSonBatiment[i].coordY
     );
   }
   requestAnimationFrame(draw);
