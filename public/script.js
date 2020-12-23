@@ -138,7 +138,8 @@ canvas.addEventListener(
       //devra etre supprimé après test
 
       //
-      createBatiment(batSelect, playerX, playerY);
+      createBatiment({nom: batSelect, x: playerX, y: playerY});
+      console.log(map);
     }
   },
   false
@@ -196,6 +197,7 @@ function drawBatiment(data) {    // data:{nom: "nomDuBatiment", x: 0, y: 0, play
   //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
   console.log("drawing batiment " + JSON.stringify(data));
   var batBuffer = new Batiment(data.nom, data.x, data.y);
+  console.log(batBuffer);
   map[data.playerId].push(batBuffer);
 }
 

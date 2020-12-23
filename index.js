@@ -77,8 +77,9 @@ io.on('connection', function (socket) {
     console.log(games[room])
     console.log("Socket.id : '" + socket.id + "'");
     games[room].map[socket.id].push(data)
-    var batimentToCreate = data
-    batimentToCreate.playerId = socket.id
+    var batimentToCreate = data;
+    batimentToCreate.playerId = socket.id;
+    console.log("Sending drawBatiment(" + JSON.stringify(batimentToCreate) + ")")
     io.to(room).emit('draw batiment', batimentToCreate);
   });
 
