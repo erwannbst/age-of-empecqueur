@@ -94,18 +94,25 @@ map : {
     }
 */
 var closedMap = [];
-
-for (var i = 0; i < players.length; i++) {
-  // pour chaque joueur
-  let mapDuJoueur = map[players[i]];
-  for (var j = 0; j < mapDuJoueur.length; j++) {
-    // pour chaque batiment
-    for (var y = 0; y < mapDuJoueur[jlength; y++) {
+function AddClosedMap() {
+  for (var i = 0; i < players.length; i++) {
+    // pour chaque joueur
+    console.log("test1");
+    let mapDuJoueur = map[players[i]];
+    for (var j = 0; j < mapDuJoueur.length; j++) {
       // pour chaque batiment
+      
+      for (
+        var y = 0;
+        y < mapDuJoueur[j].coordX + RenduBatiments[mapDuJoueur[j]].width;
+        y++
+      ) {
+        // pour chaque batiment
+        console.log(map);
+      }
     }
   }
 }
-
 function Batiment(nom, coordX, coordY) {
   this.nom = nom;
   this.coordX = coordX;
@@ -258,6 +265,7 @@ function drawBatiment(data) {
   var batBuffer = new Batiment(data.nom, data.x, data.y);
   console.log(batBuffer);
   map[data.playerId].push(batBuffer);
+  AddClosedMap();
 }
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
