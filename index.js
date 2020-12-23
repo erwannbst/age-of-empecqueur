@@ -39,18 +39,21 @@ io.on('connection', function (socket) {
   
   socket.on('create game', function (username) {
     let room = makeid();
-    //if(games[room] == undefined){
-      games[room].players.append({playerId: socket.id, username});
+    if(games[room] == undefined){
+      games[room]= {players: [{playerId: socket.id, username}], map: {}};
+      games[room].map[socket.id] = [];
       socket.join(room);
       socket.emit('connected', {username, room});
-    //}
+    }
   });
   
   socket.on('join game', function (data) { //data: {username, room}
     let {username, room} = data
     if(games[room] != undefined && games[room].players.length < 2){
       console.log('adding ' + username + " to " + room)
-      games[room].players.append({playerId: socket.id, username});
+      console.log(games[room])
+      let newPlayer = {playerId: socket.id, username};
+      games[room].players.append(newPlayer);
       socket.join(room);
       io.to(room).broadcast.emit('user joined', username); //Préviens le premier joueur qu'un autre s'est connecté
       socket.emit('connected', {username, room, otherPlayer: games[room].players[1].username});

@@ -5,6 +5,7 @@
 }
 
 body {
+  background-color: grey;
   font-family: sans-serif;
   line-height: 1.5em;
 }
@@ -62,6 +63,11 @@ select {
   cursor: pointer;
   border-radius: .25em;
   margin-top: 10px;
-  width : 270px;
+  width : 280px;
   height : 30px;
+}
+
+#footer {
+  justify-content: center;
+  margin-top: 1em;
 }
