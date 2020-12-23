@@ -94,25 +94,7 @@ map : {
     }
 */
 var closedMap = [];
-function AddClosedMap() {
-  for (var i = 0; i < players.length; i++) {
-    // pour chaque joueur
-    console.log("test1");
-    let mapDuJoueur = map[players[i]];
-    for (var j = 0; j < mapDuJoueur.length; j++) {
-      // pour chaque batiment
-      
-      for (
-        var y = 0;
-        y < mapDuJoueur[j].coordX + RenduBatiments[mapDuJoueur[j]].width;
-        y++
-      ) {
-        // pour chaque batiment
-        console.log(map);
-      }
-    }
-  }
-}
+
 function Batiment(nom, coordX, coordY) {
   this.nom = nom;
   this.coordX = coordX;
@@ -258,6 +240,24 @@ function drawBatimentonMap(nomBat, coordX, coordY) {
   }
 }
 
+function AddClosedMap(nomBat, batX, batY) {  
+      for (
+        var y = batX;
+        y < mapDuJoueur[j].coordX + RenduBatiments[mapDuJoueur[j].nom].width;
+        y++
+      ) {
+        // pour chaque pixel horizontal
+        for (
+          var z = batY;
+          z < batY + RenduBatiments[mapDuJoueur[j].nom].height;
+          z++
+        ) {
+          // pour chaque pixel vertical
+          console.log("1");
+        }
+      }
+}
+
 function drawBatiment(data) {
   // data:{nom: "nomDuBatiment", x: 0, y: 0, playerId: "wkfefkefe"}
   //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
@@ -265,7 +265,7 @@ function drawBatiment(data) {
   var batBuffer = new Batiment(data.nom, data.x, data.y);
   console.log(batBuffer);
   map[data.playerId].push(batBuffer);
-  AddClosedMap();
+  AddClosedMap(data.nom, data.x, data.Y);
 }
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
