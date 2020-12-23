@@ -38,14 +38,13 @@ io.on('connection', function (socket) {
   console.log('a user connected');
   
   socket.on('create game', function (username) {
-    var room;
-    do{
-      room = makeid();
-    }while(games[room] == undefined);
-    games[room]= {players: [{playerId: socket.id, username}], map: {}};
-    games[room].map[socket.id] = [];
-    socket.join(room);
-    socket.emit('connected', {username, room});
+    let room = makeid();
+    if(games[room] == undefined){
+      games[room]= {players: [{playerId: socket.id, username}], map: {}};
+      games[room].map[socket.id] = [];
+      socket.join(room);
+      socket.emit('connected', {username, room});
+    }
   });
   
   socket.on('join game', function (data) { //data: {username, room}

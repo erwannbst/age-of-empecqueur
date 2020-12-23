@@ -150,8 +150,6 @@ canvas.addEventListener(
 //déplacement de la souris
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillRect(790,0,20,400);
-  ctx.fillRect(790,500,20,400);
   if (batSelect != null) {
     drawBatimentonMap(batSelect, playerX, playerY);
     //ctx.fillRect(playerX, playerY, RenduBatiments[batSelect].width, RenduBatiments[batSelect].height);
