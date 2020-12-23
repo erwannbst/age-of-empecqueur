@@ -14,14 +14,14 @@ server.listen(port, function () {
 // Routing
 app.use(express.static('public'));
 
-var players = {};
 var games = {};
 /*
 games = {
   roomId : {
-    playerNumber 
-    playerId: username,
-    playerId2: username,
+    players: [
+      {playerId, username},
+      {playerId, username},
+      ]
     map : {
       playerId: [
         {buildingName, x, y},
@@ -40,8 +40,7 @@ io.on('connection', function (socket) {
   socket.on('create game', function (username) {
     let room = makeid();
     //if(games[room] == undefined){
-      games[room][socket.id] = username;
-      players[socket.id] = room;
+      games[room].players.append({playerId: socket.id, username});
       socket.join(room);
       socket.emit('connected', {username, room});
     //}
@@ -49,13 +48,12 @@ io.on('connection', function (socket) {
   
   socket.on('join game', function (data) { //data: {username, room}
     let {username, room} = data
-    if(games[room] != undefined && games[room][player] != undefined && games[room].player2 == undefined){
+    if(games[room] != undefined && games[room].players.length < 2){
       console.log('adding ' + username + " to " + room)
-      games[room].player2 = {socketId: socket.id, username};
-      players[socket.id] = room;
+      games[room].players.append({playerId: socket.id, username});
       socket.join(room);
-      io.to(games[room].player1.socketId).emit('user joined', username); //Préviens le premier joueur qu'un autre s'est connecté
-      socket.emit('connected', {username, room, otherPlayer: games[room].player1.username});
+      io.to(room).broadcast.emit('user joined', username); //Préviens le premier joueur qu'un autre s'est connecté
+      socket.emit('connected', {username, room, otherPlayer: games[room].players[1].username});
     }
   });
   

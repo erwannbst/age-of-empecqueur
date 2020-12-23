@@ -18,11 +18,13 @@ h1 {
 }
 
 form {
+  margin: 1em;
+  border-radius: 30px;
   background-color: #eee;
   display: grid;
   grid-gap: 1em;
   padding: 1em;
-  width: 320px;
+  width: 280px;
 }
 
 input {
@@ -55,10 +57,11 @@ footer {
 }
 
 select {
+  margin: 1em;
   background-color: #bbbbf2;
   cursor: pointer;
   border-radius: .25em;
   margin-top: 10px;
-  width : 100%;
+  width : 270px;
   height : 30px;
 }
