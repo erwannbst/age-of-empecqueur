@@ -74,6 +74,16 @@ var RenduBatiments = {
   }
 };
 
+
+var players = [];
+/*
+players : [
+  playerId1,
+  playerId2,
+]
+*/
+
+var map = {};
 /*
 map : {
       playerId: [
@@ -84,11 +94,6 @@ map : {
       ]
     }
 */
-
-var map = {
-  player1: [],
-  player2: []
-};
 
 function Batiment(nom, coordX, coordY) {
   this.nom = nom;
@@ -150,18 +155,11 @@ function draw() {
     //ctx.fillRect(playerX, playerY, RenduBatiments[batSelect].width, RenduBatiments[batSelect].height);
     //ctx.fillStyle = "rgba(255,0,0,0.5)";
   }
-  for (var i = 0; i < map.player1.length; i++) {
+  for (var i = 0; i < players.length; i++) {
     drawBatimentonMap(
       map.player1[i].nom,
       map.player1[i].coordX,
       map.player1[i].coordY
-    );
-  }
-  for (var i = 0; i < map.player2.length; i++) {
-    drawBatimentonMap(
-      map.player2[i].nom,
-      map.player2[i].coordX,
-      map.player2[i].coordY
     );
   }
   requestAnimationFrame(draw);
@@ -197,7 +195,7 @@ function drawBatiment(data) {    // data:{nom: "nomDuBatiment", x: 0, y: 0, play
   //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
   console.log("drawing batiment " + JSON.stringify(data));
   var batBuffer = new Batiment(data.nom, data.x, data.y);
-  map.player2.push(batBuffer);
+  map.map[data.playerId].push(batBuffer);
 }
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
@@ -211,8 +209,9 @@ function gotConnected(data) {
   //data: {username, room}
   connected = true;
   username = data.username;
-  document.getElementById("status").innerHTML =
-    "Connected as " + username + "#" + data.room;
+  map[socket.id] = [];
+  players.push(socket.id);
+  document.getElementById("status").innerHTML = "Connected as " + username + "#" + data.room;
   document.getElementById("connexion").style.display = "none";
   if (data.otherPlayer == undefined) {
     document.getElementById("room").innerHTML = "Pas d'autre joueur connecté";
@@ -224,7 +223,8 @@ function gotConnected(data) {
 
 function userJoined(user) {
   //user: {username, playerId}
-  player2 = 
+  map[user.playerId] = [];
+  players.push(socket.id);
   document.getElementById("room").innerHTML = "Vous jouez contre " + user.username;
   alert(user.username + " a rejoint la partie");
 }
@@ -257,7 +257,7 @@ socket.on("connected", function(data) {
 });
 
 socket.on("user joined", function(user) {
-  userJoined(username);
+  userJoined(user);
 });
 
 socket.on("draw batiment", function(data) {
