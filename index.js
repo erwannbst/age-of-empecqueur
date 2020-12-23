@@ -78,7 +78,8 @@ io.on('connection', function (socket) {
     console.log("Socket.id : '" + socket.id + "'");
     games[room].map[socket.id].push(data)
     var batimentToCreate = data
-    io.to(room).emit('draw batiment', {...data, playerId: socket.id});
+    batimentToCreate.playerId = socket.id
+    io.to(room).emit('draw batiment', batimentToCreate);
   });
 
 });
