@@ -74,7 +74,6 @@ var RenduBatiments = {
   }
 };
 
-
 var players = [];
 /*
 players : [
@@ -94,6 +93,18 @@ map : {
       ]
     }
 */
+var closedMap = [];
+
+for (var i = 0; i < players.length; i++) {
+  // pour chaque joueur
+  let mapDuJoueur = map[players[i]];
+  for (var j = 0; j < mapDuJoueur.length; j++) {
+    // pour chaque batiment
+    for (var y = 0; y < mapDuJoueur[jlength; y++) {
+      // pour chaque batiment
+    }
+  }
+}
 
 function Batiment(nom, coordX, coordY) {
   this.nom = nom;
@@ -105,7 +116,7 @@ function Batiment(nom, coordX, coordY) {
 
 let batSelect;
 
-if(players == null)document.getElementById("select")
+//if(players != null)document.getElementById("select").disabled = true;
 
 var selectedBat = document.querySelector("select");
 
@@ -140,7 +151,7 @@ canvas.addEventListener(
       //devra etre supprimé après test
 
       //
-      createBatiment({nom: batSelect, x: playerX, y: playerY});
+      createBatiment({ nom: batSelect, x: playerX, y: playerY });
       console.log(map);
       batSelect = null;
     }
@@ -157,9 +168,11 @@ function draw() {
     //ctx.fillRect(playerX, playerY, RenduBatiments[batSelect].width, RenduBatiments[batSelect].height);
     //ctx.fillStyle = "rgba(255,0,0,0.5)";
   }
-  for (var i = 0; i < players.length; i++) { // pour chaque joueur
+  for (var i = 0; i < players.length; i++) {
+    // pour chaque joueur
     let mapDuJoueur = map[players[i]];
-    for(var j=0; j < mapDuJoueur.length; j++){ // pour chaque batiment
+    for (var j = 0; j < mapDuJoueur.length; j++) {
+      // pour chaque batiment
       drawBatimentonMap(
         mapDuJoueur[j].nom,
         mapDuJoueur[j].coordX,
@@ -173,30 +186,73 @@ function draw() {
 function drawBatimentonMap(nomBat, coordX, coordY) {
   switch (nomBat) {
     case "caserne":
-      ctx.drawImage(RenduBatiments.caserne.image, coordX, coordY, RenduBatiments.caserne.width, RenduBatiments.caserne.height);
+      ctx.drawImage(
+        RenduBatiments.caserne.image,
+        coordX,
+        coordY,
+        RenduBatiments.caserne.width,
+        RenduBatiments.caserne.height
+      );
       break;
     case "trinquette":
-      ctx.drawImage(RenduBatiments.trinquette.image, coordX, coordY, RenduBatiments.trinquette.width, RenduBatiments.trinquette.height);
+      ctx.drawImage(
+        RenduBatiments.trinquette.image,
+        coordX,
+        coordY,
+        RenduBatiments.trinquette.width,
+        RenduBatiments.trinquette.height
+      );
       break;
     case "portugais":
-      ctx.drawImage(RenduBatiments.portugais.image, coordX, coordY, RenduBatiments.portugais.width, RenduBatiments.portugais.height);
+      ctx.drawImage(
+        RenduBatiments.portugais.image,
+        coordX,
+        coordY,
+        RenduBatiments.portugais.width,
+        RenduBatiments.portugais.height
+      );
       break;
     case "extracteur":
-      ctx.drawImage(RenduBatiments.extracteur.image, coordX, coordY, RenduBatiments.extracteur.width, RenduBatiments.extracteur.height);
+      ctx.drawImage(
+        RenduBatiments.extracteur.image,
+        coordX,
+        coordY,
+        RenduBatiments.extracteur.width,
+        RenduBatiments.extracteur.height
+      );
       break;
     case "murV":
-      ctx.drawImage(RenduBatiments.murV.image, coordX, coordY, RenduBatiments.murV.width, RenduBatiments.murV.height);
+      ctx.drawImage(
+        RenduBatiments.murV.image,
+        coordX,
+        coordY,
+        RenduBatiments.murV.width,
+        RenduBatiments.murV.height
+      );
       break;
     case "murH":
-      ctx.drawImage(RenduBatiments.murH.image, coordX, coordY, RenduBatiments.murH.width, RenduBatiments.murH.height);
+      ctx.drawImage(
+        RenduBatiments.murH.image,
+        coordX,
+        coordY,
+        RenduBatiments.murH.width,
+        RenduBatiments.murH.height
+      );
       break;
     case "hdv":
-      ctx.drawImage(RenduBatiments.hdv.image, coordX, coordY, RenduBatiments.hdv.width, RenduBatiments.hdv.height);
+      ctx.drawImage(
+        RenduBatiments.hdv.image,
+        coordX,
+        coordY,
+        RenduBatiments.hdv.width,
+        RenduBatiments.hdv.height
+      );
       break;
   }
 }
 
-function drawBatiment(data) {    // data:{nom: "nomDuBatiment", x: 0, y: 0, playerId: "wkfefkefe"}
+function drawBatiment(data) {
+  // data:{nom: "nomDuBatiment", x: 0, y: 0, playerId: "wkfefkefe"}
   //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
   console.log("drawing batiment " + JSON.stringify(data));
   var batBuffer = new Batiment(data.nom, data.x, data.y);
@@ -217,7 +273,8 @@ function gotConnected(data) {
   username = data.username;
   map[socket.id] = [];
   players.push(socket.id);
-  document.getElementById("status").innerHTML = "Connected as " + username + "#" + data.room;
+  document.getElementById("status").innerHTML =
+    "Connected as " + username + "#" + data.room;
   document.getElementById("connexion").style.display = "none";
   if (data.otherPlayer == undefined) {
     document.getElementById("room").innerHTML = "Pas d'autre joueur connecté";
@@ -227,13 +284,16 @@ function gotConnected(data) {
     players.push(data.otherPlayer.playerId);
     map[data.otherPlayer.playerId] = [];
   }
+  document.getElementById("select").disabled = false;
 }
 
 function userJoined(user) {
   //user: {username, playerId}
+
   map[user.playerId] = [];
   players.push(user.playerId);
-  document.getElementById("room").innerHTML = "Vous jouez contre " + user.username;
+  document.getElementById("room").innerHTML =
+    "Vous jouez contre " + user.username;
   alert(user.username + " a rejoint la partie");
 }
 
