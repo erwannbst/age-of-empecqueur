@@ -111,17 +111,19 @@ canvas.addEventListener(
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (batSelect != null) {
-    drawRectangle(batSelect, playerX, playerY);
+    drawBatimentonMap(batSelect, playerX, playerY);
+    ctx.fillRect(playerX,playerY,30,30);
+    ctx.fillStyle = 'rgba(255,0,0,0.5)';
   }
   for (var i = 0; i < map.player1.length; i++) {
-    drawRectangle(
+    drawBatimentonMap(
       map.player1[i].nom,
       map.player1[i].coordX,
       map.player1[i].coordY
     );
   }
   for (var i = 0; i < map.player2.length; i++) {
-    drawRectangle(
+    drawBatimentonMap(
       map.player2[i].nom,
       map.player2[i].coordX,
       map.player2[i].coordY
@@ -130,7 +132,7 @@ function draw() {
   requestAnimationFrame(draw);
 }
 
-function drawRectangle(nomBat, coordX, coordY) {
+function drawBatimentonMap(nomBat, coordX, coordY) {
   switch (nomBat) {
     case "caserne":
       ctx.drawImage(caserneImg, coordX, coordY, 80, 80);
