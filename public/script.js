@@ -100,7 +100,7 @@ function Batiment(nom, coordX, coordY) {
   this.coordX = coordX;
   this.coordY = coordY;
 }
-function item(x,y){
+function item(x, y) {
   this.x = x;
   this.y = y;
 }
@@ -158,10 +158,10 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (batSelect != null) {
     drawBatimentonMap(batSelect, playerX, playerY);
-    for(var n=0; n<closedMap.length;n++){
-      if(closedMap[n].x == playerX && closedMap[n].y == playerY){
-        ctx.fillRect(playerX, playerY, RenduBatiments[batSelect].width, RenduBatiments[batSelect].height);
-        ctx.fillStyle = "rgba(255,0,0,0.5)";
+    for (var n = 0; n < closedMap.length; n++) {
+      for (var i = 0; i < RenduBatiments[batSelect].width; i++) {
+        if (closedMap[n].x == playerX && closedMap[n].y == playerY) {
+        }
       }
     }
     //ctx.fillRect(playerX, playerY, RenduBatiments[batSelect].width, RenduBatiments[batSelect].height);
