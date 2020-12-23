@@ -240,22 +240,16 @@ function drawBatimentonMap(nomBat, coordX, coordY) {
   }
 }
 
-function AddClosedMap(nomBat, batX, batY) {  
-      for (
-        var y = batX;
-        y < mapDuJoueur[j].coordX + RenduBatiments[mapDuJoueur[j].nom].width;
-        y++
-      ) {
-        // pour chaque pixel horizontal
-        for (
-          var z = batY;
-          z < batY + RenduBatiments[mapDuJoueur[j].nom].height;
-          z++
-        ) {
-          // pour chaque pixel vertical
-          console.log("1");
-        }
-      }
+function AddClosedMap(nomBat, batX, batY) {
+  console.log("function AddClosedMap called" + RenduBatiments[nomBat].height);
+  for (var x = batX; x < batX + RenduBatiments[nomBat].width; x++) {
+    console.log("1");
+    // pour chaque pixel horizontal
+    for (var y = batY; y < 2000; y++) {
+      // pour chaque pixel vertical
+      console.log("2");
+    }
+  }
 }
 
 function drawBatiment(data) {
