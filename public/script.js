@@ -37,12 +37,12 @@ portugaisImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcabane.png?1607820151355";
 
 var RenduBatiments = {
-  murHorizontal: {
+  murH: {
     image: murHImg,
     height: 30,
     width: 110
   },
-  murVertical: {
+  murV: {
     image: murVImg,
     height: 110,
     width: 30
@@ -147,8 +147,8 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (batSelect != null) {
     drawBatimentonMap(batSelect, playerX, playerY);
-    ctx.fillRect(playerX, playerY, 30, 30);
-    ctx.fillStyle = "rgba(255,0,0,0.5)";
+    //ctx.fillRect(playerX, playerY, RenduBatiments[batSelect].width, RenduBatiments[batSelect].height);
+    //ctx.fillStyle = "rgba(255,0,0,0.5)";
   }
   for (var i = 0; i < map.player1.length; i++) {
     drawBatimentonMap(
@@ -182,23 +182,22 @@ function drawBatimentonMap(nomBat, coordX, coordY) {
       ctx.drawImage(RenduBatiments.extracteur.image, coordX, coordY, RenduBatiments.extracteur.width, RenduBatiments.extracteur.height);
       break;
     case "murV":
-      ctx.drawImage(RenduBatiments.murVertical.image, coordX, coordY, RenduBatiments.murVertical.width, RenduBatiments.murVertical.height);
+      ctx.drawImage(RenduBatiments.murV.image, coordX, coordY, RenduBatiments.murV.width, RenduBatiments.murV.height);
       break;
     case "murH":
-      ctx.drawImage(RenduBatiments.murHorizontal.image, coordX, coordY, RenduBatiments.murHorizontal.width, RenduBatiments.murHorizontal.height);
+      ctx.drawImage(RenduBatiments.murH.image, coordX, coordY, RenduBatiments.murH.width, RenduBatiments.murH.height);
       break;
     case "hdv":
-      ctx.drawImage(RenduBatiments.hdv.image, coordX, coordY, RenduBatiments.hdv.width, RenduBatiments.hdv.image);
+      ctx.drawImage(RenduBatiments.hdv.image, coordX, coordY, RenduBatiments.hdv.width, RenduBatiments.hdv.height);
       break;
   }
 }
 
-function drawBatiment(data) {
+function drawBatiment(data) {    // data:{nom: "nomDuBatiment", x: 0, y: 0, playerId: "wkfefkefe"}
   //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
   console.log("drawing batiment " + JSON.stringify(data));
-  // data:{nom: "nomDuBatiment", x: 0, y: 0}
-  var bat = new Batiment(data.nom, data.x, data.y);
-  map.player2.push(bat);
+  var batBuffer = new Batiment(data.nom, data.x, data.y);
+  map.player2.push(batBuffer);
 }
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
@@ -223,10 +222,11 @@ function gotConnected(data) {
   }
 }
 
-function userJoined(username) {
-  //data: {username, room}
-  document.getElementById("room").innerHTML = "Vous jouez contre " + username;
-  alert(username + " a rejoint la partie");
+function userJoined(user) {
+  //user: {username, playerId}
+  player2 = 
+  document.getElementById("room").innerHTML = "Vous jouez contre " + user.username;
+  alert(user.username + " a rejoint la partie");
 }
 
 /********************** DOCUMENTATION API ***********************
@@ -256,7 +256,7 @@ socket.on("connected", function(data) {
   gotConnected(data);
 });
 
-socket.on("user joined", function(username) {
+socket.on("user joined", function(user) {
   userJoined(username);
 });
 

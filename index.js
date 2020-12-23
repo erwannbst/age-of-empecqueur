@@ -54,6 +54,7 @@ io.on('connection', function (socket) {
       console.log(games[room])
       let newPlayer = {playerId: socket.id, username};
       games[room].players.push(newPlayer);
+      games[room].map[socket.id] = [];
       socket.join(room);
       io.to(games[room].players[0].playerId).emit('user joined', username); //Préviens le premier joueur qu'un autre s'est connecté
       socket.emit('connected', {username, room, otherPlayer: games[room].players[1].username});
@@ -76,7 +77,8 @@ io.on('connection', function (socket) {
     console.log(games[room])
     console.log("Socket.id : '" + socket.id + "'");
     games[room].map[socket.id].push(data)
-    io.to(room).emit('draw batiment', data);
+    var batimentToCreate = data
+    io.to(room).emit('draw batiment', {...data, playerId: socket.id});
   });
 
 });
