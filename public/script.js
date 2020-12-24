@@ -372,6 +372,10 @@ socket.on("ping", function(data) {
   console.log("ping");
 });
 
+socket.on("gold amount updated", function(amount) {
+  console.log("Gold : " + amount);
+});
+
 function createBatiment(data) {
   socket.emit("create batiment", data);
 }

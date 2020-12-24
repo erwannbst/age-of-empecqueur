@@ -47,6 +47,7 @@ io.on('connection', function (socket) {
       games[room].map[socket.id] = [];
       socket.join(room);
       socket.emit('connected', {username, room});
+      incrementGold(socket.id);
     }
   });
   
@@ -61,6 +62,7 @@ io.on('connection', function (socket) {
       socket.join(room);
       io.to(games[room].players[0].playerId).emit('user joined', newPlayer); //Préviens le premier joueur qu'un autre s'est connecté
       socket.emit('connected', {username, room, otherPlayer: games[room].players[0]});
+      incrementGold(socket.id);
     }
   });
   
@@ -99,13 +101,20 @@ function makeid() {
 }
 
 function incrementGold(playerId){
-  let amount = games[getRoomFromPlayerId(playerId)].players[]
-  io.to(playerId).emit('updateGoldAmount', amount);
+  console.log("incrementing ")
+  let amount = getPlayerDetailsFromId(playerId).gold + 1;
+  io.to(playerId).emit('gold amount updated', amount);
+  //setTimeout(incrementGold(playerId), 1000);
 }
 
 function getPlayerDetailsFromId(playerId){
   let room = getRoomFromPlayerId(playerId);
-  let player
+  let playerDetails;
+  games[room].players.forEach(e => {
+    if(e.playerId == playerId)
+      playerDetails = e;
+  });
+  return playerDetails;
 }
 
 function getRoomFromPlayerId(playerId){
