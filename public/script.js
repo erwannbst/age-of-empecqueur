@@ -159,8 +159,29 @@ function draw() {
   if (batSelect != null) {
     drawBatimentonMap(batSelect, playerX, playerY);
     for (var n = 0; n < closedMap.length; n++) {
-      for (var i = 0; i < RenduBatiments[batSelect].width; i++) {
-        if (closedMap[n].x == playerX && closedMap[n].y == playerY) {
+      for (
+        var batwidth = 0;
+        batwidth < RenduBatiments[batSelect].width;
+        batwidth++
+      ) {
+        for (
+          var batheight = 0;
+          batheight < RenduBatiments[batSelect].height;
+          batheight++
+        ) {
+          if (
+            closedMap[n].x == playerX + batwidth &&
+            closedMap[n].y == playerY + batheight
+          ) {
+            /*ctx.fillRect(
+              playerX,
+              playerY,
+              RenduBatiments[batSelect].width,
+              RenduBatiments[batSelect].height
+            );
+            ctx.fillStyle = "rgba(255,0,0,0.5)";*/
+            
+          }
         }
       }
     }
@@ -267,10 +288,8 @@ function drawBatiment(data) {
   //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
   console.log("drawing batiment " + JSON.stringify(data));
   var batBuffer = new Batiment(data.nom, data.x, data.y);
-  console.log(batBuffer);
   map[data.playerId].push(batBuffer);
   AddClosedMap(data.nom, data.x, data.y);
-  console.log(closedMap);
 }
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
