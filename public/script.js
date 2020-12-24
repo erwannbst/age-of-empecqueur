@@ -158,32 +158,7 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (batSelect != null) {
     drawBatimentonMap(batSelect, playerX, playerY);
-    for (var n = 0; n < closedMap.length; n++) {
-      for (
-        var batwidth = 0;
-        batwidth < RenduBatiments[batSelect].width;
-        batwidth++
-      ) {
-        for (
-          var batheight = 0;
-          batheight < RenduBatiments[batSelect].height;
-          batheight++
-        ) {
-          if (
-            closedMap[n].x == playerX + batwidth &&
-            closedMap[n].y == playerY + batheight
-          ) {
-            /*ctx.fillRect(
-              playerX,
-              playerY,
-              RenduBatiments[batSelect].width,
-              RenduBatiments[batSelect].height
-            );
-            ctx.fillStyle = "rgba(255,0,0,0.5)";*/
-            
-          }
-        }
-      }
+    
     }
     //ctx.fillRect(playerX, playerY, RenduBatiments[batSelect].width, RenduBatiments[batSelect].height);
     //ctx.fillStyle = "rgba(255,0,0,0.5)";
