@@ -141,6 +141,7 @@ function keyDownHandler(e) {}
 canvas.addEventListener(
   "click",
   function(event) {
+    var autorisation = true;
     if (batSelect != null) {
       //devra etre supprimé après test
       //console.log("largeur du batiment seletionnée :  " + RenduBatiments[batSelect].height);
@@ -161,17 +162,23 @@ canvas.addEventListener(
             closedMap[n].x == playerX + batwidth &&
             closedMap[n].y == playerY + batheight
           ) {
-            
-          }else{
-            
+            autorisation = false;
           }
         }
       }
     }
       //
+      if(autorisation == false){
+        for (var n = 0.7; n >=0; n=n+0.01) {
+        ctx.fillRect(playerX, playerY, RenduBatiments[batSelect].width, RenduBatiments[batSelect].height);
+        ctx.fillStyle = "rgba(255,0,0,)";
+        }
+      }
+      if(autorisation == true){
       createBatiment({ nom: batSelect, x: playerX, y: playerY });
       console.log(map);
       batSelect = null;
+      }
     }
   },
   false
