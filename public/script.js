@@ -143,40 +143,35 @@ canvas.addEventListener(
   function(event) {
     if (batSelect != null) {
       //devra etre supprimé après test
+      //console.log("largeur du batiment seletionnée :  " + RenduBatiments[batSelect].height);
+      var hauteur = RenduBatiments[batSelect].width;
+      var largeur = RenduBatiments[batSelect].height;
       for (var n = 0; n < closedMap.length; n++) {
       for (
         var batwidth = 0;
-        batwidth < RenduBatiments[batSelect].width;
+        batwidth < hauteur;
         batwidth++
       ) {
         for (
           var batheight = 0;
-          batheight < RenduBatiments[batSelect].height;
+          batheight < largeur;
           batheight++
         ) {
           if (
             closedMap[n].x == playerX + batwidth &&
             closedMap[n].y == playerY + batheight
           ) {
-            /*ctx.fillRect(
-              playerX,
-              playerY,
-              RenduBatiments[batSelect].width,
-              RenduBatiments[batSelect].height
-            );
-            ctx.fillStyle = "rgba(255,0,0,0.5)";*/
-            console.log("impossible de placer un batiment ici");
             
           }else{
-            createBatiment({ nom: batSelect, x: playerX, y: playerY });
-            console.log(map);
-            batSelect = null;
+            
           }
         }
       }
     }
       //
-      
+      createBatiment({ nom: batSelect, x: playerX, y: playerY });
+      console.log(map);
+      batSelect = null;
     }
   },
   false
