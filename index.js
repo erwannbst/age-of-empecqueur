@@ -32,6 +32,12 @@ games = {
     }
 }
 */
+var players = {};
+/*
+players : {
+  playerId :
+}
+*/
 
 // CONSTANTES
 const initialGoldAmount = 200;
@@ -101,7 +107,7 @@ function makeid() {
 }
 
 function incrementGold(playerId){
-  console.log("incrementing ")
+  console.log("incrementing " + playerId)
   let amount = getPlayerDetailsFromId(playerId).gold + 1;
   io.to(playerId).emit('gold amount updated', amount);
   //setTimeout(incrementGold(playerId), 1000);
@@ -118,6 +124,7 @@ function getPlayerDetailsFromId(playerId){
 }
 
 function getRoomFromPlayerId(playerId){
+  console.log("rooms : " + playerId)
   let roomsValues = playerId.rooms.values();
   let id = roomsValues.next();
   let room = roomsValues.next().value;
