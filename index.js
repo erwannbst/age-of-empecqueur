@@ -18,10 +18,10 @@ var games = {};
 /*
 games = {
   roomId : {
-    players: [
-      {playerId, username, gold: 0},
-      {playerId, username, gold: 0},
-      ]
+    players: {
+      playerId: {username, gold: 0},
+      playerId: {username, gold: 0},
+    }
     map : {
       playerId: [
         {buildingName, x, y},
@@ -41,6 +41,7 @@ players : {
 
 // CONSTANTES
 const initialGoldAmount = 200;
+const goldIncrementInterval = 1500;
 
 
 io.on('connection', function (socket) {
@@ -49,12 +50,13 @@ io.on('connection', function (socket) {
   socket.on('create game', function (username) {
     let room = makeid();
     if(games[room] == undefined){
-      games[room]= {players: [{playerId: socket.id, username, gold: initialGoldAmount}], map: {}};
+      games[room] = {players: {}, map: {}};
+      games[room].players[socket.id] = {username, gold: initialGoldAmount}
       games[room].map[socket.id] = [];
       socket.join(room);
       players[socket.id] = {roomId: room};
       socket.emit('connected', {username, room});
-      incrementGold(socket.id);
+      setInterval(() => incrementGold(socket.id), goldIncrementInterval);
     }
   });
   
@@ -70,7 +72,7 @@ io.on('connection', function (socket) {
       players[socket.id] = {roomId: room};
       io.to(games[room].players[0].playerId).emit('user joined', newPlayer); //Préviens le premier joueur qu'un autre s'est connecté
       socket.emit('connected', {username, room, otherPlayer: games[room].players[0]});
-      incrementGold(socket.id);
+      //incrementGold(socket.id);
     }
   });
   
@@ -111,21 +113,18 @@ function makeid() {
 function incrementGold(playerId){
   console.log("incrementing " + playerId)
   let room = players[playerId].roomId
-  console.log("room : " + room)
-  console.log("players: " + JSON.stringify(games[room].players))
   let player = getPlayerFromId(playerId);
-  console.log(player);
   let amount = player.gold + 1;
+  games[room].players
+  
   io.to(playerId).emit('gold amount updated', amount);
-  //setTimeout(incrementGold(playerId), 1000);
 }
 
 function getPlayerFromId(playerId){
   let room = players[playerId].roomId
   let playersInGame = games[room].players
-  for(let i = 0; i < playersInGame; i++){
+  for(let i = 0; i < playersInGame.length; i++){
     if(playersInGame[i].playerId == playerId){
-      console.log("found " + JSON.stringify(playersInGame[i]))
       return playersInGame[i]; 
     }
   }
