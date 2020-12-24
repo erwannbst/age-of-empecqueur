@@ -19,8 +19,8 @@ var games = {};
 games = {
   roomId : {
     players: [
-      {playerId, username},
-      {playerId, username},
+      {playerId, username, gold: 0},
+      {playerId, username, gold: 0},
       ]
     map : {
       playerId: [
@@ -33,6 +33,9 @@ games = {
 }
 */
 
+// CONSTANTES
+const initialGoldAmount = 200;
+
 
 io.on('connection', function (socket) {
   console.log('a user connected');
@@ -40,7 +43,7 @@ io.on('connection', function (socket) {
   socket.on('create game', function (username) {
     let room = makeid();
     if(games[room] == undefined){
-      games[room]= {players: [{playerId: socket.id, username}], map: {}};
+      games[room]= {players: [{playerId: socket.id, username, gold: initialGoldAmount}], map: {}};
       games[room].map[socket.id] = [];
       socket.join(room);
       socket.emit('connected', {username, room});
@@ -52,7 +55,7 @@ io.on('connection', function (socket) {
     if(games[room] != undefined && games[room].players.length < 2){
       console.log('adding ' + username + " to " + room)
       console.log(games[room])
-      let newPlayer = {playerId: socket.id, username};
+      let newPlayer = {playerId: socket.id, username, gold: initialGoldAmount};
       games[room].players.push(newPlayer);
       games[room].map[socket.id] = [];
       socket.join(room);
@@ -93,4 +96,21 @@ function makeid() {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
    }
    return result;
+}
+
+function incrementGold(playerId){
+  let amount = games[getRoomFromPlayerId(playerId)].players[]
+  io.to(playerId).emit('updateGoldAmount', amount);
+}
+
+function getPlayerDetailsFromId(playerId){
+  let room = getRoomFromPlayerId(playerId);
+  let player
+}
+
+function getRoomFromPlayerId(playerId){
+  let roomsValues = playerId.rooms.values();
+  let id = roomsValues.next();
+  let room = roomsValues.next().value;
+  return room;
 }
