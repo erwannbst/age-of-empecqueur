@@ -169,9 +169,14 @@ canvas.addEventListener(
     }
       //
       if(autorisation == false){
-        for (var n = 0.7; n >=0; n=n+0.01) {
-        ctx.fillRect(playerX, playerY, RenduBatiments[batSelect].width, RenduBatiments[batSelect].height);
-        ctx.fillStyle = "rgba(255,0,0,)";
+        var i=0;
+        for (var n = 0.7; n >= 0 ; n=n-0.01){
+         setTimeout(function () {
+            i++;
+            ctx.fillRect(playerX, playerY, RenduBatiments[batSelect].width, RenduBatiments[batSelect].height);
+            ctx.fillStyle = "rgba(255,0,0,"+n.toString();+")";
+         }, 2000 * i);
+        
         }
       }
       if(autorisation == true){
