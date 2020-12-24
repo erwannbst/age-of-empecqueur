@@ -62,11 +62,11 @@ io.on('connection', function (socket) {
   
   socket.on('join game', function (data) { //data: {username, room}
     let {username, room} = data
-    if(games[room] != undefined && games[room].players.length < 2){
+    if(games[room] != undefined && Object.keys(games[room].players).length < 2){
       console.log('adding ' + username + " to " + room)
       console.log(games[room])
-      let newPlayer = {playerId: socket.id, username, gold: initialGoldAmount};
-      games[room].players.push(newPlayer);
+      let newPlayer = {username, gold: initialGoldAmount};
+      games[room].players[socket.id] = newPlayer;
       games[room].map[socket.id] = [];
       socket.join(room);
       players[socket.id] = {roomId: room};
