@@ -18,7 +18,7 @@ app.use(express.static('public'));
 var players = {};
 /*
 players : {
-  playerId : {roomId},
+  playerId : {roomId, username, gold: 0},
 }
 */
 
@@ -26,11 +26,8 @@ var games = {};
 /*
 games = {
   roomId : {
-    players: {
-      playerId: {username, gold: 0},
-      playerId: {username, gold: 0},
-    }
-  }
+    players: [playerId, playerId2]
+  },
 }
 */
 
