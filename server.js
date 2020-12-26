@@ -1,6 +1,6 @@
 
 // Setup basic express server
-import * as gameValues from "./gameValues";
+var gameValues = require('./gameValues');
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
