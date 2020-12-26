@@ -60,7 +60,6 @@ io.on('connection', function (socket) {
       games[room] = {players: [playerId]};
       maps[playerId] = ["hdv", 10, 10];
       socket.emit('connected', {username, room});
-      setInterval(() => incrementGold(playerId), goldIncrementInterval);
     }
   });
   
@@ -76,12 +75,11 @@ io.on('connection', function (socket) {
       maps[playerId] = ["hdv", 200, 10];
       io.to(games[room].players[0]).emit('user joined', newPlayer); //Préviens le premier joueur créateur de la game qu'un autre s'est connecté
       socket.emit('connected', {username, room, otherPlayer: players[games[room].players[0]]});
-      //incrementGold(socket.id);
+      setInterval(() => incrementGold(room), goldIncrementInterval);
     }
   });
   
   socket.on('new message', function (data) {
-    // we tell the client to execute 'new message'
     socket.broadcast.emit('new message', {
       username: socket.username,
       message: data
@@ -89,21 +87,12 @@ io.on('connection', function (socket) {
   });
   
   socket.on('create batiment', function(data) { // data:{nom: "nomDuBatiment", x: 0, y: 0}
-    /*let roomsValues = socket.rooms.values();
-    let id = roomsValues.next()
-    let room = roomsValues.next().value
-    console.log("Room : '" + room + "'");
-    console.log(games[room])
-    console.log("Socket.id : '" + socket.id + "'");
-    games[room].map[socket.id].push(data)
-    var batimentToCreate = data;
-    batimentToCreate.playerId = socket.id;
-    console.log("Sending drawBatiment(" + JSON.stringify(batimentToCreate) + ")")
-    io.to(room).emit('draw batiment', batimentToCreate);
-    */
     let playerId = socket.id;
+    let room = players[playerId].roomId;
     maps[playerId].push(data);
-    
+    var batimentToCreate = data;
+    batimentToCreate.owner = playerId;
+    io.to(room).emit('draw batiment', batimentToCreate);
   });
 
 });
@@ -118,20 +107,11 @@ function makeid() {
    return result;
 }
 
-function incrementGold(playerId){
-  players[playerId].gold += 1;
-  io.to(playerId).emit('gold amount updated', players[playerId].gold);
-}
-
-function getPlayerFromId(playerId){
-  let room = players[playerId].roomId
-  let playersInGame = games[room].players
-  for(let i = 0; i < playersInGame.length; i++){
-    if(playersInGame[i].playerId == playerId){
-      return playersInGame[i]; 
-    }
-  }
-  return undefined;
+function incrementGold(room){
+  games[room].players.forEach(playerId => {
+    players[playerId].gold += 1;
+    io.to(playerId).emit('gold amount updated', players[playerId].gold);
+  })
 }
 
 /*
