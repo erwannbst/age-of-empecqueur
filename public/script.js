@@ -20,7 +20,7 @@ var extracteurImg = new Image();
 var portugaisImg = new Image();
 var murVImg = new Image();
 var murHImg = new Image();
-
+/*
 murVImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur.png?1607874941836";
 murHImg.src =
@@ -35,7 +35,7 @@ extracteurImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fbanque.png?1607819328536";
 portugaisImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcabane.png?1607820151355";
-
+*/
 var RenduBatiments = {
   murH: {
     image: murHImg,
@@ -188,6 +188,20 @@ function draw() {
     //ctx.fillRect(playerX, playerY, RenduBatiments[batSelect].width, RenduBatiments[batSelect].height);
     //ctx.fillStyle = "rgba(255,0,0,0.5)";
   }
+  players.forEach(player => {
+    map[player].forEach(batiment => {
+      console.log("ctx.draw " + JSON.stringify(batiment))
+      ctx.drawImage(
+        {src: batiment.image},
+        batiment.x,
+        batiment.y,
+        batiment.width,
+        batiment.height
+      );
+      drawHpBar(batiment.x + batiment.width / 2, batiment.y + 10 + batiment.height, batiment.hp, batiment.hpMax)
+    })
+  })
+  /*
   for (var i = 0; i < players.length; i++) {
     // pour chaque joueur
     let mapDuJoueur = map[players[i]];
@@ -201,7 +215,7 @@ function draw() {
         mapDuJoueur[j].hpMax,
       );
     }
-  }
+  }*/
   requestAnimationFrame(draw);
 }
 

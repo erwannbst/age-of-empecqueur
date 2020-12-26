@@ -2,7 +2,7 @@ import Building from "./Building.js";
 
 class Hdv extends Building {
   constructor(x, y) {
-    super(x, y, 300); // x, y, hp
+    super(x, y, 80, 80, 300); // x, y, width, height, hp
   }
 
   draw() {
