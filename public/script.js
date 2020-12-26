@@ -274,8 +274,7 @@ function drawBatimentonMap(nomBat, coordX, coordY) {
       );
       break;
   }
-  drawHpBar(coordX, coordY + 100, 200, 300)
-  drawHpBar(hpX,hpY, hpValue, hpMaxValue)
+  drawHpBar(coordX + 50, coordY + 100, 200, 300)
 }
 
 function AddClosedMap(nomBat, batX, batY) {
@@ -291,31 +290,32 @@ function AddClosedMap(nomBat, batX, batY) {
 }
 
 function drawHpBar(x, y, hp, hpMax){
-  let width = 40;
-  ctx.beginPath();
-  ctx.rect(x-width/2, y, width, 20);
-  ctx.fillStyle= "#DDD";
-  ctx.closePath();
-  ctx.fill();
-  
-  ctx.beginPath();
-  ctx.rect(x-width/2, y, width*(hp/100), 20);
-  if(hp > 63){
-      ctx.fillStyle="green"
-  }else if(hp > 37){
-      ctx.fillStyle="gold"
-  }else if(hp > 13){
-    ctx.fillStyle="orange";
-  }else{
-    ctx.fillStyle="red";
+    let height = 20;
+    let width = 120;
+    ctx.beginPath();
+    ctx.rect(x-width/2, y, width, height);
+    ctx.fillStyle= "#AAA";
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.rect(x-width/2, y, width*(hp/hpMax), height);
+    if(hp > 63){
+        ctx.fillStyle="green"
+    }else if(hp > 37){
+        ctx.fillStyle="gold"
+    }else if(hp > 13){
+      ctx.fillStyle="orange";
+    }else{
+      ctx.fillStyle="red";
+    }
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.font = "bold 15px verdana, sans-serif ";
+    ctx.fillStyle = "#FFF";
+    ctx.fillText(hp + '/' + hpMax, x - ctx.measureText(hp + '/' + hpMax).width / 2, y + ctx.measureText(hp + '/' + hpMax).fontBoundingBoxAscent);
   }
-  ctx.closePath();
-  ctx.fill();
-  
-  ctx.font = "bold 15px verdana, sans-serif ";
-  ctx.fillStyle = "#FFF";
-  ctx.fillText(hp + '/' + hpMax, x, y + width/2);
-}
 
 function drawBatiment(data) {
   // data:{nom: "nomDuBatiment", x: 0, y: 0, owner: "wkfefkefe"}
