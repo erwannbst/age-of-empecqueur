@@ -53,10 +53,10 @@ io.on('connection', function (socket) {
   
   socket.on('create game', function (username) {
     let room = makeid();
+    let playerId = socket.id
     if(games[room] == undefined){
-      games[room] = {players: {}, map: {}};
-      games[room].players[socket.id] = {username, gold: initialGoldAmount}
-      games[room].map[socket.id] = [];
+      games[room] = {players: [playerId]};
+      maps[playerId] = ["hdv"];
       socket.join(room);
       players[socket.id] = {roomId: room};
       socket.emit('connected', {username, room});
@@ -134,7 +134,6 @@ function getPlayerFromId(playerId){
   }
   return undefined;
 }
-
 
 /*
 var games = {};
