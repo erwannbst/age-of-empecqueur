@@ -96,11 +96,7 @@ map : {
 var closedMap = [];
 var buffer = new item(0,0);
 closedMap.push(buffer)
-function Batiment(nom, coordX, coordY) {
-  this.nom = nom;
-  this.coordX = coordX;
-  this.coordY = coordY;
-}
+
 function item(x, y) {
   this.x = x;
   this.y = y;
@@ -200,81 +196,24 @@ function draw() {
       drawBatimentonMap(
         mapDuJoueur[j].nom,
         mapDuJoueur[j].coordX,
-        mapDuJoueur[j].coordY
+        mapDuJoueur[j].coordY,
+        mapDuJoueur[j].hp,
+        mapDuJoueur[j].hpMax,
       );
     }
   }
   requestAnimationFrame(draw);
 }
-let hpX, hpY, hpValue, hpMaxValue = 0;
 
-function drawBatimentonMap(nomBat, coordX, coordY) {
-  switch (nomBat) {
-    case "caserne":
-      ctx.drawImage(
-        RenduBatiments.caserne.image,
+function drawBatimentonMap(nomBat, coordX, coordY, hp, hpMax) {
+  ctx.drawImage(
+        RenduBatiments[nomBat].image,
         coordX,
         coordY,
-        RenduBatiments.caserne.width,
-        RenduBatiments.caserne.height
+        RenduBatiments[nomBat].width,
+        RenduBatiments[nomBat].height
       );
-      break;
-    case "trinquette":
-      ctx.drawImage(
-        RenduBatiments.trinquette.image,
-        coordX,
-        coordY,
-        RenduBatiments.trinquette.width,
-        RenduBatiments.trinquette.height
-      );
-      break;
-    case "portugais":
-      ctx.drawImage(
-        RenduBatiments.portugais.image,
-        coordX,
-        coordY,
-        RenduBatiments.portugais.width,
-        RenduBatiments.portugais.height
-      );
-      break;
-    case "extracteur":
-      ctx.drawImage(
-        RenduBatiments.extracteur.image,
-        coordX,
-        coordY,
-        RenduBatiments.extracteur.width,
-        RenduBatiments.extracteur.height
-      );
-      break;
-    case "murV":
-      ctx.drawImage(
-        RenduBatiments.murV.image,
-        coordX,
-        coordY,
-        RenduBatiments.murV.width,
-        RenduBatiments.murV.height
-      );
-      break;
-    case "murH":
-      ctx.drawImage(
-        RenduBatiments.murH.image,
-        coordX,
-        coordY,
-        RenduBatiments.murH.width,
-        RenduBatiments.murH.height
-      );
-      break;
-    case "hdv":
-      ctx.drawImage(
-        RenduBatiments.hdv.image,
-        coordX,
-        coordY,
-        RenduBatiments.hdv.width,
-        RenduBatiments.hdv.height
-      );
-      break;
-  }
-  drawHpBar(coordX + 50, coordY + 100, 200, 300)
+  drawHpBar(coordX + RenduBatiments[nomBat].width / 2, coordY + 10 + RenduBatiments[nomBat].height, hp, hpMax)
 }
 
 function AddClosedMap(nomBat, batX, batY) {
@@ -321,8 +260,7 @@ function drawBatiment(data) {
   // data:{nom: "nomDuBatiment", x: 0, y: 0, owner: "wkfefkefe"}
   //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
   console.log("drawing batiment " + JSON.stringify(data));
-  var batBuffer = new Batiment(data.nom, data.x, data.y);
-  map[data.owner].push(batBuffer);
+  map[data.owner].push(data);
   AddClosedMap(data.nom, data.x, data.y);
 }
 
@@ -356,7 +294,6 @@ function gotConnected(data) {
 
 function userJoined(user) {
   //user: {username, playerId}
-
   map[user.playerId] = [];
   players.push(user.playerId);
   document.getElementById("room").innerHTML =

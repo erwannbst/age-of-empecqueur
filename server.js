@@ -74,7 +74,7 @@ io.on('connection', function (socket) {
       players[playerId] = newPlayer;
       games[room].players.push(playerId);
       maps[playerId] = ["hdv", 200, 10];
-      io.to(games[room].players[0]).emit('user joined', newPlayer); //Préviens le premier joueur créateur de la game qu'un autre s'est connecté
+      io.to(games[room].players[0]).emit('user joined', {playerId, username}); //Préviens le premier joueur créateur de la game qu'un autre s'est connecté
       socket.emit('connected', {username, room, otherPlayer: {playerId: games[room].players[0], ...players[games[room].players[0]]}});
       setInterval(() => incrementGold(room), gameValues.INTERVAL_GOLD_INCREMENT);
       var hdvXPos = 50;
