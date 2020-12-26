@@ -1,6 +1,6 @@
 
 // Setup basic express server
-
+import * as gameValues from "./gameValues";
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
@@ -44,8 +44,7 @@ maps : {
 */
 
 // CONSTANTES
-const initialGoldAmount = 200;
-const goldIncrementInterval = 1500;
+
 
 io.on('connection', function (socket) {
   console.log('a user connected');
@@ -55,7 +54,7 @@ io.on('connection', function (socket) {
     if(games[room] == undefined){
       let playerId = socket.id
       socket.join(room);
-      players[playerId] = {roomId: room, username, gold: initialGoldAmount};
+      players[playerId] = {roomId: room, username, gold: gameValues.INITIAL_GOLD_AMOUNT};
       games[room] = {players: [playerId]};
       maps[playerId] = ["hdv", 10, 10];
       socket.emit('connected', {username, room});
@@ -66,7 +65,7 @@ io.on('connection', function (socket) {
     let {username, room} = data
     if(games[room] != undefined && Object.keys(games[room].players).length < 2){
       console.log('adding ' + username + " to " + room)
-      let newPlayer = {roomId: room, username, gold: initialGoldAmount};
+      let newPlayer = {roomId: room, username, gold: gameValues.INITIAL_GOLD_AMOUNT};
       let playerId = socket.id
       socket.join(room);
       players[playerId] = newPlayer;
@@ -74,7 +73,7 @@ io.on('connection', function (socket) {
       maps[playerId] = ["hdv", 200, 10];
       io.to(games[room].players[0]).emit('user joined', newPlayer); //Préviens le premier joueur créateur de la game qu'un autre s'est connecté
       socket.emit('connected', {username, room, otherPlayer: players[games[room].players[0]]});
-      setInterval(() => incrementGold(room), goldIncrementInterval);
+      setInterval(() => incrementGold(room), gameValues.INTERVAL_GOLD_INCREMENT);
     }
   });
   
