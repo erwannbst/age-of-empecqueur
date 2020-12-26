@@ -1,4 +1,4 @@
-import Building from "Building";
+import Building from './Building.mjs';
 
 export default class Hdv extends Building {
   constructor(x, y){    

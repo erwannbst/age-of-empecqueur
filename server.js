@@ -2,10 +2,14 @@
 // Setup basic express server
 //var gameValues = require('./gameValues');
 //var Hdv = require('./class/Building');
-import Hdv from "class/Hdv";
-var express = require('express');
+import * as gameValues from './gameValues.js';
+import Hdv from './Class/Hdv.mjs';
+//var express = require('express');
+import express from 'express';
+import http from 'http';
+import socket.io from 'socket.io';
 var app = express();
-var server = require('http').createServer(app);
+var server = http.createServer(app);
 var io = require('socket.io')(server);
 var port = process.env.PORT || 3000;
 

@@ -1,4 +1,4 @@
-export default class Building {  
+class Building {  
   constructor(x, y){    
     this.x = x,
     this.y = y
@@ -9,4 +9,5 @@ export default class Building {
   }
 }
 
+export default Building
 //module.exports = Building;
