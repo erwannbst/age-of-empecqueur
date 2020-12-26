@@ -5,7 +5,7 @@ class Building {
   }
 }
 
-module.exports = class Hdv extends Building {
+class Hdv extends Building {
   constructor(x, y){    
     super(x, y);
     this.lvl = 1;
@@ -24,3 +24,5 @@ module.exports = class Hdv extends Building {
     this.hp -= 100;
   }
 }
+
+module.exports = Hdv;
