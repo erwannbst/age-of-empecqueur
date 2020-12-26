@@ -1,4 +1,4 @@
-class Building {  
+export default class Building {  
   constructor(x, y){    
     this.x = x,
     this.y = y
@@ -9,28 +9,4 @@ class Building {
   }
 }
 
- class Hdv extends Building {
-  constructor(x, y){    
-    super(x, y);
-    this.lvl = 1;
-    this.hp = 1500;
-  }
-  
-  getCoordinates(){
-    return {x: this.x, y: this.y}
-  }
-
-  draw(){
-    return {...this.getCoordinates(), image: "url"}
-  }
-  
-  getHp(){
-    return this.hp;
-  }
-  
-  lowerHp(){
-    this.hp -= 100;
-  }
-}
-
-module.exports = Hdv;
+//module.exports = Building;
