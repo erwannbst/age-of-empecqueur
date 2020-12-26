@@ -1,7 +1,8 @@
 
 // Setup basic express server
-var gameValues = require('./gameValues');
-var Hdv = require('./class/Building');
+//var gameValues = require('./gameValues');
+//var Hdv = require('./class/Building');
+import Hdv from "class/Hdv";
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);

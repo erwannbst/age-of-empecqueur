@@ -1,4 +1,5 @@
 dependencies:
+  babel: 6.23.0
   express: 4.17.1
   socket.io: 3.0.4
 packages:
@@ -31,6 +32,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-ml9pkFGx5wczKPKgCJaLZOopVdI=
+  /babel/6.23.0:
+    deprecated: 'In 6.x, the babel package has been deprecated in favor of babel-cli. Check https://opencollective.com/babel to support the Babel maintainers'
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha1-0NHn2APpdHZb7qMjLU4VPA77kPQ=
   /base64-arraybuffer/0.1.4:
     dev: false
     engines:
@@ -519,5 +526,6 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
+  babel: ^6.23.0
   express: ^4.17.1
   socket.io: ^3.0.4
