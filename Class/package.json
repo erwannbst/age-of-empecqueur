@@ -1,3 +1,4 @@
 {
-  "name": "Class"
+  "name": "Class",
+  "type": "module"
 }

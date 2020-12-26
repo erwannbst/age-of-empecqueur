@@ -1,6 +1,7 @@
-import Building from './Building.mjs';
+import Building from './Building.js';
 
 export default class Hdv extends Building {
+  #x = 0;
   constructor(x, y){    
     super(x, y);
     this.lvl = 1;
