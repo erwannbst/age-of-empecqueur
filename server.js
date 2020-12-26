@@ -1,6 +1,7 @@
 
 // Setup basic express server
 var gameValues = require('./gameValues');
+var building = require('./class/Building');
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
@@ -87,10 +88,11 @@ io.on('connection', function (socket) {
   socket.on('create batiment', function(data) { // data:{nom: "nomDuBatiment", x: 0, y: 0}
     let playerId = socket.id;
     let room = players[playerId].roomId;
-    maps[playerId].push(data);
+    let hdv = new building.Hdv(data.x, data.y);
+    maps[playerId].push(hdv);
     var batimentToCreate = data;
     batimentToCreate.owner = playerId;
-    io.to(room).emit('draw batiment', batimentToCreate);
+    io.to(room).emit('draw batiment', hdv);
   });
 
 });
