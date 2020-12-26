@@ -499,4 +499,4 @@ fetch("/map")
 
 //AUTOCONNECT
 document.getElementById("connexion").firstElementChild.firstElementChild.value = "Joueur 1"
-document.getElementById("buttonCreate").click()
+//document.getElementById("buttonCreate").click()

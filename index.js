@@ -53,14 +53,14 @@ io.on('connection', function (socket) {
   
   socket.on('create game', function (username) {
     let room = makeid();
-    let playerId = socket.id
     if(games[room] == undefined){
-      games[room] = {players: [playerId]};
-      maps[playerId] = ["hdv"];
+      let playerId = socket.id
       socket.join(room);
-      players[socket.id] = {roomId: room};
+      players[playerId] = {roomId: room, username, gold: initialGoldAmount};
+      games[room] = {players: [playerId]};
+      maps[playerId] = ["hdv", 10, 10];
       socket.emit('connected', {username, room});
-      setInterval(() => incrementGold(socket.id), goldIncrementInterval);
+      setInterval(() => incrementGold(playerId), goldIncrementInterval);
     }
   });
   
@@ -68,14 +68,14 @@ io.on('connection', function (socket) {
     let {username, room} = data
     if(games[room] != undefined && Object.keys(games[room].players).length < 2){
       console.log('adding ' + username + " to " + room)
-      console.log(games[room])
-      let newPlayer = {username, gold: initialGoldAmount};
-      games[room].players[socket.id] = newPlayer;
-      games[room].map[socket.id] = [];
+      let newPlayer = {roomId: room, username, gold: initialGoldAmount};
+      let playerId = socket.id
       socket.join(room);
-      players[socket.id] = {roomId: room};
-      io.to(games[room].players[0].playerId).emit('user joined', newPlayer); //Préviens le premier joueur qu'un autre s'est connecté
-      socket.emit('connected', {username, room, otherPlayer: games[room].players[0]});
+      players[playerId] = newPlayer;
+      games[room].players.push(playerId);
+      maps[playerId] = ["hdv", 200, 10];
+      io.to(games[room].players[0]).emit('user joined', newPlayer); //Préviens le premier joueur créateur de la game qu'un autre s'est connecté
+      socket.emit('connected', {username, room, otherPlayer: players[games[room].players[0]]});
       //incrementGold(socket.id);
     }
   });
@@ -89,7 +89,7 @@ io.on('connection', function (socket) {
   });
   
   socket.on('create batiment', function(data) { // data:{nom: "nomDuBatiment", x: 0, y: 0}
-    let roomsValues = socket.rooms.values();
+    /*let roomsValues = socket.rooms.values();
     let id = roomsValues.next()
     let room = roomsValues.next().value
     console.log("Room : '" + room + "'");
@@ -100,6 +100,10 @@ io.on('connection', function (socket) {
     batimentToCreate.playerId = socket.id;
     console.log("Sending drawBatiment(" + JSON.stringify(batimentToCreate) + ")")
     io.to(room).emit('draw batiment', batimentToCreate);
+    */
+    let playerId = socket.id;
+    maps[playerId].push(data);
+    
   });
 
 });
@@ -115,13 +119,8 @@ function makeid() {
 }
 
 function incrementGold(playerId){
-  console.log("incrementing " + playerId)
-  let room = players[playerId].roomId
-  let player = getPlayerFromId(playerId);
-  let amount = player.gold + 1;
-  games[room].players
-  
-  io.to(playerId).emit('gold amount updated', amount);
+  players[playerId].gold += 1;
+  io.to(playerId).emit('gold amount updated', players[playerId].gold);
 }
 
 function getPlayerFromId(playerId){
