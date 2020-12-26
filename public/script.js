@@ -206,6 +206,7 @@ function draw() {
   }
   requestAnimationFrame(draw);
 }
+let hpX, hpY, hpValue, hpMaxValue = 0;
 
 function drawBatimentonMap(nomBat, coordX, coordY) {
   switch (nomBat) {
@@ -273,6 +274,8 @@ function drawBatimentonMap(nomBat, coordX, coordY) {
       );
       break;
   }
+  drawHpBar(coordX, coordY + 100, 200, 300)
+  drawHpBar(hpX,hpY, hpValue, hpMaxValue)
 }
 
 function AddClosedMap(nomBat, batX, batY) {
@@ -287,8 +290,22 @@ function AddClosedMap(nomBat, batX, batY) {
   }
 }
 
-function drawHpBar(hp, hpMax){
-  
+function drawHpBar(x, y, hp, hpMax){
+  let width = 20;
+  ctx.beginPath();
+  ctx.rect(x-width/2, y, width*(hp/100), 10);
+  if(hp > 63){
+      ctx.fillStyle="green"
+  }else if(hp > 37){
+      ctx.fillStyle="gold"
+  }else if(hp > 13){
+    ctx.fillStyle="orange";
+  }else{
+    ctx.fillStyle="red";
+  }
+  ctx.fillText(hp + '/' + hpMax, 15, 50 + width/2);
+  ctx.closePath();
+  ctx.fill();
 }
 
 function drawBatiment(data) {
