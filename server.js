@@ -1,7 +1,7 @@
 
 // Setup basic express server
 import * as gameValues from './gameValues.js';
-import Hdv from './Class/Hdv.js';
+import Hdv from './Class/Hdv.tsx';
 import express from 'express';
 import http from 'http';
 import {Server} from 'socket.io';
@@ -90,13 +90,13 @@ io.on('connection', function (socket) {
   socket.on('create batiment', function(data) { // data:{nom: "nomDuBatiment", x: 0, y: 0}
     let playerId = socket.id;
     let room = players[playerId].roomId;
-    //let hdv = new Hdv(data.x, data.y);
+    let hdv = new Hdv(data.x, data.y);
     maps[playerId].push(data);
     var batimentToCreate = data;
     batimentToCreate.owner = playerId;
     console.log(JSON.stringify(data));
-    //hdv.lowerHp()
-    //console.log(hdv.hp);
+    hdv.lowerHp()
+    console.log(hdv.getHp);
     io.to(room).emit('draw batiment', batimentToCreate);
   });
 
