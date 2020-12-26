@@ -80,7 +80,7 @@ io.on('connection', function (socket) {
       var hdvXPos = 50;
       games[room].players.forEach(playerId => {
         let hdv = new Hdv(hdvXPos, 450);
-        hdvXPos = 1550
+        hdvXPos = 1450
         maps[playerId].push(hdv);
         io.to(room).emit('draw batiment', {...hdv.draw(), owner: playerId});
       })

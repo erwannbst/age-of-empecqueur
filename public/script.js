@@ -287,6 +287,10 @@ function AddClosedMap(nomBat, batX, batY) {
   }
 }
 
+function drawHpBar(hp, hpMax){
+  
+}
+
 function drawBatiment(data) {
   // data:{nom: "nomDuBatiment", x: 0, y: 0, owner: "wkfefkefe"}
   //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
@@ -307,7 +311,8 @@ function gotConnected(data) {
   //data: {username, room}
   connected = true;
   username = data.username;
-  map[data.playerId] = [];
+  map[socket.id] = [];
+  console.log("gotConnected" + JSON.stringify(data))
   players.push(socket.id);
   document.getElementById("status").innerHTML =
     "Connected as " + username + "#" + data.room;
