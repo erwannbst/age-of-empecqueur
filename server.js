@@ -91,13 +91,12 @@ io.on('connection', function (socket) {
     let playerId = socket.id;
     let room = players[playerId].roomId;
     let hdv = new Hdv(data.x, data.y);
-    maps[playerId].push(data);
-    var batimentToCreate = data;
-    batimentToCreate.owner = playerId;
+    maps[playerId].push(hdv);
+    //var batimentToCreate = data;
+    //batimentToCreate.owner = playerId;
     console.log(JSON.stringify(data));
-    hdv.lowerHp()
-    console.log(hdv.getHp);
-    io.to(room).emit('draw batiment', batimentToCreate);
+    console.log(hdv.getHp());
+    io.to(room).emit('draw batiment', {...hdv.draw(), owner: playerId});
   });
 
 });
