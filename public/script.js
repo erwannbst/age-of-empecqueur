@@ -307,7 +307,7 @@ function gotConnected(data) {
   //data: {username, room}
   connected = true;
   username = data.username;
-  map[socket.id] = [];
+  map[data.playerId] = [];
   players.push(socket.id);
   document.getElementById("status").innerHTML =
     "Connected as " + username + "#" + data.room;
