@@ -46,7 +46,6 @@ maps : {
 // CONSTANTES
 const initialGoldAmount = 200;
 const goldIncrementInterval = 1500;
-const 
 
 io.on('connection', function (socket) {
   console.log('a user connected');

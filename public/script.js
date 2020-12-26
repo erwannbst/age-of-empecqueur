@@ -373,7 +373,7 @@ socket.on("ping", function(data) {
 });
 
 socket.on("gold amount updated", function(amount) {
-  console.log("Gold : " + amount);
+  setGoldAmount(amount);
 });
 
 function createBatiment(data) {
