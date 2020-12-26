@@ -1,11 +1,10 @@
 import Building from "./Building.js";
 
-export default class Hdv extends Building {
-  #hp = 1000;
+class Hdv extends Building {
   constructor(x, y) {
     super(x, y);
-    this.lvl = 1;
-    this.#hp = 1500;
+    var _lvl = 1;
+    var _hp = 1500;
   }
 
   getCoordinates() {
@@ -15,17 +14,18 @@ export default class Hdv extends Building {
   draw() {
     return {
       ...this.getCoordinates(),
-      image:
-        "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fhdv_dfous.png?1607876427163",
-      hp: this.#hp
+      image: "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fhdv_dfous.png?1607876427163",
+      hp: this._hp,
     };
   }
 
-  getHp() {
-    return this.#hp;
-  }
-
   lowerHp() {
-    this.#hp -= 100;
+    this._hp -= 100;
+  }
+  
+  getHpMax(){
+    return 300 + 100*this._lvl;
   }
 }
+
+export default Hdv

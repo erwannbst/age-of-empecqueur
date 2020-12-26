@@ -1,7 +1,7 @@
 
 // Setup basic express server
 import * as gameValues from './gameValues.js';
-import Hdv from './Class/Hdv.tsx';
+import Hdv from './Class/Hdv.js';
 import express from 'express';
 import http from 'http';
 import {Server} from 'socket.io';
