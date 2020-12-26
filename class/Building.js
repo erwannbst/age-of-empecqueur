@@ -9,7 +9,7 @@ class Building {
   }
 }
 
-class Hdv extends Building {
+export default class Hdv extends Building {
   constructor(x, y){    
     super(x, y);
     this.lvl = 1;
@@ -17,7 +17,7 @@ class Hdv extends Building {
   }
   
   draw(){
-    return {super.draw()}
+    return {..super(), url: "url"}
   }
   
   getHp(){
