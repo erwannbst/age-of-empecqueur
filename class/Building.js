@@ -19,11 +19,11 @@ class Building {
   getCoordinates(){
     return {x: this.x, y: this.y}
   }
-/*
+
   draw(){
-    return {..getCoordinates(), url: "url"}
+    return {...this.getCoordinates(), image: "url"}
   }
-  */
+  
   getHp(){
     return this.hp;
   }
