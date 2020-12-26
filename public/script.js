@@ -190,9 +190,10 @@ function draw() {
   }
   players.forEach(player => {
     map[player].forEach(batiment => {
-      console.log("ctx.draw " + JSON.stringify(batiment))
+      let img = new Image();
+      img.src = batiment.image
       ctx.drawImage(
-        {src: batiment.image},
+        img,
         batiment.x,
         batiment.y,
         batiment.width,
