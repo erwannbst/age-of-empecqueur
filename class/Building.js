@@ -3,6 +3,10 @@ class Building {
     this.x = x,
     this.y = y
   }
+  
+  draw(){
+    return({x: this.x, y: this.y});
+  }
 }
 
 class Hdv extends Building {
@@ -13,7 +17,7 @@ class Hdv extends Building {
   }
   
   draw(){
-    return "urlHdv";
+    return {super.draw()}
   }
   
   getHp(){

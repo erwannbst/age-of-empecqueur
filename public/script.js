@@ -288,11 +288,11 @@ function AddClosedMap(nomBat, batX, batY) {
 }
 
 function drawBatiment(data) {
-  // data:{nom: "nomDuBatiment", x: 0, y: 0, playerId: "wkfefkefe"}
+  // data:{nom: "nomDuBatiment", x: 0, y: 0, owner: "wkfefkefe"}
   //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
   console.log("drawing batiment " + JSON.stringify(data));
   var batBuffer = new Batiment(data.nom, data.x, data.y);
-  map[data.playerId].push(batBuffer);
+  map[data.owner].push(batBuffer);
   AddClosedMap(data.nom, data.x, data.y);
 }
 
