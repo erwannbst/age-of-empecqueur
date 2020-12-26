@@ -291,9 +291,15 @@ function AddClosedMap(nomBat, batX, batY) {
 }
 
 function drawHpBar(x, y, hp, hpMax){
-  let width = 20;
+  let width = 40;
   ctx.beginPath();
-  ctx.rect(x-width/2, y, width*(hp/100), 10);
+  ctx.rect(x-width/2, y, width, 20);
+  ctx.fillStyle= "#DDD";
+  ctx.closePath();
+  ctx.fill();
+  
+  ctx.beginPath();
+  ctx.rect(x-width/2, y, width*(hp/100), 20);
   if(hp > 63){
       ctx.fillStyle="green"
   }else if(hp > 37){
@@ -303,9 +309,12 @@ function drawHpBar(x, y, hp, hpMax){
   }else{
     ctx.fillStyle="red";
   }
-  ctx.fillText(hp + '/' + hpMax, 15, 50 + width/2);
   ctx.closePath();
   ctx.fill();
+  
+  ctx.font = "bold 15px verdana, sans-serif ";
+  ctx.fillStyle = "#FFF";
+  ctx.fillText(hp + '/' + hpMax, x, y + width/2);
 }
 
 function drawBatiment(data) {
