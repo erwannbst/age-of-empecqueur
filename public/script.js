@@ -188,11 +188,11 @@ canvas.addEventListener(
   false
 );
 
-let bouton1Menu = document
-document.getElementById("nom_bat").addEventListener("click", event => {
+// Bouton menu batiment
+let bouton1Menu = document.getElementById("button1")
+bouton1Menu.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
-  switch()
-  socket.emit("join game", { username, room });
+  socket.emit("create batiment", {nom: "soldier"});
 });
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//

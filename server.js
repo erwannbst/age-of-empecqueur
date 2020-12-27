@@ -127,8 +127,8 @@ io.on('connection', function (socket) {
       case "extracteur":
          batiment = new Extracteur(data.x, data.y);
         break;
-      case "personnage":
-         batiment = new Personnage(data.x, data.y);
+      case "soldier":
+         batiment = new Personnage(50, 50);
          batiment.cibler(maps[playerId][0])
         break;
     }
