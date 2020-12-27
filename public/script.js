@@ -197,15 +197,16 @@ canvas.addEventListener(
             document.getElementById("lvl_bat").innerHTML =
               batiment.nom + " de niveau " + batiment.lvl;
             document.getElementById("lvlUpPrice_bat").innerHTML =
-              "Il vous faudra " +
+              "Il vous faudra pièces d'or " +
               batiment.lvlUpPrice +
               " pour ameliorer votre " +
               batiment.nom;
             document.getElementById("hp_bat").innerHTML = batiment.hp;
+            document.getElementById("button1").innerHTML = "Ajout de soldat";
           }
         });
 
-        document.getElementById("button1").innerHTML = "ajoutsoldat";
+        
       } else {
         menu_bat.style.display = "none";
       }
