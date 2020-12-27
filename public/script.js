@@ -3,6 +3,7 @@
 // run by the browser each time the page is loaded
 
 // INIT
+document.getElementById("menu_bat").style.display = "none";
 const loginForm = document.querySelector("form");
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
@@ -182,10 +183,15 @@ canvas.addEventListener(
           batClick = closedMap[n].name;
         }
       }
+      
+    //evénement suite a un clic sur le batiment 
+      
       if (batClick) {
         menu_bat.style.display = "block";
         //menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;
         document.getElementById("nom_bat").innerHTML = batClick;
+        
+        
         document.getElementById("button1").innerHTML = "ajoutsoldat";
       } else {
         menu_bat.style.display = "none";
