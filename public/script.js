@@ -193,9 +193,8 @@ canvas.addEventListener(
         //menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;
         map[_playerId].forEach(batiment => {
           if (batiment.nom == batClick) {
-            let background = new Image();
-            background.src = batiment.image;
-            document.getElementById("menu_bat").style.backgroundImage = background;
+            document.getElementById("menu_bat").style.backgroundImage = "url(" + batiment.image + ")";
+            document.getElementById("form_bat").style.opacity = 0.7;
             document.getElementById("nom_bat").innerHTML = batiment.nom;
             document.getElementById("lvl_bat").innerHTML =
               batiment.nom + " de niveau " + batiment.lvl;
