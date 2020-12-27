@@ -178,7 +178,7 @@ canvas.addEventListener(
       if (batClick) {
         menu_bat.style.display = "block";
         menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;
-        document.getElementById("button1").value = "ajout soldat";
+        document.getElementById("button1").nam = "ajoutsoldat";
       } else {
         menu_bat.style.display = "none";
       }
