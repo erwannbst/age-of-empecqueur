@@ -19,6 +19,7 @@ class Personnage extends Building {
   }
   
   cibler(building){
+    console.log("cibler " + building)
     let distance = Math.sqrt(Math.pow(building._x - this.x, 2) + Math.pow(building._y - this.y, 2)) //distance qui sépare le personnage de sa cible
     while(distance > this._range && this._hp > 0){
       this.move(building._x, building._y);

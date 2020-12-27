@@ -129,10 +129,13 @@ io.on('connection', function (socket) {
         break;
       case "soldier":
          batiment = new Personnage(50, 50);
+        let cible = 
+        console.log("maps[playerId]" + JSON.stringify(maps[playerId]))
          batiment.cibler(maps[playerId][0])
         break;
     }
     maps[playerId].push(batiment);
+    console.log("maps[playerId]" + JSON.stringify(maps[playerId]))
     io.to(room).emit('draw batiment', {...batiment.draw(), owner: playerId});
   });
 
