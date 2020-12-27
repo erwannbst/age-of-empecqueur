@@ -207,8 +207,8 @@ function draw() {
         batiment.width,
         batiment.height
       );
-      if(batiment)
-      drawHpBar(batiment.x + batiment.width / 2, batiment.y + 10 + batiment.height, batiment.hp, batiment.hpMax)
+      if(batiment.nom != "murH" && batiment.nom != "murV")
+        drawHpBar(batiment.x + batiment.width / 2, batiment.y + 10 + batiment.height, batiment.hp, batiment.hpMax)
     })
   })
   /*
@@ -228,7 +228,7 @@ function draw() {
   }*/
   requestAnimationFrame(draw);
 }
-
+/*
 function drawBatimentonMap(nomBat, coordX, coordY, hp, hpMax) {
   ctx.drawImage(
         RenduBatiments[nomBat].image,
@@ -238,7 +238,7 @@ function drawBatimentonMap(nomBat, coordX, coordY, hp, hpMax) {
         RenduBatiments[nomBat].height
       );
   drawHpBar(coordX + RenduBatiments[nomBat].width / 2, coordY + 10 + RenduBatiments[nomBat].height, hp, hpMax)
-}
+}*/
 
 function AddClosedMap(nomBat, batX, batY) {
   console.log("function AddClosedMap called" + nomBat);

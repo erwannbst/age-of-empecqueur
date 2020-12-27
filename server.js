@@ -4,6 +4,7 @@ import * as gameValues from './gameValues.js';
 import Hdv from './Class/Hdv.js';
 import MurH from './Class/MurH.js';
 import MurV from './Class/MurV.js';
+import Caserne from './Class/Caserne.js';
 import express from 'express';
 import http from 'http';
 import {Server} from 'socket.io';
@@ -109,6 +110,9 @@ io.on('connection', function (socket) {
         break;
       case "murH":
          batiment = new MurH(data.x, data.y);
+        break;
+      case "caserne":
+         batiment = new Caserne(data.x, data.y);
         break;
     }
     maps[playerId].push(batiment);
