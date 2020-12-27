@@ -193,6 +193,9 @@ canvas.addEventListener(
         //menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;
         map[_playerId].forEach(batiment => {
           if (batiment.nom == batClick) {
+            let background = new Image();
+            background.src = batiment.image;
+            document.getElementById("menu_bat").style.backgroundImage = background;
             document.getElementById("nom_bat").innerHTML = batiment.nom;
             document.getElementById("lvl_bat").innerHTML =
               batiment.nom + " de niveau " + batiment.lvl;
@@ -201,8 +204,10 @@ canvas.addEventListener(
               batiment.lvlUpPrice +
               " pour ameliorer votre " +
               batiment.nom;
-            document.getElementById("hp_bat").innerHTML = batiment.hp;
+            document.getElementById("hp_bat").value = batiment.hp;
+            document.getElementById("hp_bat").max = batiment.hpMax;
             document.getElementById("button1").innerHTML = "Ajout de soldat";
+            
           }
         });
 

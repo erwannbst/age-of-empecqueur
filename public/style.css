@@ -18,6 +18,15 @@ h1 {
   color: black;
 }
 
+label {
+    padding-right: 10px;
+    font-size: 1rem;
+}
+progress {
+  height : 30px;
+  width : 100%;
+}
+
 form {
   margin: 1em;
   border-radius: 30px;
