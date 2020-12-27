@@ -178,7 +178,7 @@ canvas.addEventListener(
       if (batClick) {
         menu_bat.style.display = "block";
         menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;
-        
+        document.getElementById("button1").value = "ajout soldat";
       } else {
         menu_bat.style.display = "none";
       }
@@ -223,34 +223,8 @@ function draw() {
         );
     });
   });
-  /*
-  for (var i = 0; i < players.length; i++) {
-    // pour chaque joueur
-    let mapDuJoueur = map[players[i]];
-    for (var j = 0; j < mapDuJoueur.length; j++) {
-      // pour chaque batiment
-      drawBatimentonMap(
-        mapDuJoueur[j].nom,
-        mapDuJoueur[j].coordX,
-        mapDuJoueur[j].coordY,
-        mapDuJoueur[j].hp,
-        mapDuJoueur[j].hpMax,
-      );
-    }
-  }*/
   requestAnimationFrame(draw);
 }
-/*
-function drawBatimentonMap(nomBat, coordX, coordY, hp, hpMax) {
-  ctx.drawImage(
-        RenduBatiments[nomBat].image,
-        coordX,
-        coordY,
-        RenduBatiments[nomBat].width,
-        RenduBatiments[nomBat].height
-      );
-  drawHpBar(coordX + RenduBatiments[nomBat].width / 2, coordY + 10 + RenduBatiments[nomBat].height, hp, hpMax)
-}*/
 
 function AddClosedMap(nomBat, batX, batY) {
   console.log("function AddClosedMap called" + nomBat);
