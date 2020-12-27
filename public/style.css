@@ -30,7 +30,7 @@ progress {
 form {
   margin-top: 1em;
   margin-bottom: 1em;
-  border-radius: 30px;
+  border-radius: 5px;
   background-color: #eee;
   display: grid;
   grid-gap: 1em;
