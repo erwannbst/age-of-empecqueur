@@ -30,7 +30,7 @@ class Personnage extends Building {
         clearInterval(id);
       }
     }
-    let id = setInterval(frame, 100);
+    let id = setInterval(frame, 50);
   }
   
   attaque(building){
@@ -41,10 +41,13 @@ class Personnage extends Building {
   move(toX, toY){
     console.log("Personnage::move")
     let coord = super.getCoordinates();
+    let xDist = Math.abs(coord.x - toX);
+    let yDist = Math.abs(coord.y - toY);
+    let distRatio = xDist/yDist;
     if(Math.abs(coord.x - toX) > this._range){
-      coord.x < toX ? this._x+=this._ms : this._x-=this._ms;
+      coord.x < toX ? this._x+=distRatio*this._ms : this._x-=distRatio*this._ms;
     }if(Math.abs(coord.y - toY) > this._range){
-      coord.y < toY ? this._y+=this._ms : this._y-=this._ms;
+      coord.y < toY ? this._y+=(1/distRatio)*this._ms : this._y-=(1/distRatio)*this._ms;
     }
   }
 }
