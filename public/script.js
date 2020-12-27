@@ -13,7 +13,7 @@ var playerX = 0;
 var playerY = 0;
 var connected = false;
 var username = "";
-var _playerId ="";
+var _playerId = "";
 
 var img = new Image();
 var hdvImg = new Image();
@@ -39,7 +39,8 @@ extracteurImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fbanque.png?1607819328536";
 portugaisImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcabane.png?1607820151355";
-soldierImg.src = "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2FIOP.png?v=1608813171788";
+soldierImg.src =
+  "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2FIOP.png?v=1608813171788";
 
 var RenduBatiments = {
   murH: {
@@ -81,7 +82,7 @@ var RenduBatiments = {
     image: soldierImg,
     height: 80,
     width: 80
-  },
+  }
 };
 
 var players = [];
@@ -184,16 +185,26 @@ canvas.addEventListener(
           batClick = closedMap[n].name;
         }
       }
-      
-    //evénement suite a un clic sur le batiment 
-      
+
+      //evénement suite a un clic sur le batiment
+
       if (batClick) {
         menu_bat.style.display = "block";
         //menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;
         map[_playerId].forEach(batiment => {
-          if(batiment.nom == batClick)document.getElementById("nom_bat").innerHTML = batiment.nom;
+          if (batiment.nom == batClick) {
+            document.getElementById("nom_bat").innerHTML = batiment.nom;
+            document.getElementById("lvl_bat").innerHTML =
+              batiment.nom + " de niveau " + batiment.lvl;
+            document.getElementById("lvlUpPrice_bat").innerHTML =
+              "Il vous faudra " +
+              batiment.lvlUpPrice +
+              " pour ameliorer votre " +
+              batiment.nom;
+            document.getElementById("hp_bat").innerHTML = batiment.hp;
+          }
         });
-        
+
         document.getElementById("button1").innerHTML = "ajoutsoldat";
       } else {
         menu_bat.style.display = "none";
@@ -204,10 +215,10 @@ canvas.addEventListener(
 );
 
 // Bouton menu batiment
-let bouton1Menu = document.getElementById("button1")
+let bouton1Menu = document.getElementById("button1");
 bouton1Menu.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
-  socket.emit("create batiment", {nom: "soldier"});
+  socket.emit("create batiment", { nom: "soldier" });
 });
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
@@ -374,8 +385,9 @@ socket.on("draw batiment", function(data) {
   drawBatiment(data);
 });
 
-socket.on("item updated", function(data) { //data : {...drawData, owner: playerId}
-  console.log(data)
+socket.on("item updated", function(data) {
+  //data : {...drawData, owner: playerId}
+  console.log(data);
 });
 
 socket.on("ping", function(data) {
