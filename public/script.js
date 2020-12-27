@@ -20,7 +20,7 @@ var extracteurImg = new Image();
 var portugaisImg = new Image();
 var murVImg = new Image();
 var murHImg = new Image();
-/*
+
 murVImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur.png?1607874941836";
 murHImg.src =
@@ -35,7 +35,13 @@ extracteurImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fbanque.png?1607819328536";
 portugaisImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcabane.png?1607820151355";
-*/
+var imageBatiment = {
+  murV: "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur.png?1607874941836",
+  murH: "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur_horizontal.png?1607872442410",
+  hdv: "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fhdv_dfous.png?1607876427163",
+  
+}
+
 var RenduBatiments = {
   murH: {
     image: murHImg,
@@ -184,6 +190,15 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (batSelect != null) {
     drawBatimentonMap(batSelect, playerX, playerY);
+    let img = new Image();
+    img.src = batSelect.image
+    ctx.drawImage(
+        img,
+        batiment.x,
+        batiment.y,
+        batiment.width,
+        batiment.height
+      );
     
     //ctx.fillRect(playerX, playerY, RenduBatiments[batSelect].width, RenduBatiments[batSelect].height);
     //ctx.fillStyle = "rgba(255,0,0,0.5)";

@@ -2,6 +2,8 @@
 // Setup basic express server
 import * as gameValues from './gameValues.js';
 import Hdv from './Class/Hdv.js';
+import MurH from './Class/MurH.js';
+import MurV from './Class/MurV.js';
 import express from 'express';
 import http from 'http';
 import {Server} from 'socket.io';
@@ -97,11 +99,20 @@ io.on('connection', function (socket) {
   socket.on('create batiment', function(data) { // data:{nom: "nomDuBatiment", x: 0, y: 0}
     let playerId = socket.id;
     let room = players[playerId].roomId;
-    let hdv = new Hdv(data.x, data.y);
-    maps[playerId].push(hdv);
-    console.log(JSON.stringify(data));
-    console.log(hdv.getHp());
-    io.to(room).emit('draw batiment', {...hdv.draw(), owner: playerId});
+    let batiment;
+    switch(data.nom){
+      case "hdv":
+         batiment = new Hdv(data.x, data.y);
+        break;
+      case "murV":
+         batiment = new MurV(data.x, data.y);
+        break;
+      case "murH":
+         batiment = new MurH(data.x, data.y);
+        break;
+    }
+    maps[playerId].push(batiment);
+    io.to(room).emit('draw batiment', {...batiment.draw(), owner: playerId});
   });
 
 });

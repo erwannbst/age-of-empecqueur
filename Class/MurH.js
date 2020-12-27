@@ -2,7 +2,7 @@ import Mur from "./Mur.js";
 
 class MurH extends Mur {
   constructor(x, y) {
-    super(x, y, 300); // x, y, hp
+    super(x, y, 110, 30); // x, y, hp
   }
 
   draw() {

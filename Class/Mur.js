@@ -1,8 +1,8 @@
 import Building from "./Building.js";
 
 class Mur extends Building {
-  constructor(x, y) {
-    super(x, y, 300); // x, y, hp
+  constructor(x, y, width, height) {
+    super(x, y, width, height, 300); // x, y, hp
   }
 
   draw() {
