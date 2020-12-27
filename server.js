@@ -140,6 +140,7 @@ io.on('connection', function (socket) {
 });
 
 function itemUpdated(room, drawData, playerId){
+  console.log("item updated");
   io.to(room).emit('item updated', {...drawData, owner: playerId});
 }
 

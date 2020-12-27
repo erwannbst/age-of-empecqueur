@@ -1,7 +1,7 @@
 import Building from "./Building.js";
 
 class Personnage extends Building {
-  constructor(x, y, damage, ms, range, hp, callbackUpdated) {
+  constructor(x, y, damage, ms, range, hp) {
     super(x, y, 50, 50, hp); // x, y, width, height, hp
     this._damage = damage;
     this._ms = ms;
@@ -28,10 +28,10 @@ class Personnage extends Building {
   
   attaque(building){
     building.lowerHp(this._damage);
-    this.callbackUpdated(this.draw());
   }
   
   move(toX, toY){
+    console.log("Personnage::move")
     var pos = toX;
     var pos2 = toY;
     var id = setInterval(frame, 20);
@@ -49,7 +49,6 @@ class Personnage extends Building {
         this._x = pos2;
         this._y = pos;
       }
-      this.callbackUpdated(this.draw());
     }
   }
 }

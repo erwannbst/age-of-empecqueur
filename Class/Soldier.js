@@ -2,7 +2,8 @@ import Personnage from "./Personnage.js";
 
 class Soldier extends Personnage {
   constructor(x, y, callbackUpdated) {
-    super(x, y, 10, 20, 4, 50, (drawData) => callbackUpdated(drawData)); // x, y, damage, ms, range, hp, callbackUpdated
+    super(x, y, 10, 20, 4, 50); // x, y, damage, ms, range, hp
+    this.callbackUpdated = callbackUpdated;
   }
 
   draw() {
@@ -13,6 +14,11 @@ class Soldier extends Personnage {
       hpMax: 40 + 10*this._lvl,
       lvlUpPrice: 200 + 100*this._lvl,
     };
+  }
+  
+  move(x, y){
+    super.move(x, y);
+    this.callbackUpdated(this.draw())
   }
 }
 

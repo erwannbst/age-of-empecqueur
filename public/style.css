@@ -28,13 +28,14 @@ progress {
 }
 
 form {
-  margin: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
   border-radius: 30px;
   background-color: #eee;
   display: grid;
   grid-gap: 1em;
   padding: 1em;
-  width: 280px;
+  width: 100%;
 }
 
 input {
