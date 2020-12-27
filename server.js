@@ -128,19 +128,20 @@ io.on('connection', function (socket) {
          batiment = new Extracteur(data.x, data.y);
         break;
       case "soldier":
-         batiment = new Soldier(50, 50);
+         batiment = new Soldier(50, 50, (drawData) => itemUpdated(room, drawData, playerId));
          let cible = maps[playerId][0]
          batiment.cibler(cible)
-         setInterval(frame, 20);
         break;
     }
-    maps[playerId].push(new Hdv(data.x, data.y));
+    maps[playerId].push(batiment);
     io.to(room).emit('draw batiment', {...batiment.draw(), owner: playerId});
   });
 
 });
 
-function item
+function itemUpdated(room, drawData, playerId){
+  io.to(room).emit('item updated', {...drawData, owner: playerId});
+}
 
 function makeid() {
    var result           = '';

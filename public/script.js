@@ -365,6 +365,10 @@ socket.on("draw batiment", function(data) {
   drawBatiment(data);
 });
 
+socket.on("item updated", function(data) { //data : {...drawData, owner: playerId}
+  console.log(data)
+});
+
 socket.on("ping", function(data) {
   console.log("ping");
 });

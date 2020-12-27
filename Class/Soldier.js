@@ -1,8 +1,8 @@
 import Personnage from "./Personnage.js";
 
 class Soldier extends Personnage {
-  constructor(x, y) {
-    super(x, y, 10, 20, 4, 50); // x, y, damage, ms, range, hp
+  constructor(x, y, callbackUpdated) {
+    super(x, y, 10, 20, 4, 50, (drawData) => callbackUpdated(drawData)); // x, y, damage, ms, range, hp, callbackUpdated
   }
 
   draw() {
