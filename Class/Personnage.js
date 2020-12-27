@@ -16,14 +16,21 @@ class Personnage extends Building {
   }
   
   cibler(building){
-    let distance = Math.sqrt(Math.pow(building._x - this.x, 2) + Math.pow(building._y - this.y, 2)) //distance qui sépare le personnage de sa cible
-    console.log("cibler " + building + " à " + distance)
-    while(distance > this._range && this._hp > 0){
-      this.move(building._x, building._y);
+    let coord = super.getCoordinates();
+    function frame(){
+      let distance = Math.sqrt(Math.pow(building._x - coord.x, 2) + Math.pow(building._y - coord.y, 2)) //distance qui sépare le personnage de sa cible
+      console.log("cibler " + building + " à " + distance)
+      console.log(coord.x)
+      console.log(distance)
+      if(distance > this._range && this._hp > 0){
+        this.move(building._x, building._y);
+      }else if(building.getHp() > 0 && this._hp > 0){
+        this.attaque(building);
+      }else{
+        clearInterval(id);
+      }
     }
-    while(building.getHp() > 0 && this._hp > 0){
-      this.attaque(building);
-    }
+    let id = setInterval(frame, 20);
   }
   
   attaque(building){
@@ -35,22 +42,14 @@ class Personnage extends Building {
     console.log("Personnage::move")
     var pos = toX;
     var pos2 = toY;
-    var id = setInterval(frame, 20);
-    
-    function frame() {
-      if (pos == toY-50 && pos2 == toX-50) {
-        clearInterval(id);
-      } else {
-        if((pos2)!=toY-50){
-        pos2++;
-        }
-        if((pos)!=toX-50){
-        pos++;
-        }
-        this._x = pos2;
-        this._y = pos;
+      if((pos2)!=toY-50){
+      pos2++;
       }
-    }
+      if((pos)!=toX-50){
+      pos++;
+      }
+      this._x = pos2;
+      this._y = pos;
   }
 }
 
