@@ -139,6 +139,7 @@ function keyDownHandler(e) {}
 canvas.addEventListener(
   "click",
   function(event) {
+    var menu_bat = document.getElementById("menu_bat")
     var autorisation = true;
     if (batSelect != null) {
       //devra etre supprimé après test
@@ -174,8 +175,14 @@ canvas.addEventListener(
           batClick = closedMap[n].name;
         }
       }
-      document.getElementById("menu_bat").innerHTML =
-        "le bat sur lequel tu a cliqué est " + batClick;
+      if (batClick) {
+        menu_bat.style.display = "block";
+        menu_bat.innerHTML =
+          "le bat sur lequel tu a cliqué est " + batClick;
+      }
+      else{
+        menu_bat.style.display = "none";
+      }
     }
   },
   false
