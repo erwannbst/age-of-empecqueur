@@ -1,4 +1,4 @@
-class Building {  
+class Building {
   constructor(x, y, width, height, hp){    
     this._x = x;
     this._y = y;
