@@ -188,10 +188,10 @@ canvas.addEventListener(
   false
 );
 
+let bouton1Menu = document
 document.getElementById("nom_bat").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
-  let username = loginForm.elements.username.value;
-  let room = loginForm.elements.gameCode.value;
+  switch()
   socket.emit("join game", { username, room });
 });
 
