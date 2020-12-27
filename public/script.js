@@ -37,7 +37,6 @@ extracteurImg.src =
 portugaisImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcabane.png?1607820151355";
 
-
 var RenduBatiments = {
   murH: {
     image: murHImg,
@@ -96,8 +95,8 @@ map : {
     }
 */
 var closedMap = [];
-var buffer = new item(0,0);
-closedMap.push(buffer)
+var buffer = new item(0, 0);
+closedMap.push(buffer);
 
 function item(x, y, name) {
   this.name = name;
@@ -147,37 +146,36 @@ canvas.addEventListener(
       var hauteur = RenduBatiments[batSelect].width;
       var largeur = RenduBatiments[batSelect].height;
       for (var n = 0; n < closedMap.length; n++) {
-      for (
-        var batwidth = 0;
-        batwidth < hauteur;
-        batwidth++
-      ) {
-        for (
-          var batheight = 0;
-          batheight < largeur;
-          batheight++
-        ) {
-          if (
-            closedMap[n].x == playerX + batwidth &&
-            closedMap[n].y == playerY + batheight
-          ) {
-            autorisation = false;
+        for (var batwidth = 0; batwidth < hauteur; batwidth++) {
+          for (var batheight = 0; batheight < largeur; batheight++) {
+            if (
+              closedMap[n].x == playerX + batwidth &&
+              closedMap[n].y == playerY + batheight
+            ) {
+              autorisation = false;
+            }
           }
         }
       }
-    }
       //
-      if(autorisation == false){
+      if (autorisation == false) {
         document.getElementById("output").innerHTML =
-    "Vous ne pouvez pas placer un batiment ici";
+          "Vous ne pouvez pas placer un batiment ici";
       }
-      if(autorisation == true){
-      
-      createBatiment({ nom: batSelect, x: playerX, y: playerY });
-      console.log(map);
-      batSelect = null;
+      if (autorisation == true) {
+        createBatiment({ nom: batSelect, x: playerX, y: playerY });
+        console.log(map);
+        batSelect = null;
       }
-      
+    } else {
+      var batClick;
+      for (var n = 0; n < closedMap.length; n++) {
+        if (closedMap[n].x == playerX && closedMap[n].y == playerY) {
+          batClick = closedMap[n].name;
+        }
+      }
+      document.getElementById("menu_bat").innerHTML =
+        "le bat sur lequel tu a cliqué est " + batClick;
     }
   },
   false
@@ -189,20 +187,20 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (batSelect != null) {
     ctx.drawImage(
-        RenduBatiments[batSelect].image,
-        playerX,
-        playerY,
-        RenduBatiments[batSelect].width,
-        RenduBatiments[batSelect].height,
-      );
-    
+      RenduBatiments[batSelect].image,
+      playerX,
+      playerY,
+      RenduBatiments[batSelect].width,
+      RenduBatiments[batSelect].height
+    );
+
     //ctx.fillRect(playerX, playerY, RenduBatiments[batSelect].width, RenduBatiments[batSelect].height);
     //ctx.fillStyle = "rgba(255,0,0,0.5)";
   }
   players.forEach(player => {
     map[player].forEach(batiment => {
       let img = new Image();
-      img.src = batiment.image
+      img.src = batiment.image;
       ctx.drawImage(
         img,
         batiment.x,
@@ -210,10 +208,15 @@ function draw() {
         batiment.width,
         batiment.height
       );
-      if(batiment.nom != "murH" && batiment.nom != "murV")
-        drawHpBar(batiment.x + batiment.width / 2, batiment.y + 10 + batiment.height, batiment.hp, batiment.hpMax)
-    })
-  })
+      if (batiment.nom != "murH" && batiment.nom != "murV")
+        drawHpBar(
+          batiment.x + batiment.width / 2,
+          batiment.y + 10 + batiment.height,
+          batiment.hp,
+          batiment.hpMax
+        );
+    });
+  });
   /*
   for (var i = 0; i < players.length; i++) {
     // pour chaque joueur
@@ -255,33 +258,37 @@ function AddClosedMap(nomBat, batX, batY) {
   }
 }
 
-function drawHpBar(x, y, hp, hpMax){
-    let height = 20;
-    let width = 120;
-    ctx.beginPath();
-    ctx.rect(x-width/2, y, width, height);
-    ctx.fillStyle= "#AAA";
-    ctx.closePath();
-    ctx.fill();
+function drawHpBar(x, y, hp, hpMax) {
+  let height = 20;
+  let width = 120;
+  ctx.beginPath();
+  ctx.rect(x - width / 2, y, width, height);
+  ctx.fillStyle = "#AAA";
+  ctx.closePath();
+  ctx.fill();
 
-    ctx.beginPath();
-    ctx.rect(x-width/2, y, width*(hp/hpMax), height);
-    if(hp > 63){
-        ctx.fillStyle="green"
-    }else if(hp > 37){
-        ctx.fillStyle="gold"
-    }else if(hp > 13){
-      ctx.fillStyle="orange";
-    }else{
-      ctx.fillStyle="red";
-    }
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.font = "bold 15px verdana, sans-serif ";
-    ctx.fillStyle = "#FFF";
-    ctx.fillText(hp + '/' + hpMax, x - ctx.measureText(hp + '/' + hpMax).width / 2, y + ctx.measureText(hp + '/' + hpMax).fontBoundingBoxAscent);
+  ctx.beginPath();
+  ctx.rect(x - width / 2, y, width * (hp / hpMax), height);
+  if (hp > 63) {
+    ctx.fillStyle = "green";
+  } else if (hp > 37) {
+    ctx.fillStyle = "gold";
+  } else if (hp > 13) {
+    ctx.fillStyle = "orange";
+  } else {
+    ctx.fillStyle = "red";
   }
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.font = "bold 15px verdana, sans-serif ";
+  ctx.fillStyle = "#FFF";
+  ctx.fillText(
+    hp + "/" + hpMax,
+    x - ctx.measureText(hp + "/" + hpMax).width / 2,
+    y + ctx.measureText(hp + "/" + hpMax).fontBoundingBoxAscent
+  );
+}
 
 function drawBatiment(data) {
   // data:{nom: "nomDuBatiment", x: 0, y: 0, owner: "wkfefkefe"}
@@ -303,7 +310,7 @@ function gotConnected(data) {
   connected = true;
   username = data.username;
   map[socket.id] = [];
-  console.log("gotConnected" + JSON.stringify(data))
+  console.log("gotConnected" + JSON.stringify(data));
   players.push(socket.id);
   document.getElementById("status").innerHTML =
     "Connected as " + username + "#" + data.room;
@@ -493,5 +500,6 @@ fetch("/map")
 */
 
 //AUTOCONNECT
-document.getElementById("connexion").firstElementChild.firstElementChild.value = "Joueur 1"
+document.getElementById("connexion").firstElementChild.firstElementChild.value =
+  "Joueur 1";
 //document.getElementById("buttonCreate").click()
