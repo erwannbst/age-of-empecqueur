@@ -72,7 +72,12 @@ var RenduBatiments = {
     image: extracteurImg,
     height: 80,
     width: 80
-  }
+  },
+  soldier: {
+    image: caserneImg,
+    height: 80,
+    width: 80
+  },
 };
 
 var players = [];

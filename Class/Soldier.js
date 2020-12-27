@@ -1,18 +1,19 @@
 import Building from "./Building.js";
 
 class Personnage extends Building {
-  constructor(x, y, damage, ms, range, hp) {
-    super(x, y, 50, 50, hp); // x, y, width, height, hp
-    this._damage = damage;
-    this._ms = ms;
-    this._range = range;
+  constructor(x, y) {
+    super(x, y, 50, 50, 50); // x, y, hp
+    this._damage = 15;
+    this._ms = 20;
+    this._range = 4;
   }
 
   draw() {
     return {
       ...super.draw(),
       image: "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcasernedofus.png?1607815040102",
-      damage: this._damage,
+      hpMax: 40 + 10*this._lvl,
+      lvlUpPrice: 200 + 100*this._lvl,
     };
   }
   

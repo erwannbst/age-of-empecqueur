@@ -66,7 +66,7 @@ io.on('connection', function (socket) {
       socket.join(room);
       players[playerId] = {roomId: room, username, gold: gameValues.INITIAL_GOLD_AMOUNT};
       games[room] = {players: [playerId]};
-      maps[playerId] = ["hdv", 10, 10];
+      maps[playerId] = [];
       socket.emit('connected', {username, room});
     }
   });
@@ -80,7 +80,7 @@ io.on('connection', function (socket) {
       socket.join(room);
       players[playerId] = newPlayer;
       games[room].players.push(playerId);
-      maps[playerId] = ["hdv", 200, 10];
+      maps[playerId] = [];
       io.to(games[room].players[0]).emit('user joined', {playerId, username}); //Préviens le premier joueur créateur de la game qu'un autre s'est connecté
       socket.emit('connected', {username, room, otherPlayer: {playerId: games[room].players[0], ...players[games[room].players[0]]}});
       setInterval(() => incrementGold(room), gameValues.INTERVAL_GOLD_INCREMENT);
@@ -129,13 +129,14 @@ io.on('connection', function (socket) {
         break;
       case "soldier":
          batiment = new Personnage(50, 50);
-        let cible = 
-        console.log("maps[playerId]" + JSON.stringify(maps[playerId]))
-         batiment.cibler(maps[playerId][0])
+        let cible = maps[playerId][0]
+        console.log("cible : "); console.log(cible);
+         batiment.cibler(cible)
         break;
     }
-    maps[playerId].push(batiment);
-    console.log("maps[playerId]" + JSON.stringify(maps[playerId]))
+    console.log("maps[playerId]"); console.log(maps[playerId]);
+    maps[playerId].push(new Hdv(data.x, data.y));
+    console.log("maps[playerId]"); console.log(maps[playerId]);
     io.to(room).emit('draw batiment', {...batiment.draw(), owner: playerId});
   });
 
