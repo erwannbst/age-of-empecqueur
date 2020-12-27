@@ -4,6 +4,8 @@ class Personnage extends Building {
   constructor(x, y) {
     super(x, y, 50, 50, 50); // x, y, hp
     this._damage = 15;
+    this._ms = 20;
+    this._range = 4;
   }
 
   draw() {
@@ -14,6 +16,13 @@ class Personnage extends Building {
       lvlUpPrice: 200 + 100*this._lvl,
       damage: this._damage,
     };
+  }
+  
+  cibler(building){
+    let distance = Math.sqrt(Math.pow())
+    while(building._x){
+      this.move(building._x, building._y);
+    }
   }
   
   attaque(building){
