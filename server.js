@@ -67,7 +67,7 @@ io.on('connection', function (socket) {
       players[playerId] = {roomId: room, username, gold: gameValues.INITIAL_GOLD_AMOUNT};
       games[room] = {players: [playerId]};
       maps[playerId] = [];
-      socket.emit('connected', {username, room});
+      socket.emit('connected', {username, room, playerId});
     }
   });
   

@@ -13,6 +13,7 @@ var playerX = 0;
 var playerY = 0;
 var connected = false;
 var username = "";
+var _playerId ="";
 
 var img = new Image();
 var hdvImg = new Image();
@@ -189,7 +190,8 @@ canvas.addEventListener(
       if (batClick) {
         menu_bat.style.display = "block";
         //menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;
-        document.getElementById("nom_bat").innerHTML = map[map.owner].nom;
+        
+        document.getElementById("nom_bat").innerHTML = map[_playerId].name;
         
         
         document.getElementById("button1").innerHTML = "ajoutsoldat";
@@ -307,7 +309,8 @@ function setGoldAmount(amount) {
 }
 
 function gotConnected(data) {
-  //data: {username, room}
+  //data: {username, room, playerId}
+  _playerId = data.playerId;
   connected = true;
   username = data.username;
   map[socket.id] = [];
