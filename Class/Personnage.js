@@ -19,9 +19,12 @@ class Personnage extends Building {
   }
   
   cibler(building){
-    let distance = Math.sqrt(Math.pow())
-    while(building._x){
+    let distance = Math.sqrt(Math.pow(building._x - this.x, 2) + Math.pow(building._y - this.y, 2))
+    while(distance > this._range && this._hp > 0){
       this.move(building._x, building._y);
+    }
+    while(building.getHp() > 0 && this._hp > 0){
+      this.attaque(building);
     }
   }
   

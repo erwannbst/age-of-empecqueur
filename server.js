@@ -8,6 +8,7 @@ import Caserne from './Class/Caserne.js';
 import Portugais from './Class/Portugais.js';
 import Trinquette from './Class/Trinquette.js';
 import Extracteur from './Class/Extracteur.js';
+import Personnage from './Class/Personnage.js';
 import express from 'express';
 import http from 'http';
 import {Server} from 'socket.io';
@@ -125,6 +126,10 @@ io.on('connection', function (socket) {
         break;
       case "extracteur":
          batiment = new Extracteur(data.x, data.y);
+        break;
+      case "personnage":
+         batiment = new Personnage(data.x, data.y);
+         batiment.cibler(maps[playerId][0])
         break;
     }
     maps[playerId].push(batiment);
