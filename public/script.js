@@ -21,6 +21,7 @@ var extracteurImg = new Image();
 var portugaisImg = new Image();
 var murVImg = new Image();
 var murHImg = new Image();
+var soldierImg = new Image();
 
 murVImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur.png?1607874941836";
@@ -36,6 +37,7 @@ extracteurImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fbanque.png?1607819328536";
 portugaisImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcabane.png?1607820151355";
+soldierImg.src = "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2FIOP.png?v=1608813171788";
 
 var RenduBatiments = {
   murH: {
@@ -74,7 +76,7 @@ var RenduBatiments = {
     width: 80
   },
   soldier: {
-    image: caserneImg,
+    image: soldierImg,
     height: 80,
     width: 80
   },

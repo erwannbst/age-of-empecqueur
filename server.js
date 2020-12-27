@@ -8,7 +8,7 @@ import Caserne from './Class/Caserne.js';
 import Portugais from './Class/Portugais.js';
 import Trinquette from './Class/Trinquette.js';
 import Extracteur from './Class/Extracteur.js';
-import Personnage from './Class/Personnage.js';
+import Soldier from './Class/Soldier.js';
 import express from 'express';
 import http from 'http';
 import {Server} from 'socket.io';
@@ -128,19 +128,19 @@ io.on('connection', function (socket) {
          batiment = new Extracteur(data.x, data.y);
         break;
       case "soldier":
-         batiment = new Personnage(50, 50);
-        let cible = maps[playerId][0]
-        console.log("cible : "); console.log(cible);
+         batiment = new Soldier(50, 50);
+         let cible = maps[playerId][0]
          batiment.cibler(cible)
+         setInterval(frame, 20);
         break;
     }
-    console.log("maps[playerId]"); console.log(maps[playerId]);
     maps[playerId].push(new Hdv(data.x, data.y));
-    console.log("maps[playerId]"); console.log(maps[playerId]);
     io.to(room).emit('draw batiment', {...batiment.draw(), owner: playerId});
   });
 
 });
+
+function item
 
 function makeid() {
    var result           = '';

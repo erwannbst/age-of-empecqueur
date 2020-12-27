@@ -11,7 +11,6 @@ class Personnage extends Building {
   draw() {
     return {
       ...super.draw(),
-      image: "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcasernedofus.png?1607815040102",
       damage: this._damage,
     };
   }
