@@ -99,7 +99,8 @@ var closedMap = [];
 var buffer = new item(0,0);
 closedMap.push(buffer)
 
-function item(x, y) {
+function item(x, y, name) {
+  this.name = name;
   this.x = x;
   this.y = y;
 }
@@ -171,10 +172,12 @@ canvas.addEventListener(
     "Vous ne pouvez pas placer un batiment ici";
       }
       if(autorisation == true){
+      
       createBatiment({ nom: batSelect, x: playerX, y: playerY });
       console.log(map);
       batSelect = null;
       }
+      
     }
   },
   false
@@ -246,7 +249,7 @@ function AddClosedMap(nomBat, batX, batY) {
     // pour chaque pixel horizontal
     for (var z = batY; z < batY + RenduBatiments[nomBat].height; z++) {
       // pour chaque pixel vertical
-      var batBuffer = new item(y, z);
+      var batBuffer = new item(y, z, nomBat);
       closedMap.push(batBuffer);
     }
   }
