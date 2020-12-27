@@ -188,6 +188,13 @@ canvas.addEventListener(
   false
 );
 
+document.getElementById("nom_bat").addEventListener("click", event => {
+  event.preventDefault(); // stop our form submission from refreshing the page
+  let username = loginForm.elements.username.value;
+  let room = loginForm.elements.gameCode.value;
+  socket.emit("join game", { username, room });
+});
+
 //-------------------------------------------------------DRAW------------------------------------------------------------//
 //déplacement de la souris
 function draw() {
