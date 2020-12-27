@@ -190,9 +190,9 @@ canvas.addEventListener(
       if (batClick) {
         menu_bat.style.display = "block";
         //menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;
-        
-        document.getElementById("nom_bat").innerHTML = map[_playerId].name;
-        
+        map[_playerId].forEach(batiment => {
+          if(batiment.nom == batClick)document.getElementById("nom_bat").innerHTML = batiment.nom;
+        });
         
         document.getElementById("button1").innerHTML = "ajoutsoldat";
       } else {
