@@ -16,8 +16,8 @@ class Personnage extends Building {
   }
   
   cibler(building){
-    let coord = super.getCoordinates();
     const frame = () => {
+      let coord = super.getCoordinates();
       let distance = Math.sqrt(Math.pow(building._x - coord.x, 2) + Math.pow(building._y - coord.y, 2)) //distance qui sépare le personnage de sa cible
       console.log("cibler " + building + " à " + distance)
       console.log(coord.x)
@@ -30,7 +30,7 @@ class Personnage extends Building {
         clearInterval(id);
       }
     }
-    let id = setInterval(frame, 500);
+    let id = setInterval(frame, 100);
   }
   
   attaque(building){
@@ -41,8 +41,10 @@ class Personnage extends Building {
   move(toX, toY){
     console.log("Personnage::move")
     let coord = super.getCoordinates();
-    if(Math.abs(coord.x - toX) < this._range){
-      if(coord.x)
+    if(Math.abs(coord.x - toX) > this._range){
+      coord.x < toX ? this._x+=this._ms : this._x-=this._ms;
+    }if(Math.abs(coord.y - toY) > this._range){
+      coord.y < toY ? this._y+=this._ms : this._y-=this._ms;
     }
   }
 }

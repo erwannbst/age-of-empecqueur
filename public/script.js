@@ -317,6 +317,10 @@ function drawBatiment(data) {
   AddClosedMap(data.nom, data.x, data.y);
 }
 
+function itemUpdated(item){
+  map[item.owner][1] = item;
+}
+
 //-------------------------------------------------------DRAW------------------------------------------------------------//
 
 function setGoldAmount(amount) {
@@ -392,7 +396,7 @@ socket.on("draw batiment", function(data) {
 
 socket.on("item updated", function(data) {
   //data : {...drawData, owner: playerId}
-  console.log(data);
+  itemUpdated(data);
 });
 
 socket.on("ping", function(data) {
