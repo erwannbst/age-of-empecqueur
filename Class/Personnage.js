@@ -33,7 +33,25 @@ class Personnage extends Building {
   }
   
   move(toX, toY){
+
+    var pos = toX;
+    var pos2 = toY;
+    var id = setInterval(frame, 20);
     
+    function frame() {
+      if (pos == toY-50 && pos2 == toX-50) {
+        clearInterval(id);
+      } else {
+        if((pos2)!=toY-50){
+        pos2++;
+        }
+        if((pos)!=toX-50){
+        pos++;
+        }
+        this._x = pos2;
+        this._y = pos;
+      }
+    }
   }
 }
 
