@@ -8,7 +8,7 @@ class MurH extends Mur {
   draw() {
     return {
       ...super.draw(),
-      nom: "murV",
+      nom: "murH",
       image: "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur_horizontal.png?1607872442410",
     };
   }
