@@ -189,6 +189,7 @@ canvas.addEventListener(
       //evénement suite a un clic sur le batiment
 
       if (batClick) {
+        console.log(batClick);
         menu_bat.style.display = "block";
         //menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;
         map[_playerId].forEach(batiment => {
