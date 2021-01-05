@@ -152,6 +152,7 @@ canvas.addEventListener(
     var menu_bat = document.getElementById("menu_bat");
     var autorisation = true;
     if (batSelect != null) {
+      console.log(batSelect);
       //devra etre supprimé après test
       //console.log("largeur du batiment seletionnée :  " + RenduBatiments[batSelect].height);
       var hauteur = RenduBatiments[batSelect].width;
