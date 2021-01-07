@@ -153,10 +153,8 @@ canvas.addEventListener(
   function(event) {
     var menu_bat = document.getElementById("menu_bat");
     var autorisation = true;
-    var batClick;
+    var batClick = false;
     if (batSelect != null) {
-      //devra etre supprimé après test
-      //console.log("largeur du batiment seletionnée :  " + RenduBatiments[batSelect].height);
       var hauteur = RenduBatiments[batSelect].width;
       var largeur = RenduBatiments[batSelect].height;
 
@@ -179,26 +177,25 @@ canvas.addEventListener(
       }
       if (autorisation == true) {
         createBatiment({ nom: batSelect, x: playerX, y: playerY });
-        console.log(map);
+        console.log(map)
         batSelect = null;
       }
     } else {
-      
-      for (var batwidth = 0; batwidth < hauteur; batwidth++) {
-        for (var batheight = 0; batheight < largeur; batheight++) {
-          for (var n = 0; n < map[socket.id].length; n++) {
-            if (
-              map[socket.id][n].x + batwidth == playerX &&
-              map[socket.id][n].y + batheight == playerY
-            ) {
-              console.log(map[socket.id][n].name);
-            }
-          }
-        }
-      }
-
       //evénement suite a un clic sur le batiment
 
+      for (var n = 0; n < map[socket.id].length; n++) {
+        for (var batW = 0; batW < map[socket.id][n].x ; batW++) {
+        for (var batH = 0; batH < map[socket.id][n].x ; batH++) {
+           if (
+          map[socket.id][n].x + batW == playerX &&
+          map[socket.id][n].y + batW == playerY
+        ) {
+          batClick = map[socket.id][n].name;
+        }
+        }
+      }
+       
+      }
       if (batClick) {
         console.log(batClick);
         menu_bat.style.display = "block";
