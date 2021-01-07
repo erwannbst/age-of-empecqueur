@@ -385,8 +385,8 @@ document.getElementById("buttonConnect").addEventListener("click", event => {
   socket.emit("join game", { username, room });
 });
 
-socket.on("connected", function(data) {
-  //data: {username, room, otherPlayer?}
+// client.js
+socket.on("connected", function(data) {                        //data: {username, room, otherPlayer?}
   gotConnected(data);
 });
 
