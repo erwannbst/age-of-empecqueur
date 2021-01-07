@@ -104,7 +104,12 @@ map : {
       ]
     }
 */
+
 var closedMap = [];
+
+
+
+
 var buffer = new item(0, 0);
 closedMap.push(buffer);
 
@@ -194,7 +199,8 @@ canvas.addEventListener(
         //menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;
         map[_playerId].forEach(batiment => {
           if (batiment.nom == batClick) {
-            document.getElementById("menu_bat").style.backgroundImage = "url(" + batiment.image + ")";
+            document.getElementById("menu_bat").style.backgroundImage =
+              "url(" + batiment.image + ")";
             document.getElementById("form_bat").style.opacity = 0.8;
             document.getElementById("nom_bat").innerHTML = batiment.nom;
             document.getElementById("lvl_bat").innerHTML =
@@ -207,11 +213,8 @@ canvas.addEventListener(
             document.getElementById("hp_bat").value = batiment.hp;
             document.getElementById("hp_bat").max = batiment.hpMax;
             document.getElementById("button1").innerHTML = "Ajout de soldat";
-            
           }
         });
-
-        
       } else {
         menu_bat.style.display = "none";
       }
@@ -232,6 +235,7 @@ bouton1Menu.addEventListener("click", event => {
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (batSelect != null) {
+    //permet d'afficher le visuel du batiment au deplacement de la souris
     ctx.drawImage(
       RenduBatiments[batSelect].image,
       playerX,
@@ -242,7 +246,7 @@ function draw() {
   }
   players.forEach(player => {
     map[player].forEach(batiment => {
-      //affichage de chaque batiments 
+      //affichage de chaque batiments
       let img = new Image();
       img.src = batiment.image;
       ctx.drawImage(
@@ -253,7 +257,7 @@ function draw() {
         batiment.height
       );
       if (batiment.nom != "murH" && batiment.nom != "murV")
-        //affichage de chaque batiments
+        //affichage de la barre de point de vie pour chaque batiments
         drawHpBar(
           batiment.x + batiment.width / 2,
           batiment.y + 10 + batiment.height,
@@ -317,7 +321,7 @@ function drawBatiment(data) {
   AddClosedMap(data.nom, data.x, data.y);
 }
 
-function itemUpdated(item){
+function itemUpdated(item) {
   map[item.owner][1] = item;
 }
 
