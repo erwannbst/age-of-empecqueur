@@ -268,7 +268,7 @@ function draw() {
   });
   requestAnimationFrame(draw);
 }
-
+/*
 function AddClosedMap(nomBat, batX, batY) {
   console.log("function AddClosedMap called" + nomBat);
   for (var y = batX; y < batX + RenduBatiments[nomBat].width; y++) {
@@ -280,7 +280,7 @@ function AddClosedMap(nomBat, batX, batY) {
     }
   }
 }
-
+*/
 function drawHpBar(x, y, hp, hpMax) {
   let height = 20;
   let width = 120;
@@ -318,7 +318,7 @@ function drawBatiment(data) {
   //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
   console.log("drawing batiment " + JSON.stringify(data));
   map[data.owner].push(data);
-  AddClosedMap(data.nom, data.x, data.y);
+  //AddClosedMap(data.nom, data.x, data.y);
 }
 
 function itemUpdated(item) {
