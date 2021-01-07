@@ -13,7 +13,7 @@ var playerX = 0;
 var playerY = 0;
 var connected = false;
 var username = "";
-var _playerId = "";
+var _playerId = socket.id;
 
 var img = new Image();
 var hdvImg = new Image();
@@ -161,7 +161,7 @@ canvas.addEventListener(
       //console.log("largeur du batiment seletionnée :  " + RenduBatiments[batSelect].height);
       var hauteur = RenduBatiments[batSelect].width;
       var largeur = RenduBatiments[batSelect].height;
-      for (var n = 0; n < closedMap.length; n++) {
+      for (var n = 0; n < map[_playerId].length; n++) {
         for (var batwidth = 0; batwidth < hauteur; batwidth++) {
           for (var batheight = 0; batheight < largeur; batheight++) {
             if (
@@ -334,7 +334,7 @@ function setGoldAmount(amount) {
 
 function gotConnected(data) {
   //data: {username, room, playerId}
-  _playerId = data.playerId;
+  //_playerId = data.playerId;
   connected = true;
   username = data.username;
   map[socket.id] = [];
