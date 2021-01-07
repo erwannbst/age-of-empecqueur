@@ -1,3 +1,4 @@
+/*
 // server.js
 import {Server} from 'socket.io';
 var server = http.createServer(app);
@@ -19,7 +20,7 @@ io.on('connection', function (socket) {
 });
 
 
-
+*/
 
 // Setup basic express server
 import * as gameValues from './gameValues.js';
