@@ -177,24 +177,24 @@ canvas.addEventListener(
       }
       if (autorisation == true) {
         createBatiment({ nom: batSelect, x: playerX, y: playerY });
-        console.log(map)
+        console.log(map);
         batSelect = null;
       }
     } else {
       //evénement suite a un clic sur le batiment
 
       for (var n = 0; n < map[socket.id].length; n++) {
-        for (var batW = 0; batW < map[socket.id][n].x ; batW++) {
-        for (var batH = 0; batH < map[socket.id][n].x ; batH++) {
-           if (
-          map[socket.id][n].x + batW == playerX &&
-          map[socket.id][n].y + batW == playerY
-        ) {
-          batClick = map[socket.id][n].name;
+        for (var batW = 0; batW < map[socket.id][n].width; batW++) {
+          for (var batH = 0; batH < map[socket.id][n].height; batH++) {
+            if (
+              map[socket.id][n].x + batW == playerX &&
+              map[socket.id][n].y + batW == playerY
+            ) {
+              console.log("batclick");
+              batClick = map[socket.id][n].name;
+            }
+          }
         }
-        }
-      }
-       
       }
       if (batClick) {
         console.log(batClick);
