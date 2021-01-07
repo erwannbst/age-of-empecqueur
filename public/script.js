@@ -161,9 +161,9 @@ canvas.addEventListener(
 
       for (var batwidth = 0; batwidth < hauteur; batwidth++) {
         for (var batheight = 0; batheight < largeur; batheight++) {
-          for (var n = 0; n < map[_playerId].length; n++) {
-            if(map[_playerId][n].x == batwidth ){
-              
+          for (var n = 0; n < map[socket.id].length; n++) {
+            if(map[socket.id][n].x == batwidth && map[socket.id][n].y == batheight){
+              autorisation = false;
             }
           }
         }
