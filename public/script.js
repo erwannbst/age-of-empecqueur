@@ -153,6 +153,7 @@ canvas.addEventListener(
   function(event) {
     var menu_bat = document.getElementById("menu_bat");
     var autorisation = true;
+    var batClick;
     if (batSelect != null) {
       //devra etre supprimé après test
       //console.log("largeur du batiment seletionnée :  " + RenduBatiments[batSelect].height);
@@ -162,7 +163,10 @@ canvas.addEventListener(
       for (var batwidth = 0; batwidth < hauteur; batwidth++) {
         for (var batheight = 0; batheight < largeur; batheight++) {
           for (var n = 0; n < map[socket.id].length; n++) {
-            if(map[socket.id][n].x == batwidth && map[socket.id][n].y == batheight){
+            if (
+              map[socket.id][n].x + batwidth == playerX &&
+              map[socket.id][n].y + batheight == playerY
+            ) {
               autorisation = false;
             }
           }
@@ -179,10 +183,17 @@ canvas.addEventListener(
         batSelect = null;
       }
     } else {
-      var batClick;
-      for (var n = 0; n < closedMap.length; n++) {
-        if (closedMap[n].x == playerX && closedMap[n].y == playerY) {
-          batClick = closedMap[n].name;
+      
+      for (var batwidth = 0; batwidth < hauteur; batwidth++) {
+        for (var batheight = 0; batheight < largeur; batheight++) {
+          for (var n = 0; n < map[socket.id].length; n++) {
+            if (
+              map[socket.id][n].x + batwidth == playerX &&
+              map[socket.id][n].y + batheight == playerY
+            ) {
+              console.log(map[socket.id][n].name);
+            }
+          }
         }
       }
 
