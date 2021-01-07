@@ -239,12 +239,10 @@ function draw() {
       RenduBatiments[batSelect].width,
       RenduBatiments[batSelect].height
     );
-
-    //ctx.fillRect(playerX, playerY, RenduBatiments[batSelect].width, RenduBatiments[batSelect].height);
-    //ctx.fillStyle = "rgba(255,0,0,0.5)";
   }
   players.forEach(player => {
     map[player].forEach(batiment => {
+      //affichage de chaque batiments 
       let img = new Image();
       img.src = batiment.image;
       ctx.drawImage(
@@ -255,6 +253,7 @@ function draw() {
         batiment.height
       );
       if (batiment.nom != "murH" && batiment.nom != "murV")
+        //affichage de chaque batiments
         drawHpBar(
           batiment.x + batiment.width / 2,
           batiment.y + 10 + batiment.height,
