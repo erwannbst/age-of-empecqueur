@@ -107,9 +107,6 @@ map : {
 
 var closedMap = [];
 
-
-
-
 var buffer = new item(0, 0);
 closedMap.push(buffer);
 
@@ -161,14 +158,12 @@ canvas.addEventListener(
       //console.log("largeur du batiment seletionnée :  " + RenduBatiments[batSelect].height);
       var hauteur = RenduBatiments[batSelect].width;
       var largeur = RenduBatiments[batSelect].height;
-      for (var n = 0; n < map[_playerId].length; n++) {
-        for (var batwidth = 0; batwidth < hauteur; batwidth++) {
-          for (var batheight = 0; batheight < largeur; batheight++) {
-            if (
-              closedMap[n].x == playerX + batwidth &&
-              closedMap[n].y == playerY + batheight
-            ) {
-              autorisation = false;
+
+      for (var batwidth = 0; batwidth < hauteur; batwidth++) {
+        for (var batheight = 0; batheight < largeur; batheight++) {
+          for (var n = 0; n < map[_playerId].length; n++) {
+            if(map[_playerId][n].x == batwidth ){
+              
             }
           }
         }
@@ -386,7 +381,8 @@ document.getElementById("buttonConnect").addEventListener("click", event => {
 });
 
 // client.js
-socket.on("connected", function(data) {                        //data: {username, room, otherPlayer?}
+socket.on("connected", function(data) {
+  //data: {username, room, otherPlayer?}
   gotConnected(data);
 });
 
