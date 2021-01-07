@@ -182,7 +182,7 @@ canvas.addEventListener(
       }
     } else {
       //evénement suite a un clic sur le batiment
-
+  console.log("else");
       for (var n = 0; n < map[socket.id].length; n++) {
         for (var batW = 0; batW < map[socket.id][n].width; batW++) {
           for (var batH = 0; batH < map[socket.id][n].height; batH++) {
