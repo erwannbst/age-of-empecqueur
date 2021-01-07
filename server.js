@@ -58,7 +58,6 @@ maps : {
 
 io.on('connection', function (socket) {
   console.log('a user connected');
-  
   socket.on('create game', function (username) {
     let room = makeid();
     if(games[room] == undefined){
