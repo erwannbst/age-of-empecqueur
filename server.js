@@ -1,3 +1,25 @@
+// server.js
+import {Server} from 'socket.io';
+var server = http.createServer(app);
+var io = new Server(server);
+
+io.on('connection', function (socket) {
+  // Un utilisateur s'est connecté
+  socket.on('create building', function (building) {
+    // Appelée par le client quand il créée un bâtiment
+    addBuildingToMapDatabase(building);
+    newMapDatabase = getMap();
+    io.to(room).emit('draw batiment', newMapDatabase);
+  });
+  
+  socket.on('create game', function (username) {
+    // Créée une partie côté serveur et renvoie les données au client
+    socket.emit('connected', {username, room, playerId});
+  });
+});
+
+
+
 
 // Setup basic express server
 import * as gameValues from './gameValues.js';
