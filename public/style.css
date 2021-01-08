@@ -1,13 +1,15 @@
 /* this file is loaded by index.html and styles the page */
 
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
 * {
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
   align-items: center;
   background-color: grey;
-  font-family: sans-serif;
   line-height: 1.5em;
 }
 
