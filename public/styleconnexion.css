@@ -12,7 +12,12 @@ html,body{
   height: 100%;
   width: 100%;
   place-items: center;
-  background: #5D6159;
+  background: #F2F2F2;
+  background-size: 600px 600px;
+  background-image:url(https://zupimages.net/up/21/01/9ihm.png);
+  background-repeat:no-repeat;
+  background-position:right top;
+  
 }
 
 
