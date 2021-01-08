@@ -104,12 +104,12 @@ canvas.addEventListener(
     if (batSelect != null) {
       //
       if (emplacementLibre(socket.id, batSelect, playerX, playerY)) {
-        document.getElementById("output").innerHTML =
-          "Vous ne pouvez pas placer un batiment ici";
-      }
-      if (emplacementLibre(socket.id, batSelect, playerX, playerY)) {
         createBatiment({ nom: batSelect, x: playerX, y: playerY });
         batSelect = null;
+      }
+      else{
+        document.getElementById("output").innerHTML =
+          "Vous ne pouvez pas placer un batiment ici";
       }
     }
     //si aucun batiment selectionné on verifie si le click porte sur un batiment en particulier
