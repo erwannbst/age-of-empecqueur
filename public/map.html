@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Ftavernedofus.png?1607814703059"
+    />
+    <meta charset="UTF-8" />
+    <title>Age of</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      #game-container {
+        width: 100%;
+        display: flex;
+      }
+      canvas {
+        border-right: 3px solid silver;
+        border-bottom: 3px solid silver;
+        border-bottom-right-radius: 30px;
+        background: #013333
+          url(
+              https://nsa40.casimages.com/img/2020/12/13//201213051058188609.jpg
+            )no-repeat;
+        display: block;
+        margin: 0 auto;
+      }
+      #map,
+      #menu {
+        display: inline-block;
+        verticalalign: top;
+        align-items : center;
+      }
+
+      #menu {
+        top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+  <form>
+    <label>
+      Nouveau batiment
+      <input name="batimentName" type="text" maxlength="100" value="Trinquette" required placeholder="Nom du batiment">
+      <input name="x_position" type="text" maxlength="100" value="10" required placeholder="x">
+      <input name="y_position" type="text" maxlength="100" value="20" required placeholder="y">
+    </label>
+    <button type="submit" id="buttonAddBatiment">Ajouter un batiment</button>
+  </form>
+  
+  <section class="batiments">
+    <ul id="batiments">
+      <em>loading items&hellip;</em>
+    </ul>
+  </section>
+-->
+    <h1 id="status">Déconnecté</h1>
+
+    <div id="game-container">
+      <div id="map">
+        <canvas id="myCanvas"></canvas>
+      </div>
+      <div id="menu">
+        <div id="connexion">
+          <form>
+            <input placeholder="Nom d'utilisateur" name="username" />
+            <button id="buttonCreate">Créer une partie</button>
+            <input placeholder="code" name="gameCode" />
+            <button id="buttonConnect">Se connecter à la partie</button>
+          </form>
+        </div>
+        <span id="room"></span>
+
+        <!--
+        <form>
+          <label for="name">Batiments : </label><br />
+          <input name="bat" type="radio" value="hdv" id="hdv" /> Hotel de ville
+          <br />
+          <input name="bat" type="radio" value="extracteur" id="extracteur" /> Extracteurs
+          <br />
+          <input name="bat" type="radio" value="mur" id="mur"/> Mur
+          <br />
+          <input name="bat" type="radio" value="caserne" id="caserne"/> Caserne
+          <br />
+          <input name="bat" type="radio" value="trinquette" id="trinquette"/> Trinquette
+          <br />
+          <input name="bat" type="radio" value="portugais" id="portugais"/> Portugais
+          <br />
+          <input type="button" id="boutonSelectionBatiment" value="Placer ">
+        </form>
+        -->
+
+        <select name="pets" id="select" disabled>
+          <option value="">Choisis un batiments</option>
+          <option value="hdv" id="hdv">Hôtel de ville</option>
+          <option value="extracteur" id="extracteur">Extracteurs</option>
+          <option value="murV" id="murV">Mur vertical</option>
+          <option value="murH" id="murH">Mur Horizontal</option>
+          <option value="caserne" id="caserne">Caserne</option>
+          <option value="trinquette" id="trinquette">Trinquette</option>
+          <option value="portugais" id="portugais">Portugais</option>
+        </select>
+        <div id="output" class="text"></div>
+        <div id="gold" class="text"></div>
+        <div id="menu_bat">
+          <form id="form_bat">
+            <h2 id="nom_bat"></h2>
+            <h4 id="lvl_bat"></h4>
+
+            <h4 id="lvlUpPrice_bat"></h4>
+            <label for="hp_bat">Points de vie :</label>
+            <progress id="hp_bat"></progress>
+
+            <button id="button1" value="button1"></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <p>
+        © 2021 Producted by Erwann and Victor. Content is available under these
+        licenses
+      </p>
+      <a href="google.fr">Contact</a>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+    </script>
+    <script type="module" src="script.mjs"></script>
+    <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+  </body>
+</html>
