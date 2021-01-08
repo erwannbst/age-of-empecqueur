@@ -144,6 +144,8 @@ document.addEventListener("keydown", keyDownHandler, false);
 function keyDownHandler(e) {}
 
 //-------------------------------------------------------CLICK------------------------------------------------------------//
+function emplacementLibre()
+
 canvas.addEventListener(
   "click",
   function(event) {
@@ -182,17 +184,18 @@ canvas.addEventListener(
       //evénement suite a un clic sur le batiment
       for (var n = 0; n < map[socket.id].length; n++) {
         //console.log(map[socket.id][n].width);
-        for (var batW = 0; batW < map[socket.id][n].width; batW++) {
-          for (var batH = 0; batH < map[socket.id][n].height; batH++) {
             if (
-              map[socket.id][n].x + batW == playerX &&
-              map[socket.id][n].y + batH == playerY
+              playerX >= map[socket.id][n].x &&
+              playerX <= map[socket.id][n].x + map[socket.id][n].width
+            ) {
+              if (
+              playerY >= map[socket.id][n].y &&
+              playery <= map[socket.id][n].y + map[socket.id][n].height
             ) {
               console.log("batclick");
               batClick = map[socket.id][n].name;
             }
-          }
-        }
+            }
       }
       if (batClick) {
         console.log(batClick);
