@@ -1,4 +1,7 @@
-function displayMenuBatiments(id, batClick){
+import map from '../script.js';
+
+
+export function displayMenuBatiments(id, batClick){
   var menu_bat = document.getElementById("menu_bat");
   console.log(batClick);
         menu_bat.style.display = "block";
@@ -22,6 +25,3 @@ function displayMenuBatiments(id, batClick){
           }
         });
 }
-
-
-export {displayMenuBatiments};

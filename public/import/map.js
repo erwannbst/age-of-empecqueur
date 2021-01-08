@@ -1,4 +1,4 @@
-import map from './script.js';
+import map from '../script.js';
 
 var img = new Image();
 var hdvImg = new Image();
@@ -27,7 +27,7 @@ portugaisImg.src =
 soldierImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2FIOP.png?v=1608813171788";
 
-var RenduBatiments = {
+export var RenduBatiments = {
   murH: {
     image: murHImg,
     height: 30,
@@ -70,7 +70,7 @@ var RenduBatiments = {
   }
 };
 
-function emplacementLibre(id, batSelect, clickX, clickY) {
+export function emplacementLibre(id, batSelect, clickX, clickY) {
   var hauteur = RenduBatiments[batSelect].width;
   var largeur = RenduBatiments[batSelect].height;
 
@@ -90,7 +90,7 @@ function emplacementLibre(id, batSelect, clickX, clickY) {
   return true;
 }
 
-function menuBatiments(id, clickX, clickY){
+export function menuBatiments(id, clickX, clickY){
   for (var n = 0; n < map[id].length; n++) {
         //console.log(map[socket.id][n].width);
         if (
@@ -106,8 +106,4 @@ function menuBatiments(id, clickX, clickY){
         }
       }
 }
-
-
-export {emplacementLibre};
-export {menuBatiments};
 

@@ -18,8 +18,11 @@ var _playerId = socket.id;
 import {
   emplacementLibre,
   menuBatiments,
-  displayMenuBatiments
 } from "./import/map.js";
+
+import {RenduBatiments} from './import/map.js'
+
+import {displayMenuBatiments} from './import/menu.js';
 
 var players = [];
 /*
@@ -167,19 +170,7 @@ function draw() {
   });
   requestAnimationFrame(draw);
 }
-/*
-function AddClosedMap(nomBat, batX, batY) {
-  console.log("function AddClosedMap called" + nomBat);
-  for (var y = batX; y < batX + RenduBatiments[nomBat].width; y++) {
-    // pour chaque pixel horizontal
-    for (var z = batY; z < batY + RenduBatiments[nomBat].height; z++) {
-      // pour chaque pixel vertical
-      var batBuffer = new item(y, z, nomBat);
-      closedMap.push(batBuffer);
-    }
-  }
-}
-*/
+
 function drawHpBar(x, y, hp, hpMax) {
   let height = 20;
   let width = 120;
