@@ -1,0 +1,3 @@
+function emplacementLibre(x, y){
+  
+}

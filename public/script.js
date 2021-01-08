@@ -143,9 +143,7 @@ document.addEventListener("keydown", keyDownHandler, false);
 function keyDownHandler(e) {}
 
 //-------------------------------------------------------CLICK------------------------------------------------------------//
-function emplacementLibre(x, y){
-  
-}
+
 
 canvas.addEventListener(
   "click",
@@ -154,6 +152,9 @@ canvas.addEventListener(
     var autorisation = true;
     var batClick = false;
     //si un batiment est selectionné on verifie si on peut le placer sur la map
+    function emplacementLibre(x, y){
+  
+}
     if (batSelect != null) {
       var hauteur = RenduBatiments[batSelect].width;
       var largeur = RenduBatiments[batSelect].height;
