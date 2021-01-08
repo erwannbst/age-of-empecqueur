@@ -1,42 +1,41 @@
 /* this file is loaded by index.html and styles the page */
 
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-* {
-        padding: 0;
-        margin: 0;
-      }
-      .game-container {
-        position: absolute;
-        z-index: 1;
-        width: 100%;
-        display: flex;
-      }
-      canvas {
-        border-right: 3px solid silver;
-        border-bottom: 3px solid silver;
-        border-bottom-right-radius: 30px;
-        background: #013333
-          url(
-              https://nsa40.casimages.com/img/2020/12/13//201213051058188609.jpg
-            )no-repeat;
-        display: block;
-        margin: 0 auto;
-      }
-      #map,
-      #menu {
-        display: inline-block;
-        verticalalign: top;
-        align-items: center;
-      }
 
-      #menu {
-        top: 0px;
-      }
+.game-container {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+}
+canvas {
+  border-right: 3px solid silver;
+  border-bottom: 3px solid silver;
+  border-bottom-right-radius: 30px;
+  background: #013333
+    url(
+        https://nsa40.casimages.com/img/2020/12/13//201213051058188609.jpg
+      )no-repeat;
+  display: block;
+  margin: 0 auto;
+}
+#map,
+#menu {
+  display: inline-block;
+  verticalalign: top;
+  align-items: center;
+}
+
+#menu {
+  top: 0px;
+}
 
 body {
   align-items: center;
@@ -53,38 +52,19 @@ h1 {
 }
 
 label {
-    padding-right: 10px;
-    font-size: 1rem;
+  padding-right: 10px;
+  font-size: 1rem;
 }
 progress {
-  height : 30px;
-  width : 100%;
-}
-
-form {
-  margin-top: 1em;
-  margin-bottom: 1em;
-  border-radius: 5px;
-  background-color: #eee;
-  display: grid;
-  grid-gap: 1em;
-  padding: 1em;
+  height: 30px;
   width: 100%;
 }
 
-input {
-  border: 1px solid silver;
-  display: block;
-  font-size: 16px;
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 100%;
-}
 
 form button {
   background-color: #bbbbf2;
   border: 2px solid currentColor;
-  border-radius: .25em;
+  border-radius: 0.25em;
   cursor: pointer;
   font-size: inherit;
   line-height: 1.4em;
@@ -105,17 +85,16 @@ select {
   margin: 1em;
   background-color: #bbbbf2;
   cursor: pointer;
-  border-radius: .25em;
+  border-radius: 0.25em;
   margin-top: 10px;
-  width : 280px;
-  height : 30px;
+  width: 280px;
+  height: 30px;
 }
 
 #footer {
   text-align: center;
   margin-top: 1em;
 }
-
 
 .connexion {
   position: absolute;
@@ -126,21 +105,20 @@ select {
   height: 100%;
   width: 100%;
   place-items: center;
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
-
-::selection{
+::selection {
   background: #4158d0;
   color: #fff;
 }
-.wrapper{
+.wrapper {
   width: 380px;
   background: #fff;
   border-radius: 15px;
-  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
 }
-.wrapper .title{
+.wrapper .title {
   font-size: 35px;
   font-weight: 600;
   text-align: center;
@@ -150,16 +128,16 @@ select {
   border-radius: 15px 15px 0 0;
   background: linear-gradient(-135deg, #D2EBB5, #5B6E44);
 }
-.wrapper form{
+.wrapper form {
   padding: 10px 30px 50px 30px;
 }
-.wrapper form .field{
+.wrapper form .field {
   height: 50px;
   width: 100%;
   margin-top: 20px;
   position: relative;
 }
-.wrapper form .field input{
+.wrapper form .field input {
   height: 100%;
   width: 100%;
   outline: none;
@@ -170,10 +148,10 @@ select {
   transition: all 0.3s ease;
 }
 .wrapper form .field input:focus,
-form .field input:valid{
+form .field input:valid {
   border-color: #4158d0;
 }
-.wrapper form .field label{
+.wrapper form .field label {
   position: absolute;
   top: 50%;
   left: 20px;
@@ -185,14 +163,14 @@ form .field input:valid{
   transition: all 0.3s ease;
 }
 form .field input:focus ~ label,
-form .field input:valid ~ label{
+form .field input:valid ~ label {
   top: 0%;
   font-size: 16px;
   color: #4158d0;
   background: #fff;
   transform: translateY(-50%);
 }
-form .content{
+form .content {
   display: flex;
   width: 100%;
   height: 50px;
@@ -200,25 +178,25 @@ form .content{
   align-items: center;
   justify-content: space-around;
 }
-form .content .checkbox{
+form .content .checkbox {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-form .content input{
+form .content input {
   width: 15px;
   height: 15px;
   background: red;
 }
-form .content label{
+form .content label {
   color: #262626;
   user-select: none;
   padding-left: 5px;
 }
-form .content .pass-link{
+form .content .pass-link {
   color: "";
 }
-form .field input[type="submit"]{
+form .field input[type="submit"] {
   color: #fff;
   border: none;
   padding-left: 0;
@@ -229,20 +207,20 @@ form .field input[type="submit"]{
   background: linear-gradient(-135deg, #5B6E44, #D2EBB5);
   transition: all 0.3s ease;
 }
-form .field input[type="submit"]:active{
+form .field input[type="submit"]:active {
   transform: scale(0.95);
 }
-form .signup-link{
+form .signup-link {
   color: #262626;
   margin-top: 20px;
   text-align: center;
 }
 form .pass-link a,
-form .signup-link a{
+form .signup-link a {
   color: #4158d0;
   text-decoration: none;
 }
 form .pass-link a:hover,
-form .signup-link a:hover{
+form .signup-link a:hover {
   text-decoration: underline;
 }
