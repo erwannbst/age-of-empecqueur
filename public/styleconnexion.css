@@ -6,6 +6,9 @@
   font-family: 'Poppins', sans-serif;
 }
 html,body{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex;
   height: 100%;
   width: 100%;
   place-items: center;
@@ -19,8 +22,8 @@ html,body{
   color: #fff;
 }
 .wrapper{
-  float: left;
-  width: 50M% background: #fff;
+  width: 380px;
+  background: #fff;
   border-radius: 15px;
   box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
 }
