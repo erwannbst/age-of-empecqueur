@@ -1,4 +1,4 @@
-import map from '../script.js';
+import {map} from '../script.mjs';
 
 var img = new Image();
 var hdvImg = new Image();

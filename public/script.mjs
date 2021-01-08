@@ -18,11 +18,11 @@ var _playerId = socket.id;
 import {
   emplacementLibre,
   menuBatiments,
-} from "./import/map.js";
+} from "./import/map.mjs";
 
-import {RenduBatiments} from './import/map.js'
+import {RenduBatiments} from './import/map.mjs'
 
-import {displayMenuBatiments} from './import/menu.js';
+import {displayMenuBatiments} from './import/menu.mjs';
 
 var players = [];
 /*
