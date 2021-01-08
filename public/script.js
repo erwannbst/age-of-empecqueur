@@ -15,7 +15,11 @@ var connected = false;
 var username = "";
 var _playerId = socket.id;
 
-import {emplacementLibre, menuBatiments, displayMenuBatiments} from "./import/map.js";
+import {
+  emplacementLibre,
+  menuBatiments,
+  displayMenuBatiments
+} from "./import/map.js";
 
 var players = [];
 /*
@@ -24,6 +28,20 @@ players : [
   playerId2,
 ]
 */
+
+
+export var map = {};
+/*
+map : {
+      playerId: [
+        {buildingName, x, y},
+      ],
+      playerId2: [
+        {buildingName, x, y},
+      ]
+    }
+*/
+
 
 function item(x, y, name) {
   this.name = name;
@@ -48,6 +66,15 @@ selectedBat.addEventListener("change", function() {
   //document.getElementById(batSelect).disabled = true;
 });
 
+
+
+// Bouton menu batiment
+let bouton1Menu = document.getElementById("button1");
+bouton1Menu.addEventListener("click", event => {
+  event.preventDefault(); // stop our form submission from refreshing the page
+  socket.emit("create batiment", { nom: "soldier" });
+});
+
 //-------------------------------------------------------MOUSE-----------------------------------------------------------//
 document.addEventListener("mousemove", mouseMoveHandler);
 function mouseMoveHandler(e) {
@@ -70,6 +97,7 @@ canvas.addEventListener(
     var menu_bat = document.getElementById("menu_bat");
     var autorisation = true;
     var batClick = false;
+
     //si un batiment est selectionné on verifie si on peut le placer sur la map
     if (batSelect != null) {
       autorisation = emplacementLibre(socket.id, batSelect, playerX, playerY);
@@ -82,12 +110,16 @@ canvas.addEventListener(
         createBatiment({ nom: batSelect, x: playerX, y: playerY });
         batSelect = null;
       }
-    } else {
-      //evénement suite a un clic sur le batiment
-      batClick = menuBatiments(socket.id ,playerX, playerY);
+    }
+    //si aucun batiment selectionné on verifie si le click porte sur un batiment en particulier
+    else {
+      batClick = menuBatiments(socket.id, playerX, playerY);
+      //si oui on affiche le menu du batiment 
       if (batClick) {
-        
-      } else {
+        displayMenuBatiments(socket.id, batClick);
+      } 
+      //sinon on affiche rien
+      else {
         menu_bat.style.display = "none";
       }
     }
@@ -95,12 +127,6 @@ canvas.addEventListener(
   false
 );
 
-// Bouton menu batiment
-let bouton1Menu = document.getElementById("button1");
-bouton1Menu.addEventListener("click", event => {
-  event.preventDefault(); // stop our form submission from refreshing the page
-  socket.emit("create batiment", { nom: "soldier" });
-});
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
 //déplacement de la souris
@@ -108,6 +134,7 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (batSelect != null) {
     //permet d'afficher le visuel du batiment au deplacement de la souris
+    
     ctx.drawImage(
       RenduBatiments[batSelect].image,
       playerX,
