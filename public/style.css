@@ -5,6 +5,7 @@
 }
 
 body {
+  align-items: center;
   background-color: grey;
   font-family: sans-serif;
   line-height: 1.5em;
