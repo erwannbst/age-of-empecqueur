@@ -4,7 +4,8 @@
 
 // INIT
 document.getElementById("menu_bat").style.display = "none";
-const loginForm = document.querySelector("form");
+const loginForm = document.getElementById("connect");
+const createForm = document.getElementById("creation");
 var canvas = document.getElementById("myCanvas");
 export var ctx = canvas.getContext("2d");
 canvas.width = 1600;
