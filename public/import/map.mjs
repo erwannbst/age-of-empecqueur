@@ -71,24 +71,28 @@ export var RenduBatiments = {
 };
 
 export function emplacementLibre(id, batSelect, clickX, clickY) {
+  var autorisation = true;
   var cornerX = clickX + RenduBatiments[batSelect].width;
-  var corner
+  var cornerY = clickY + RenduBatiments[batSelect].height;
   for (var n = 0; n < map[id].length; n++) {
     if(clickX >= map[id][n].x && clickX <= map[id][n].x + map[id][n].width){
       if(clickY >= map[id][n].y && clickY <= map[id][n].y+ map[id][n].height){      
-        if(clickX + RenduBatiments[batSelect].width >= map[id][n].x && clickX + RenduBatiments[batSelect].width <= map[id][n].x + map[id][n].width){
-          if(clickY + RenduBatiments[batSelect].height >= map[id][n].y && clickY + RenduBatiments[batSelect].height <= map[id][n].y+ map[id][n].height){
-          console.log("coin bas droite erreur")
-          return false;
-          }
-        }
-        console.log("coin haut gauche erreur")
-        return false
+        console.log("coin haut gauche erreur");
+        autorisation = false;
       }
       
     }
   }
-  return true;
+  for (var n = 0; n < map[id].length; n++) {
+    if(cornerX >= map[id][n].x && cornerX <= map[id][n].x + map[id][n].width){
+          if(cornerY >= map[id][n].y && cornerY <= map[id][n].y + map[id][n].height){
+          console.log("coin bas droite erreur");
+          autorisation =  false;
+          }
+        }
+    
+  }
+  return autorisation;
 }
 
 export function menuBatiments(id, clickX, clickY){
