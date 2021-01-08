@@ -150,6 +150,7 @@ canvas.addEventListener(
     var menu_bat = document.getElementById("menu_bat");
     var autorisation = true;
     var batClick = false;
+    //si un batiment est selectionné on verifie si on peut le placer sur la map
     if (batSelect != null) {
       var hauteur = RenduBatiments[batSelect].width;
       var largeur = RenduBatiments[batSelect].height;
@@ -161,6 +162,7 @@ canvas.addEventListener(
               map[socket.id][n].x + batwidth == playerX &&
               map[socket.id][n].y + batheight == playerY
             ) {
+              //si un batiment est deja placé a l'endroit du clic on interdit la création du batiment
               autorisation = false;
             }
           }
@@ -184,7 +186,7 @@ canvas.addEventListener(
           for (var batH = 0; batH < map[socket.id][n].height; batH++) {
             if (
               map[socket.id][n].x + batW == playerX &&
-              map[socket.id][n].y + batW == playerY
+              map[socket.id][n].y + batH == playerY
             ) {
               console.log("batclick");
               batClick = map[socket.id][n].name;
