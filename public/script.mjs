@@ -54,12 +54,9 @@ function item(x, y, name) {
   this.y = y;
 }
 
-//----------------------------------PARTIE MENU------------------------------------------//
+//-----------------------------------------------------PARTIE MENU-------------------------------------------------------//
 
 let batSelect;
-
-//if(players != null)document.getElementById("select").disabled = true;
-
 var selectedBat = document.querySelector("select");
 
 selectedBat.addEventListener("change", function() {
@@ -72,13 +69,18 @@ selectedBat.addEventListener("change", function() {
 });
 
 
-
-// Bouton menu batiment
+// Bouton ajout soldats
 let bouton1Menu = document.getElementById("button1");
 bouton1Menu.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   socket.emit("create batiment", { nom: "soldier" });
 });
+
+
+//-----------------------------------------------------KEYBOARD----------------------------------------------------------//
+
+document.addEventListener("keydown", keyDownHandler, false);
+function keyDownHandler(e) {}
 
 //-------------------------------------------------------MOUSE-----------------------------------------------------------//
 document.addEventListener("mousemove", mouseMoveHandler);
@@ -89,10 +91,6 @@ function mouseMoveHandler(e) {
     "Mouse:  <br />" + " x: " + playerX + ", y: " + playerY + "<br />";
 }
 
-//-----------------------------------------------------KEYBOARD----------------------------------------------------------//
-
-document.addEventListener("keydown", keyDownHandler, false);
-function keyDownHandler(e) {}
 
 //-------------------------------------------------------CLICK------------------------------------------------------------//
 
@@ -145,10 +143,12 @@ function draw() {
       RenduBatiments[batSelect].height
     );
   }
-  drawAllBatiments();
+  drawAllBatiments(); //fonction d'affichage de tous les batiments
   requestAnimationFrame(draw);
 }
 
+
+//-------------------------------------------------------SERVEUR------------------------------------------------------------//
 
 function drawBatiment(data) {
   // data:{nom: "nomDuBatiment", x: 0, y: 0, owner: "wkfefkefe"}
@@ -162,7 +162,6 @@ function itemUpdated(item) {
   map[item.owner][1] = item;
 }
 
-//-------------------------------------------------------DRAW------------------------------------------------------------//
 
 function setGoldAmount(amount) {
   //Appelée par le serveur quand le montant d'or est mis à jour

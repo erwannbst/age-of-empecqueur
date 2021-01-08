@@ -22,6 +22,7 @@ export function displayMenuBatiments(id, batClick){
             document.getElementById("hp_bat").value = batiment.hp;
             document.getElementById("hp_bat").max = batiment.hpMax;
             document.getElementById("button1").innerHTML = "Ajout de soldat";
+
           }
         });
 }
