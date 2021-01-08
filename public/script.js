@@ -15,7 +15,7 @@ var connected = false;
 var username = "";
 var _playerId = socket.id;
 
-import emplacementLibre from "./import/map.js";
+import {emplacementLibre, menuBatiments, displayMenuBatiments} from "./import/map.js";
 
 var players = [];
 /*
@@ -84,43 +84,9 @@ canvas.addEventListener(
       }
     } else {
       //evénement suite a un clic sur le batiment
-      for (var n = 0; n < map[socket.id].length; n++) {
-        //console.log(map[socket.id][n].width);
-        if (
-          playerX >= map[socket.id][n].x &&
-          playerX <= map[socket.id][n].x + map[socket.id][n].width
-        ) {
-          if (
-            playerY >= map[socket.id][n].y &&
-            playerY <= map[socket.id][n].y + map[socket.id][n].height
-          ) {
-            batClick = map[socket.id][n].nom;
-            console.log(batClick);
-          }
-        }
-      }
+      batClick = menuBatiments(socket.id ,playerX, playerY);
       if (batClick) {
-        console.log(batClick);
-        menu_bat.style.display = "block";
-        //menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;
-        map[socket.id].forEach(batiment => {
-          if (batiment.nom == batClick) {
-            document.getElementById("menu_bat").style.backgroundImage =
-              "url(" + batiment.image + ")";
-            document.getElementById("form_bat").style.opacity = 0.8;
-            document.getElementById("nom_bat").innerHTML = batiment.nom;
-            document.getElementById("lvl_bat").innerHTML =
-              batiment.nom + " de niveau " + batiment.lvl;
-            document.getElementById("lvlUpPrice_bat").innerHTML =
-              "Il vous faudra pièces d'or " +
-              batiment.lvlUpPrice +
-              " pour ameliorer votre " +
-              batiment.nom;
-            document.getElementById("hp_bat").value = batiment.hp;
-            document.getElementById("hp_bat").max = batiment.hpMax;
-            document.getElementById("button1").innerHTML = "Ajout de soldat";
-          }
-        });
+        
       } else {
         menu_bat.style.display = "none";
       }

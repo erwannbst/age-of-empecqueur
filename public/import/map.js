@@ -100,6 +100,49 @@ function emplacementLibre(id, batSelect, clickX, clickY) {
   return true;
 }
 
-function menuBatiments(id, batSelect, x, y)
+function menuBatiments(id, clickX, clickY){
+  for (var n = 0; n < map[id].length; n++) {
+        //console.log(map[socket.id][n].width);
+        if (
+          clickX >= map[id][n].x &&
+          clickX <= map[id][n].x + map[id][n].width
+        ) {
+          if (
+            clickY >= map[id][n].y &&
+            clickY <= map[id][n].y + map[id][n].height
+          ) {
+            return map[id][n].nom;
+          }
+        }
+      }
+}
 
-export default emplacementLibre;
+function displayMenuBatiments(id, batClick){
+  var menu_bat = document.getElementById("menu_bat");
+  console.log(batClick);
+        menu_bat.style.display = "block";
+        //menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;
+        map[id].forEach(batiment => {
+          if (batiment.nom == batClick) {
+            document.getElementById("menu_bat").style.backgroundImage =
+              "url(" + batiment.image + ")";
+            document.getElementById("form_bat").style.opacity = 0.8;
+            document.getElementById("nom_bat").innerHTML = batiment.nom;
+            document.getElementById("lvl_bat").innerHTML =
+              batiment.nom + " de niveau " + batiment.lvl;
+            document.getElementById("lvlUpPrice_bat").innerHTML =
+              "Il vous faudra pièces d'or " +
+              batiment.lvlUpPrice +
+              " pour ameliorer votre " +
+              batiment.nom;
+            document.getElementById("hp_bat").value = batiment.hp;
+            document.getElementById("hp_bat").max = batiment.hpMax;
+            document.getElementById("button1").innerHTML = "Ajout de soldat";
+          }
+        });
+}
+
+
+export {emplacementLibre};
+export {menuBatiments};
+export {displayMenuBatiments};
