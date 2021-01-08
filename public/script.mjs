@@ -211,7 +211,7 @@ draw();
 
 document.getElementById("buttonCreate").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
-  let usname = loginForm.elements.username.value;
+  let usname = createForm.elements.username.value;
   console.log("dreate game for "+usname+".....");
   socket.emit("create game", usname);
   
@@ -219,7 +219,7 @@ document.getElementById("buttonCreate").addEventListener("click", event => {
 
 document.getElementById("buttonConnect").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
-  let username = loginForm.elements.username.value;
+  let username = loginForm.elements.pseudo.value;
   let room = loginForm.elements.gameCode.value;
   socket.emit("join game", { username, room });
 });

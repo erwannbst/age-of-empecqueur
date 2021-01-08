@@ -6,6 +6,37 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+* {
+        padding: 0;
+        margin: 0;
+      }
+      .game-container {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        display: flex;
+      }
+      canvas {
+        border-right: 3px solid silver;
+        border-bottom: 3px solid silver;
+        border-bottom-right-radius: 30px;
+        background: #013333
+          url(
+              https://nsa40.casimages.com/img/2020/12/13//201213051058188609.jpg
+            )no-repeat;
+        display: block;
+        margin: 0 auto;
+      }
+      #map,
+      #menu {
+        display: inline-block;
+        verticalalign: top;
+        align-items: center;
+      }
+
+      #menu {
+        top: 0px;
+      }
 
 body {
   align-items: center;
@@ -87,6 +118,7 @@ select {
 
 
 .connexion {
+  position: absolute;
   z-index: 2;
   display: flex;
   justify-content: space-around;
@@ -94,9 +126,7 @@ select {
   height: 100%;
   width: 100%;
   place-items: center;
-  background: #F2F2F2;
-  background:url(https://zupimages.net/up/21/01/9ihm.png) no-repeat right top;
-  background-size: 1100px 1100px;
+  background-color: rgba(255, 255, 255, .5);
 }
 
 
