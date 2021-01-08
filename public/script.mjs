@@ -4,7 +4,7 @@
 
 // INIT
 document.getElementById("menu_bat").style.display = "none";
-const loginForm = document.querySelector("form");
+const loginForm = document.getElementById("form");
 var canvas = document.getElementById("myCanvas");
 export var ctx = canvas.getContext("2d");
 canvas.width = 1600;
@@ -208,13 +208,20 @@ CRÉER UN BATIMENT
 
 draw();
 
-function createGame(){
+export function createGame() {
   event.preventDefault(); // stop our form submission from refreshing the page
   let usname = loginForm.elements.username.value;
   console.log("dreate game for "+usname+".....");
   socket.emit("create game", usname);
 }
 
+export function joinGame() {
+  event.preventDefault(); // stop our form submission from refreshing the page
+  let username = loginForm.elements.username.value;
+  let room = loginForm.elements.gameCode.value;
+  socket.emit("join game", { username, room });
+}
+/*
 document.getElementById("buttonCreate").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   let usname = loginForm.elements.username.value;
@@ -229,6 +236,7 @@ document.getElementById("buttonConnect").addEventListener("click", event => {
   let room = loginForm.elements.gameCode.value;
   socket.emit("join game", { username, room });
 });
+*/
 
 // client.js
 socket.on("connected", function(data) {
