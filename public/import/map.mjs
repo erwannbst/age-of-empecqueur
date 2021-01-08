@@ -71,11 +71,20 @@ export var RenduBatiments = {
 };
 
 export function emplacementLibre(id, batSelect, clickX, clickY) {
-     for (var n = 0; n < map[id].length; n++) {
-       if(clickX >= map[id][n].x && clickX <= map[id][n].x + map[id][n].width){
-         
-       }
-     }
+  for (var n = 0; n < map[id].length; n++) {
+    if(clickX >= map[id][n].x && clickX <= map[id][n].x + map[id][n].width){
+      if(clickY >= map[id][n].y && clickY <= map[id][n].y+ map[id][n].height){      
+        if(clickX + RenduBatiments[batSelect].width>= map[id][n].x && clickX + RenduBatiments[batSelect].width <= map[id][n].x + map[id][n].width){
+          if(clickY + RenduBatiments[batSelect].height >= map[id][n].y && clickY + RenduBatiments[batSelect].height <= map[id][n].y+ map[id][n].height){
+          return false;
+          }
+        }   
+        return false
+      }
+      
+    }
+  }
+  return true;
 }
 
 export function menuBatiments(id, clickX, clickY){
