@@ -1,4 +1,4 @@
-import {map} from '../script.mjs';
+import {map, ctx, players} from '../script.mjs';
 
 var img = new Image();
 var hdvImg = new Image();
@@ -77,20 +77,28 @@ export function emplacementLibre(id, batSelect, clickX, clickY) {
   for (var n = 0; n < map[id].length; n++) {
     if(clickX >= map[id][n].x && clickX <= map[id][n].x + map[id][n].width){
       if(clickY >= map[id][n].y && clickY <= map[id][n].y+ map[id][n].height){      
-        console.log("coin haut gauche erreur");
+        //coin haut gauche erreur
         autorisation = false;
-      }
-      
+      }    
     }
-  }
-  for (var n = 0; n < map[id].length; n++) {
     if(cornerX >= map[id][n].x && cornerX <= map[id][n].x + map[id][n].width){
-          if(cornerY >= map[id][n].y && cornerY <= map[id][n].y + map[id][n].height){
-          console.log("coin bas droite erreur");
-          autorisation =  false;
-          }
-        }
-    
+      if(cornerY >= map[id][n].y && cornerY <= map[id][n].y + map[id][n].height){
+        //coin bas droite erreur
+        autorisation =  false;
+      }
+    }
+    if(cornerX >= map[id][n].x && cornerX <= map[id][n].x + map[id][n].width){
+      if(clickY>= map[id][n].y && clickY <= map[id][n].y + map[id][n].height){
+        //coin haut droite erreur
+        autorisation =  false;
+      }
+    }
+    if(clickX >= map[id][n].x && clickX <= map[id][n].x + map[id][n].width){
+      if(cornerY >= map[id][n].y && cornerY <= map[id][n].y + map[id][n].height){
+        //coin bas gauche erreur
+        autorisation =  false;
+      }
+    }
   }
   return autorisation;
 }
@@ -112,3 +120,60 @@ export function menuBatiments(id, clickX, clickY){
       }
 }
 
+export function drawAllBatiments(){
+  players.forEach(player => {
+    map[player].forEach(batiment => {
+      //affichage de chaque batiments
+      let img = new Image();
+      img.src = batiment.image;
+      ctx.drawImage(
+        img,
+        batiment.x,
+        batiment.y,
+        batiment.width,
+        batiment.height
+      );
+      if (batiment.nom != "murH" && batiment.nom != "murV")
+        //affichage de la barre de point de vie pour chaque batiments
+        drawHpBar(
+          batiment.x + batiment.width / 2,
+          batiment.y + 10 + batiment.height,
+          batiment.hp,
+          batiment.hpMax
+        );
+    });
+  });
+}
+
+
+export function drawHpBar(x, y, hp, hpMax) {
+  let height = 20;
+  let width = 120;
+  ctx.beginPath();
+  ctx.rect(x - width / 2, y, width, height);
+  ctx.fillStyle = "#AAA";
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.rect(x - width / 2, y, width * (hp / hpMax), height);
+  if (hp > 63) {
+    ctx.fillStyle = "green";
+  } else if (hp > 37) {
+    ctx.fillStyle = "gold";
+  } else if (hp > 13) {
+    ctx.fillStyle = "orange";
+  } else {
+    ctx.fillStyle = "red";
+  }
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.font = "bold 15px verdana, sans-serif ";
+  ctx.fillStyle = "#FFF";
+  ctx.fillText(
+    hp + "/" + hpMax,
+    x - ctx.measureText(hp + "/" + hpMax).width / 2,
+    y + ctx.measureText(hp + "/" + hpMax).fontBoundingBoxAscent
+  );
+}

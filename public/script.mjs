@@ -6,7 +6,7 @@
 document.getElementById("menu_bat").style.display = "none";
 const loginForm = document.querySelector("form");
 var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
+export var ctx = canvas.getContext("2d");
 canvas.width = 1600;
 canvas.height = 899;
 var playerX = 0;
@@ -18,13 +18,15 @@ var _playerId = socket.id;
 import {
   emplacementLibre,
   menuBatiments,
+  drawHpBar,
+  drawAllBatiments
 } from "./import/map.mjs";
 
 import {RenduBatiments} from './import/map.mjs'
 
 import {displayMenuBatiments} from './import/menu.mjs';
 
-var players = [];
+export var players = [];
 /*
 players : [
   playerId1,
@@ -135,7 +137,6 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (batSelect != null) {
     //permet d'afficher le visuel du batiment au deplacement de la souris
-    
     ctx.drawImage(
       RenduBatiments[batSelect].image,
       playerX,
@@ -144,62 +145,10 @@ function draw() {
       RenduBatiments[batSelect].height
     );
   }
-  players.forEach(player => {
-    map[player].forEach(batiment => {
-      //affichage de chaque batiments
-      let img = new Image();
-      img.src = batiment.image;
-      ctx.drawImage(
-        img,
-        batiment.x,
-        batiment.y,
-        batiment.width,
-        batiment.height
-      );
-      if (batiment.nom != "murH" && batiment.nom != "murV")
-        //affichage de la barre de point de vie pour chaque batiments
-        drawHpBar(
-          batiment.x + batiment.width / 2,
-          batiment.y + 10 + batiment.height,
-          batiment.hp,
-          batiment.hpMax
-        );
-    });
-  });
+  drawAllBatiments();
   requestAnimationFrame(draw);
 }
 
-function drawHpBar(x, y, hp, hpMax) {
-  let height = 20;
-  let width = 120;
-  ctx.beginPath();
-  ctx.rect(x - width / 2, y, width, height);
-  ctx.fillStyle = "#AAA";
-  ctx.closePath();
-  ctx.fill();
-
-  ctx.beginPath();
-  ctx.rect(x - width / 2, y, width * (hp / hpMax), height);
-  if (hp > 63) {
-    ctx.fillStyle = "green";
-  } else if (hp > 37) {
-    ctx.fillStyle = "gold";
-  } else if (hp > 13) {
-    ctx.fillStyle = "orange";
-  } else {
-    ctx.fillStyle = "red";
-  }
-  ctx.closePath();
-  ctx.fill();
-
-  ctx.font = "bold 15px verdana, sans-serif ";
-  ctx.fillStyle = "#FFF";
-  ctx.fillText(
-    hp + "/" + hpMax,
-    x - ctx.measureText(hp + "/" + hpMax).width / 2,
-    y + ctx.measureText(hp + "/" + hpMax).fontBoundingBoxAscent
-  );
-}
 
 function drawBatiment(data) {
   // data:{nom: "nomDuBatiment", x: 0, y: 0, owner: "wkfefkefe"}
