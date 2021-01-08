@@ -208,15 +208,7 @@ CRÉER UN BATIMENT
 
 draw();
 
-export function createGame(usname) {
-  console.log("dreate game for "+usname+".....");
-  socket.emit("create game", usname);
-}
 
-export function joinGame(username, room) {
-  socket.emit("join game", { username, room });
-}
-/*
 document.getElementById("buttonCreate").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   let usname = loginForm.elements.username.value;
@@ -231,7 +223,7 @@ document.getElementById("buttonConnect").addEventListener("click", event => {
   let room = loginForm.elements.gameCode.value;
   socket.emit("join game", { username, room });
 });
-*/
+
 
 // client.js
 socket.on("connected", function(data) {
