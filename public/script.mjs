@@ -208,10 +208,19 @@ CRÉER UN BATIMENT
 
 draw();
 
+function createGame(){
+  event.preventDefault(); // stop our form submission from refreshing the page
+  let usname = loginForm.elements.username.value;
+  console.log("dreate game for "+usname+".....");
+  socket.emit("create game", usname);
+}
+
 document.getElementById("buttonCreate").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   let usname = loginForm.elements.username.value;
+  console.log("dreate game for "+usname+".....");
   socket.emit("create game", usname);
+  
 });
 
 document.getElementById("buttonConnect").addEventListener("click", event => {
