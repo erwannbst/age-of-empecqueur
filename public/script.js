@@ -105,7 +105,6 @@ map : {
     }
 */
 
-
 function item(x, y, name) {
   this.name = name;
   this.x = x;
@@ -144,7 +143,9 @@ document.addEventListener("keydown", keyDownHandler, false);
 function keyDownHandler(e) {}
 
 //-------------------------------------------------------CLICK------------------------------------------------------------//
-function emplacementLibre()
+function emplacementLibre(x, y){
+  
+}
 
 canvas.addEventListener(
   "click",
@@ -184,24 +185,24 @@ canvas.addEventListener(
       //evénement suite a un clic sur le batiment
       for (var n = 0; n < map[socket.id].length; n++) {
         //console.log(map[socket.id][n].width);
-            if (
-              playerX >= map[socket.id][n].x &&
-              playerX <= map[socket.id][n].x + map[socket.id][n].width
-            ) {
-              if (
-              playerY >= map[socket.id][n].y &&
-              playery <= map[socket.id][n].y + map[socket.id][n].height
-            ) {
-              console.log("batclick");
-              batClick = map[socket.id][n].name;
-            }
-            }
+        if (
+          playerX >= map[socket.id][n].x &&
+          playerX <= map[socket.id][n].x + map[socket.id][n].width
+        ) {
+          if (
+            playerY >= map[socket.id][n].y &&
+            playerY <= map[socket.id][n].y + map[socket.id][n].height
+          ) {
+            batClick = map[socket.id][n].nom;
+            console.log(batClick);
+          }
+        }
       }
       if (batClick) {
         console.log(batClick);
         menu_bat.style.display = "block";
         //menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;
-        map[_playerId].forEach(batiment => {
+        map[socket.id].forEach(batiment => {
           if (batiment.nom == batClick) {
             document.getElementById("menu_bat").style.backgroundImage =
               "url(" + batiment.image + ")";
