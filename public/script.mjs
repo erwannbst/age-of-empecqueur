@@ -98,18 +98,16 @@ canvas.addEventListener(
   "click",
   function(event) {
     var menu_bat = document.getElementById("menu_bat");
-    var autorisation = true;
     var batClick = false;
 
     //si un batiment est selectionné on verifie si on peut le placer sur la map
     if (batSelect != null) {
-      autorisation = emplacementLibre(socket.id, batSelect, playerX, playerY);
       //
-      if (autorisation == false) {
+      if (emplacementLibre(socket.id, batSelect, playerX, playerY)) {
         document.getElementById("output").innerHTML =
           "Vous ne pouvez pas placer un batiment ici";
       }
-      if (autorisation == true) {
+      if (emplacementLibre(socket.id, batSelect, playerX, playerY)) {
         createBatiment({ nom: batSelect, x: playerX, y: playerY });
         batSelect = null;
       }

@@ -71,23 +71,11 @@ export var RenduBatiments = {
 };
 
 export function emplacementLibre(id, batSelect, clickX, clickY) {
-  var hauteur = RenduBatiments[batSelect].width;
-  var largeur = RenduBatiments[batSelect].height;
-
-  for (var batwidth = 0; batwidth < hauteur; batwidth++) {
-    for (var batheight = 0; batheight < largeur; batheight++) {
-      for (var n = 0; n < map[id].length; n++) {
-        if (
-          map[id][n].x + batwidth == clickX &&
-          map[id][n].y + batheight == clickY
-        ) {
-          //si un batiment est deja placé a l'endroit du clic on interdit la création du batiment
-          return false;
-        }
-      }
-    }
-  }
-  return true;
+     for (var n = 0; n < map[id].length; n++) {
+       if(clickX >= map[id][n].x && clickX <= map[id][n].x + map[id][n].width){
+         
+       }
+     }
 }
 
 export function menuBatiments(id, clickX, clickY){
