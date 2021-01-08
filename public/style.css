@@ -54,7 +54,7 @@ form button {
   cursor: pointer;
   font-size: inherit;
   line-height: 1.4em;
-  padding: 0.25em 1em;
+  padding: 0.5em 1em;
 }
 
 form button:hover {
