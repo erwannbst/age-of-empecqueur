@@ -105,10 +105,6 @@ map : {
     }
 */
 
-var closedMap = [];
-
-var buffer = new item(0, 0);
-closedMap.push(buffer);
 
 function item(x, y, name) {
   this.name = name;
