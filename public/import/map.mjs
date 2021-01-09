@@ -71,13 +71,7 @@ export var RenduBatiments = {
 };
 
 var side;
-
 export function emplacementLibre(id, batSelect, clickX, clickY) {
-  
-  if(map[id][0].x < 950){
-    side ="left";
-  }
-  else side = "right";
   
   var autorisation = true;
   var cornerX = clickX + RenduBatiments[batSelect].width;
@@ -87,7 +81,6 @@ export function emplacementLibre(id, batSelect, clickX, clickY) {
       if(clickY >= map[id][n].y && clickY <= map[id][n].y+ map[id][n].height){      
         //coin haut gauche erreur
           autorisation = false;
-        
       }    
     }
     if(cornerX >= map[id][n].x && cornerX <= map[id][n].x + map[id][n].width){
@@ -106,10 +99,14 @@ export function emplacementLibre(id, batSelect, clickX, clickY) {
       if(cornerY >= map[id][n].y && cornerY <= map[id][n].y + map[id][n].height){
         //coin bas gauche erreur
           autorisation = false;
-        
       }
     }
   }
+  
+  if(map[id][0].x <= 950){
+    side ="left";
+  }
+  else side = "right";
   
   if(side == "left" && clickX > 950) autorisation=false;
   if(side == "right" && clickX < 950) autorisation=false;
