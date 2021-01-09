@@ -77,6 +77,21 @@ form button {
   outline-style:none;
 }
 
+.bat-button {
+  color: #fff;
+  width : auto;
+  border-radius: 10px;
+  padding: 1em;
+  margin: 5px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  background: linear-gradient(-135deg, #5B6E44, #D2EBB5);
+  transition: all 0.3s ease;
+  border: 1px solid lightgrey;
+  outline-style:none;
+}
+
 
 footer {
   margin-top: 3em;
@@ -94,6 +109,9 @@ select {
   height: 30px;
 }
 
+.batiments-container {
+  padding: 1em;
+}
 
 .connexion {
   position: absolute;
