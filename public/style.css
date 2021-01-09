@@ -44,29 +44,31 @@ body {
   line-height: 1.5em;
 }
 
-.info-games {
+.status {
+  max-width: calc(100% - 5rem);
+  line-height: 1.1;
   position: absolute;
-  justify-content: center;
+  text-align: center;
+  color: black;
+  left: 1%;
+  width: 33%;
+}
+.room {
+  max-width: calc(100% - 5rem);
+  line-height: 1.1;
+  position: absolute;
+  text-align: center;
+  color: black;
+  right: 1%;
+  width: 33%;
 }
 
-#status {
-  width: 1%;
+.gold {
   max-width: calc(100% - 5rem);
   line-height: 1.1;
   position: absolute;
   text-align: center;
   color: black;
-  justify-content: center;
-}
-#room {
-  width: 100%;
-  max-width: calc(100% - 5rem);
-  line-height: 1.1;
-  position: absolute;
-  top: 1em;
-  text-align: center;
-  color: black;
-  justify-content: center;
 }
 
 label {
