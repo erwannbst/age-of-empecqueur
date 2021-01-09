@@ -151,26 +151,26 @@ export function drawHpBar(x, y, hp, hpMax) {
   let width = 120;
   ctx.beginPath();
   ctx.rect(x - width / 2, y, width, height);
-  ctx.fillStyle = "#AAA";
+  ctx.fillStyle = "rgba(255,255,255,0.2)";
   ctx.closePath();
   ctx.fill();
 
   ctx.beginPath();
   ctx.rect(x - width / 2, y, width * (hp / hpMax), height);
   if (hp > 63) {
-    ctx.fillStyle = "green";
+    ctx.fillStyle = "rgba(0,255,0,0.2)";
   } else if (hp > 37) {
-    ctx.fillStyle = "gold";
+    ctx.fillStyle = "rgba(255,166,0,0.2)";
   } else if (hp > 13) {
-    ctx.fillStyle = "orange";
+    ctx.fillStyle = "rgba(255,0,0,0.2)";
   } else {
     ctx.fillStyle = "red";
   }
   ctx.closePath();
   ctx.fill();
 
-  ctx.font = "bold 15px verdana, sans-serif ";
-  ctx.fillStyle = "#FFF";
+  ctx.font = "15px Verdana, cursive";
+  ctx.fillStyle = "rgba(255,255,255)";
   ctx.fillText(
     hp + "/" + hpMax,
     x - ctx.measureText(hp + "/" + hpMax).width / 2,
