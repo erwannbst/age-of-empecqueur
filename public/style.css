@@ -81,7 +81,7 @@ form button {
   color: #fff;
   width : auto;
   border-radius: 10px;
-  padding: 1em;
+  padding: 5px;
   margin: 5px;
   font-size: 20px;
   font-weight: 500;
@@ -110,7 +110,13 @@ select {
 }
 
 .batiments-container {
+  height: auto;
+  bottom; 0;
   padding: 1em;
+  position: absolute;
+  background-color : rgba(255, 255, 255, 0.7);
+  border-radius: 15px;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
 }
 
 .connexion {
