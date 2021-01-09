@@ -1,6 +1,7 @@
 /* this file is loaded by index.html and styles the page */
 
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=IBM Plex Sans:400,500,600,700&display=swap");
 
 * {
   padding: 0;
@@ -63,13 +64,20 @@ body {
 }
 .gold {
   position: absolute;
+  display: flex;
   z-index: 2;
   text-align: center;
-  place-items: center;
+  align-items: center;
   justify-content: start;
   top: 1em;
-  width: 150px;
+  width: auto;
+  height: auto;
+  margin: 10px;
+  padding: 10px;
   background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  font-family: "IBM Plex Sans", sans-serif;
 }
 
 
