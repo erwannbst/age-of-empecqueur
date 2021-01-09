@@ -44,7 +44,19 @@ body {
   line-height: 1.5em;
 }
 
+.info-games {
+  position: absolute;
+  text-align: center;
+}
+
 h1 {
+  max-width: calc(100% - 5rem);
+  line-height: 1.1;
+  position: absolute;
+  text-align: center;
+  color: black;
+}
+h2 {
   max-width: calc(100% - 5rem);
   line-height: 1.1;
   position: absolute;
@@ -61,10 +73,9 @@ progress {
   width: 100%;
 }
 
-
 form button {
   color: #fff;
-  width : 100%;
+  width: 100%;
   border-radius: 10px;
   padding: 1em;
   margin-top: auto;
@@ -74,12 +85,12 @@ form button {
   background: linear-gradient(-135deg, #5B6E44, #D2EBB5);
   transition: all 0.3s ease;
   border: 1px solid lightgrey;
-  outline-style:none;
+  outline-style: none;
 }
 
 .bat-button {
   color: #fff;
-  width : auto;
+  width: auto;
   border-radius: 10px;
   padding: 5px;
   margin: 5px;
@@ -89,9 +100,8 @@ form button {
   background: linear-gradient(-135deg, #5B6E44, #D2EBB5);
   transition: all 0.3s ease;
   border: 1px solid lightgrey;
-  outline-style:none;
+  outline-style: none;
 }
-
 
 footer {
   margin-top: 3em;
@@ -114,7 +124,7 @@ select {
   bottom: 1em;
   padding: 1em;
   position: absolute;
-  background-color : rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 15px;
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
 }
@@ -160,7 +170,6 @@ select {
   width: 100%;
   margin-top: 20px;
   position: relative;
-
 }
 .wrapper form .field input {
   height: 100%;
@@ -187,7 +196,6 @@ form .field input:valid {
   transform: translateY(-50%);
   transition: all 0.3s ease;
 }
-
 
 form .field input:focus ~ label,
 form .field input:valid ~ label {

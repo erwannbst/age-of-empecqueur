@@ -59,19 +59,7 @@ function item(x, y, name) {
 //-----------------------------------------------------PARTIE MENU-------------------------------------------------------//
 
 let batSelect;
-/*
-var selectedBat = document.querySelector("select");
-
-selectedBat.addEventListener("change", function() {
-  if (selectedBat.value == "") {
-    batSelect = null;
-  } else {
-    batSelect = selectedBat.value;
-  }
-  //document.getElementById(batSelect).disabled = true;
-});
-*/
-
+//boutons selection batiments
 var btnExtracteur = document.getElementById("extracteur");
 var btnCaserne = document.getElementById("caserne");
 var btnPortugais = document.getElementById("portugais");
@@ -82,6 +70,26 @@ var btnMurV = document.getElementById("murV");
 btnExtracteur.addEventListener("click", event => {
   event.preventDefault();
   batSelect = btnExtracteur.value;
+});
+btnCaserne.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnExtracteur.value;
+});
+btnPortugais.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnPortugais.value;
+});
+btnTrinquette.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnTrinquette.value;
+});
+btnMurH.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnMurH.value;
+});
+btnMurV.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnMurV.value;
 });
 
 
@@ -203,7 +211,7 @@ function gotConnected(data) {
     players.push(data.otherPlayer.playerId);
     map[data.otherPlayer.playerId] = [];
   }
-  document.getElementById("select").disabled = false;
+  //document.getElementById("select").disabled = false;
 }
 
 function userJoined(user) {
