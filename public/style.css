@@ -50,12 +50,13 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 10%;
+  height: 5%;
   width: 100%;
   place-items: center;
 }
 
 .status {
+  text-align: center;
   width: 400px;
   line-height: 1.1;
   color: black;
@@ -64,9 +65,12 @@ body {
   position: absolute;
   z-index: 2;
   text-align: center;
-  height: 10%;
+  place-items: center;
+  top:1em;
   width: 100%;
 }
+
+
 
 label {
   padding-right: 10px;
@@ -123,7 +127,19 @@ select {
   height: 30px;
 }
 
+.menu-bat{
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  place-items: center;
+  bottom: 1em;
+}
+
 .batiments-container {
+  width: 50%;
   height: auto;
   bottom: 1em;
   padding: 1em;
