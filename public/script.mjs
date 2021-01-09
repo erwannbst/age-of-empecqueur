@@ -14,7 +14,7 @@ canvas.height = 900;
 var playerX = 0;
 var playerY = 0;
 var connected = false;
-var side = "";
+export var side = "";
 var username = "";
 
 import {
@@ -213,15 +213,7 @@ function gotConnected(data) {
     players.push(data.otherPlayer.playerId);
     map[data.otherPlayer.playerId] = [];
     
-    if(map[socket.id][0].x > 850){
-      side="left";
-      console.log("left");
     }
-    else{
-      side="right";
-      console.log("right");
-    }
-      }
   //document.getElementById("select").disabled = false;
 }
 

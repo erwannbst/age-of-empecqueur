@@ -1,4 +1,4 @@
-import {map, ctx, players} from '../script.mjs';
+import {map, ctx, players,side } from '../script.mjs';
 
 var img = new Image();
 var hdvImg = new Image();
@@ -71,6 +71,17 @@ export var RenduBatiments = {
 };
 
 export function emplacementLibre(id, batSelect, clickX, clickY) {
+  
+  if(map[id][0].x > 950){
+      side="left";
+      console.log("left");
+    }
+    else{
+      side="right";
+      console.log("right");
+    }
+    
+  
   var autorisation = true;
   var cornerX = clickX + RenduBatiments[batSelect].width;
   var cornerY = clickY + RenduBatiments[batSelect].height;
@@ -78,30 +89,51 @@ export function emplacementLibre(id, batSelect, clickX, clickY) {
     if(clickX >= map[id][n].x && clickX <= map[id][n].x + map[id][n].width){
       if(clickY >= map[id][n].y && clickY <= map[id][n].y+ map[id][n].height){      
         //coin haut gauche erreur
-        autorisation = false;
+        if(side=="left" && clickX > 950){
+          autorisation = false;
+        }
+        if(side=="right" && clickX < 950){
+          autorisation = false;
+        }
       }    
     }
     if(cornerX >= map[id][n].x && cornerX <= map[id][n].x + map[id][n].width){
       if(cornerY >= map[id][n].y && cornerY <= map[id][n].y + map[id][n].height){
         //coin bas droite erreur
-        autorisation =  false;
+        if(side=="left" && clickX > 950){
+          autorisation = false;
+        }
+        if(side=="right" && clickX < 950){
+          autorisation = false;
+        }
       }
     }
     if(cornerX >= map[id][n].x && cornerX <= map[id][n].x + map[id][n].width){
       if(clickY>= map[id][n].y && clickY <= map[id][n].y + map[id][n].height){
         //coin haut droite erreur
-        autorisation =  false;
+        if(side=="left" && clickX > 950){
+          autorisation = false;
+        }
+        if(side=="right" && clickX < 950){
+          autorisation = false;
+        }
       }
     }
     if(clickX >= map[id][n].x && clickX <= map[id][n].x + map[id][n].width){
       if(cornerY >= map[id][n].y && cornerY <= map[id][n].y + map[id][n].height){
         //coin bas gauche erreur
-        autorisation =  false;
+        if(side=="left" && clickX > 950){
+          autorisation = false;
+        }
+        if(side=="right" && clickX < 950){
+          autorisation = false;
+        }
       }
     }
   }
   return autorisation;
 }
+
 
 export function menuBatiments(id, clickX, clickY){
   for (var n = 0; n < map[id].length; n++) {
