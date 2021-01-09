@@ -9,14 +9,20 @@ export function displayMenuBatiments(id, batClick){
         map[id].forEach(batiment => {
           if (batiment.nom == batClick) {
             document.getElementById("form_bat").style.opacity = 0.8;
-            document.getElementById("nom_bat").innerHTML = batiment.nom+" lvl "+batiment.lvl;
+            document.getElementById("nom_bat").innerHTML = batiment.nom.toUpperCase();
+            document.getElementById("lvl_bat").innerHTML =
+              "lvl " + batiment.lvl;
             document.getElementById("lvlUpPrice_bat").innerHTML =
               "Coût d'amélioration = " +
               batiment.lvlUpPrice +
-              " pièces d'or"
+              " pièces d'or" ;
             document.getElementById("hp_bat").value = batiment.hp;
             document.getElementById("hp_bat").max = batiment.hpMax;
             document.getElementById("button1").innerHTML = "Ajout de soldat";
+            var button = document.createElement("button") ;
+            button.value = "Ajout de soldat" ;
+            button.id = "button1";
+            document.menu_bat.appendChild(button);
           }
         });
 }
