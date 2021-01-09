@@ -10,11 +10,13 @@
 }
 
 .game-container {
+  justify-content: center;
   position: absolute;
   z-index: 1;
   width: 100%;
   display: flex;
 }
+
 canvas {
   border-right: 3px solid silver;
   border-bottom: 3px solid silver;
@@ -32,6 +34,8 @@ canvas {
   verticalalign: top;
   align-items: center;
 }
+
+.map{}
 
 #menu {
   top: 0px;
