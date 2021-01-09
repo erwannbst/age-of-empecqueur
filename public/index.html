@@ -9,9 +9,7 @@
     <meta charset="UTF-8" />
     <title>Age of</title>
     <link rel="stylesheet" href="style.css" />
-    <style>
-      
-    </style>
+    <style></style>
   </head>
   <body>
     <!--
@@ -32,41 +30,42 @@
   </section>
 -->
     <div class="connexion" id="connexion">
-        <div class="wrapper" >
-          <div class="title">
-            Créer une partie
-          </div >
-          <form id="creation">
-            <div class="field">
-              <input type="text" name="username" required />
-              <label>Pseudo</label>
-            </div>
-            <div class="field">
-              <button id="buttonCreate">Créer une partie</button>
-            </div>
-          </form>
+      <h1>
+        Age of Empecqueur
+      </h1>
+      <div class="wrapper">
+        <div class="title">
+          Créer une partie
         </div>
-        <div class="wrapper" >
-          <div class="title">
-            Rejoindre une partie
+        <form id="creation">
+          <div class="field">
+            <input type="text" name="username" autocomplete="off" required />
+            <label>Pseudo</label>
           </div>
-          <form id="connect">
-            <div class="field">
-              <input type="text" name="pseudo" required />
-              <label>Pseudo</label>
-            </div>
-            <div class="field">
-              <input type="text" name="gameCode" required />
-              <label>Code partie</label>
-            </div>
-            <div class="field">
-              <button id="buttonConnect">Rejoindre</button>
-            </div>
-          </form>
-        </div>
+          <div class="field">
+            <button id="buttonCreate">Créer une partie</button>
+          </div>
+        </form>
       </div>
-    
-    
+      <div class="wrapper">
+        <div class="title">
+          Rejoindre une partie
+        </div>
+        <form id="connect">
+          <div class="field">
+            <input type="text" name="pseudo" autocomplete="off" required />
+            <label>Pseudo</label>
+          </div>
+          <div class="field">
+            <input type="text" name="gameCode" autocomplete="off" required />
+            <label>Code partie</label>
+          </div>
+          <div class="field">
+            <button id="buttonConnect">Rejoindre</button>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <div class="game-container" id="game-container">
       <h1 id="status">Déconnecté</h1>
@@ -74,7 +73,6 @@
         <canvas id="myCanvas"></canvas>
       </div>
 
-      
       <div id="menu">
         <span id="room"></span>
 
