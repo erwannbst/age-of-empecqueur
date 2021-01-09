@@ -3,13 +3,14 @@
 // run by the browser each time the page is loaded
 
 // INIT
+document.getElementById("menu").style.display =" none";
 document.getElementById("menu_bat").style.display = "none";
 const loginForm = document.getElementById("connect");
 const createForm = document.getElementById("creation");
 var canvas = document.getElementById("myCanvas");
 export var ctx = canvas.getContext("2d");
-canvas.width = 1600;
-canvas.height = 899;
+canvas.width = 1900;
+canvas.height = 900;
 var playerX = 0;
 var playerY = 0;
 var connected = false;
