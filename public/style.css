@@ -62,13 +62,16 @@ progress {
 
 
 form button {
-  background-color: #bbbbf2;
-  border: 2px solid currentColor;
-  border-radius: 0.25em;
+  color: #fff;
+  border-radius: 10px;
+  padding: 1em;
+  margin-top: auto;
+  font-size: 20px;
+  font-weight: 500;
   cursor: pointer;
-  font-size: inherit;
-  line-height: 1.4em;
-  padding: 0.5em 1em;
+  background: linear-gradient(-135deg, #5B6E44, #D2EBB5);
+  transition: all 0.3s ease;
+  border: 1px solid lightgrey;
 }
 
 form button:hover {
@@ -130,12 +133,14 @@ select {
 }
 .wrapper form {
   padding: 10px 30px 50px 30px;
+  justify-content: center;
 }
 .wrapper form .field {
   height: 50px;
   width: 100%;
   margin-top: 20px;
   position: relative;
+
 }
 .wrapper form .field input {
   height: 100%;
