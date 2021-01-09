@@ -14,7 +14,6 @@ canvas.height = 900;
 var playerX = 0;
 var playerY = 0;
 var connected = false;
-export var side = "";
 var username = "";
 
 import {
