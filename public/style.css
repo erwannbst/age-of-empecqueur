@@ -66,8 +66,10 @@ body {
   z-index: 2;
   text-align: center;
   place-items: center;
-  top:1em;
-  width: 100%;
+  justify-content: start;
+  top: 1em;
+  width: 150px;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 
@@ -107,7 +109,7 @@ form button {
   cursor: pointer;
   background: linear-gradient(-135deg, #5B6E44, #D2EBB5);
   transition: all 0.3s ease;
-  border: 1px solid lightgrey;
+  border: none;
   outline-style: none;
 }
 
