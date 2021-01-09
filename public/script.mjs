@@ -93,7 +93,7 @@ btnMurV.addEventListener("click", event => {
 });
 
 
-// Bouton ajout soldats
+
 let bouton1Menu = document.getElementById("button1");
 bouton1Menu.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page

@@ -18,11 +18,13 @@ export function displayMenuBatiments(id, batClick){
               " pièces d'or" ;
             document.getElementById("hp_bat").value = batiment.hp;
             document.getElementById("hp_bat").max = batiment.hpMax;
+            if(batiment.nom=="caserne"){
+            document.getElementById("button1").style.display = "flex";
             document.getElementById("button1").innerHTML = "Ajout de soldat";
-            var button = document.createElement("button") ;
-            button.value = "Ajout de soldat" ;
-            button.id = "button1";
-            document.menu_bat.appendChild(button);
+            }
+            else{
+              document.getElementById("button1").style.display = "none";
+            }
           }
         });
 }
