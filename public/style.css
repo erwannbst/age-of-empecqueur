@@ -131,7 +131,7 @@ select {
   position: absolute;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex;
   height: auto;
   width: 100%;
   place-items: center;
@@ -139,12 +139,24 @@ select {
 }
 
 .batiments-container {
-  width: 50%;
+  width: 40%;
   height: auto;
+  left: 5%;
   bottom: 1em;
   padding: 1em;
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+}
+.menu-batiments-container {
+  width: 40%;
+  height: auto;
+  right: 5%;
+  bottom: 1em;
+  padding: 1em;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 15px;
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
 }

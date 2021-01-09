@@ -9,7 +9,7 @@ export function displayMenuBatiments(id, batClick){
         map[id].forEach(batiment => {
           if (batiment.nom == batClick) {
             document.getElementById("menu_bat").style.backgroundImage =
-              "url(" + batiment.image + ")";
+              "url(" + batiment.image + ")" + " right top height="+batiment.height+"px"+" width="+batiment.height+"px";
             document.getElementById("form_bat").style.opacity = 0.8;
             document.getElementById("nom_bat").innerHTML = batiment.nom;
             document.getElementById("lvl_bat").innerHTML =
