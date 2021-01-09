@@ -59,6 +59,7 @@ function item(x, y, name) {
 //-----------------------------------------------------PARTIE MENU-------------------------------------------------------//
 
 let batSelect;
+/*
 var selectedBat = document.querySelector("select");
 
 selectedBat.addEventListener("change", function() {
@@ -68,6 +69,19 @@ selectedBat.addEventListener("change", function() {
     batSelect = selectedBat.value;
   }
   //document.getElementById(batSelect).disabled = true;
+});
+*/
+
+var btnExtracteur = document.getElementById("extracteur");
+var btnCaserne = document.getElementById("caserne");
+var btnPortugais = document.getElementById("portugais");
+var btnTrinquette = document.getElementById("trinquette");
+var btnMurH = document.getElementById("murH");
+var btnMurV = document.getElementById("murV");
+
+btnExtracteur.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnExtracteur.value;
 });
 
 
