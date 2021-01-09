@@ -44,31 +44,28 @@ body {
   line-height: 1.5em;
 }
 
-.game-status{
+.game-status {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   justify-content: space-around;
-  align-items: flex;
+  align-items: center;
   height: 10%;
   width: 100%;
   place-items: center;
 }
 
 .status {
-  max-width: calc(100% - 5rem);
-  line-height: 1.1;
-  color: black;
-}
-.room {
-  max-width: calc(100% - 5rem);
+  width: 400px;
   line-height: 1.1;
   color: black;
 }
 .gold {
-  max-width: calc(100% - 5rem);
-  line-height: 1.1;
-  color: black;
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+  height: 10%;
+  width: 100%;
 }
 
 label {
@@ -138,7 +135,7 @@ select {
 
 .connexion {
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   display: flex;
   justify-content: space-around;
   align-items: flex;

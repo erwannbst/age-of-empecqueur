@@ -73,7 +73,7 @@ btnExtracteur.addEventListener("click", event => {
 });
 btnCaserne.addEventListener("click", event => {
   event.preventDefault();
-  batSelect = btnExtracteur.value;
+  batSelect = btnCaserne.value;
 });
 btnPortugais.addEventListener("click", event => {
   event.preventDefault();
