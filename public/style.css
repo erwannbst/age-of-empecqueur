@@ -39,7 +39,7 @@ canvas {
 
 body {
   align-items: center;
-  background-color: grey;
+  background-color: lightgray;
   line-height: 1.5em;
 }
 
@@ -73,11 +73,9 @@ form button {
   background: linear-gradient(-135deg, #5B6E44, #D2EBB5);
   transition: all 0.3s ease;
   border: 1px solid lightgrey;
+  outline-style:none;
 }
 
-form button:hover {
-  background-color: lavender;
-}
 
 footer {
   margin-top: 3em;
@@ -95,10 +93,6 @@ select {
   height: 30px;
 }
 
-#footer {
-  text-align: center;
-  margin-top: 1em;
-}
 
 .connexion {
   position: absolute;
