@@ -14,8 +14,8 @@ canvas.height = 900;
 var playerX = 0;
 var playerY = 0;
 var connected = false;
+var side = "";
 var username = "";
-var _playerId = socket.id;
 
 import {
   emplacementLibre,
@@ -118,6 +118,7 @@ function mouseMoveHandler(e) {
 
 //-------------------------------------------------------CLICK------------------------------------------------------------//
 
+
 canvas.addEventListener(
   "click",
   function(event) {
@@ -129,6 +130,7 @@ canvas.addEventListener(
       //
       if (emplacementLibre(socket.id, batSelect, playerX, playerY)) {
         createBatiment({ nom: batSelect, x: playerX, y: playerY });
+        console.log(map);
         batSelect = null;
       }
       else{
@@ -210,7 +212,16 @@ function gotConnected(data) {
       "Vous jouez contre " + data.otherPlayer.username;
     players.push(data.otherPlayer.playerId);
     map[data.otherPlayer.playerId] = [];
-  }
+    
+    if(map[socket.id][0].x > 850){
+      side="left";
+      console.log("left");
+    }
+    else{
+      side="right";
+      console.log("right");
+    }
+      }
   //document.getElementById("select").disabled = false;
 }
 
