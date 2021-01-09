@@ -168,7 +168,7 @@ function draw() {
       RenduBatiments[batSelect].height
     );
   }
-  drawAllBatiments(); //fonction d'affichage de tous les batiments
+  drawAllBatiments(socket.id); //fonction d'affichage de tous les batiments
   requestAnimationFrame(draw);
 }
 

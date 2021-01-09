@@ -110,6 +110,8 @@ export function emplacementLibre(id, batSelect, clickX, clickY) {
   
   if(side == "left" && clickX > 950) autorisation=false;
   if(side == "right" && clickX < 950) autorisation=false;
+  if(side == "left" && cornerX > 950) autorisation=false;
+  if(side == "right" && cornerX < 950) autorisation=false;
   
   return autorisation;
 }
@@ -132,7 +134,7 @@ export function menuBatiments(id, clickX, clickY){
       }
 }
 
-export function drawAllBatiments(){
+export function drawAllBatiments(id){
   players.forEach(player => {
     map[player].forEach(batiment => {
       //affichage de chaque batiments
@@ -148,6 +150,8 @@ export function drawAllBatiments(){
       if (batiment.nom != "murH" && batiment.nom != "murV")
         //affichage de la barre de point de vie pour chaque batiments
         drawHpBar(
+          batiment.owner,
+          id,
           batiment.x + batiment.width / 2,
           batiment.y + 10 + batiment.height,
           batiment.hp,
@@ -158,7 +162,7 @@ export function drawAllBatiments(){
 }
 
 
-export function drawHpBar(x, y, hp, hpMax) {
+export function drawHpBar(owner, id, x, y, hp, hpMax) {
   let height = 20;
   let width = 120;
   ctx.beginPath();
@@ -169,14 +173,11 @@ export function drawHpBar(x, y, hp, hpMax) {
 
   ctx.beginPath();
   ctx.rect(x - width / 2, y, width * (hp / hpMax), height);
-  if (hp > 63) {
+  if(id == owner){
     ctx.fillStyle = "rgba(0,255,0,0.2)";
-  } else if (hp > 37) {
-    ctx.fillStyle = "rgba(255,166,0,0.2)";
-  } else if (hp > 13) {
+  }
+  else{
     ctx.fillStyle = "rgba(255,0,0,0.2)";
-  } else {
-    ctx.fillStyle = "red";
   }
   ctx.closePath();
   ctx.fill();
