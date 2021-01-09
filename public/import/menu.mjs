@@ -26,3 +26,5 @@ export function displayMenuBatiments(id, batClick){
           }
         });
 }
+
+

@@ -106,9 +106,9 @@ io.on('connection', function (socket) {
       io.to(games[room].players[0]).emit('user joined', {playerId, username}); //Préviens le premier joueur créateur de la game qu'un autre s'est connecté
       socket.emit('connected', {username, room, otherPlayer: {playerId: games[room].players[0], ...players[games[room].players[0]]}});
       setInterval(() => incrementGold(room), gameValues.INTERVAL_GOLD_INCREMENT);
-      var hdvXPos = 50;
+      var hdvXPos = 170;
       games[room].players.forEach(playerId => {
-        let hdv = new Hdv(hdvXPos, 450);
+        let hdv = new Hdv(hdvXPos, 400);
         hdvXPos = 1650
         maps[playerId].push(hdv);
         io.to(room).emit('draw batiment', {...hdv.draw(), owner: playerId});

@@ -17,8 +17,7 @@
   display: flex;
 }
 canvas {
-  border-right: 3px solid silver;
-  border-bottom: 3px solid silver;
+  border: 3px solid silver;
   border-bottom-right-radius: 30px;
   border-bottom-left-radius: 30px;
   background: #013333
