@@ -46,22 +46,27 @@ body {
 
 .info-games {
   position: absolute;
-  text-align: center;
+  justify-content: center;
 }
 
-h1 {
+#status {
+  width: 1%;
   max-width: calc(100% - 5rem);
   line-height: 1.1;
   position: absolute;
   text-align: center;
   color: black;
+  justify-content: center;
 }
-h2 {
+#room {
+  width: 100%;
   max-width: calc(100% - 5rem);
   line-height: 1.1;
   position: absolute;
+  top: 1em;
   text-align: center;
   color: black;
+  justify-content: center;
 }
 
 label {
