@@ -122,8 +122,8 @@ else if(e.which) // Netscape/Firefox/Opera
 //-------------------------------------------------------MOUSE-----------------------------------------------------------//
 document.addEventListener("mousemove", mouseMoveHandler);
 function mouseMoveHandler(e) {
-  playerX = pageWidth/950 * e.pageX;
-  playerY = pageHeight/450 * e.pageY;
+  playerX = (pageWidth-1900)/2  + (1900*e.pageX)/pageWidth;
+  playerY = (pageHeight-900)/2  + (900*e.pageY)/pageHeight;
   document.getElementById("output").innerHTML =
     "Mouse:  <br />" + " x: " + playerX + ", y: " + playerY + "<br />";
 }
