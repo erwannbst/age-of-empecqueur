@@ -13,6 +13,8 @@ canvas.width = 1900;
 canvas.height = 900;
 var playerX = 0;
 var playerY = 0;
+var pageWidth = document.documentElement.clientWidth;
+var pageHeight = document.documentElement.clientHeight;
 var connected = false;
 var username = "";
 
@@ -120,8 +122,8 @@ else if(e.which) // Netscape/Firefox/Opera
 //-------------------------------------------------------MOUSE-----------------------------------------------------------//
 document.addEventListener("mousemove", mouseMoveHandler);
 function mouseMoveHandler(e) {
-  playerX = e.pageX-950;
-  playerY = e.pageY-450;
+  playerX = pageWidth/950 * e.pageX;
+  playerY = pageHeight/450 * e.pageY;
   document.getElementById("output").innerHTML =
     "Mouse:  <br />" + " x: " + playerX + ", y: " + playerY + "<br />";
 }
