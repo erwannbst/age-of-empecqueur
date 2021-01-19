@@ -109,7 +109,7 @@ io.on('connection', function (socket) {
       setInterval(() => sendMap(room), gameValues.INTERVAL_SEND_MAP);
       var hdvXPos = 170;
       games[room].players.forEach(playerId => {
-        let hdv = new Hdv(hdvXPos, 400);
+        let hdv = new Hdv(hdvXPos, 400, playerId);
         hdvXPos = 1650
         maps[playerId].push(hdv);
         //io.to(room).emit('draw batiment', {...hdv.draw(), owner: playerId});
@@ -123,25 +123,25 @@ io.on('connection', function (socket) {
     let batiment;
     switch(data.nom){
       case "hdv":
-         batiment = new Hdv(data.x, data.y);
+         batiment = new Hdv(data.x, data.y, playerId);
         break;
       case "murV":
-         batiment = new MurV(data.x, data.y);
+         batiment = new MurV(data.x, data.y, playerId);
         break;
       case "murH":
-         batiment = new MurH(data.x, data.y);
+         batiment = new MurH(data.x, data.y, playerId);
         break;
       case "caserne":
-         batiment = new Caserne(data.x, data.y);
+         batiment = new Caserne(data.x, data.y, playerId);
         break;
       case "portugais":
-         batiment = new Portugais(data.x, data.y);
+         batiment = new Portugais(data.x, data.y, playerId);
         break;
       case "trinquette":
-         batiment = new Trinquette(data.x, data.y);
+         batiment = new Trinquette(data.x, data.y, playerId);
         break;
       case "extracteur":
-         batiment = new Extracteur(data.x, data.y);
+         batiment = new Extracteur(data.x, data.y, playerId);
         break;
       case "soldier":
          batiment = new Soldier(50, 50, (drawData) => itemUpdated(room, drawData, playerId));

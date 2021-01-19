@@ -1,8 +1,8 @@
 import Mur from "./Mur.js";
 
 class MurH extends Mur {
-  constructor(x, y) {
-    super(x, y, 110, 30); // x, y, hp
+  constructor(x, y, owner) {
+    super(x, y, 110, 30, owner); // x, y, hp
   }
 
   draw() {

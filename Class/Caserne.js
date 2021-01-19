@@ -1,8 +1,8 @@
 import Building from "./Building.js";
 
 class Caserne extends Building {
-  constructor(x, y) {
-    super(x, y, 80, 80, 300); // x, y, hp
+  constructor(x, y, owner) {
+    super(x, y, 80, 80, 300, owner); // x, y, hp
   }
 
   draw() {

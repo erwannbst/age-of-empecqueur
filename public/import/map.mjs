@@ -152,7 +152,6 @@ export function drawAllBatiments(id){
       );
       if (batiment.nom != "murH" && batiment.nom != "murV")
         //affichage de la barre de point de vie pour chaque batiments
-        console.log("id :" + id +" owner : "+batiment.owner )
         drawHpBar(
           batiment.owner,
           id,
