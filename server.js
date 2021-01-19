@@ -116,15 +116,7 @@ io.on('connection', function (socket) {
     }
   });
   
-  socket.on('new message', function (data) {
-    socket.broadcast.emit('new message', {
-      username: socket.username,
-      message: data
-    });
-  });
-  
   socket.on('create batiment', function(data) { // data:{nom: "nomDuBatiment", x: 0, y: 0}
-    console.log("APPEL");
     let playerId = socket.id;
     let room = players[playerId].roomId;
     let batiment;
@@ -159,12 +151,15 @@ io.on('connection', function (socket) {
     maps[playerId].push(batiment);
     io.to(room).emit('draw batiment', {...batiment.draw(), owner: playerId});
   });
-
 });
 
 function itemUpdated(room, drawData, playerId){
   console.log("item updated");
   io.to(room).emit('item updated', {...drawData, owner: playerId});
+}
+
+function sendMap(room){
+  io.to(room).emit('receive map', );
 }
 
 function makeid() {

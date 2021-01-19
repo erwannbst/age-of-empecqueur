@@ -204,6 +204,8 @@ function drawBatiment(data) {
   //AddClosedMap(data.nom, data.x, data.y);
 }
 
+function receiveMap(daat)
+
 function itemUpdated(item) {
   map[item.owner][1] = item;
 }
@@ -285,6 +287,10 @@ socket.on("user joined", function(user) {
 socket.on("draw batiment", function(data) {
   drawBatiment(data);
 });
+
+socket.on("receive map", function(data) {
+  receiveMap(data);
+})
 
 socket.on("item updated", function(data) {
   //data : {...drawData, owner: playerId}
