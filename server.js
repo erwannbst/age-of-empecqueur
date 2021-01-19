@@ -124,6 +124,7 @@ io.on('connection', function (socket) {
   });
   
   socket.on('create batiment', function(data) { // data:{nom: "nomDuBatiment", x: 0, y: 0}
+    console.log("APPEL");
     let playerId = socket.id;
     let room = players[playerId].roomId;
     let batiment;
