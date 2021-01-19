@@ -162,8 +162,13 @@ function itemUpdated(room, drawData, playerId){
 function sendMap(room){
   let players = games[room].players;
   var mapToSend = {}
-  mapToSend[players[0]] = maps[players[0]]
-  mapToSend[players[1]] = maps[players[1]]
+  for(let player in players){
+    players[player]
+    for(let batiment in maps[player]){
+      mapToSend[player] = batiment.draw();
+    }
+  }
+  console.log(mapToSend);
   io.to(room).emit('receive map', mapToSend);
 }
 
