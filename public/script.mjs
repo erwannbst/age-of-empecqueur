@@ -211,7 +211,7 @@ function itemUpdated(item) {
 
 function setGoldAmount(amount) {
   //Appelée par le serveur quand le montant d'or est mis à jour
-  document.getElementById("gold").innerHTML =  " "+amount;
+  document.getElementById("gold").innerHTML =  " " + amount;
 }
 
 function gotConnected(data) {
