@@ -29,4 +29,39 @@ export function displayMenuBatiments(id, batClick){
         });
 }
 
+let batSelect;
+//boutons selection batiments
+var btnExtracteur = document.getElementById("extracteur");
+var btnCaserne = document.getElementById("caserne");
+var btnPortugais = document.getElementById("portugais");
+var btnTrinquette = document.getElementById("trinquette");
+var btnMurH = document.getElementById("murH");
+var btnMurV = document.getElementById("murV");
+
+btnExtracteur.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnExtracteur.value;
+});
+btnCaserne.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnCaserne.value;
+});
+btnPortugais.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnPortugais.value;
+});
+btnTrinquette.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnTrinquette.value;
+});
+btnMurH.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnMurH.value;
+});
+btnMurV.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnMurV.value;
+});
+
+
 
