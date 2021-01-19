@@ -138,7 +138,6 @@ export function menuBatiments(id, clickX, clickY){
 }
 
 export function drawAllBatiments(id){
-  console.log('carte' + JSON.stringify(map));
   players.forEach(player => {
     map[player].forEach(batiment => {
       //affichage de chaque batiments

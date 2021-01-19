@@ -189,7 +189,6 @@ function draw() {
     );
   }
   drawAllBatiments(socket.id); //fonction d'affichage de tous les batiments
-  console.log("draw()")
   requestAnimationFrame(draw);
 }
 
@@ -290,10 +289,11 @@ socket.on("user joined", function(user) {
   userJoined(user);
 });
 
+/*
 socket.on("draw batiment", function(data) {
   drawBatiment(data);
 });
-
+*/
 socket.on("receive map", function(data) {
   receiveMap(data);
 })
