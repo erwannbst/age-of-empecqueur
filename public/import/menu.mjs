@@ -19,49 +19,16 @@ export function displayMenuBatiments(id, batClick){
             document.getElementById("hp_bat").value = batiment.hp;
             document.getElementById("hp_bat").max = batiment.hpMax;
             if(batiment.nom=="caserne"){
-            document.getElementById("button1").style.display = "flex";
-            document.getElementById("button1").innerHTML = "Ajout de soldat";
+            document.getElementById("btnCreateSoldat").style.display = "block";
+            document.getElementById("btnCreateSoldat").innerHTML = "Ajout de soldat";
             }
             else{
-              document.getElementById("button1").style.display = "none";
+              document.getElementById("btnCreateSoldat").style.display = "none";
             }
+            document.getElementById("btnUpgrade").innerHTML = "Améliorer";
           }
         });
 }
-
-let batSelect;
-//boutons selection batiments
-var btnExtracteur = document.getElementById("extracteur");
-var btnCaserne = document.getElementById("caserne");
-var btnPortugais = document.getElementById("portugais");
-var btnTrinquette = document.getElementById("trinquette");
-var btnMurH = document.getElementById("murH");
-var btnMurV = document.getElementById("murV");
-
-btnExtracteur.addEventListener("click", event => {
-  event.preventDefault();
-  batSelect = btnExtracteur.value;
-});
-btnCaserne.addEventListener("click", event => {
-  event.preventDefault();
-  batSelect = btnCaserne.value;
-});
-btnPortugais.addEventListener("click", event => {
-  event.preventDefault();
-  batSelect = btnPortugais.value;
-});
-btnTrinquette.addEventListener("click", event => {
-  event.preventDefault();
-  batSelect = btnTrinquette.value;
-});
-btnMurH.addEventListener("click", event => {
-  event.preventDefault();
-  batSelect = btnMurH.value;
-});
-btnMurV.addEventListener("click", event => {
-  event.preventDefault();
-  batSelect = btnMurV.value;
-});
 
 
 

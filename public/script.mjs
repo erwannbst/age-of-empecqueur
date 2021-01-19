@@ -59,10 +59,52 @@ function item(x, y, name) {
 
 //-----------------------------------------------------PARTIE MENU-------------------------------------------------------//
 
-let bouton1Menu = document.getElementById("button1");
-bouton1Menu.addEventListener("click", event => {
+let batSelect;
+//boutons selection batiments
+var btnExtracteur = document.getElementById("extracteur");
+var btnCaserne = document.getElementById("caserne");
+var btnPortugais = document.getElementById("portugais");
+var btnTrinquette = document.getElementById("trinquette");
+var btnMurH = document.getElementById("murH");
+var btnMurV = document.getElementById("murV");
+
+btnExtracteur.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnExtracteur.value;
+});
+btnCaserne.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnCaserne.value;
+});
+btnPortugais.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnPortugais.value;
+});
+btnTrinquette.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnTrinquette.value;
+});
+btnMurH.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnMurH.value;
+});
+btnMurV.addEventListener("click", event => {
+  event.preventDefault();
+  batSelect = btnMurV.value;
+});
+
+
+
+let btnCreateSoldat = document.getElementById("btnCreateSoldat");
+btnCreateSoldat.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   socket.emit("create batiment", { nom: "soldier" });
+});
+
+let btnUpgrade = document.getElementById("btnUpgrade");
+btnUpgrade.addEventListener("click", event => {
+  event.preventDefault(); // stop our form submission from refreshing the page
+  //socket.emit("create batiment", { nom: "soldier" });
 });
 
 
