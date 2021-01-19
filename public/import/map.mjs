@@ -102,16 +102,19 @@ export function emplacementLibre(id, batSelect, clickX, clickY) {
       }
     }
   }
-  
+  /*
   if(map[id][0].x <= 950){
     side ="left";
   }
   else side = "right";
   
+
   if(side == "left" && clickX > 950) autorisation=false;
   if(side == "right" && clickX < 950) autorisation=false;
   if(side == "left" && cornerX > 950) autorisation=false;
   if(side == "right" && cornerX < 950) autorisation=false;
+  
+  */
   
   return autorisation;
 }
@@ -135,8 +138,8 @@ export function menuBatiments(id, clickX, clickY){
 }
 
 export function drawAllBatiments(id){
+  console.log('carte' + JSON.stringify(map));
   players.forEach(player => {
-    console.log(map[player]);
     map[player].forEach(batiment => {
       //affichage de chaque batiments
       let img = new Image();

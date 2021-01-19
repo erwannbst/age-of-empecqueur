@@ -150,7 +150,6 @@ canvas.addEventListener(
       //
       if (emplacementLibre(socket.id, batSelect, playerX, playerY)) {
         createBatiment({ nom: batSelect, x: playerX, y: playerY });
-        console.log(map);
         batSelect = null;
       }
       else{
@@ -190,6 +189,7 @@ function draw() {
     );
   }
   drawAllBatiments(socket.id); //fonction d'affichage de tous les batiments
+  console.log("draw()")
   requestAnimationFrame(draw);
 }
 
