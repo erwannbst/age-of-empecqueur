@@ -163,7 +163,7 @@ function sendMap(room){
   let players = games[room].players;
   var mapToSend = {}
   players.forEach(player => {
-    mapToSend[player] = []
+    mapToSend[player] = [];
     maps[player].forEach(batiment => {
       mapToSend[player].push(batiment.draw());
     })

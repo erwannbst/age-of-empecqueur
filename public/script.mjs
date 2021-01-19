@@ -294,6 +294,7 @@ socket.on("draw batiment", function(data) {
   drawBatiment(data);
 });
 */
+
 socket.on("receive map", function(data) {
   receiveMap(data);
 })
