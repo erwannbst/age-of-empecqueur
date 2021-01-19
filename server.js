@@ -112,7 +112,7 @@ io.on('connection', function (socket) {
         let hdv = new Hdv(hdvXPos, 400);
         hdvXPos = 1650
         maps[playerId].push(hdv);
-        io.to(room).emit('draw batiment', {...hdv.draw(), owner: playerId});
+        //io.to(room).emit('draw batiment', {...hdv.draw(), owner: playerId});
       })
     }
   });
@@ -162,12 +162,11 @@ function itemUpdated(room, drawData, playerId){
 function sendMap(room){
   let players = games[room].players;
   var mapToSend = {}
-  for(let player in players){
-    players[player]
-    for(let batiment in maps[player]){
+  players.forEach(player => {
+    maps[player].forEach(batiment => {
       mapToSend[player] = batiment.draw();
-    }
-  }
+    })
+  })
   console.log(mapToSend);
   io.to(room).emit('receive map', mapToSend);
 }

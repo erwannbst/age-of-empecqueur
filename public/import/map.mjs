@@ -136,6 +136,7 @@ export function menuBatiments(id, clickX, clickY){
 
 export function drawAllBatiments(id){
   players.forEach(player => {
+    console.log(map[player]);
     map[player].forEach(batiment => {
       //affichage de chaque batiments
       let img = new Image();

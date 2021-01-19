@@ -196,6 +196,7 @@ function draw() {
 
 //-------------------------------------------------------SERVEUR------------------------------------------------------------//
 
+/*
 function drawBatiment(data) {
   // data:{nom: "nomDuBatiment", x: 0, y: 0, owner: "wkfefkefe"}
   //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
@@ -203,6 +204,7 @@ function drawBatiment(data) {
   map[data.owner].push(data);
   //AddClosedMap(data.nom, data.x, data.y);
 }
+*/
 
 function receiveMap(data){
   //console.log("actualisation de la map" + JSON.stringify(data));
