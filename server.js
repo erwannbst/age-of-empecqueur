@@ -106,6 +106,7 @@ io.on('connection', function (socket) {
       io.to(games[room].players[0]).emit('user joined', {playerId, username}); //Préviens le premier joueur créateur de la game qu'un autre s'est connecté
       socket.emit('connected', {username, room, otherPlayer: {playerId: games[room].players[0], ...players[games[room].players[0]]}});
       setInterval(() => incrementGold(room), gameValues.INTERVAL_GOLD_INCREMENT);
+      setInterval(() => sendMap(room), gameValues.INTERVAL_SEND_MAP);
       var hdvXPos = 170;
       games[room].players.forEach(playerId => {
         let hdv = new Hdv(hdvXPos, 400);
@@ -149,7 +150,7 @@ io.on('connection', function (socket) {
         break;
     }
     maps[playerId].push(batiment);
-    io.to(room).emit('draw batiment', {...batiment.draw(), owner: playerId});
+    //io.to(room).emit('draw batiment', {...batiment.draw(), owner: playerId});
   });
 });
 
@@ -159,7 +160,11 @@ function itemUpdated(room, drawData, playerId){
 }
 
 function sendMap(room){
-  io.to(room).emit('receive map', );
+  let players = games[room].players;
+  var mapToSend = {}
+  mapToSend[players[0]] = maps[players[0]]
+  mapToSend[players[1]] = maps[players[1]]
+  io.to(room).emit('receive map', mapToSend);
 }
 
 function makeid() {

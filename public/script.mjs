@@ -204,7 +204,11 @@ function drawBatiment(data) {
   //AddClosedMap(data.nom, data.x, data.y);
 }
 
-function receiveMap(daat)
+function receiveMap(data){
+  //console.log("actualisation de la map" + JSON.stringify(data));
+  map = data;
+  console.log(map);
+}
 
 function itemUpdated(item) {
   map[item.owner][1] = item;
