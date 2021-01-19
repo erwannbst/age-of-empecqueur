@@ -102,7 +102,7 @@ export function emplacementLibre(id, batSelect, clickX, clickY) {
       }
     }
   }
-  /*
+  
   if(map[id][0].x <= 950){
     side ="left";
   }
@@ -114,7 +114,7 @@ export function emplacementLibre(id, batSelect, clickX, clickY) {
   if(side == "left" && cornerX > 950) autorisation=false;
   if(side == "right" && cornerX < 950) autorisation=false;
   
-  */
+  
   
   return autorisation;
 }
@@ -152,6 +152,7 @@ export function drawAllBatiments(id){
       );
       if (batiment.nom != "murH" && batiment.nom != "murV")
         //affichage de la barre de point de vie pour chaque batiments
+        console.log("id :" + id +" owner : "+batiment.owner )
         drawHpBar(
           batiment.owner,
           id,
