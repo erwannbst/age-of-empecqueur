@@ -81,8 +81,6 @@ body {
   font-family: "IBM Plex Sans", sans-serif;
 }
 
-
-
 label {
   padding-right: 10px;
   font-size: 1rem;
@@ -108,6 +106,8 @@ form button {
 }
 
 .bat-button {
+  width: 90px;
+  height: 90px;
   color: #fff;
   width: auto;
   border-radius: 10px;
@@ -120,10 +120,21 @@ form button {
   transition: all 0.3s ease;
   border: none;
   outline-style: none;
-  
-  
+}
+.bat-button:hover {
+  background-image: url("https://cdn.glitch.com/ed9ae07c-2c55-4291-ad7a-4f0a45476104%2Fthumbnails%2Fcout200.png?1611157743149");
+  background-size: cover;
+}
+.bat-button img {
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
+.bat-button img:hover {
+  opacity: 0;
+}
 
 footer {
   margin-top: 3em;
@@ -141,7 +152,7 @@ select {
   height: 30px;
 }
 
-.menu-bat{
+.menu-bat {
   position: absolute;
   display: flex;
   justify-content: space-around;
@@ -306,7 +317,6 @@ form .signup-link a:hover {
   text-decoration: underline;
 }
 
-.regles-liste{
+.regles-liste {
   justify-content: start;
 }
-
