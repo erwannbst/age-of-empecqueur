@@ -42,11 +42,8 @@ class Personnage extends Building {
     let xDist = Math.abs(coord.x - toX);
     let yDist = Math.abs(coord.y - toY);
     let distRatio = xDist/yDist;
-    if(xDist > this._range){
-      coord.x < toX ? this._x+=distRatio*this._ms : this._x-=distRatio*this._ms;
-    }if(Math.abs(coord.y - toY) > this._range){
-      coord.y < toY ? this._y+=(1/distRatio)*this._ms : this._y-=(1/distRatio)*this._ms;
-    }
+    coord.x < toX ? this._x+=distRatio*this._ms : this._x-=distRatio*this._ms;
+    coord.y < toY ? this._y+=(1/distRatio)*this._ms : this._y-=(1/distRatio)*this._ms;
   }
 }
 

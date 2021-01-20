@@ -90,7 +90,6 @@ io.on('connection', function (socket) {
         let hdv = new Hdv(hdvXPos, 400, playerId);
         hdvXPos = 1650
         maps[playerId].push(hdv);
-        //io.to(room).emit('draw batiment', {...hdv.draw(), owner: playerId});
       })
     }
   });
@@ -123,7 +122,12 @@ io.on('connection', function (socket) {
         break;
       case "soldier":
          batiment = new Soldier(50, 50);//(drawData) => itemUpdated(room, drawData, playerId));
-         let cible = maps[playerId][0]
+         let enemyId;
+         for(let id in games[room]){
+           if(id != playerId)
+             enemyId = id;
+         }
+         let cible = maps[enemyId][0]
          batiment.cibler(cible)
         break;
     }
