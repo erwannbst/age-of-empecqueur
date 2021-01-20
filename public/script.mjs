@@ -5,6 +5,7 @@
 // INIT
 document.getElementById("menu").style.display =" none";
 document.getElementById("bat-container").style.display = "none";
+document.getElementById("menu_bat").style.display = "none";
 document.getElementById("menu-gold").style.display = "none";
 
 const loginForm = document.getElementById("connect");
@@ -237,7 +238,7 @@ function gotConnected(data) {
     "Connected as " + username + "#" + data.room;
   document.getElementById("connexion").style.display = "none";
   if (data.otherPlayer == undefined) {
-    document.getElementById("room").innerHTML = "Pas d'autre joueur connecté";
+    document.getElementById("room").innerHTML = "En attente d'un autre joueur....";
   } else {
     document.getElementById("room").innerHTML =
       "Vous jouez contre " + data.otherPlayer.username;

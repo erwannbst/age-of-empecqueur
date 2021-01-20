@@ -20,8 +20,6 @@ class Personnage extends Building {
       let coord = super.getCoordinates();
       let distance = Math.sqrt(Math.pow(building._x - coord.x, 2) + Math.pow(building._y - coord.y, 2)) //distance qui sépare le personnage de sa cible
       console.log("cibler " + building + " à " + distance)
-      console.log(coord.x)
-      console.log(distance)
       if(distance > this._range && this.getHp() > 0){
         this.move(building._x, building._y);
       }else if(building.getHp() > 0 && this.getHp() > 0){
@@ -44,7 +42,7 @@ class Personnage extends Building {
     let xDist = Math.abs(coord.x - toX);
     let yDist = Math.abs(coord.y - toY);
     let distRatio = xDist/yDist;
-    if(Math.abs(coord.x - toX) > this._range){
+    if(xDist > this._range){
       coord.x < toX ? this._x+=distRatio*this._ms : this._x-=distRatio*this._ms;
     }if(Math.abs(coord.y - toY) > this._range){
       coord.y < toY ? this._y+=(1/distRatio)*this._ms : this._y-=(1/distRatio)*this._ms;
