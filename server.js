@@ -55,7 +55,7 @@ maps : {
 // CONSTANTES
 setInterval(() => {
   console.log(io.sockets.adapter.rooms);
-}, 1000);
+}, 10000);
 
 io.on('connection', function (socket) {
   console.log('a user connected');
