@@ -97,10 +97,6 @@ btnMurV.addEventListener("click", event => {
   batSelect = btnMurV.value;
 });
 
-function mafonction() {
-  document.getElementById('caserne').value = "200";
-}
-
 
 let btnCreateSoldat = document.getElementById("btnCreateSoldat");
 btnCreateSoldat.addEventListener("click", event => {

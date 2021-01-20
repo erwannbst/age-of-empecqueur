@@ -122,11 +122,12 @@ io.on('connection', function (socket) {
         break;
       case "soldier":
          batiment = new Soldier(50, 50);//(drawData) => itemUpdated(room, drawData, playerId));
-         let enemyId;
-         for(let id in games[room]){
-           if(id != playerId)
+         var enemyId;
+        games[room].players.forEach(id => {
+          if(id != playerId)
              enemyId = id;
-         }
+        })
+         console.log("playerId : " + playerId + " | enemyId : " + enemyId);
          let cible = maps[enemyId][0]
          batiment.cibler(cible)
         break;
