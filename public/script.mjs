@@ -4,7 +4,7 @@
 
 // INIT
 document.getElementById("menu").style.display =" none";
-document.getElementById("batiments-container").style.display = "none";
+document.getElementById("bat-container").style.display = "none";
 document.getElementById("menu-gold").style.display = "none";
 
 const loginForm = document.getElementById("connect");
@@ -243,7 +243,7 @@ function gotConnected(data) {
       "Vous jouez contre " + data.otherPlayer.username;
     players.push(data.otherPlayer.playerId);
     map[data.otherPlayer.playerId] = [];
-    document.getElementById("menu-bat").style.display = "block";
+    document.getElementById("bat-container").style.display = "block";
     document.getElementById("menu-gold").style.display = "block";
     }
   //document.getElementById("select").disabled = false;
@@ -255,7 +255,7 @@ function userJoined(user) {
   players.push(user.playerId);
   document.getElementById("room").innerHTML =
     "Vous jouez contre " + user.username;
-  document.getElementById("menu-bat").style.display = "block";
+  document.getElementById("bat-container").style.display = "block";
   document.getElementById("menu-gold").style.display = "block";
 }
 
