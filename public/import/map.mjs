@@ -153,8 +153,8 @@ export function drawAllBatiments(id){
       if (batiment.nom != "murH" && batiment.nom != "murV")
         //affichage de la barre de point de vie pour chaque batiments
         drawHpBar(
-          batiment.owner,
           id,
+          player,
           batiment.x + batiment.width / 2,
           batiment.y + 10 + batiment.height,
           batiment.hp,
@@ -165,7 +165,7 @@ export function drawAllBatiments(id){
 }
 
 
-export function drawHpBar(owner, id, x, y, hp, hpMax) {
+export function drawHpBar(id, player, x, y, hp, hpMax) {
   let height = 20;
   let width = 120;
   ctx.beginPath();
@@ -173,10 +173,9 @@ export function drawHpBar(owner, id, x, y, hp, hpMax) {
   ctx.fillStyle = "rgba(255,255,255,0.2)";
   ctx.closePath();
   ctx.fill();
-
   ctx.beginPath();
   ctx.rect(x - width / 2, y, width * (hp / hpMax), height);
-  if(id == owner){
+  if(player == id){
     ctx.fillStyle = "rgba(0,255,0,0.2)";
   }
   else{

@@ -53,7 +53,13 @@ maps : {
 */
 
 // CONSTANTES
-
+setInterval(() => {
+  var players = [];
+  for (var player in maps){
+    players.push(player);
+  }
+  console.log(players)
+}, 5000);
 
 io.on('connection', function (socket) {
   console.log('a user connected');
@@ -140,14 +146,12 @@ function itemUpdated(room, drawData, playerId){
 function sendMap(room){
   let players = games[room].players;
   var mapToSend = {}
-  console.log(maps)
   players.forEach(player => {
     mapToSend[player] = [];
     maps[player].forEach(batiment => {
       mapToSend[player].push(batiment.draw());
     })
   })
-  console.log(mapToSend);
   io.to(room).emit('receive map', mapToSend);
 }
 
