@@ -54,12 +54,8 @@ maps : {
 
 // CONSTANTES
 setInterval(() => {
-  var players = [];
-  for (var player in maps){
-    players.push(player);
-  }
-  console.log(players)
-}, 5000);
+  console.log(io.sockets.adapter.rooms);
+}, 1000);
 
 io.on('connection', function (socket) {
   console.log('a user connected');

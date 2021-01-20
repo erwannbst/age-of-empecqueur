@@ -4,7 +4,9 @@
 
 // INIT
 document.getElementById("menu").style.display =" none";
-document.getElementById("menu_bat").style.display = "none";
+document.getElementById("batiments-container").style.display = "none";
+document.getElementById("menu-gold").style.display = "none";
+
 const loginForm = document.getElementById("connect");
 const createForm = document.getElementById("creation");
 var canvas = document.getElementById("myCanvas");
@@ -17,6 +19,7 @@ var pageWidth = document.documentElement.clientWidth;
 var pageHeight = document.documentElement.clientHeight;
 var connected = false;
 var username = "";
+var gameState = false;
 
 import {
   emplacementLibre,
@@ -240,7 +243,8 @@ function gotConnected(data) {
       "Vous jouez contre " + data.otherPlayer.username;
     players.push(data.otherPlayer.playerId);
     map[data.otherPlayer.playerId] = [];
-    
+    document.getElementById("menu-bat").style.display = "block";
+    document.getElementById("menu-gold").style.display = "block";
     }
   //document.getElementById("select").disabled = false;
 }
@@ -251,7 +255,8 @@ function userJoined(user) {
   players.push(user.playerId);
   document.getElementById("room").innerHTML =
     "Vous jouez contre " + user.username;
-  alert(user.username + " a rejoint la partie");
+  document.getElementById("menu-bat").style.display = "block";
+  document.getElementById("menu-gold").style.display = "block";
 }
 
 /********************** DOCUMENTATION API ***********************
