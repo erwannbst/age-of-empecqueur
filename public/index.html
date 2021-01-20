@@ -68,26 +68,43 @@
         <h2><div class="status" id="status">Déconnecté</div></h2>
         <h2><div class="status" id="room"></div></h2>
       </div>
-      <div class="gold" id="menu-gold"><img src="https://cdn.glitch.com/ed9ae07c-2c55-4291-ad7a-4f0a45476104%2For.png?v=1610209851837" height="50px" width="50px"/><h1 id="gold"></h1></div>
+      <div class="gold" id="menu-gold">
+        <img
+          src="https://cdn.glitch.com/ed9ae07c-2c55-4291-ad7a-4f0a45476104%2For.png?v=1610209851837"
+          height="50px"
+          width="50px"
+        />
+        <h1 id="gold"></h1>
+      </div>
 
       <div id="map">
         <canvas id="myCanvas"></canvas>
       </div>
       <script type="text/javascript">
-        function hoverButtonOn()
-        {
-            document.getElementById("caserne").src="https://cdn.glitch.com/ed9ae07c-2c55-4291-ad7a-4f0a45476104%2Fcout200.png?v=1611157743149";
+        function hoverButtonOn() {
+          document.getElementById("caserne_img").src =
+            "https://cdn.glitch.com/ed9ae07c-2c55-4291-ad7a-4f0a45476104%2Fcout200.png?v=1611157743149";
+          document.getElementById("caserne_img").width = "70px";
+          document.getElementById("caserne_img").height = "70px";
         }
-        function hoverButtonOn()
-        {
-            document.getElementById("caserne").src="https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcasernedofus.png?1607815040102";
+        function hoverButtonOut {
+          document.getElementById("caserne_img").src =
+            "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcasernedofus.png?1607815040102";
+          document.getElementById("caserne_img").width = "70px";
+          document.getElementById("caserne_img").height = "70px";
         }
-        
       </script>
       <div class="menu-bat" id="menu-bat">
         <div class="batiments-container" id="bat-container">
-          <button class="bat-button" value="caserne" id="caserne" onmouseover="hoverButtonOn()" onmouseout="hoverButtonOut">
+          <button
+            class="bat-button"
+            value="caserne"
+            id="caserne"
+            onmouseover="hoverButtonOn()"
+            onmouseout="hoverButtonOut()"
+          >
             <img
+              id="caserne_img"
               src="https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcasernedofus.png?1607815040102"
               height="70px"
               width="70px"
@@ -101,28 +118,28 @@
             />
           </button>
 
-          <button class="bat-button" value="trinquette" id="trinquette" >
+          <button class="bat-button" value="trinquette" id="trinquette">
             <img
               src="https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Ftavernedofus.png?1607814703059"
               height="70px"
               width="70px"
             />
           </button>
-          <button class="bat-button" value="portugais" id="portugais" >
+          <button class="bat-button" value="portugais" id="portugais">
             <img
               src="https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcabane.png?1607820151355"
               height="70px"
               width="70px"
             />
           </button>
-          <button class="bat-button" value="murV" id="murV" >
+          <button class="bat-button" value="murV" id="murV">
             <img
               src="https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur.png?1607874941836"
               height="70px"
               width="19px"
             />
           </button>
-          <button class="bat-button" value="murH" id="murH" >
+          <button class="bat-button" value="murH" id="murH">
             <img
               src="https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fmur_horizontal.png?1607872442410"
               height="19px"
