@@ -1,9 +1,9 @@
 import Personnage from "./Personnage.js";
 
 class Soldier extends Personnage {
-  constructor(x, y, callbackUpdated) {
+  constructor(x, y /*, callbackUpdated*/) {
     super(x, y, 10, 2, 4, 50); // x, y, damage, ms, range, hp
-    this.callbackUpdated = callbackUpdated;
+    /*this.callbackUpdated = callbackUpdated;*/
   }
 
   draw() {
@@ -19,7 +19,7 @@ class Soldier extends Personnage {
   move(x, y){
     console.log("Soldier::move")
     super.move(x, y);
-    this.callbackUpdated(this.draw())
+    //this.callbackUpdated(this.draw())
   }
 }
 
