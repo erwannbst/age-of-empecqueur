@@ -154,14 +154,17 @@ io.on('connection', function (socket) {
   });
 });
 
+/*
 function itemUpdated(room, drawData, playerId){
   console.log("item updated");
   io.to(room).emit('item updated', {...drawData, owner: playerId});
 }
+*/
 
 function sendMap(room){
   let players = games[room].players;
   var mapToSend = {}
+  console.log(maps)
   players.forEach(player => {
     mapToSend[player] = [];
     maps[player].forEach(batiment => {

@@ -211,10 +211,11 @@ function receiveMap(data){
   console.log(map);
 }
 
+/*
 function itemUpdated(item) {
   map[item.owner][1] = item;
 }
-
+*/
 
 function setGoldAmount(amount) {
   //Appelée par le serveur quand le montant d'or est mis à jour
@@ -299,10 +300,12 @@ socket.on("receive map", function(data) {
   receiveMap(data);
 })
 
+/*
 socket.on("item updated", function(data) {
   //data : {...drawData, owner: playerId}
   itemUpdated(data);
 });
+*/
 
 socket.on("ping", function(data) {
   console.log("ping");
