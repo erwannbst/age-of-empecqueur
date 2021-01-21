@@ -117,6 +117,8 @@ btnUpgrade.addEventListener("click", event => {
   //socket.emit("create batiment", { nom: "soldier" });
 });
 
+//--------------------------------------------------CHAT-------------------------------------------------------------//
+
 var chatForm = document.getElementById('chat-form');
 var messageInput = document.getElementById("content");
 var displayMessage = document.getElementById("messages-box");
@@ -132,6 +134,8 @@ function renderMessage(data){
   console.log("message recu par le serveur : " + data);
   let p = document.createElement('p');
   p.innerHTML = data.pseudo + " : " + data.msg;
+  p.style.fontSize ="small";
+  p.style.height = "12px";
   displayMessage.appendChild(p);
 }
 
