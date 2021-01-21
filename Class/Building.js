@@ -1,11 +1,12 @@
 class Building {
-  constructor(x, y, width, height, hp){    
+  constructor(x, y, width, height, hp, cost){    
     this._x = x;
     this._y = y;
     this._hp = hp;
     this._lvl = 1;
     this._height = height;
     this._width = width;
+    this._cost = cost;
   }
   
   draw(){

@@ -2,8 +2,7 @@ import Personnage from "./Personnage.js";
 
 class Soldier extends Personnage {
   constructor(x, y /*, callbackUpdated*/) {
-    super(x, y, 2, 2, 20, 20, 50); // x, y, damage, ms, as, range, hp
-    /*this.callbackUpdated = callbackUpdated;*/
+    super(x, y, 2, 2, 20, 20, 50, 20); // x, y, damage, ms, as, range, hp, cost
   }
 
   draw() {
@@ -19,7 +18,6 @@ class Soldier extends Personnage {
   move(x, y){
     console.log("Soldier::move")
     super.move(x, y);
-    //this.callbackUpdated(this.draw())
   }
 }
 
