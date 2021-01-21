@@ -2,7 +2,7 @@ import Building from "./Building.js";
 
 class Portugais extends Building {
   constructor(x, y) {
-    super(x, y, 80, 80, 250); // x, y, hp
+    super(x, y, 80, 80, 250, 50, 0); // x, y, hp
   }
 
   draw() {

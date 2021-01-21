@@ -124,7 +124,7 @@ io.on('connection', function (socket) {
     }
     if(players[playerId].gold - batiment.getCost() >= 0){
       players[playerId].gold -= batiment.getCost();
-      setTimeout(maps[playerId].push(batiment), 1000);
+      setTimeout(() => {maps[playerId].push(batiment)}, 1000);
     }
   });
 });

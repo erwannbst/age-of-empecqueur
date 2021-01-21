@@ -101,9 +101,14 @@ btnMurV.addEventListener("click", event => {
 let btnCreateSoldat = document.getElementById("btnCreateSoldat");
 btnCreateSoldat.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
+  /*
   map[socket.id].forEach(batiment => {
-    if(batiment.name)
+    if(batiment.name == "caserne"){
+      var coordX = batiment.x;
+      var coordY = batiment.y;
+    }
   });
+  */
   socket.emit("create batiment", { nom: "soldier" });
 });
 

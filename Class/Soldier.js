@@ -1,5 +1,5 @@
 import Personnage from "./Personnage.js";
-import {SOLDIER_VALUES} from './gameValues.js';
+import {SOLDIER_VALUES} from './../gameValues.js';
 
 class Soldier extends Personnage {
   constructor(x, y) {
