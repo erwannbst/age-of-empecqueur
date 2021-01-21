@@ -18,13 +18,17 @@ class Personnage extends Building {
   
   run(map){
     var nearestBatiment = map[0];
-    var shorterDistance = map[0].
+    var shorterDistance = 999999;
     map.forEach(batiment => {
       let coord = batiment.getCoordinates();
       let distance = Math.sqrt(Math.pow(coord.x, 2) + Math.pow(coord.y, 2));
-      distances.push(distance);
+      if(distance < shorterDistance){
+        shorterDistance = distance;
+        nearestBatiment = batiment;
+      }
     })
-    this.cibler(map);
+    console.log(nearestBatiment);
+    this.cibler(nearestBatiment);
   }
   
   cibler(building){
@@ -51,8 +55,24 @@ class Personnage extends Building {
     let dist = Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
     let sin = yDist/dist;
     let cos = xDist/dist;
-    this._y += sin * this._ms;
+    this._y += sin * this._ms; 
     this._x += cos * this._ms;
+    /*
+    
+    j'ai fait des bails moi aussi
+    Nickel
+    mais pas bcp fin que le menu avec les golds
+    Ah oui dac
+    Et faudrait que t'ajustes le prix des batiments en fonction de l'argument de l'objet
+    comment ca ?
+    En gros je t'envoie dans les données de l'objet le prix du batiment normalement
+    Parce que là ils sont tous à 200
+    oui mais de base ils sont tous a 
+    200 tu peut pas facetime ?
+    Nope
+    Après peut etre
+    Okok
+    */
   }
 }
 
