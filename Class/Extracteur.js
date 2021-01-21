@@ -2,10 +2,7 @@ import Building from "./Building.js";
 
 class Extracteur extends Building {
   constructor(x, y) {
-    const run = () => {
-      
-    }
-    super(x, y, 80, 80, 250, run); // x, y, hp
+    super(x, y, 80, 80, 250); // x, y, hp
   }
 
   draw() {

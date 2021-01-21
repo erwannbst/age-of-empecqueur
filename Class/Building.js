@@ -1,5 +1,5 @@
 class Building {
-  constructor(x, y, width, height, hp, cost, run){    
+  constructor(x, y, width, height, hp, cost){    
     this._x = x;
     this._y = y;
     this._hp = hp;
@@ -7,7 +7,6 @@ class Building {
     this._height = height;
     this._width = width;
     this._cost = cost;
-    this._run = run;
   }
   
   draw(){
@@ -38,9 +37,7 @@ class Building {
   }
   
   run(){
-    if(this._hp > 0){
-      this._run();
-    }
+    
   }
 }
 

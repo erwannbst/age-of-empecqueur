@@ -2,7 +2,7 @@ import Building from "./Building.js";
 
 class Personnage extends Building {
   constructor(x, y, damage, ms, as, range, hp, cost) {
-    super(x, y, 50, 50, hp, cost, run); // x, y, width, height, hp, cost
+    super(x, y, 50, 50, hp, cost); // x, y, width, height, hp, cost
     this._damage = damage;
     this._as = as
     this._ms = ms;
@@ -17,7 +17,7 @@ class Personnage extends Building {
   }
   
   run(map){
-    cibler(map[0])
+    this.cibler(map);
   }
   
   cibler(building){

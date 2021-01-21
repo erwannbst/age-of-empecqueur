@@ -5,8 +5,8 @@ class Soldier extends Personnage {
     super(x, y, 2, 2, 20, 20, 50, 10); // x, y, damage, ms, as, range, hp, cost
   }
   
-  run(){
-    super._run();
+  run(map){
+    super.run(map);
   }
 
   draw() {

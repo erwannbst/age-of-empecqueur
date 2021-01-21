@@ -85,6 +85,7 @@ io.on('connection', function (socket) {
       socket.emit('connected', {username, room, otherPlayer: {playerId: games[room].players[0], ...players[games[room].players[0]]}});
       setInterval(() => incrementGold(room), gameValues.INTERVAL_GOLD_INCREMENT);
       setInterval(() => sendMap(room), gameValues.INTERVAL_SEND_MAP);
+      setInterval(() => run(room), gameValues.INTERVAL_SEND_MAP);
       var hdvXPos = 170;
       games[room].players.forEach(playerId => {
         let hdv = new Hdv(hdvXPos, 400, playerId);
@@ -122,13 +123,6 @@ io.on('connection', function (socket) {
         break;
       case "soldier":
          batiment = new Soldier(50, 50);//(drawData) => itemUpdated(room, drawData, playerId));
-         var enemyId;
-         games[room].players.forEach(id => {
-            if(id != playerId)
-               enemyId = id;
-         })
-         let cible = maps[enemyId][0]
-         batiment.cibler(cible)
         break;
     }
     console.log(batiment.getCost());
@@ -150,6 +144,21 @@ function sendMap(room){
     })
   })
   io.to(room).emit('receive map', mapToSend);
+}
+
+function run(room){
+  let players = games[room].players;
+  players.forEach(player => {
+    maps[player].forEach(batiment => {
+      var enemyId;
+      games[room].players.forEach(id => {
+         if(id != player)
+            enemyId = id;
+      })
+      let cible = maps[enemyId][0]
+      batiment.run(cible)
+    })
+  })
 }
 
 function makeid() {
