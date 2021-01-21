@@ -132,18 +132,13 @@ io.on('connection', function (socket) {
         break;
     }
     console.log(batiment.getCost());
-    players[playerId].gold -= batiment.getCost();
-    maps[playerId].push(batiment);
-    //io.to(room).emit('draw batiment', {...batiment.draw(), owner: playerId});
+    if(players[playerId].gold - batiment.getCost() >= 0){
+      players[playerId].gold -= batiment.getCost();
+      maps[playerId].push(batiment); 
+    }
   });
 });
 
-/*
-function itemUpdated(room, drawData, playerId){
-  console.log("item updated");
-  io.to(room).emit('item updated', {...drawData, owner: playerId});
-}
-*/
 
 function sendMap(room){
   let players = games[room].players;

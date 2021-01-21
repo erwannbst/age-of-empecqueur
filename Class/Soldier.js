@@ -4,6 +4,10 @@ class Soldier extends Personnage {
   constructor(x, y) {
     super(x, y, 2, 2, 20, 20, 50, 10); // x, y, damage, ms, as, range, hp, cost
   }
+  
+  run(){
+    super._run();
+  }
 
   draw() {
     return {
