@@ -42,9 +42,13 @@ class Personnage extends Building {
     let coord = super.getCoordinates();
     let xDist = Math.abs(coord.x - toX);
     let yDist = Math.abs(coord.y - toY);
+    let dist = Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
     let distRatio = yDist/xDist;
-    let cos = Math.cos()
+    let angle = Math.acos(xDist/dist);
+    this._x += Math.cos(angle)*this._ms;
+    this._y = Math.pow(this._ms, 2) - Math.cos(angle)*this._ms;
     
+    /*
     if(coord.x < toX) //Si il est à gauche
       this._x += this._ms*(1/distRatio)
     else // Si il est à droite
@@ -55,7 +59,7 @@ class Personnage extends Building {
     else // Si il est au dessus
       this._y -= this._ms*(distRatio)
     
-    
+    */
     
     //coord.x < toX ? this._x+=distRatio*this._ms : this._x-=distRatio*this._ms;
     //coord.y < toY ? this._y+=(1/distRatio)*this._ms : this._y-=(1/distRatio)*this._ms;
