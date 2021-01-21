@@ -131,7 +131,8 @@ export function menuBatiments(id, clickX, clickY){
             clickY >= map[id][n].y &&
             clickY <= map[id][n].y + map[id][n].height
           ) {
-            return map[id][n].nom;
+            //return map[id][n].nom;
+            return map[id][n];
           }
         }
       }

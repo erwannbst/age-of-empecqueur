@@ -64,7 +64,7 @@ function item(x, y, name) {
 
 //-----------------------------------------------------PARTIE MENU-------------------------------------------------------//
 
-for(var batiment in m)
+
 
 
 let batSelect;
@@ -113,6 +113,8 @@ btnCreateSoldat.addEventListener("click", event => {
     }
   });
   */
+  
+  //passer x et y en argument en les recuperant sur l'input
   socket.emit("create batiment", { nom: "soldier" });
 });
 
@@ -197,7 +199,7 @@ canvas.addEventListener(
       //si oui on affiche le menu du batiment 
       if (batClick) {
         displayMenuBatiments(socket.id, batClick);
-        //batClick = nom du batiment sur lequel on a cliqué 
+        //batClick = batiment sur lequel on a cliqué
         
       } 
       //sinon on affiche rien

@@ -92,7 +92,7 @@ io.on('connection', function (socket) {
     }
   });
   
-  socket.on('create batiment', function(data) { // data:{nom: "nomDuBatiment", x: 0, y: 0}
+  socket.on('create batiment', function(data) { // data:{nom: "soldier", x: 100, y: 100}
     let playerId = socket.id;
     let room = players[playerId].roomId;
     let batiment;
