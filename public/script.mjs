@@ -7,6 +7,7 @@ document.getElementById("menu").style.display =" none";
 document.getElementById("bat-container").style.display = "none";
 document.getElementById("menu_bat").style.display = "none";
 document.getElementById("menu-gold").style.display = "none";
+document.getElementById("chat").style.display = "none";
 
 const loginForm = document.getElementById("connect");
 const createForm = document.getElementById("creation");
@@ -259,6 +260,7 @@ function gotConnected(data) {
     map[data.otherPlayer.playerId] = [];
     document.getElementById("bat-container").style.display = "block";
     document.getElementById("menu-gold").style.display = "block";
+    document.getElementById("chat").style.display = "block";
     }
   //document.getElementById("select").disabled = false;
 }
@@ -271,6 +273,7 @@ function userJoined(user) {
     "Vous jouez contre " + user.username;
   document.getElementById("bat-container").style.display = "block";
   document.getElementById("menu-gold").style.display = "block";
+  document.getElementById("chat").style.display = "block";
 }
 
 /********************** DOCUMENTATION API ***********************

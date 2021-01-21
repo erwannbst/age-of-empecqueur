@@ -329,6 +329,11 @@ form .signup-link a:hover {
   border-style: groove;
 }
 
+.chat-form{
+  flex-direction: row;
+  display: flex;
+}
+
 .messages {
   background-color: transparent;
   padding: 1em;
@@ -354,9 +359,11 @@ input {
 #content {
   border: none;
   background-color: transparent;
-  flex:3;
+  flex:5;
 }
 
 #send-message{
   flex: 1;
+  border: none;
+  background-color: transparent;
 }
