@@ -24,6 +24,7 @@ var goldAmount = 0;
 
 var chatroom = document.getElementById("messages-box");
 var message = document.getElementById("content");
+var sendMessage = document.getElementById("send-message");
 
 import {
   emplacementLibre,
@@ -317,6 +318,9 @@ socket.on("draw batiment", function(data) {
 socket.on("receive map", function(data) {
   receiveMap(data);
 })
+
+
+send_message.click
 
 socket.on("new_message", (data) => {
   console.log(data);
