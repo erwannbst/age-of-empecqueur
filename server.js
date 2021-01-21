@@ -119,10 +119,9 @@ io.on('connection', function (socket) {
          batiment = new Extracteur(data.x, data.y, playerId);
         break;
       case "soldier":
-         batiment = new Soldier(50, 600);//(drawData) => itemUpdated(room, drawData, playerId));
+         batiment = new Soldier(50, 60);
         break;
     }
-    console.log(batiment.getCost());
     if(players[playerId].gold - batiment.getCost() >= 0){
       players[playerId].gold -= batiment.getCost();
       maps[playerId].push(batiment); 
