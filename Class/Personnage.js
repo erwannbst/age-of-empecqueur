@@ -1,8 +1,8 @@
 import Building from "./Building.js";
 
 class Personnage extends Building {
-  constructor(x, y, damage, ms, as, range, hp, cost) {
-    super(x, y, 50, 50, hp, cost); // x, y, width, height, hp, cost
+  constructor(x, y, damage, ms, as, range, hp, cost, createDelay) {
+    super(x, y, 50, 50, hp, cost, createDelay); // x, y, width, height, hp, cost, createDelay
     this._damage = damage;
     this._as = as
     this._ms = ms;

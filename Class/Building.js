@@ -1,5 +1,5 @@
 class Building {
-  constructor(x, y, width, height, hp, cost){    
+  constructor(x, y, width, height, hp, cost, createDelay){    
     this._x = x;
     this._y = y;
     this._hp = hp;
@@ -7,6 +7,7 @@ class Building {
     this._height = height;
     this._width = width;
     this._cost = cost;
+    this._createDelay = createDelay;
   }
   
   draw(){

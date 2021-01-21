@@ -119,12 +119,12 @@ io.on('connection', function (socket) {
          batiment = new Extracteur(data.x, data.y, playerId);
         break;
       case "soldier":
-         batiment = new Soldier(50, 60);
+         batiment = new Soldier(data.x, data.y);
         break;
     }
     if(players[playerId].gold - batiment.getCost() >= 0){
       players[playerId].gold -= batiment.getCost();
-      maps[playerId].push(batiment); 
+      setTimeout(maps[playerId].push(batiment), 1000);
     }
   });
 });

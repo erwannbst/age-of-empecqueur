@@ -1,8 +1,9 @@
 import Personnage from "./Personnage.js";
+import {SOLDIER_VALUES} from './gameValues.js';
 
 class Soldier extends Personnage {
   constructor(x, y) {
-    super(x, y, 2, 4, 20, 20, 50, 10); // x, y, damage, ms, as, range, hp, cost
+    super(x, y, SOLDIER_VALUES.damage, SOLDIER_VALUES.ms, SOLDIER_VALUES.as, SOLDIER_VALUES.range, SOLDIER_VALUES.hp, SOLDIER_VALUES.cost, SOLDIER_VALUES.createDelay); // x, y, damage, ms, as, range, hp, cost
   }
   
   run(enemyMap){

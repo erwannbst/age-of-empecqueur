@@ -2,7 +2,7 @@ import Building from "./Building.js";
 
 class Caserne extends Building {
   constructor(x, y) {
-    super(x, y, 80, 80, 300, 80); // x, y, width, height, hp, cost
+    super(x, y, 80, 80, 300, 80, 0); // x, y, width, height, hp, cost, createDelay
   }
 
   draw() {
