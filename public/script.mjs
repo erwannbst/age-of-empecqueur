@@ -319,14 +319,6 @@ socket.on("receive map", function(data) {
   receiveMap(data);
 })
 
-
-send_message.click
-
-socket.on("new_message", (data) => {
-  console.log(data);
-  
-})
-
 /*
 socket.on("item updated", function(data) {
   //data : {...drawData, owner: playerId}

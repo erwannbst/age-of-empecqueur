@@ -348,15 +348,15 @@ form .signup-link a:hover {
 
 input {
   padding: 0.5em;
+  outline:  none;
 }
 
 #content {
   border: none;
   background-color: transparent;
-  width: 75%;
+  flex:3;
 }
 
 #send-message{
-  width: 20%;
-  right: 0px;
+  flex: 1;
 }
