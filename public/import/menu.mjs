@@ -38,4 +38,18 @@ export function displayMenuBatiments(userId, batiment){
 }
 
 
+var checkbox = document.getElementById("theme");
+checkbox.onchange = function() {
+  //darkmode
+  if(checkbox.checked) {
+    console.log("check");
+    document.getElementById("bat-container").style.backgroundColor = "rgba(31, 31, 45, 0.3)";
+    document.getElementById("menu_bat").style.backgroundColor = "rgba(31, 31, 45, 0.3)";
+  }
+  //clear mode
+  else{
+    
+  }
+};
+
 
