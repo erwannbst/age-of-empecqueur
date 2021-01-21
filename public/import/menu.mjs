@@ -42,13 +42,15 @@ var checkbox = document.getElementById("theme");
 checkbox.onchange = function() {
   //darkmode
   if(checkbox.checked) {
-    console.log("check");
     document.getElementById("bat-container").style.backgroundColor = "rgba(31, 31, 45, 0.3)";
     document.getElementById("menu_bat").style.backgroundColor = "rgba(31, 31, 45, 0.3)";
+    document.getElementsByTagName("body")[0].style.backgroundColor= "#34344b";
   }
   //clear mode
   else{
-    
+    document.getElementById("bat-container").style.backgroundColor = "rgba(255, 255, 255, 0.3)";
+    document.getElementById("menu_bat").style.backgroundColor = "rgba(255, 255, 255, 0.3)";
+    document.getElementsByTagName("body")[0].style.backgroundColor= "lightgray";
   }
 };
 

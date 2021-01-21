@@ -82,6 +82,13 @@ body {
   font-family: "IBM Plex Sans", sans-serif;
 }
 
+.theme {
+  z-index: 5;
+  position: absolute;
+  top:0px;
+  left: 0px;
+}
+
 label {
   padding-right: 10px;
   font-size: 1rem;
