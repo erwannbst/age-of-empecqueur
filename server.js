@@ -127,6 +127,12 @@ io.on('connection', function (socket) {
       setTimeout(() => {maps[playerId].push(batiment)}, 1000);
     }
   });
+  
+  //minichat
+  
+  socket.on('new message', (data) => {
+    io.to(room).emit
+  });
 });
 
 

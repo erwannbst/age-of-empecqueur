@@ -324,7 +324,7 @@ form .signup-link a:hover {
 .chat {
   width: 20%;
   border-color: rgba(255, 255, 255, 0.3);
-  border-radius: 5px;
+  border-radius: 10px;
   border-width: 2px;
   border-style: groove;
 }
@@ -352,6 +352,7 @@ input {
 }
 
 #content {
+  border: none;
   background-color: transparent;
   width: 100%;
 }
