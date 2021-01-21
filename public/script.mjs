@@ -62,6 +62,10 @@ function item(x, y, name) {
   this.y = y;
 }
 
+if(document.getElementById("theme").checked){
+  document.getElementById("bat-container").style.background
+}
+
 //-----------------------------------------------------PARTIE MENU-------------------------------------------------------//
 
 
