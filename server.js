@@ -130,9 +130,8 @@ io.on('connection', function (socket) {
   
   //minichat
   
-  socket.on('new message', (data) => {
-    io.to(room).emit
-  });
+  
+  
 });
 
 
