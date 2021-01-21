@@ -42,17 +42,18 @@ class Personnage extends Building {
     let coord = super.getCoordinates();
     let xDist = Math.abs(coord.x - toX);
     let yDist = Math.abs(coord.y - toY);
-    let distRatio = xDist/yDist;
+    let distRatio = yDist/xDist;
+    let cos = Math.cos()
     
     if(coord.x < toX) //Si il est à gauche
-      this._x += this._ms*distRatio
+      this._x += this._ms*(1/distRatio)
     else // Si il est à droite
-      this._x = this._x - this._ms*distRatio
+      this._x -= this._ms*(1/distRatio)
     
     if(coord.y < toY) //Si il est en dessous
-      this._y += this._ms*(1/distRatio)
-    else // Si il est à droite
-      this._y -= this._ms*(1/distRatio)
+      this._y += this._ms*(distRatio)
+    else // Si il est au dessus
+      this._y -= this._ms*(distRatio)
     
     
     
