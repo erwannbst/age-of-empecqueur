@@ -55,7 +55,7 @@ class Personnage extends Building {
     let dist = Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
     let sin = yDist/dist;
     let cos = xDist/dist;
-    this._y += sin * this._ms; 
+    coord.x > toX ? this._y -= sin * this._ms : this._y += sin * this._ms; 
     this._x += cos * this._ms;
     /*
     
@@ -69,8 +69,17 @@ class Personnage extends Building {
     Parce que là ils sont tous à 200
     oui mais de base ils sont tous a 
     200 tu peut pas facetime ?
+    mais en gros 'ai regardé et de base il coute tous 200 et apres leur prix est dynamique dans le menu pour ameliorer le batiment'
     Nope
     Après peut etre
+    Et j'ai fait aussi la fonction qui déduit le prix des batiments quand tu les places
+    parfait
+    Faut juste que dans l'interface tu grises le bouton pour ajouter un batiment si le montant est pas suffisant
+    yes je vais faire ca la 
+    je vais faire ca et apres je vais avancer sur l'interface du minichat <- Nickel ca
+    mais si on est pas en vocal ca va etre compliqué de tester
+    Tkt tkt au pire je me mettrai après mais la je peux pas
+    bon bah au boulot bg
     Okok
     */
   }

@@ -20,7 +20,7 @@ var pageWidth = document.documentElement.clientWidth;
 var pageHeight = document.documentElement.clientHeight;
 var connected = false;
 var username = "";
-var gameState = false;
+var goldAmount = 0;
 
 import {
   emplacementLibre,
@@ -97,6 +97,7 @@ btnMurV.addEventListener("click", event => {
   batSelect = btnMurV.value;
 });
 
+if(goldAmount < 200) document.btnExtracteur.disabled = true;
 
 let btnCreateSoldat = document.getElementById("btnCreateSoldat");
 btnCreateSoldat.addEventListener("click", event => {
@@ -222,6 +223,7 @@ function itemUpdated(item) {
 
 function setGoldAmount(amount) {
   //Appelée par le serveur quand le montant d'or est mis à jour
+  goldAmount = amount;
   document.getElementById("gold").innerHTML =  " " + amount;
 }
 
