@@ -24,6 +24,10 @@ class Building {
     }
   }
   
+  getCost() {
+    return this._cost;
+  }
+  
   getHp(){
     return this._hp;
   }

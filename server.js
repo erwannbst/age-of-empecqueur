@@ -123,15 +123,16 @@ io.on('connection', function (socket) {
       case "soldier":
          batiment = new Soldier(50, 50);//(drawData) => itemUpdated(room, drawData, playerId));
          var enemyId;
-        games[room].players.forEach(id => {
-          if(id != playerId)
-             enemyId = id;
-        })
-         console.log("playerId : " + playerId + " | enemyId : " + enemyId);
+         games[room].players.forEach(id => {
+            if(id != playerId)
+               enemyId = id;
+         })
          let cible = maps[enemyId][0]
          batiment.cibler(cible)
         break;
     }
+    console.log('cost ' + batiment.getCost());
+    players[playerId].gold -= batiment.getCost();
     maps[playerId].push(batiment);
     //io.to(room).emit('draw batiment', {...batiment.draw(), owner: playerId});
   });
