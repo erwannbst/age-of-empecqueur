@@ -1,8 +1,8 @@
 import Personnage from "./Personnage.js";
 
 class Soldier extends Personnage {
-  constructor(x, y /*, callbackUpdated*/) {
-    super(x, y, 2, 2, 20, 20, 50, () => {20*this._lvl}); // x, y, damage, ms, as, range, hp, cost
+  constructor(x, y) {
+    super(x, y, 2, 2, 20, 20, 50, 10); // x, y, damage, ms, as, range, hp, cost
   }
 
   draw() {
@@ -12,7 +12,6 @@ class Soldier extends Personnage {
       image: "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2FIOP.png?1610016410702",
       hpMax: 40 + 10*this._lvl,
       lvlUpPrice: 200 + 100*this._lvl,
-      cost: super.getCost(),
     };
   }
   

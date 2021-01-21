@@ -25,7 +25,7 @@ class Building {
   }
   
   getCost() {
-    return this._cost;
+    return this._cost*this._lvl;
   }
   
   getHp(){

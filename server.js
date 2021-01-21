@@ -131,7 +131,7 @@ io.on('connection', function (socket) {
          batiment.cibler(cible)
         break;
     }
-    console.log('cost ' + batiment.getCost());
+    console.log(batiment.getCost());
     players[playerId].gold -= batiment.getCost();
     maps[playerId].push(batiment);
     //io.to(room).emit('draw batiment', {...batiment.draw(), owner: playerId});
