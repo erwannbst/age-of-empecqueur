@@ -347,7 +347,11 @@ form .signup-link a:hover {
   padding: 1em;
   height: 100px;
   overflow: auto;
-  overflow-y: scroll;
+}
+
+.messages::-webkit-scrollbar {
+  width: 5px;
+  background-color: #aaa; /* or add it to the track */
 }
 
 .message {

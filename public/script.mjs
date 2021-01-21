@@ -137,6 +137,7 @@ function renderMessage(data){
   p.style.fontSize ="small";
   p.style.height = "12px";
   displayMessage.appendChild(p);
+  displayMessage.scrollTop = displayMessage.scrollHeight;
 }
 
 
