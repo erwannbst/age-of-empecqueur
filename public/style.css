@@ -320,3 +320,38 @@ form .signup-link a:hover {
 .regles-liste {
   justify-content: start;
 }
+
+.chat {
+  width: 20%;
+  border-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  border-width: 2px;
+  border-style: groove;
+}
+
+.messages {
+  background-color: transparent;
+  padding: 1em;
+  height: 100px;
+  overflow: auto;
+}
+
+.message {
+  color: white;
+  padding: 0.3em;
+}
+
+.date,
+.author {
+  font-weight: bold;
+}
+
+input {
+  padding: 0.5em;
+  margin-right: 10px;
+}
+
+#content {
+  background-color: transparent;
+  width: 100%;
+}
