@@ -119,7 +119,7 @@ io.on('connection', function (socket) {
          batiment = new Extracteur(data.x, data.y, playerId);
         break;
       case "soldier":
-         batiment = new Soldier(50, 50);//(drawData) => itemUpdated(room, drawData, playerId));
+         batiment = new Soldier(50, 600);//(drawData) => itemUpdated(room, drawData, playerId));
         break;
     }
     console.log(batiment.getCost());

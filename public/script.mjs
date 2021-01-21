@@ -97,7 +97,6 @@ btnMurV.addEventListener("click", event => {
   batSelect = btnMurV.value;
 });
 
-if(goldAmount < 200) document.btnExtracteur.disabled = true;
 
 let btnCreateSoldat = document.getElementById("btnCreateSoldat");
 btnCreateSoldat.addEventListener("click", event => {

@@ -17,7 +17,7 @@ class Personnage extends Building {
   }
   
   run(map){
-    var nearestBatiment = map[0];
+    /*var nearestBatiment = map[0];
     var shorterDistance = 999999;
     map.forEach(batiment => {
       let coord = batiment.getCoordinates();
@@ -28,7 +28,8 @@ class Personnage extends Building {
       }
     })
     console.log(nearestBatiment);
-    this.cibler(nearestBatiment);
+    this.cibler(nearestBatiment);*/
+    this.cibler(map[0]);
   }
   
   cibler(building){
@@ -55,8 +56,9 @@ class Personnage extends Building {
     let dist = Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
     let sin = yDist/dist;
     let cos = xDist/dist;
-    coord.x > toX ? this._y -= sin * this._ms : this._y += sin * this._ms; 
-    this._x += cos * this._ms;
+    console.log("sin : " )
+    /*coord.x > toX ? this._y -= sin * this._ms : */this._y += sin * this._ms; 
+    /*coord.x > toX ? this._x -= cos * this._ms : */this._x += cos * this._ms;
     /*
     
     j'ai fait des bails moi aussi
