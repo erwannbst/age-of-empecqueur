@@ -20,3 +20,5 @@ Le code du site front sera sur `views/index.html`
 
 Click `Show` in the header to see your app live. Updates to your code will instantly deploy.
 
+  
+minichat exemple [https://github.com/raynalf/mini-chat]

@@ -23,10 +23,6 @@ var connected = false;
 var username = "";
 var goldAmount = 0;
 
-var chatroom = document.getElementById("messages-box");
-var message = document.getElementById("content");
-var sendMessage = document.getElementById("send-message");
-
 import {
   emplacementLibre,
   menuBatiments,
@@ -122,6 +118,12 @@ btnUpgrade.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   //socket.emit("create batiment", { nom: "soldier" });
 });
+
+var chatForm = document.getElementById('chat-form');
+var messageInput = document.getElementById("content");
+
+chatForm.addEventListener('submit', eve,t)
+
 
 
 //-----------------------------------------------------KEYBOARD----------------------------------------------------------//
