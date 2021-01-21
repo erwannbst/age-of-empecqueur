@@ -64,6 +64,9 @@ function item(x, y, name) {
 
 //-----------------------------------------------------PARTIE MENU-------------------------------------------------------//
 
+for(var batiment in m)
+
+
 let batSelect;
 //boutons selection batiments
 var btnExtracteur = document.getElementById("extracteur");
@@ -126,22 +129,17 @@ var displayMessage = document.getElementById("messages-box");
 chatForm.addEventListener('submit', (event) => {
   event.preventDefault();
   sendChat({msg : messageInput.value, pseudo : username}); // data:{msg: "test", pseudo: "pseudo"}
+  console.log("message envoyé au serveur : " + messageInput.value );
   messageInput.value = '';
 });
 
-function renderMessage(message){
-  let p = document.createELement('p');
-  p.innerHTML = username + " : " + message;
-  return p;
+function renderMessage(data){
+  console.log("message recu par le serveur : " + data);
+  let p = document.createElement('p');
+  p.innerHTML = data.pseudo + " : " + data.msg;
+  displayMessage.appendChild(p);
 }
 
-/*
-socket.on('message', user => {
-let message = renderMessage(messageInput.value);
-messageInput.value = '';
-displayMessage.appendChild(message);
-})
-*/
 
 
 //-----------------------------------------------------KEYBOARD----------------------------------------------------------//
@@ -199,6 +197,7 @@ canvas.addEventListener(
       //si oui on affiche le menu du batiment 
       if (batClick) {
         displayMenuBatiments(socket.id, batClick);
+        //batClick = nom du batiment sur lequel on a cliqué 
         
       } 
       //sinon on affiche rien
@@ -332,11 +331,10 @@ socket.on("user joined", function(user) {
   userJoined(user);
 });
 
-/*
-socket.on("draw batiment", function(data) {
-  drawBatiment(data);
+socket.on("send chat", function(data) {
+  renderMessage(data);
 });
-*/
+
 
 socket.on("receive map", function(data) {
   receiveMap(data);
