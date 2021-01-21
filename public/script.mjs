@@ -105,17 +105,9 @@ btnMurV.addEventListener("click", event => {
 let btnCreateSoldat = document.getElementById("btnCreateSoldat");
 btnCreateSoldat.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
-  /*
-  map[socket.id].forEach(batiment => {
-    if(batiment.name == "caserne"){
-      var coordX = batiment.x;
-      var coordY = batiment.y;
-    }
-  });
-  */
   
   //passer x et y en argument en les recuperant sur l'input
-  socket.emit("create batiment", { nom: "soldier" });
+  socket.emit("create batiment", { nom: "soldier" , x: document.getElementById("coordX").value, y: document.getElementById("coordY").value});
 });
 
 let btnUpgrade = document.getElementById("btnUpgrade");
