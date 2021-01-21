@@ -129,7 +129,10 @@ io.on('connection', function (socket) {
   });
   
   //minichat
-  
+  socket.on('new_message', (data) => {
+    let {username, room} = data
+    io.to(room).emit('new_message', {message : data.message, username : username});
+  });
   
   
 });
