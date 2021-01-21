@@ -2,11 +2,11 @@ import Personnage from "./Personnage.js";
 
 class Soldier extends Personnage {
   constructor(x, y) {
-    super(x, y, 2, 2, 20, 20, 50, 10); // x, y, damage, ms, as, range, hp, cost
+    super(x, y, 2, 4, 20, 20, 50, 10); // x, y, damage, ms, as, range, hp, cost
   }
   
-  run(map){
-    super.run(map);
+  run(enemyMap){
+    super.run(enemyMap);
   }
 
   draw() {

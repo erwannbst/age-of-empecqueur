@@ -53,9 +53,6 @@ maps : {
 */
 
 // CONSTANTES
-setInterval(() => {
-  console.log(io.sockets.adapter.rooms);
-}, 10000);
 
 io.on('connection', function (socket) {
   console.log('a user connected');
@@ -155,8 +152,8 @@ function run(room){
          if(id != player)
             enemyId = id;
       })
-      let cible = maps[enemyId][0]
-      batiment.run(cible)
+      let enemyMap = maps[enemyId]
+      batiment.run(enemyMap)
     })
   })
 }

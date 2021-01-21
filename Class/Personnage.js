@@ -17,6 +17,13 @@ class Personnage extends Building {
   }
   
   run(map){
+    var nearestBatiment = map[0];
+    var shorterDistance = map[0].
+    map.forEach(batiment => {
+      let coord = batiment.getCoordinates();
+      let distance = Math.sqrt(Math.pow(coord.x, 2) + Math.pow(coord.y, 2));
+      distances.push(distance);
+    })
     this.cibler(map);
   }
   
