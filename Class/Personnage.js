@@ -43,8 +43,21 @@ class Personnage extends Building {
     let xDist = Math.abs(coord.x - toX);
     let yDist = Math.abs(coord.y - toY);
     let distRatio = xDist/yDist;
-    coord.x < toX ? this._x+=distRatio*this._ms : this._x-=distRatio*this._ms;
-    coord.y < toY ? this._y+=(1/distRatio)*this._ms : this._y-=(1/distRatio)*this._ms;
+    
+    if(coord.x < toX) //Si il est à gauche
+      this._x += this._ms*distRatio
+    else // Si il est à droite
+      this._x = this._x - this._ms*distRatio
+    
+    if(coord.y < toY) //Si il est en dessous
+      this._y += this._ms*(1/distRatio)
+    else // Si il est à droite
+      this._y -= this._ms*(1/distRatio)
+    
+    
+    
+    //coord.x < toX ? this._x+=distRatio*this._ms : this._x-=distRatio*this._ms;
+    //coord.y < toY ? this._y+=(1/distRatio)*this._ms : this._y-=(1/distRatio)*this._ms;
   }
 }
 
