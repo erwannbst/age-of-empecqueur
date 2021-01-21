@@ -121,9 +121,26 @@ btnUpgrade.addEventListener("click", event => {
 
 var chatForm = document.getElementById('chat-form');
 var messageInput = document.getElementById("content");
+var displayMessage = document.getElementById("messages-box");
 
-chatForm.addEventListener('submit', eve,t)
+chatForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  
+});
 
+function renderMessage(message){
+  let p = document.createELement('p');
+  p.innerHTML = username + " : " + message;
+  return p;
+}
+
+/*
+socket.on('message', user => {
+let message = renderMessage(messageInput.value);
+messageInput.value = '';
+displayMessage.appendChild(message);
+})
+*/
 
 
 //-----------------------------------------------------KEYBOARD----------------------------------------------------------//
