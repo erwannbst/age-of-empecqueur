@@ -125,7 +125,8 @@ var displayMessage = document.getElementById("messages-box");
 
 chatForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  
+  sendChat({msg : messageInput.value, pseudo : username}); // data:{msg: "test", pseudo: "pseudo"}
+  messageInput.value = '';
 });
 
 function renderMessage(message){
@@ -358,6 +359,10 @@ socket.on("gold amount updated", function(amount) {
 
 function createBatiment(data) {
   socket.emit("create batiment", data);
+}
+
+function sendChat(data){
+  socket.emit("send chat", data);
 }
 
 /*

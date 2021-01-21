@@ -339,6 +339,7 @@ form .signup-link a:hover {
   padding: 1em;
   height: 100px;
   overflow: auto;
+  overflow-y: hidden;
 }
 
 .message {

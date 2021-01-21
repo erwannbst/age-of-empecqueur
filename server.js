@@ -128,6 +128,11 @@ io.on('connection', function (socket) {
     }
   });
   
+  socket.on('send chat', function(data) { // data:{text: "test", pseudo: "pseudo"}
+    let room = players[socket.id].roomId;
+    io.to(room).emit('send chat', data);
+  });
+  
   
 });
 
