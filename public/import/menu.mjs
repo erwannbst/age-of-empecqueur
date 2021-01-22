@@ -45,12 +45,18 @@ checkbox.onchange = function() {
     document.getElementById("bat-container").style.backgroundColor = "rgba(31, 31, 45, 0.3)";
     document.getElementById("menu_bat").style.backgroundColor = "rgba(31, 31, 45, 0.3)";
     document.getElementsByTagName("body")[0].style.backgroundColor= "#34344b";
+    document.getElementById("connexion").style.backgroundColor = "rgba(31, 31, 45, 0.7)";
+    document.getElementById("creation").style.backgroundColor = "rgba(31, 31, 45, 1)";
+    document.getElementById("connect").style.backgroundColor = "rgba(31, 31, 45, 1)";
   }
   //clear mode
   else{
     document.getElementById("bat-container").style.backgroundColor = "rgba(255, 255, 255, 0.3)";
     document.getElementById("menu_bat").style.backgroundColor = "rgba(255, 255, 255, 0.3)";
     document.getElementsByTagName("body")[0].style.backgroundColor= "lightgray";
+    document.getElementById("connexion").style.backgroundColor = "rgba(255, 255, 255, 0.7)";
+    document.getElementById("creation").style.backgroundColor = "rgba(255, 255, 255, 1)";
+    document.getElementById("connect").style.backgroundColor = "rgba(255, 255, 255, 1)";
   }
 };
 

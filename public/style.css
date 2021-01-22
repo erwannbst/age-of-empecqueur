@@ -229,6 +229,7 @@ select {
 .wrapper form {
   padding: 10px 30px 50px 30px;
   justify-content: center;
+  background-color: rgba(255, 255, 255, 1);
 }
 .wrapper form .field {
   height: 50px;
@@ -332,9 +333,7 @@ form .signup-link a:hover {
 .chat {
   width: 30%;
   border-color: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-  border-width: 2px;
-  border-style: groove;
+  
 }
 
 .chat-form{
