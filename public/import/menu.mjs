@@ -48,9 +48,7 @@ checkbox.onchange = function() {
     document.getElementById("connexion").style.backgroundColor = "rgba(31, 31, 45, 0.7)";
     document.getElementById("creation").style.backgroundColor = "rgba(31, 31, 45, 1)";
     document.getElementById("connect").style.backgroundColor = "rgba(31, 31, 45, 1)";
-    document.getElementsByTagName("canvas")[0].style.background = "url(
-        https://zupimages.net/up/21/01/z09j.png
-      )"
+    document.getElementById("myCanvas").style.background = "#f3f3f3 url('https://zupimages.net/up/21/03/6geb.png') no-repeat";
   }
   //clear mode
   else{
