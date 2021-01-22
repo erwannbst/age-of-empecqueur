@@ -48,7 +48,7 @@ checkbox.onchange = function() {
     document.getElementById("connexion").style.backgroundColor = "rgba(31, 31, 45, 0.7)";
     document.getElementById("creation").style.backgroundColor = "rgba(31, 31, 45, 1)";
     document.getElementById("connect").style.backgroundColor = "rgba(31, 31, 45, 1)";
-    document.getElementById("myCanvas").style.background = "#f3f3f3 url('https://zupimages.net/up/21/03/6geb.png') no-repeat";
+    document.getElementById("myCanvas").style.background = "#f3f3f3 url('https://zupimages.net/up/21/03/zicf.png') no-repeat";
   }
   //clear mode
   else{
@@ -58,6 +58,7 @@ checkbox.onchange = function() {
     document.getElementById("connexion").style.backgroundColor = "rgba(255, 255, 255, 0.7)";
     document.getElementById("creation").style.backgroundColor = "rgba(255, 255, 255, 1)";
     document.getElementById("connect").style.backgroundColor = "rgba(255, 255, 255, 1)";
+    document.getElementById("myCanvas").style.background = "#f3f3f3 url('https://zupimages.net/up/21/01/z09j.png') no-repeat";
   }
 };
 
