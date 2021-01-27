@@ -1,6 +1,11 @@
 import {map}  from '../script.mjs';
 
 
+map[player].forEach(batiment => {
+  
+});
+
+
 export function displayMenuBatiments(userId, batiment){
   var menu_bat = document.getElementById("menu_bat");
   console.log(batiment);
@@ -15,10 +20,11 @@ export function displayMenuBatiments(userId, batiment){
           "Coût d'amélioration = " +
           batiment.lvlUpPrice +
           " pièces d'or" ;
-        document.getElementById("hp_bat").value = batiment.hp;
-        document.getElementById("hp_bat").max = batiment.hpMax;
   
+        document.getElementById("soldierOnMap").innerHTML = "Soldats en opération : " ;
+        document.getElementById("soldierRest").innerHTML = "Soldats en réserve : " ;
   
+        //button de click d'ajout de personnage
         if(batiment.nom=="caserne"){
           document.getElementById("btnCreateSoldat").style.display = "block";
           document.getElementById("btnCreateSoldat").innerHTML = "Ajout de soldat";
@@ -27,6 +33,7 @@ export function displayMenuBatiments(userId, batiment){
           document.getElementById("btnCreateSoldat").style.display = "none";
         }
   
+        //button de click de placement de personnage
         if(batiment.nom=="trinquette"){
           document.getElementById("btnPlaceSoldat").style.display = "block";
           document.getElementById("btnPlaceSoldat").innerHTML = "Placer mes soldats";

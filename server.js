@@ -134,11 +134,27 @@ io.on('connection', function (socket) {
     io.to(room).emit('send chat', data);
   });
   
+  socket.on('placer personnage', function(data) {
+    placerPersonnage({data, playerId: socket.id});
+  })
+  
   
 });
 
-function placerPersonnage(data){ // data:{type: "soldier", x: 50, y: 50}
-    
+function placerPersonnage(data){ // data:{type: "soldier", x: 50, y: 50, playerId: "lskefe"}
+  console.log("placerPersonnage")
+  var continuer = true;
+  for(let i = 0; i < maps[data.playerId].length && continuer; i++){
+    var bat = maps[data.playerId][i];
+    if(bat instanceof Personnage && bat._isOnMap == false){
+      console.log("Personnage placé")
+      bat._x = data.x;
+      bat._y = data.y;
+      bat._isOnMap = true;
+      console.log(bat)
+      console.log(maps[data.playerId][i])
+    }
+  }
 }
 
 
