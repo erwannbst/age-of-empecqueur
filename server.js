@@ -161,7 +161,8 @@ function run(room){
       })
       let enemyMap = maps[enemyId]
       console.time("run");
-      batiment.run({enemyMap, playerId: player})
+      if(batiment.getHp() > 0)
+        batiment.run({enemyMap, playerId: player})
       console.timeEnd("run");
     })
   })
@@ -171,10 +172,10 @@ function makeid() {
    var result           = '';
    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
    var charactersLength = characters.length;
-   for ( var i = 0; i < 2; i++ ) {
+   for ( var i = 0; i < 4; i++ ) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
    }
-  result += "PD"
+  result = "VictorLidiot"
    return result;
 }
 

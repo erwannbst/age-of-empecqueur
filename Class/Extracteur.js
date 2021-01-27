@@ -1,5 +1,5 @@
 import Building from "./Building.js";
-import incrementPlayerGold from "../server.js";
+import {incrementPlayerGold} from "../server.js";
 
 class Extracteur extends Building {
   constructor(x, y) {
@@ -8,7 +8,7 @@ class Extracteur extends Building {
   
   run(data){
     let id = data.playerId;
-    incrementPlayerGold(id, );
+    incrementPlayerGold(id, 1);
   }
 
   draw() {

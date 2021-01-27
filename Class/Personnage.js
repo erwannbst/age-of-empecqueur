@@ -7,12 +7,14 @@ class Personnage extends Building {
     this._as = as
     this._ms = ms;
     this._range = range;
+    this._isOnMap = false;
   }
 
   draw() {
     return {
       ...super.draw(),
       damage: this._damage,
+      isOnMap: this._isOnMap
     };
   }
   /*

@@ -27,6 +27,8 @@ export function displayMenuBatiments(userId, batiment){
           " pièces d'or" ;
         document.getElementById("hp_bat").value = batiment.hp;
         document.getElementById("hp_bat").max = batiment.hpMax;
+  
+  
         if(batiment.nom=="caserne"){
           document.getElementById("btnCreateSoldat").style.display = "block";
           document.getElementById("btnCreateSoldat").innerHTML = "Ajout de soldat";
@@ -34,6 +36,16 @@ export function displayMenuBatiments(userId, batiment){
         else{
           document.getElementById("btnCreateSoldat").style.display = "none";
         }
+  
+        if(batiment.nom=="trinquette"){
+          document.getElementById("btnCreateSoldat").style.display = "block";
+          document.getElementById("btnCreateSoldat").innerHTML = "Ajout de soldat";
+        }
+        else{
+          document.getElementById("btnCreateSoldat").style.display = "none";
+        }
+  
+  
         document.getElementById("btnUpgrade").innerHTML = "Améliorer";        
 }
 
