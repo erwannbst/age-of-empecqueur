@@ -22,13 +22,15 @@ class Personnage extends Building {
     map.forEach(batiment => {
       let coord = batiment.getCoordinates();
       let distance = Math.sqrt(Math.pow(coord.x, 2) + Math.pow(coord.y, 2));
+      console.log(JSON.stringify(batiment.draw()))
+      console.log(distance + "<" + shorterDistance + ":")
       if(distance < shorterDistance){
         shorterDistance = distance;
         nearestBatiment = batiment;
+        console.log("nearestBatiment " + JSON.stringify(nearestBatiment.draw()))
       }
     })
-    console.log("nearestBatiment " + JSON.stringify(map))
-    console.log("nearestBatiment " + JSON.stringify(nearestBatiment.draw()))
+    console.log("map")
     this.cibler(nearestBatiment);
   }
   
