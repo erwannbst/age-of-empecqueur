@@ -148,9 +148,7 @@ function placerPersonnage(data){ // data:{type: "soldier", x: 50, y: 50, playerI
     var bat = maps[data.playerId][i];
     if(bat instanceof Personnage && bat._isOnMap == false){
       console.log("Personnage placé")
-      bat._x = data.x;
-      bat._y = data.y;
-      bat._isOnMap = true;
+      bat.placerOnMap(data.x, data.y);
       console.log(bat)
       console.log(maps[data.playerId][i])
     }
@@ -164,14 +162,7 @@ function sendMap(room){
   players.forEach(player => {
     mapToSend[player] = [];
     maps[player].forEach(batiment => {
-      if(batiment.getHp() > 0){
-        if(!(batiment instanceof Personnage)){
-          mapToSend[player].push(batiment.draw());
-        }else{
-          if(batiment._isOnMap)
-             mapToSend[player].push(batiment.draw());
-        }
-      }
+      mapToSend[player].push(batiment.draw());
     })
   })
   io.to(room).emit('receive map', mapToSend);
@@ -207,6 +198,7 @@ function makeid() {
    for ( var i = 0; i < 4; i++ ) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
    }
+   result = "AAAA";
    return result;
 }
 

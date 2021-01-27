@@ -1,12 +1,14 @@
 import {map}  from '../script.mjs';
 
-
-map[player].forEach(batiment => {
-  
-});
-
-
 export function displayMenuBatiments(userId, batiment){
+  map[userId].forEach(batiment => {
+  if(batiment.nom = "soldier"){
+    var nbSoldats++;;
+    if(batiment.isOnMap){
+      var nbSoldatsOnMaps += 1;
+    }
+  }
+  });
   var menu_bat = document.getElementById("menu_bat");
   console.log(batiment);
         menu_bat.style.display = "block";
@@ -21,8 +23,8 @@ export function displayMenuBatiments(userId, batiment){
           batiment.lvlUpPrice +
           " pièces d'or" ;
   
-        document.getElementById("soldierOnMap").innerHTML = "Soldats en opération : " ;
-        document.getElementById("soldierRest").innerHTML = "Soldats en réserve : " ;
+        document.getElementById("soldierOnMap").innerHTML = "Soldats en opération : " + nbSoldatsOnMaps ;
+        document.getElementById("soldierRest").innerHTML = "Soldats en réserve : "  + (nbSoldats - nbSoldatsOnMaps);
   
         //button de click d'ajout de personnage
         if(batiment.nom=="caserne"){
