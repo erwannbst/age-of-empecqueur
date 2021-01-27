@@ -27,6 +27,8 @@ class Personnage extends Building {
         nearestBatiment = batiment;
       }
     })
+    console.log("nearestBatiment " + JSON.stringify(map))
+    console.log("nearestBatiment " + JSON.stringify(nearestBatiment.draw()))
     this.cibler(nearestBatiment);
   }
   

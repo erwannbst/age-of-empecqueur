@@ -135,7 +135,7 @@ function renderMessage(data){
   let p = document.createElement('p');
   p.innerHTML = data.pseudo + " : " + data.msg;
   p.style.fontSize ="small";
-  p.style.height = "12px";
+  p.style.height = "14px";
   displayMessage.appendChild(p);
   displayMessage.scrollTop = displayMessage.scrollHeight;
 }
