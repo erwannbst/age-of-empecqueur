@@ -143,7 +143,12 @@ export function drawAllBatiments(id){
     map[player].forEach(batiment => {
       //affichage de chaque batiments
       let img = new Image();
-      img.src = batiment.image;
+      if(player == id && batiment.nom == "soldier") {
+        img.src = "https://cdn.glitch.com/ed9ae07c-2c55-4291-ad7a-4f0a45476104%2Fsoldat%20vert.png?v=1611757211588";
+      }
+      else{
+        img.src = batiment.image;
+      } 
       ctx.drawImage(
         img,
         batiment.x,
@@ -178,6 +183,7 @@ export function drawHpBar(id, player, x, y, hp, hpMax) {
   ctx.rect(x - width / 2, y, width * (hp / hpMax), height);
   if(player == id){
     ctx.fillStyle = "rgba(0,255,0,0.2)";
+    
   }
   else{
     ctx.fillStyle = "rgba(255,0,0,0.2)";

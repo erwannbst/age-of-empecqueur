@@ -159,7 +159,9 @@ function run(room){
             enemyId = id;
       })
       let enemyMap = maps[enemyId]
+      console.time("run");
       batiment.run(enemyMap)
+      console.timeEnd("run");
     })
   })
 }
