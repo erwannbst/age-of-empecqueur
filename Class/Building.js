@@ -17,6 +17,11 @@ class Building {
   getCoordinates() {
     return { x: this._x, y: this._y };
   }
+  
+  setCoordinates(coord){
+    this._x = coord.x;
+    this._y = coord.y;
+  }
 
   lowerHp(amount) {
     this._hp -= amount;

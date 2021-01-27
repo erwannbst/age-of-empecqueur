@@ -19,8 +19,7 @@ class Personnage extends Building {
   }
   
   placerOnMap(x, y){
-    this._x = x;
-    this._y = y;
+    super.setCoordinates({x, y});
     this._isOnMap = true;
   }
   /*

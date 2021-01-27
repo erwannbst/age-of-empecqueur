@@ -116,7 +116,6 @@ btnCreateSoldat.addEventListener("click", event => {
 let btnPlaceSoldat = document.getElementById("btnPlaceSoldat");
 btnPlaceSoldat.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
-  
   batSelect = "soldier";
 });
 
@@ -196,9 +195,10 @@ canvas.addEventListener(
         if(batSelect == "soldier"){
           placerPersonnage({type: batSelect, x: playerX, y: playerY});
         }
-        
+        else{
         createBatiment({ nom: batSelect, x: playerX, y: playerY });
-        if(batSelect != "soldier") batSelect = null;
+        batSelect = null;
+        }
       }
       else{
         document.getElementById("output").innerHTML =

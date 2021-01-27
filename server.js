@@ -120,7 +120,7 @@ io.on('connection', function (socket) {
          batiment = new Extracteur(data.x, data.y, playerId);
         break;
       case "soldier":
-         batiment = new Soldier(data.x, data.y);
+         batiment = new Soldier(100,100);
         break;
     }
     if(players[playerId].gold - batiment.getCost() >= 0){
