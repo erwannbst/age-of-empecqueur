@@ -160,7 +160,7 @@ function run(room){
       })
       let enemyMap = maps[enemyId]
       console.time("run");
-      batiment.run(enemyMap)
+      batiment.run({enemyMap, playerId: player})
       console.timeEnd("run");
     })
   })

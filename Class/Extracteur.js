@@ -4,6 +4,10 @@ class Extracteur extends Building {
   constructor(x, y) {
     super(x, y, 80, 80, 300, 80, 0); // x, y, width, height, hp, cost, createDelay
   }
+  
+  run(){
+    
+  }
 
   draw() {
     return {

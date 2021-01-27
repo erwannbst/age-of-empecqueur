@@ -30,7 +30,8 @@ class Personnage extends Building {
     
     this.cibler(nearestBatiment);
   }*/
-  run(map){
+  run(data){
+    let map = data.enemyMap;
     var nearestBatiment = map[0];
     var shorterDistance = 999999;
     map.forEach(batiment => {
