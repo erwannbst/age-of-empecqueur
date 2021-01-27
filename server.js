@@ -7,6 +7,7 @@ import Caserne from './Class/Caserne.js';
 import Portugais from './Class/Portugais.js';
 import Trinquette from './Class/Trinquette.js';
 import Extracteur from './Class/Extracteur.js';
+import Personnage from './Class/Personnage.js';
 import Soldier from './Class/Soldier.js';
 import express from 'express';
 import http from 'http';
@@ -143,8 +144,14 @@ function sendMap(room){
   players.forEach(player => {
     mapToSend[player] = [];
     maps[player].forEach(batiment => {
-      if(batiment.getHp() > 0)
-        mapToSend[player].push(batiment.draw());
+      if(batiment.getHp() > 0){
+        if(!(batiment instanceof Personnage)){
+          mapToSend[player].push(batiment.draw());
+        }else{
+          if(batiment._isOnMap)
+             mapToSend[player].push(batiment.draw());
+        }
+      }
     })
   })
   io.to(room).emit('receive map', mapToSend);
@@ -160,10 +167,8 @@ function run(room){
             enemyId = id;
       })
       let enemyMap = maps[enemyId]
-      console.time("run");
       if(batiment.getHp() > 0)
         batiment.run({enemyMap, playerId: player})
-      console.timeEnd("run");
     })
   })
 }
@@ -175,7 +180,6 @@ function makeid() {
    for ( var i = 0; i < 4; i++ ) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
    }
-  result = "VictorLidiot"
    return result;
 }
 

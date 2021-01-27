@@ -113,6 +113,13 @@ btnCreateSoldat.addEventListener("click", event => {
   socket.emit("create batiment", { nom: "soldier" , x: document.getElementById("coordX").value, y: document.getElementById("coordY").value});
 });
 
+let btnPlaceSoldat = document.getElementById("btnPlaceSoldat");
+btnPlaceSoldat.addEventListener("click", event => {
+  event.preventDefault(); // stop our form submission from refreshing the page
+  
+  
+});
+
 let btnUpgrade = document.getElementById("btnUpgrade");
 btnUpgrade.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page

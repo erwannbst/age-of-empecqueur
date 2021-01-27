@@ -38,11 +38,11 @@ export function displayMenuBatiments(userId, batiment){
         }
   
         if(batiment.nom=="trinquette"){
-          document.getElementById("btnCreateSoldat").style.display = "block";
-          document.getElementById("btnCreateSoldat").innerHTML = "Ajout de soldat";
+          document.getElementById("btnPlaceSoldat").style.display = "block";
+          document.getElementById("btnPlaceSoldat").innerHTML = "Placer mes soldats";
         }
         else{
-          document.getElementById("btnCreateSoldat").style.display = "none";
+          document.getElementById("btnPlaceSoldat").style.display = "none";
         }
   
   

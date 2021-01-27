@@ -37,7 +37,7 @@ class Personnage extends Building {
     var nearestBatiment = map[0];
     var shorterDistance = 999999;
     map.forEach(batiment => {
-      if(batiment.getHp() > 0){
+      if(batiment.getHp() > 0 && this._isOnMap){
         let batCoord = batiment.getCoordinates();
         let distance = Math.sqrt(Math.pow(batCoord.x - this._x, 2) + Math.pow(batCoord.y - this._y, 2));
         if(distance < shorterDistance){
@@ -60,7 +60,8 @@ class Personnage extends Building {
   }
   
   attaque(building){
-    building.lowerHp(this._damage);
+    //if(new Date().getTime() % this._as)
+      building.lowerHp(this._damage);
   }
   
   move(toX, toY){
