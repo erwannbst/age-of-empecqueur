@@ -19,6 +19,8 @@ class Building {
   }
   
   setCoordinates(coord){
+    console.log("set")
+    console.log(coord)
     this._x = coord.x;
     this._y = coord.y;
   }

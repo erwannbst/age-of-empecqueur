@@ -135,7 +135,7 @@ io.on('connection', function (socket) {
   });
   
   socket.on('placer personnage', function(data) {
-    placerPersonnage({data, playerId: socket.id});
+    placerPersonnage({...data, playerId: socket.id});
   })
   
   
@@ -146,7 +146,7 @@ function placerPersonnage(data){ // data:{type: "soldier", x: 50, y: 50, playerI
   console.log(maps[data.playerId])
   maps[data.playerId].forEach(bat => {
     if(bat instanceof Personnage && bat._isOnMap == false){
-      console.log("Personnage placé")
+      console.log("Personnage placé en " + data.x)
       bat.placerOnMap(data.x, data.y);
     }
   })

@@ -19,7 +19,7 @@ class Personnage extends Building {
   }
   
   placerOnMap(x, y){
-    super.setCoordinates({x, y});
+    super.setCoordinates({x: x, y: y});
     this._isOnMap = true;
   }
   /*
@@ -38,7 +38,6 @@ class Personnage extends Building {
     this.cibler(nearestBatiment);
   }*/
   run(data){
-    console.log("Personnage::run is on map :" + this._isOnMap);
     if(!this._isOnMap){
       return;
     }
