@@ -5,16 +5,6 @@ export function displayMenuBatiments(userId, batiment){
   var menu_bat = document.getElementById("menu_bat");
   console.log(batiment);
         menu_bat.style.display = "block";
-        var inputX = document.createElement("input");
-          inputX.setAttribute("type", "hidden");
-          inputX.setAttribute("id", "coordX");
-          inputX.value = batiment.x
-          document.getElementById("form_bat").appendChild(inputX);
-        var inputY = document.createElement("input");
-          inputY.setAttribute("type", "hidden");
-          inputY.setAttribute("id", "coordY");
-          inputY.value = batiment.y
-          document.getElementById("form_bat").appendChild(inputY);
         
         //menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;
         document.getElementById("form_bat").style.opacity = 0.8;

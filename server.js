@@ -137,6 +137,10 @@ io.on('connection', function (socket) {
   
 });
 
+function placerPersonnage(data){ // data:{type: "soldier", x: 50, y: 50}
+    
+}
+
 
 function sendMap(room){
   let players = games[room].players;
@@ -167,8 +171,15 @@ function run(room){
             enemyId = id;
       })
       let enemyMap = maps[enemyId]
-      if(batiment.getHp() > 0)
+      
+      if(batiment.getHp() > 0){ 
         batiment.run({enemyMap, playerId: player})
+      }else{ //enlève les unités avec 0 HP
+        const index = maps[player].indexOf(batiment);
+        if (index > -1) {
+          maps[player].splice(index, 1);
+        }
+      }
     })
   })
 }

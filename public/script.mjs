@@ -110,14 +110,14 @@ btnCreateSoldat.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   
   //passer x et y en argument en les recuperant sur l'input
-  socket.emit("create batiment", { nom: "soldier" , x: document.getElementById("coordX").value, y: document.getElementById("coordY").value});
+  socket.emit("create batiment", { nom: "soldier"});
 });
 
 let btnPlaceSoldat = document.getElementById("btnPlaceSoldat");
 btnPlaceSoldat.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   
-  
+  batSelect = "soldier";
 });
 
 let btnUpgrade = document.getElementById("btnUpgrade");
@@ -192,6 +192,10 @@ canvas.addEventListener(
     if (batSelect != null) {
       //
       if (emplacementLibre(socket.id, batSelect, playerX, playerY)) {
+        
+        if(batSelect == "soldier"){
+          placerPersonnage({type: batSelect, x: playerX, y: playerY});
+        }
         createBatiment({ nom: batSelect, x: playerX, y: playerY });
         batSelect = null;
       }
@@ -365,6 +369,10 @@ socket.on("gold amount updated", function(amount) {
 
 function createBatiment(data) {
   socket.emit("create batiment", data);
+}
+
+function placerPersonnage(data) {
+  socket.emit("placer personnage", data);
 }
 
 function sendChat(data){
