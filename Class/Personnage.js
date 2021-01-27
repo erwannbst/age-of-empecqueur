@@ -15,22 +15,34 @@ class Personnage extends Building {
       damage: this._damage,
     };
   }
-  
+  /*
   run(map){
     var nearestBatiment = map[0];
     var shorterDistance = 999999;
     map.forEach(batiment => {
-      let coord = batiment.getCoordinates();
-      let distance = Math.sqrt(Math.pow(coord.x, 2) + Math.pow(coord.y, 2));
-      console.log(JSON.stringify(batiment.draw()))
-      console.log(distance + "<" + shorterDistance + ":")
+      let batCoord = batiment.getCoordinates();
+      let distance = Math.sqrt(Math.pow(batCoord.x - this._x, 2) + Math.pow(batCoord.y - this._y, 2));
       if(distance < shorterDistance){
         shorterDistance = distance;
         nearestBatiment = batiment;
-        console.log("nearestBatiment " + JSON.stringify(nearestBatiment.draw()))
       }
     })
-    console.log("map")
+    
+    this.cibler(nearestBatiment);
+  }*/
+  run(map){
+    var nearestBatiment = map[0];
+    var shorterDistance = 999999;
+    console.time("forEach");
+    map.forEach(batiment => {
+      let batCoord = batiment.getCoordinates();
+      let distance = Math.sqrt(Math.pow(batCoord.x - this._x, 2) + Math.pow(batCoord.y - this._y, 2));
+      if(distance < shorterDistance){
+        shorterDistance = distance;
+        nearestBatiment = batiment;
+      }
+    })
+    console.timeEnd("forEach");
     this.cibler(nearestBatiment);
   }
   
@@ -45,19 +57,16 @@ class Personnage extends Building {
   }
   
   attaque(building){
-    console.log("Personnage::attaque")
     building.lowerHp(this._damage);
   }
   
   move(toX, toY){
-    console.log("Personnage::move")
     let coord = super.getCoordinates();
     let xDist = coord.x - toX;
     let yDist = coord.y - toY;
     let dist = Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
     let sin = yDist/dist;
     let cos = xDist/dist;
-    console.log("sin: " + sin + " | cos:" + cos)
     this._y -= sin * this._ms; 
     this._x -= cos * this._ms;
   }

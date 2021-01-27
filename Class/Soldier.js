@@ -21,7 +21,6 @@ class Soldier extends Personnage {
   }
   
   move(x, y){
-    console.log("Soldier::move")
     super.move(x, y);
   }
 }
