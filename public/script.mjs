@@ -196,8 +196,9 @@ canvas.addEventListener(
         if(batSelect == "soldier"){
           placerPersonnage({type: batSelect, x: playerX, y: playerY});
         }
+        
         createBatiment({ nom: batSelect, x: playerX, y: playerY });
-        batSelect = null;
+        if(batSelect != "soldier") batSelect = null;
       }
       else{
         document.getElementById("output").innerHTML =
@@ -349,6 +350,7 @@ socket.on("send chat", function(data) {
 
 
 socket.on("receive map", function(data) {
+  console.log(data)
   receiveMap(data);
 })
 

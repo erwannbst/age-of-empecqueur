@@ -142,17 +142,16 @@ io.on('connection', function (socket) {
 });
 
 function placerPersonnage(data){ // data:{type: "soldier", x: 50, y: 50, playerId: "lskefe"}
-  console.log("placerPersonnage")
-  var continuer = true;
-  for(let i = 0; i < maps[data.playerId].length && continuer; i++){
-    var bat = maps[data.playerId][i];
+  console.log("map avant placerPersonnage " + JSON.stringify(data))
+  console.log(maps[data.playerId])
+  maps[data.playerId].forEach(bat => {
     if(bat instanceof Personnage && bat._isOnMap == false){
       console.log("Personnage placé")
       bat.placerOnMap(data.x, data.y);
-      console.log(bat)
-      console.log(maps[data.playerId][i])
     }
-  }
+  })
+  console.log("map après placerPersonnage")
+  console.log(maps[data.playerId])
 }
 
 
@@ -198,7 +197,7 @@ function makeid() {
    for ( var i = 0; i < 4; i++ ) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
    }
-   result = "AAAA";
+   //result = "AAAA";
    return result;
 }
 
