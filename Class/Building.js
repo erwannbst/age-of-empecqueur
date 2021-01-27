@@ -11,7 +11,7 @@ class Building {
   }
   
   draw(){
-    return({x: this._x, y: this._y, width: this._width, height: this._height, hp: this._hp, lvl: this._lvl});
+    return({x: this._x, y: this._y, width: this._width, height: this._height, hp: this._hp, lvl: this._lvl, cost: this._cost});
   }
 
   getCoordinates() {

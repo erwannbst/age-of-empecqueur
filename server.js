@@ -143,7 +143,8 @@ function sendMap(room){
   players.forEach(player => {
     mapToSend[player] = [];
     maps[player].forEach(batiment => {
-      mapToSend[player].push(batiment.draw());
+      if(batiment.getHp() > 0)
+        mapToSend[player].push(batiment.draw());
     })
   })
   io.to(room).emit('receive map', mapToSend);
@@ -170,9 +171,10 @@ function makeid() {
    var result           = '';
    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
    var charactersLength = characters.length;
-   for ( var i = 0; i < 4; i++ ) {
+   for ( var i = 0; i < 2; i++ ) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
    }
+  result += "PD"
    return result;
 }
 
@@ -183,8 +185,8 @@ function incrementGold(room){
   })
 }
 
-function incrementPlayerGold(playerId){
-  players[playerId].gold += 1;
+export function incrementPlayerGold(playerId, amount){
+  players[playerId].gold += amount;
   io.to(playerId).emit('gold amount updated', players[playerId].gold);
 }
 

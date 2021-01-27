@@ -77,6 +77,19 @@ var btnTrinquette = document.getElementById("trinquette");
 var btnMurH = document.getElementById("murH");
 var btnMurV = document.getElementById("murV");
 
+if(goldAmount < 80){
+  btnExtracteur.disabled = true;
+  btnCaserne.disabled = true;
+  btnPortugais.disabled = true;
+  btnTrinquette.disabled = true;
+}
+
+if(goldAmount < 20){
+  btnMurH.disabled = true;
+  btnMurV.disabled = true;
+}
+
+
 btnExtracteur.addEventListener("click", event => {
   event.preventDefault();
   batSelect = btnExtracteur.value;
