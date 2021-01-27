@@ -183,6 +183,11 @@ function incrementGold(room){
   })
 }
 
+function incrementPlayerGold(playerId){
+  players[playerId].gold += 1;
+  io.to(playerId).emit('gold amount updated', players[playerId].gold);
+}
+
 /*
 var games = {};
 

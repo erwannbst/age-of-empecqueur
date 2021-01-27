@@ -5,8 +5,8 @@ class Extracteur extends Building {
     super(x, y, 80, 80, 300, 80, 0); // x, y, width, height, hp, cost, createDelay
   }
   
-  run(){
-    
+  run(data){
+    let id = data.playerId;
   }
 
   draw() {
