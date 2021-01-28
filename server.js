@@ -131,12 +131,14 @@ io.on('connection', function (socket) {
     }
   });
   
-  socket.on('create batiment', function(data) { // data:{nom: "soldier", x: 100, y: 100}
+  socket.on('create unit', function(data) { // data:{nom: "soldier", x: 100, y: 100}
     let playerId = socket.id;
     let room = players[playerId].roomId;
     let unit;
     switch(data.nom){
       case "soldier":
+        console.log(players[playerId])
+        console.log("players[playerId]")
           players[playerId].buildings.push({type: "soldier", lvl: 1})
           break;
       }
@@ -206,13 +208,14 @@ function sendPlayersData(room){
   })
   
   playersId.forEach(playerId => {
-    io.to(playerId).emit('receive players data', {
+    let dataToSend = {
       map,
       items: {
         gold: players[playerId].gold,
         buildings: players[playerId].buildings
       }
-    });
+    }
+    io.to(playerId).emit('receive players data', dataToSend);
   })
   
   

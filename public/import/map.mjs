@@ -72,7 +72,7 @@ export var RenduBatiments = {
 
 var side;
 export function emplacementLibre(id, batSelect, clickX, clickY) {
-  
+  console.log(map);
   var autorisation = true;
   var cornerX = clickX + RenduBatiments[batSelect].width;
   var cornerY = clickY + RenduBatiments[batSelect].height;
