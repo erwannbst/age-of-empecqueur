@@ -122,7 +122,7 @@ btnPlaceSoldat.addEventListener("click", event => {
   }
   else{
     btnPlaceSoldat.style.background = "linear-gradient(-135deg, #5B6E44, #D2EBB5)";
-    batSelect = false;
+    batSelect = null;
   }
 });
 
@@ -195,21 +195,20 @@ canvas.addEventListener(
     var batClick = false;
     
     if(placeSoldats == true){
-        socket.emit("place personnage", { nom:"soldier", x:playerX, y:playerY});
+        socket.emit("place personnage", {nom:"soldier", x:playerX, y:playerY});
     }
     
     //si un batiment est selectionné on verifie si on peut le placer sur la map
     if (batSelect != null) {
-      placeSoldats = false;
-      
-      if (emplacementLibre(socket.id, batSelect, playerX, playerY)) {
-        
-        createBatiment({ nom: batSelect, x: playerX, y: playerY });
-        batSelect = null;
-      }
-      else{
-        document.getElementById("output").innerHTML =
-          "Vous ne pouvez pas placer un batiment ici";
+      if(batSelect != "soldier"){
+        if (emplacementLibre(socket.id, batSelect, playerX, playerY)) {
+          createBatiment({ nom: batSelect, x: playerX, y: playerY });
+          batSelect = null;
+        }
+        else{
+          document.getElementById("output").innerHTML =
+            "Vous ne pouvez pas placer un batiment ici";
+        }
       }
     }
     //si aucun batiment selectionné on verifie si le click porte sur un batiment en particulier
@@ -260,6 +259,7 @@ function receiveMap(data){
   map[socket.id].forEach(batiment => {
     if(batiment.nom == "caserne") {
       nbSoldatsOnRest == batiment.unitsInside.length;
+      console.log(nbSoldatsOnRest);
     }
     if(batiment.nom == "soldier"){
       nbSoldatsOnMaps++;

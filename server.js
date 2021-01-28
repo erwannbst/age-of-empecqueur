@@ -162,13 +162,13 @@ io.on('connection', function (socket) {
   
   
   socket.on('place personnage', function(data) {
-    console.log('place personnage')
-    console.log(maps[socket.id])
+    console.log('place personnage ' + JSON.stringify(maps[socket.id]))
     maps[socket.id].forEach(batimentOnMap => {
       if(batimentOnMap instanceof Caserne){
         var unit = batimentOnMap.removeUnit(data.nom);
         if(unit != "error"){
-          console.log("!= error " + JSON.stringify(unit))
+          console.log("placer en")
+          console.log({x: data.x, y: data.y})
           unit.placerOnMap({x: data.x, y: data.y})
           maps[socket.id].push(unit)
         }
