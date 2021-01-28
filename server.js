@@ -229,7 +229,7 @@ function sendPlayersData(room){
         gold: players[playerId].gold
       }
     }
-    console.log(JSON.stringify(dataToSend))
+    //console.log(JSON.stringify(dataToSend))
     io.to(playerId).emit('receive players data', dataToSend);
   })
   
@@ -237,7 +237,8 @@ function sendPlayersData(room){
 }
 
 function run(room){
-  incrementGold(room);
+  if(Date.now() % 3)
+    incrementGold(room);
   let players = games[room].players;
   players.forEach(player => {
     maps[player].forEach(batiment => {

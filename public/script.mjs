@@ -113,15 +113,13 @@ btnCreateSoldat.addEventListener("click", event => {
 });
 
 let btnPlaceSoldat = document.getElementById("btnPlaceSoldat");
-btnPlaceSoldat.onchange = function() {
-  //darkmode
-  if(btnPlaceSoldat.checked) {
-     placeSoldats = true;
+btnPlaceSoldat.addEventListener("click", event => {
+  event.preventDefault(); // stop our form submission from refreshing the page
+  placeSoldats = !placeSoldats;
+  if(placeSoldats == true){
+    btnPlaceSoldat.style.backgroundColor = "rgba(255, 0, 45, 1)";
   }
-  else{
-     placeSoldats = false;
-  }
-};
+});
 
 let btnUpgrade = document.getElementById("btnUpgrade");
 btnUpgrade.addEventListener("click", event => {
@@ -257,7 +255,7 @@ function receiveMap(data){
       nbSoldatsOnMaps == batiment.unitsInside;
     }
     if(batiment.nom == "soldier"){
-      
+        
     }
   });
   document.getElementById("soldierRest").innerHTML = "Soldats en réserve : " + nbSoldatsOnMaps ;
