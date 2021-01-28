@@ -349,9 +349,14 @@ socket.on("send chat", function(data) {
 });
 
 
-socket.on("receive map", function(data) {
+socket.on("receive data", function(data) {
   console.log(data)
-  receiveMap(data);
+  receiveMap(data.map);
+  
+})
+
+socket.on("receive players items", function(data) {
+  receivePlayersItems(data.items)
 })
 
 /*

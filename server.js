@@ -154,7 +154,7 @@ function placerPersonnage(data){ // data:{type: "soldier", x: 50, y: 50, playerI
   console.log(maps[data.playerId])
 }
 
-
+/*
 function sendMap(room){
   let players = games[room].players;
   var mapToSend = {}
@@ -165,6 +165,27 @@ function sendMap(room){
     })
   })
   io.to(room).emit('receive map', mapToSend);
+}*/
+
+function sendData(room){
+  
+  let players = games[room].players;
+  var playerItems = {}
+  /* 
+  playerItems = {
+    player1id: {
+      map: building...}
+    player2id: {building...}
+  }
+  */
+  players.forEach(player => {
+    mapToSend[player] = [];
+    maps[player].forEach(batiment => {
+      mapToSend[player].push(batiment.draw());
+    })
+  })
+  let playerItems =
+  io.to(room).emit('receive players items', playerItems);
 }
 
 function run(room){
