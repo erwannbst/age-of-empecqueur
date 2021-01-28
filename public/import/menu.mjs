@@ -17,8 +17,6 @@ export function displayMenuBatiments(userId, batiment){
           batiment.lvlUpPrice +
           " pièces d'or" ;
   
-        document.getElementById("soldierOnMap").innerHTML = "Soldats en opération : "  ;
-        document.getElementById("soldierRest").innerHTML = "Soldats en réserve : "  ;
   
         //button de click d'ajout de personnage
         if(batiment.nom=="caserne"){
@@ -33,9 +31,13 @@ export function displayMenuBatiments(userId, batiment){
         if(batiment.nom=="trinquette"){
           document.getElementById("btnPlaceSoldat").style.display = "block";
           document.getElementById("btnPlaceSoldat").innerHTML = "Placer mes soldats";
+          document.getElementById("soldierOnMap").innerHTML = "Soldats en opération : "  ;
+          document.getElementById("soldierRest").innerHTML = "Soldats en réserve : "  ;
         }
         else{
           document.getElementById("btnPlaceSoldat").style.display = "none";
+          document.getElementById("soldierOnMap").style.display = "none";
+          document.getElementById("soldierRest").style.display = "none";
         }
   
   
