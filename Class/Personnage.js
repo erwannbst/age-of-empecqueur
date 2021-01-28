@@ -57,13 +57,15 @@ class Personnage extends Building {
   }
   
   cibler(building){
-    let coord = super.getCoordinates();
-    let buildingCoord = building.getCoordinates();
-    let distance = Math.sqrt(Math.pow(buildingCoord.x - coord.x, 2) + Math.pow(buildingCoord.y - coord.y, 2)) //distance qui sépare le personnage de sa cible
-    if(distance > this._range && this.getHp() > 0){
-      this.move(buildingCoord.x, buildingCoord.y);
-    }else if(building.getHp() > 0 && this.getHp() > 0){
-      this.attaque(building);
+    if(building instanceof Building){ // evite bug ou building est undefined
+      let coord = super.getCoordinates();
+      let buildingCoord = building.getCoordinates();
+      let distance = Math.sqrt(Math.pow(buildingCoord.x - coord.x, 2) + Math.pow(buildingCoord.y - coord.y, 2)) //distance qui sépare le personnage de sa cible
+      if(distance > this._range && this.getHp() > 0){
+        this.move(buildingCoord.x, buildingCoord.y);
+      }else if(building.getHp() > 0 && this.getHp() > 0){
+        this.attaque(building);
+      }
     }
   }
   

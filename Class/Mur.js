@@ -2,7 +2,7 @@ import Building from "./Building.js";
 
 class Mur extends Building {
   constructor(x, y, width, height) {
-    super(x, y, width, height, 500, 20, 0); // x, y, width, height, hp, cost, createDelay
+    super(x, y, width, height, 500, 35, 0); // x, y, width, height, hp, cost, createDelay
   }
 
   draw() {
