@@ -7,21 +7,15 @@ class Personnage extends Building {
     this._as = as
     this._ms = ms;
     this._range = range;
-    this._isOnMap = false;
   }
 
   draw() {
     return {
       ...super.draw(),
       damage: this._damage,
-      isOnMap: this._isOnMap
     };
   }
   
-  placerOnMap(x, y){
-    super.setCoordinates({x: x, y: y});
-    this._isOnMap = true;
-  }
   /*
   run(map){
     var nearestBatiment = map[0];
@@ -38,9 +32,6 @@ class Personnage extends Building {
     this.cibler(nearestBatiment);
   }*/
   run(data){
-    if(!this._isOnMap){
-      return;
-    }
     let map = data.enemyMap;
     var nearestBatiment = map[0];
     var shorterDistance = 999999;

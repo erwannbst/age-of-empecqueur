@@ -22,6 +22,7 @@ var pageHeight = document.documentElement.clientHeight;
 var connected = false;
 var username = "";
 var goldAmount = 0;
+var placeSoldats= false;
 
 import {
   emplacementLibre,
@@ -112,10 +113,15 @@ btnCreateSoldat.addEventListener("click", event => {
 });
 
 let btnPlaceSoldat = document.getElementById("btnPlaceSoldat");
-btnPlaceSoldat.addEventListener("click", event => {
-  event.preventDefault(); // stop our form submission from refreshing the page
-  
-});
+btnPlaceSoldat.onchange = function() {
+  //darkmode
+  if(btnPlaceSoldat.checked) {
+     placeSoldats = true;
+  }
+  else{
+     placeSoldats = false;
+  }
+};
 
 let btnUpgrade = document.getElementById("btnUpgrade");
 btnUpgrade.addEventListener("click", event => {
@@ -184,19 +190,18 @@ canvas.addEventListener(
   function(event) {
     var menu_bat = document.getElementById("menu_bat");
     var batClick = false;
-
+    
+    if(placeSoldats == true){
+        socket.emit("place personnage", { x:playerX, y:playerY});
+    }
+    
     //si un batiment est selectionné on verifie si on peut le placer sur la map
     if (batSelect != null) {
       //
       if (emplacementLibre(socket.id, batSelect, playerX, playerY)) {
         
-        if(batSelect == "soldier"){
-          socket.emit("create batiment", { nom: "soldier", x:playerX, y:playerY});
-        }
-        else{
         createBatiment({ nom: batSelect, x: playerX, y: playerY });
         batSelect = null;
-        }
       }
       else{
         document.getElementById("output").innerHTML =
@@ -361,9 +366,6 @@ function createBatiment(data) {
   socket.emit("create batiment", data);
 }
 
-function placerPersonnage(data) {
-  socket.emit("placer personnage", data);
-}
 
 function sendChat(data){
   socket.emit("send chat", data);

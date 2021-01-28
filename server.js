@@ -127,11 +127,20 @@ io.on('connection', function (socket) {
     }
     if(players[playerId].gold - batiment.getCost() >= 0){
       players[playerId].gold -= batiment.getCost();
-      setTimeout(() => {maps[playerId].push(batiment)}, 0);
+      if(batiment instanceof Soldier){
+        maps[playerId].forEach(batimentOnMap => {
+          if(batimentOnMap instanceof Caserne){
+            batimentOnMap.addUnit(batiment);
+          }
+        })
+      }else{
+        maps[playerId].push(batiment)
+      }
     }
   });
   
-  /*socket.on('create unit', function(data) { // data:{nom: "soldier", x: 100, y: 100}
+  /*
+  socket.on('create unit', function(data) { // data:{nom: "soldier", x: 100, y: 100}
     let playerId = socket.id;
     let room = players[playerId].roomId;
     let unit;
@@ -215,7 +224,7 @@ function sendPlayersData(room){
         buildings: players[playerId].buildings
       }
     }
-    console.log(dataToSend)
+    console.log(JSON.stringify(dataToSend))
     io.to(playerId).emit('receive players data', dataToSend);
   })
   
