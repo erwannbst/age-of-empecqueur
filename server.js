@@ -167,8 +167,11 @@ io.on('connection', function (socket) {
     maps[socket.id].forEach(batimentOnMap => {
       if(batimentOnMap instanceof Caserne){
         var unit = batimentOnMap.removeUnit(data.nom);
-        unit.placerOnMap({x: data.x, y: data})
-        maps[socket.id].push(unit)
+        if(unit != "error"){
+          console.log("!= error " + JSON.stringify(unit))
+          unit.placerOnMap({x: data.x, y: data.y})
+          maps[socket.id].push(unit)
+        }
       }
     })
   })

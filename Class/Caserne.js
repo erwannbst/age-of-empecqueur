@@ -29,14 +29,16 @@ class Caserne extends Building {
           unitClass = Soldier
           break;
     }
-    this._unitsInside.forEach(unit => {
+    for(let i = 0; i < this._unitsInside.length; i++){
+      let unit = this._unitsInside[i];
       if(unit instanceof unitClass){
-        let index = this._unitsInside.indexOf(unit)
-        if(index > -1)
-          this._unitsInside.splice(index, 1);
+        this._unitsInside.splice(i, 1);
+        console.log("return " + JSON.stringify(unit))
         return unit;
       }
-    })
+    }
+    console.log("return error")
+    return "error";
   }
 }
 

@@ -118,9 +118,11 @@ btnPlaceSoldat.addEventListener("click", event => {
   placeSoldats = !placeSoldats;
   if(placeSoldats == true){
     btnPlaceSoldat.style.background = "linear-gradient(-135deg, #D52802, #E29E8F)";
+    batSelect = "soldier";
   }
   else{
     btnPlaceSoldat.style.background = "linear-gradient(-135deg, #5B6E44, #D2EBB5)";
+    batSelect = false;
   }
 });
 
@@ -198,7 +200,8 @@ canvas.addEventListener(
     
     //si un batiment est selectionné on verifie si on peut le placer sur la map
     if (batSelect != null) {
-      //
+      placeSoldats = false;
+      
       if (emplacementLibre(socket.id, batSelect, playerX, playerY)) {
         
         createBatiment({ nom: batSelect, x: playerX, y: playerY });
@@ -262,8 +265,11 @@ function receiveMap(data){
       nbSoldatsOnMaps++;
     }
   });
+  
   document.getElementById("btnPlaceSoldat").innerHTML = "Soldats a placer " + nbSoldatsOnRest ;
+  document.getElementById("soldierOnMap").innerHTML = "Soldats en guerre " + nbSoldatsOnMaps ;
 }
+
 
 function receivePlayerItems(data){
   goldAmount = data.gold;
