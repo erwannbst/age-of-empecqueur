@@ -247,14 +247,20 @@ function draw() {
 
 function receiveMap(data){
   //console.log("actualisation de la map" + JSON.stringify(data));
+  let nbSoldatsOnMaps = 0;
   map = data;
-  document.getElementById("soldierOnMap").innerHTML = "Soldats en opération : "  ;
+  map[socket.id].forEach(batiment => {
+    if(batiment.nom == "soldier") {
+      nbSoldatsOnMaps++;
+    }
+  });
+  document.getElementById("soldierOnMap").innerHTML = "Soldats en opération : " + nbSoldatsOnMaps ;
 }
 
 function receivePlayerItems(data){
   goldAmount = data.gold;
   document.getElementById("gold").innerHTML =  " " + data.gold;
-  document.getElementById("soldierRest").innerHTML = "Soldats en réserve : "  ;
+  document.getElementById("soldierRest").innerHTML = "Soldats en réserve : " + data.buildings.length ;
 }
 
 function gotConnected(data) {

@@ -28,7 +28,9 @@ app.use(express.static('public'));
 var players = {};
 /*
 players : {
-  playerId : {roomId, username, gold: 0},
+  playerId : {roomId, username, gold: 0, buildings: [
+    {type: "soldier", lvl: 1}    // soldat de niveau 1 sera créé dans 4 secondes
+  ]},
 }
 */
 
@@ -73,7 +75,7 @@ io.on('connection', function (socket) {
     let {username, room} = data
     if(games[room] != undefined && Object.keys(games[room].players).length < 2){
       console.log('adding ' + username + " to " + room)
-      let newPlayer = {roomId: room, username, gold: gameValues.INITIAL_GOLD_AMOUNT};
+      let newPlayer = {roomId: room, username, gold: gameValues.INITIAL_GOLD_AMOUNT, buildings: []};
       let playerId = socket.id
       socket.join(room);
       players[playerId] = newPlayer;
@@ -120,7 +122,7 @@ io.on('connection', function (socket) {
          batiment = new Extracteur(data.x, data.y, playerId);
         break;
       case "soldier":
-         batiment = new Soldier(100,100);
+         //batiment = new Soldier(100,100);
         break;
     }
     if(players[playerId].gold - batiment.getCost() >= 0){
@@ -177,9 +179,11 @@ function sendPlayersData(room){
   }
   items: {
     gold: 200,
-    buildings: {
-      {type: "soldier", lvl: 1, creatingDelay: 5}
-    }
+    buildings: [
+      {type: "soldier", lvl: 1},
+      {type: "soldier", lvl: 1},
+      {type: "soldier", lvl: 1},
+    ]
   }
   */
   players.forEach(player => {
@@ -193,7 +197,8 @@ function sendPlayersData(room){
     io.to(player).emit('receive players data', {
       map,
       items: {
-        gold: players[playerId].gold
+        gold: players[player].gold,
+        buildings: players[player].buildings
       }
     });
   })
