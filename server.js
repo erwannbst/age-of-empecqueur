@@ -64,7 +64,7 @@ io.on('connection', function (socket) {
     if(games[room] == undefined){
       let playerId = socket.id
       socket.join(room);
-      players[playerId] = {roomId: room, username, gold: gameValues.INITIAL_GOLD_AMOUNT};
+      players[playerId] = {roomId: room, username, gold: gameValues.INITIAL_GOLD_AMOUNT, buildings: []};
       games[room] = {players: [playerId]};
       maps[playerId] = [];
       socket.emit('connected', {username, room, playerId});
@@ -122,6 +122,7 @@ io.on('connection', function (socket) {
          batiment = new Extracteur(data.x, data.y, playerId);
         break;
       case "soldier":
+         //if(players[playerId])
          batiment = new Soldier(data.x, data.y);
         break;
     }
@@ -215,6 +216,7 @@ function sendPlayersData(room){
         buildings: players[playerId].buildings
       }
     }
+    console.log(dataToSend)
     io.to(playerId).emit('receive players data', dataToSend);
   })
   
@@ -222,6 +224,7 @@ function sendPlayersData(room){
 }
 
 function run(room){
+  incrementGold(room);
   let players = games[room].players;
   players.forEach(player => {
     maps[player].forEach(batiment => {
@@ -258,7 +261,6 @@ function makeid() {
 function incrementGold(room){
   games[room].players.forEach(playerId => {
     players[playerId].gold += 1;
-    io.to(playerId).emit('gold amount updated', players[playerId].gold);
   })
 }
 

@@ -244,7 +244,7 @@ function draw() {
 //-------------------------------------------------------SERVEUR------------------------------------------------------------//
 
 function receiveMap(data){
-  console.log("actualisation de la map" + JSON.stringify(data));
+  //console.log("actualisation de la map" + JSON.stringify(data));
   let nbSoldatsOnMaps = 0;
   map = data;
   map[socket.id].forEach(batiment => {
@@ -259,6 +259,7 @@ function receivePlayerItems(data){
   goldAmount = data.gold;
   document.getElementById("gold").innerHTML =  " " + data.gold;
   document.getElementById("soldierRest").innerHTML = "Soldats en réserve : " + data.buildings.length ;
+  console.log(data.buildings);
 }
 
 function gotConnected(data) {
@@ -339,7 +340,7 @@ socket.on("send chat", function(data) {
 
 
 socket.on("receive players data", function(data) {
-  console.log(data)
+  //console.log(data)
   receiveMap(data.map);
   receivePlayerItems(data.items);
 })
