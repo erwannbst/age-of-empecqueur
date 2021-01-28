@@ -64,7 +64,7 @@ io.on('connection', function (socket) {
     if(games[room] == undefined){
       let playerId = socket.id
       socket.join(room);
-      players[playerId] = {roomId: room, username, gold: gameValues.INITIAL_GOLD_AMOUNT, buildings: []};
+      players[playerId] = {roomId: room, username, gold: gameValues.INITIAL_GOLD_AMOUNT};
       games[room] = {players: [playerId]};
       maps[playerId] = [];
       socket.emit('connected', {username, room, playerId});
@@ -75,7 +75,7 @@ io.on('connection', function (socket) {
     let {username, room} = data
     if(games[room] != undefined && Object.keys(games[room].players).length < 2){
       console.log('adding ' + username + " to " + room)
-      let newPlayer = {roomId: room, username, gold: gameValues.INITIAL_GOLD_AMOUNT, buildings: []};
+      let newPlayer = {roomId: room, username, gold: gameValues.INITIAL_GOLD_AMOUNT};
       let playerId = socket.id
       socket.join(room);
       players[playerId] = newPlayer;
@@ -226,8 +226,7 @@ function sendPlayersData(room){
     let dataToSend = {
       map,
       items: {
-        gold: players[playerId].gold,
-        buildings: players[playerId].buildings
+        gold: players[playerId].gold
       }
     }
     console.log(JSON.stringify(dataToSend))

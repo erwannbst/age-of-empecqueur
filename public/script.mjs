@@ -253,18 +253,19 @@ function receiveMap(data){
   let nbSoldatsOnMaps = 0;
   map = data;
   map[socket.id].forEach(batiment => {
-    if(batiment.nom == "soldier") {
-      nbSoldatsOnMaps++;
+    if(batiment.nom == "caserne") {
+      nbSoldatsOnMaps == batiment.unitsInside;
+    }
+    if(batiment.nom == "soldier"){
+      
     }
   });
-  document.getElementById("soldierOnMap").innerHTML = "Soldats en opération : " + nbSoldatsOnMaps ;
+  document.getElementById("soldierRest").innerHTML = "Soldats en réserve : " + nbSoldatsOnMaps ;
 }
 
 function receivePlayerItems(data){
   goldAmount = data.gold;
   document.getElementById("gold").innerHTML =  " " + data.gold;
-  document.getElementById("soldierRest").innerHTML = "Soldats en réserve : " + data.buildings.length ;
-  console.log(data.buildings);
 }
 
 function gotConnected(data) {
