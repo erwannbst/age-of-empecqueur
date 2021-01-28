@@ -258,15 +258,14 @@ function receiveMap(data){
   map = data;
   map[socket.id].forEach(batiment => {
     if(batiment.nom == "caserne") {
-      nbSoldatsOnRest == batiment.unitsInside.length;
-      console.log(nbSoldatsOnRest);
+      nbSoldatsOnRest = batiment.unitsInside.length;
     }
     if(batiment.nom == "soldier"){
       nbSoldatsOnMaps++;
     }
   });
   
-  document.getElementById("btnPlaceSoldat").innerHTML = "Soldats a placer " + nbSoldatsOnRest ;
+  document.getElementById("btnPlaceSoldat").innerHTML = "Soldats a placer : " + nbSoldatsOnRest ;
   document.getElementById("soldierOnMap").innerHTML = "Soldats en guerre " + nbSoldatsOnMaps ;
 }
 

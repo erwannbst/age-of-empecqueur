@@ -15,7 +15,7 @@ class Soldier extends Personnage {
       nom: "soldier",
       ...super.draw(),
       image: "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2FIOP.png?1610016410702",
-      hpMax: 40 + 10*this._lvl,
+      hpMax: 40,
       lvlUpPrice: 200 + 100*this._lvl,
     };
   }

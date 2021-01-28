@@ -1,5 +1,6 @@
 import Building from "./Building.js";
 import {incrementPlayerGold} from "../server.js";
+imp
 
 class Extracteur extends Building {
   constructor(x, y) {

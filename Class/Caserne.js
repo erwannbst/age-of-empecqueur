@@ -33,12 +33,10 @@ class Caserne extends Building {
       let unit = this._unitsInside[i];
       if(unit instanceof unitClass){
         this._unitsInside.splice(i, 1);
-        console.log("return " + JSON.stringify(unit))
         return unit;
       }
     }
-    console.log("return error")
-    return "error";
+    return "error"; //pas de soldats créés à déployer
   }
 }
 

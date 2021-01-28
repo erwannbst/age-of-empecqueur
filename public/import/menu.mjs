@@ -4,7 +4,6 @@ import {map}  from '../script.mjs';
 export function displayMenuBatiments(userId, batiment){
  
   var menu_bat = document.getElementById("menu_bat");
-  console.log(batiment);
         menu_bat.style.display = "block";
         
         //menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;

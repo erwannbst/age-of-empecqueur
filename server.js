@@ -24,7 +24,7 @@ server.listen(port, function () {
 // Routing
 app.use(express.static('public'));
 
-var tic = 0;
+export var tic = 0;
 
 
 var players = {};
@@ -236,7 +236,7 @@ function sendPlayersData(room){
         gold: players[playerId].gold
       }
     }
-    //console.log(JSON.stringify(dataToSend))
+    console.log(JSON.stringify(dataToSend))
     io.to(playerId).emit('receive players data', dataToSend);
   })
   
