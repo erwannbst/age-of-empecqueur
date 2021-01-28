@@ -21,16 +21,21 @@ export function displayMenuBatiments(userId, batiment){
         //button de click d'ajout de personnage
         if(batiment.nom=="caserne"){
           document.getElementById("btnCreateSoldat").style.display = "block";
+          document.getElementById("btnPlaceSoldat").style.display = "block";
+          document.getElementById("btnPlaceSoldat").innerHTML = "Placer mes soldats";
           document.getElementById("btnCreateSoldat").innerHTML = "Ajout de soldat";
+          document.getElementById("soldierOnMap").style.display = "block";
+          document.getElementById("soldierRest").style.display = "block";
         }
         else{
+          document.getElementById("btnPlaceSoldat").style.display = "none";
           document.getElementById("btnCreateSoldat").style.display = "none";
+          document.getElementById("soldierOnMap").style.display = "none";
+          document.getElementById("soldierRest").style.display = "none";
         }
   
         //button de click de placement de personnage
         if(batiment.nom=="trinquette"){
-          document.getElementById("btnPlaceSoldat").style.display = "block";
-          document.getElementById("btnPlaceSoldat").innerHTML = "Placer mes soldats";
           document.getElementById("soldierOnMap").style.display = "block";
           document.getElementById("soldierRest").style.display = "block";
         }

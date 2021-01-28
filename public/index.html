@@ -12,10 +12,10 @@
     <style></style>
   </head>
   <body>
-    <div class="theme" >
-        <input type="checkbox" id="theme" name="theme" >
-        <label for="theme" >🌗</label>
-      </div>
+    <div class="theme">
+      <input type="checkbox" id="theme" name="theme" />
+      <label for="theme">🌗</label>
+    </div>
     <!--
   <form>
     <label>
@@ -58,7 +58,13 @@
             <label>Pseudo</label>
           </div>
           <div class="field">
-            <input type="text" value="AAAA" name="gameCode" autocomplete="off" required />
+            <input
+              type="text"
+              value="AAAA"
+              name="gameCode"
+              autocomplete="off"
+              required
+            />
             <label>Code partie</label>
           </div>
           <div class="field">
@@ -68,7 +74,6 @@
       </div>
     </div>
     <div class="game-container" id="game-container">
-      
       <div class="game-status">
         <h2><div class="status" id="status"></div></h2>
         <h2><div class="status" id="room"></div></h2>
@@ -134,7 +139,7 @@
         </div>
 
         <section id="chat" class="chat">
-          <div class="messages" id="messages-box" ></div>
+          <div class="messages" id="messages-box"></div>
           <div class="user-inputs">
             <form action="" id="chat-form" class="chat-form">
               <input
@@ -155,11 +160,12 @@
             <h4 id="lvl_bat"></h4>
 
             <h4 id="lvlUpPrice_bat"></h4>
-            
+
             <h4 id="soldierOnMap"></h4>
             <h4 id="soldierRest"></h4>
-            
-            <button id="btnPlaceSoldat" value="placeSoldat"></button>
+
+            <input type="checkbox" id="btnPlaceSoldat" name="horns" />
+            <label for="btnPlaceSoldat">Placer soldats</label>
             <button id="btnCreateSoldat" value="createSoldat"></button>
             <button id="btnUpgrade" value="upgrade"></button>
           </form>

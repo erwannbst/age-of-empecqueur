@@ -122,7 +122,6 @@ io.on('connection', function (socket) {
          batiment = new Extracteur(data.x, data.y, playerId);
         break;
       case "soldier":
-         //if(players[playerId])
          batiment = new Soldier(data.x, data.y);
         break;
     }
@@ -132,7 +131,7 @@ io.on('connection', function (socket) {
     }
   });
   
-  socket.on('create unit', function(data) { // data:{nom: "soldier", x: 100, y: 100}
+  /*socket.on('create unit', function(data) { // data:{nom: "soldier", x: 100, y: 100}
     let playerId = socket.id;
     let room = players[playerId].roomId;
     let unit;
@@ -143,7 +142,7 @@ io.on('connection', function (socket) {
           players[playerId].buildings.push({type: "soldier", lvl: 1})
           break;
       }
-  });
+  });*/
   
   socket.on('send chat', function(data) { // data:{text: "test", pseudo: "pseudo"}
     let room = players[socket.id].roomId;

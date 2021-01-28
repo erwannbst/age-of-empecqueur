@@ -1,8 +1,10 @@
 import Building from "./Building.js";
+import Soldier from "./Soldier.js";
 
 class Caserne extends Building {
   constructor(x, y) {
     super(x, y, 80, 80, 300, 80, 0); // x, y, width, height, hp, cost, createDelay
+    this._unitsInside = []
   }
 
   draw() {
@@ -13,6 +15,25 @@ class Caserne extends Building {
       hpMax: 200 + 100*this._lvl,
       lvlUpPrice: 200 + 100*this._lvl,
     };
+  }
+  
+  addUnit(unit){
+    this._unitsInside.push(unit);
+  }
+  
+  removeUnit(type){
+    let unitClass;
+    switch(type) {
+        case "soldier":
+          unitClass = Soldier
+          break;
+    }
+    this._unitsInside.forEach(unit => {
+      if(unit instanceof unitClass){
+        this._unitsInside.remove(this._unitsInside.indexOf(unit));
+        return;
+      }
+    })
   }
 }
 

@@ -108,13 +108,13 @@ btnMurV.addEventListener("click", event => {
 let btnCreateSoldat = document.getElementById("btnCreateSoldat");
 btnCreateSoldat.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
-  createUnits({nom :"soldier"});
+  createBatiment({nom :"soldier"});
 });
 
 let btnPlaceSoldat = document.getElementById("btnPlaceSoldat");
 btnPlaceSoldat.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
-  batSelect = "soldier";
+  
 });
 
 let btnUpgrade = document.getElementById("btnUpgrade");
@@ -369,9 +369,6 @@ function sendChat(data){
   socket.emit("send chat", data);
 }
 
-function createUnits(data){
-  socket.emit("create unit", {nom: data.nom});
-}
 
 /*
 const batimentsList = document.getElementById("batiments");
