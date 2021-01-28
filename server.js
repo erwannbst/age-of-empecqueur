@@ -82,7 +82,7 @@ io.on('connection', function (socket) {
       io.to(games[room].players[0]).emit('user joined', {playerId, username}); //Préviens le premier joueur créateur de la game qu'un autre s'est connecté
       socket.emit('connected', {username, room, otherPlayer: {playerId: games[room].players[0], ...players[games[room].players[0]]}});
       setInterval(() => incrementGold(room), gameValues.INTERVAL_GOLD_INCREMENT);
-      setInterval(() => sendMap(room), gameValues.INTERVAL_SEND_MAP);
+      setInterval(() => sendPlayersData(room), gameValues.INTERVAL_SEND_MAP);
       setInterval(() => run(room), gameValues.INTERVAL_SEND_MAP);
       var hdvXPos = 170;
       games[room].players.forEach(playerId => {
@@ -167,25 +167,38 @@ function sendMap(room){
   io.to(room).emit('receive map', mapToSend);
 }*/
 
-function sendData(room){
-  
+function sendPlayersData(room){
   let players = games[room].players;
-  var playerItems = {}
+  var map = {}
   /* 
-  playerItems = {
-    player1id: {
-      map: building...}
-    player2id: {building...}
+  map: {
+    player1: [building1, building2],
+    player2: [building1, building2]
+  }
+  items: {
+    gold: 200,
+    buildings: {
+      {type: "soldier", lvl: 1, creatingDelay: 5}
+    }
   }
   */
   players.forEach(player => {
-    mapToSend[player] = [];
+    map[player] = [];
     maps[player].forEach(batiment => {
-      mapToSend[player].push(batiment.draw());
+      map[player].push(batiment.draw());
     })
   })
-  let playerItems =
-  io.to(room).emit('receive players items', playerItems);
+  
+  players.forEach(player => {
+    io.to(player).emit('receive players data', {
+      map,
+      items: {
+        gold: players[playerId].gold
+      }
+    });
+  })
+  
+  
 }
 
 function run(room){

@@ -245,31 +245,16 @@ function draw() {
 
 //-------------------------------------------------------SERVEUR------------------------------------------------------------//
 
-/*
-function drawBatiment(data) {
-  // data:{nom: "nomDuBatiment", x: 0, y: 0, owner: "wkfefkefe"}
-  //Appelée par le serveur quand un batiment a été ajouté au moteur de jeu
-  console.log("drawing batiment " + JSON.stringify(data));
-  map[data.owner].push(data);
-  //AddClosedMap(data.nom, data.x, data.y);
-}
-*/
-
 function receiveMap(data){
   //console.log("actualisation de la map" + JSON.stringify(data));
   map = data;
+  document.getElementById("soldierOnMap").innerHTML = "Soldats en opération : "  ;
 }
 
-/*
-function itemUpdated(item) {
-  map[item.owner][1] = item;
-}
-*/
-
-function setGoldAmount(amount) {
-  //Appelée par le serveur quand le montant d'or est mis à jour
-  goldAmount = amount;
-  document.getElementById("gold").innerHTML =  " " + amount;
+function receivePlayerItems(data){
+  goldAmount = data.gold;
+  document.getElementById("gold").innerHTML =  " " + data.gold;
+  document.getElementById("soldierRest").innerHTML = "Soldats en réserve : "  ;
 }
 
 function gotConnected(data) {
@@ -349,14 +334,10 @@ socket.on("send chat", function(data) {
 });
 
 
-socket.on("receive data", function(data) {
+socket.on("send players data", function(data) {
   console.log(data)
   receiveMap(data.map);
-  
-})
-
-socket.on("receive players items", function(data) {
-  receivePlayersItems(data.items)
+  receivePlayerItems(data.items);
 })
 
 /*
@@ -370,9 +351,6 @@ socket.on("ping", function(data) {
   console.log("ping");
 });
 
-socket.on("gold amount updated", function(amount) {
-  setGoldAmount(amount);
-});
 
 function createBatiment(data) {
   socket.emit("create batiment", data);

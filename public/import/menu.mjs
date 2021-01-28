@@ -31,8 +31,8 @@ export function displayMenuBatiments(userId, batiment){
         if(batiment.nom=="trinquette"){
           document.getElementById("btnPlaceSoldat").style.display = "block";
           document.getElementById("btnPlaceSoldat").innerHTML = "Placer mes soldats";
-          document.getElementById("soldierOnMap").innerHTML = "Soldats en opération : "  ;
-          document.getElementById("soldierRest").innerHTML = "Soldats en réserve : "  ;
+          document.getElementById("soldierOnMap").style.display = "block";
+          document.getElementById("soldierRest").style.display = "block";
         }
         else{
           document.getElementById("btnPlaceSoldat").style.display = "none";
