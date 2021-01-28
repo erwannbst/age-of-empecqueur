@@ -158,11 +158,17 @@ io.on('connection', function (socket) {
     io.to(room).emit('send chat', data);
   });
   
-  /*
-  socket.on('placer personnage', function(data) {
-    placerPersonnage({...data, playerId: socket.id});
+  
+  socket.on('place personnage', function(data) {
+    maps[socket.id].forEach(batimentOnMap => {
+      if(batimentOnMap instanceof Caserne){
+        var unit = batimentOnMap.removeUnit(data.nom);
+        unit.placerOnMap({x: data.x, y: data})
+        maps[socket.id].push(unit)
+      }
+    })
   })
-  */
+  
 });
 
 /*
