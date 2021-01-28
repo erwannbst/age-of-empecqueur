@@ -31,7 +31,9 @@ class Caserne extends Building {
     }
     this._unitsInside.forEach(unit => {
       if(unit instanceof unitClass){
-        this._unitsInside.remove(this._unitsInside.indexOf(unit));
+        let index = this._unitsInside.indexOf(unit)
+        if(index > -1)
+          this._unitsInside.splice(index, 1);
         return unit;
       }
     })

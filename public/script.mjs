@@ -117,7 +117,10 @@ btnPlaceSoldat.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   placeSoldats = !placeSoldats;
   if(placeSoldats == true){
-    btnPlaceSoldat.style.backgroundColor = "rgba(255, 0, 45, 1)";
+    btnPlaceSoldat.style.background = "linear-gradient(-135deg, #D52802, #E29E8F)";
+  }
+  else{
+    btnPlaceSoldat.style.background = "linear-gradient(-135deg, #5B6E44, #D2EBB5)";
   }
 });
 
@@ -249,16 +252,17 @@ function draw() {
 function receiveMap(data){
   //console.log("actualisation de la map" + JSON.stringify(data));
   let nbSoldatsOnMaps = 0;
+  let nbSoldatsOnRest = 0;
   map = data;
   map[socket.id].forEach(batiment => {
     if(batiment.nom == "caserne") {
-      nbSoldatsOnMaps == batiment.unitsInside;
+      nbSoldatsOnRest == batiment.unitsInside.length;
     }
     if(batiment.nom == "soldier"){
-        
+      nbSoldatsOnMaps++;
     }
   });
-  document.getElementById("soldierRest").innerHTML = "Soldats en réserve : " + nbSoldatsOnMaps ;
+  document.getElementById("btnPlaceSoldat").innerHTML = "Soldats a placer " + nbSoldatsOnRest ;
 }
 
 function receivePlayerItems(data){

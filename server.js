@@ -24,6 +24,8 @@ server.listen(port, function () {
 // Routing
 app.use(express.static('public'));
 
+var tic = 0;
+
 
 var players = {};
 /*
@@ -160,6 +162,8 @@ io.on('connection', function (socket) {
   
   
   socket.on('place personnage', function(data) {
+    console.log('place personnage')
+    console.log(maps[socket.id])
     maps[socket.id].forEach(batimentOnMap => {
       if(batimentOnMap instanceof Caserne){
         var unit = batimentOnMap.removeUnit(data.nom);
@@ -237,7 +241,8 @@ function sendPlayersData(room){
 }
 
 function run(room){
-  if(Date.now() % 3)
+  tic += 1
+  if(!(tic % 8))
     incrementGold(room);
   let players = games[room].players;
   players.forEach(player => {
