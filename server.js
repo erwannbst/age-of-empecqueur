@@ -83,7 +83,7 @@ io.on('connection', function (socket) {
       maps[playerId] = [];
       io.to(games[room].players[0]).emit('user joined', {playerId, username}); //Préviens le premier joueur créateur de la game qu'un autre s'est connecté
       socket.emit('connected', {username, room, otherPlayer: {playerId: games[room].players[0], ...players[games[room].players[0]]}});
-      setInterval(() => incrementGold(room), gameValues.INTERVAL_GOLD_INCREMENT);
+      //setInterval(() => incrementGold(room), gameValues.INTERVAL_GOLD_INCREMENT);
       setInterval(() => sendPlayersData(room), gameValues.INTERVAL_SEND_MAP);
       setInterval(() => run(room), gameValues.INTERVAL_SEND_MAP);
       var hdvXPos = 170;
@@ -122,7 +122,7 @@ io.on('connection', function (socket) {
          batiment = new Extracteur(data.x, data.y, playerId);
         break;
       case "soldier":
-         //batiment = new Soldier(100,100);
+         batiment = new Soldier(data.x, data.y);
         break;
     }
     if(players[playerId].gold - batiment.getCost() >= 0){
@@ -131,18 +131,30 @@ io.on('connection', function (socket) {
     }
   });
   
+  socket.on('create batiment', function(data) { // data:{nom: "soldier", x: 100, y: 100}
+    let playerId = socket.id;
+    let room = players[playerId].roomId;
+    let unit;
+    switch(data.nom){
+      case "soldier":
+          players[playerId].buildings.push({type: "soldier", lvl: 1})
+          break;
+      }
+  });
+  
   socket.on('send chat', function(data) { // data:{text: "test", pseudo: "pseudo"}
     let room = players[socket.id].roomId;
     io.to(room).emit('send chat', data);
   });
   
+  /*
   socket.on('placer personnage', function(data) {
     placerPersonnage({...data, playerId: socket.id});
   })
-  
-  
+  */
 });
 
+/*
 function placerPersonnage(data){ // data:{type: "soldier", x: 50, y: 50, playerId: "lskefe"}
   console.log("map avant placerPersonnage " + JSON.stringify(data))
   console.log(maps[data.playerId])
@@ -155,7 +167,7 @@ function placerPersonnage(data){ // data:{type: "soldier", x: 50, y: 50, playerI
   console.log("map après placerPersonnage")
   console.log(maps[data.playerId])
 }
-
+*/
 /*
 function sendMap(room){
   let players = games[room].players;
@@ -170,7 +182,7 @@ function sendMap(room){
 }*/
 
 function sendPlayersData(room){
-  let players = games[room].players;
+  let playersId = games[room].players;
   var map = {}
   /* 
   map: {
@@ -186,19 +198,19 @@ function sendPlayersData(room){
     ]
   }
   */
-  players.forEach(player => {
-    map[player] = [];
-    maps[player].forEach(batiment => {
-      map[player].push(batiment.draw());
+  playersId.forEach(playerId => {
+    map[playerId] = [];
+    maps[playerId].forEach(batiment => {
+      map[playerId].push(batiment.draw());
     })
   })
   
-  players.forEach(player => {
-    io.to(player).emit('receive players data', {
+  playersId.forEach(playerId => {
+    io.to(playerId).emit('receive players data', {
       map,
       items: {
-        gold: players[player].gold,
-        buildings: players[player].buildings
+        gold: players[playerId].gold,
+        buildings: players[playerId].buildings
       }
     });
   })

@@ -108,9 +108,7 @@ btnMurV.addEventListener("click", event => {
 let btnCreateSoldat = document.getElementById("btnCreateSoldat");
 btnCreateSoldat.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
-  
-  //passer x et y en argument en les recuperant sur l'input
-  socket.emit("create batiment", { nom: "soldier"});
+  createUnits({nom :"soldier"});
 });
 
 let btnPlaceSoldat = document.getElementById("btnPlaceSoldat");
@@ -193,7 +191,7 @@ canvas.addEventListener(
       if (emplacementLibre(socket.id, batSelect, playerX, playerY)) {
         
         if(batSelect == "soldier"){
-          placerPersonnage({type: batSelect, x: playerX, y: playerY});
+          socket.emit("create batiment", { nom: "soldier", x:playerX, y:playerY});
         }
         else{
         createBatiment({ nom: batSelect, x: playerX, y: playerY });
@@ -368,6 +366,10 @@ function placerPersonnage(data) {
 
 function sendChat(data){
   socket.emit("send chat", data);
+}
+
+function createUnits(data){
+  socket.emit("create units", {nom: data.nom});
 }
 
 /*
