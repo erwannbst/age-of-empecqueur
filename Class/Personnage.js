@@ -22,21 +22,7 @@ class Personnage extends Building {
     super.setCoordinates({x: x, y: y});
     this._isOnMap = true;
   }
-  /*
-  run(map){
-    var nearestBatiment = map[0];
-    var shorterDistance = 999999;
-    map.forEach(batiment => {
-      let batCoord = batiment.getCoordinates();
-      let distance = Math.sqrt(Math.pow(batCoord.x - this._x, 2) + Math.pow(batCoord.y - this._y, 2));
-      if(distance < shorterDistance){
-        shorterDistance = distance;
-        nearestBatiment = batiment;
-      }
-    })
-    
-    this.cibler(nearestBatiment);
-  }*/
+  
   run(data){
     if(!this._isOnMap){
       return;
@@ -81,8 +67,8 @@ class Personnage extends Building {
     let dist = Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
     let sin = yDist/dist;
     let cos = xDist/dist;
-    this._y -= sin * this._ms; 
-    this._x -= cos * this._ms;
+    this._y -= sin; 
+    this._x -= cos;
   }
 }
 

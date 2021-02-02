@@ -85,7 +85,6 @@ io.on('connection', function (socket) {
       maps[playerId] = [];
       io.to(games[room].players[0]).emit('user joined', {playerId, username}); //Préviens le premier joueur créateur de la game qu'un autre s'est connecté
       socket.emit('connected', {username, room, otherPlayer: {playerId: games[room].players[0], ...players[games[room].players[0]]}});
-      //setInterval(() => incrementGold(room), gameValues.INTERVAL_GOLD_INCREMENT);
       setInterval(() => sendPlayersData(room), gameValues.INTERVAL_SEND_MAP);
       setInterval(() => run(room), gameValues.INTERVAL_SEND_MAP);
       var hdvXPos = 170;
@@ -274,6 +273,8 @@ function run(room){
 }
 
 export function runAtFrequency(freq, callback){
+  //4/sec
+  //frequence raffraichissement = 1000/*gameValues.INTERVAL_SEND_MAP
   if(!(tic%freq))
     callback()
 }

@@ -38,6 +38,10 @@ class Building {
     return this._hp;
   }
   
+  getLvl(){
+    return this._lvl;
+  }
+  
   lvlUp(){
     this._lvl += 1;
   }

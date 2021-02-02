@@ -168,13 +168,28 @@ export function drawAllBatiments(id){
         );
       }
       else{
-        drawHpWall(
-          id,
-          player,
-          batiment.x + batiment.width / 2,
-          batiment.y + 10 + batiment.height,
-          batiment.hp,
-          batiment.hpMax)
+        if (batiment.nom == "murH"){
+          drawHpWall(
+            "Horizontal",
+            id,
+            player,
+            batiment.x ,
+            batiment.y ,
+            batiment.hp,
+            batiment.hpMax
+          );
+        }
+        if (batiment.nom == "murV"){
+          drawHpWall(
+            "Vertical",
+            id,
+            player,
+            batiment.x ,
+            batiment.y ,
+            batiment.hp,
+            batiment.hpMax
+          );
+        }
       }
     });
   });
@@ -210,23 +225,43 @@ function drawHpBat(id, player, x, y, hp, hpMax) {
   );
 }
 
-function drawHpWall(id, player, x, y, hp, hpMax) {
-  let height = 80;
-  let width = 5;
-  ctx.beginPath();
-  ctx.rect(x + width , y, width, height);
-  ctx.fillStyle = "rgba(255,255,255,0.2)";
-  ctx.closePath();
-  ctx.fill();
-  ctx.beginPath();
-  ctx.rect(x + width, y, width , height* (hp / hpMax));
-  if(player == id){
-    ctx.fillStyle = "rgba(0,255,0,0.2)";
+function drawHpWall(orientation, id, player, x, y, hp, hpMax) {
+  if(orientation == "Vertical"){
+    let height = 80;
+    let width = 5;
+    ctx.beginPath();
+    ctx.rect(x + 30 , y + , width, height);
+    ctx.fillStyle = "rgba(255,255,255,0.2)";
+    ctx.closePath();
+    ctx.fill();
+    ctx.beginPath();
+    ctx.rect(x + width, y, width , height* (hp / hpMax));
+    if(player == id){
+      ctx.fillStyle = "rgba(0,255,0,0.2)";
+    }
+    else{
+      ctx.fillStyle = "rgba(255,0,0,0.2)";
+    }
+    ctx.closePath();
+    ctx.fill();
   }
-  else{
-    ctx.fillStyle = "rgba(255,0,0,0.2)";
+  if(orientation == "Horizontal"){
+    let height = 80;
+    let width = 5;
+    ctx.beginPath();
+    ctx.rect(x + width , y, width, height);
+    ctx.fillStyle = "rgba(255,255,255,0.2)";
+    ctx.closePath();
+    ctx.fill();
+    ctx.beginPath();
+    ctx.rect(x + width, y, width , height* (hp / hpMax));
+    if(player == id){
+      ctx.fillStyle = "rgba(0,255,0,0.2)";
+    }
+    else{
+      ctx.fillStyle = "rgba(255,0,0,0.2)";
+    }
+    ctx.closePath();
+    ctx.fill();
   }
-  ctx.closePath();
-  ctx.fill();
-
 }

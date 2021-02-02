@@ -1,6 +1,3 @@
-/* global socket */
-// client-side js, loaded by index.html
-// run by the browser each time the page is loaded
 
 // INIT
 document.getElementById("menu").style.display =" none";
