@@ -1,5 +1,6 @@
 import Building from "./Building.js";
 import {runAtFrequency} from "../server.js";
+import * as gameValues from "../gameValues.js";
 
 class Personnage extends Building {
   constructor(x, y, damage, ms, as, range, hp, cost, createDelay) {
@@ -49,7 +50,7 @@ class Personnage extends Building {
       let buildingCoord = building.getCoordinates();
       let distance = Math.sqrt(Math.pow(buildingCoord.x - coord.x, 2) + Math.pow(buildingCoord.y - coord.y, 2)) //distance qui sépare le personnage de sa cible
       if(distance > this._range && this.getHp() > 0){
-        runAtFrequency(this._ms, () => this.move(buildingCoord.x, buildingCoord.y));
+        this.move(buildingCoord.x, buildingCoord.y);
       }else if(building.getHp() > 0 && this.getHp() > 0){
         runAtFrequency(this._as, () => this.attaque(building));
       }
@@ -67,8 +68,8 @@ class Personnage extends Building {
     let dist = Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
     let sin = yDist/dist;
     let cos = xDist/dist;
-    this._y -= sin; 
-    this._x -= cos;
+    this._y -= sin * this._ms / (gameValues.INTERVAL_SEND_MAP / 1000);
+    this._x -= cos * this._ms / (gameValues.INTERVAL_SEND_MAP / 1000);
   }
 }
 

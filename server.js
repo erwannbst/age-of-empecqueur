@@ -275,7 +275,12 @@ function run(room){
 export function runAtFrequency(freq, callback){
   //4/sec
   //frequence raffraichissement = 1000/*gameValues.INTERVAL_SEND_MAP
-  if(!(tic%freq))
+  /*
+  50
+  1   4
+  
+  */
+  if(!(tic% (gameValues.INTERVAL_SEND_MAP/freq)))
     callback()
 }
 

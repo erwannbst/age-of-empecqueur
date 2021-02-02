@@ -230,12 +230,13 @@ function drawHpWall(orientation, id, player, x, y, hp, hpMax) {
     let height = 80;
     let width = 5;
     ctx.beginPath();
-    ctx.rect(x + 30 , y + , width, height);
+    ctx.rect(x + 35 , y , width, height);
     ctx.fillStyle = "rgba(255,255,255,0.2)";
     ctx.closePath();
     ctx.fill();
     ctx.beginPath();
-    ctx.rect(x + width, y, width , height* (hp / hpMax));
+    //+ (80 - 80*(hp / hpMax))
+    ctx.rect(x + 35, y , width , height* (hp / hpMax));
     if(player == id){
       ctx.fillStyle = "rgba(0,255,0,0.2)";
     }
