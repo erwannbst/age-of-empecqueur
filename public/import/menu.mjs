@@ -16,52 +16,27 @@ export function displayMenuBatiments(userId, batiment){
           batiment.lvlUpPrice +
           " pièces d'or" ;
   
-        switch (expr) {
-          case 'Oranges':
-            console.log('Oranges are $0.59 a pound.');
+        switch (batiment.nom) {
+          case 'caserne':
+            document.getElementById("soldierOnMap").style.display = "block";
+            document.getElementById("soldierRest").style.display = "block";
+            document.getElementById("btnCreateSoldat").style.display = "block";
+            document.getElementById("btnCreateSoldat").innerHTML = "Ajout de soldat";
+            document.getElementById("btnPlaceSoldat").style.display = "block";
+            document.getElementById("btnUpgrade").style.display = "none";
             break;
-          case 'Mangoes':
-          case 'Papayas':
-            console.log('Mangoes and papayas are $2.79 a pound.');
-            // expected output: "Mangoes and papayas are $2.79 a pound."
+          case 'portugais':
+            document.getElementById("btnUpgrade").innerHTML = "Améliorer"; 
             break;
           default:
-            console.log(`Sorry, we are out of ${expr}.`);
+            document.getElementById("btnPlaceSoldat").style.display = "none";
+            document.getElementById("btnCreateSoldat").style.display = "none";
+            document.getElementById("soldierOnMap").style.display = "none";
+            document.getElementById("soldierRest").style.display = "none";
+            document.getElementById("btnUpgrade").style.display = "none";
         }
 
-  
-        //button de click d'ajout de personnage
-        if(batiment.nom=="caserne"){
-          document.getElementById("soldierOnMap").style.display = "block";
-          document.getElementById("soldierRest").style.display = "block";
-          document.getElementById("btnCreateSoldat").style.display = "block";
-          document.getElementById("btnCreateSoldat").innerHTML = "Ajout de soldat";
-          document.getElementById("btnPlaceSoldat").style.display = "block";
-        }
-        if(batiment.nom == "portugais"){
-          document.getElementById("btnUpgrade").innerHTML = "Améliorer"; 
-        }
-        else{
-          document.getElementById("btnPlaceSoldat").style.display = "none";
-          document.getElementById("btnCreateSoldat").style.display = "none";
-          document.getElementById("soldierOnMap").style.display = "none";
-          document.getElementById("soldierRest").style.display = "none";
-          document.getElementById("btnUpgrade").style.display = "none";
-        }
-  
-        //button de click de placement de personnage
-  /*
-        if(batiment.nom=="trinquette"){
-          document.getElementById("soldierOnMap").style.display = "block";
-          document.getElementById("soldierRest").style.display = "block";
-        }
-        else{
-          document.getElementById("soldierOnMap").style.display = "none";
-          document.getElementById("soldierRest").style.display = "none";
-        }
-  
-  */
-               
+   
 }
 
 

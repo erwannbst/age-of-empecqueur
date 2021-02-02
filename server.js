@@ -293,7 +293,11 @@ function run(room){
 }
 
 export function runAtFrequency(freq, callback){
-  if(!(tic% (1000/gameValues.INTERVAL_SEND_MAP*freq)))
+  /*
+  80   120
+  1    2
+  */
+  if(!(tic% (gameValues.INTERVAL_SEND_MAP*freq)))
     callback()
 }
 
