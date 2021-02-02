@@ -227,7 +227,7 @@ function drawHpBat(id, player, x, y, hp, hpMax) {
 
 function drawHpWall(orientation, id, player, x, y, hp, hpMax) {
   if(orientation == "Vertical"){
-    let height = 80;
+    let height = 110;
     let width = 5;
     ctx.beginPath();
     ctx.rect(x + 35 , y , width, height);
@@ -247,15 +247,15 @@ function drawHpWall(orientation, id, player, x, y, hp, hpMax) {
     ctx.fill();
   }
   if(orientation == "Horizontal"){
-    let height = 80;
-    let width = 5;
+    let height = 5;
+    let width = 110;
     ctx.beginPath();
-    ctx.rect(x + width , y, width, height);
+    ctx.rect(x  , y +35, width, height);
     ctx.fillStyle = "rgba(255,255,255,0.2)";
     ctx.closePath();
     ctx.fill();
     ctx.beginPath();
-    ctx.rect(x + width, y, width , height* (hp / hpMax));
+    ctx.rect(x , y +35, width , height* (hp / hpMax));
     if(player == id){
       ctx.fillStyle = "rgba(0,255,0,0.2)";
     }

@@ -68,8 +68,8 @@ class Personnage extends Building {
     let dist = Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
     let sin = yDist/dist;
     let cos = xDist/dist;
-    this._y -= sin * this._ms / (gameValues.INTERVAL_SEND_MAP / 1000);
-    this._x -= cos * this._ms / (gameValues.INTERVAL_SEND_MAP / 1000);
+    this._y -= sin * this._ms / (gameValues.INTERVAL_SEND_MAP);
+    this._x -= cos * this._ms / (gameValues.INTERVAL_SEND_MAP);
   }
 }
 
