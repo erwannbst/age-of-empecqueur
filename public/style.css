@@ -126,14 +126,18 @@ form button {
   transition: all 0.3s ease;
   border: none;
   outline-style: none;
+  position: relative;
 }
 
-.bat-button:hover:after {
-  position: absolute;
-  left: 0px;
+.bat-button::after {
+  position: relative;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
   content: "80";
   background-color: transparent;
 }
+
 
 .bat-button img {
   -webkit-transition: opacity 0.5s ease-in-out;
@@ -143,7 +147,7 @@ form button {
 }
 
 .bat-button img:hover {
-  opacity: 0;
+  opacity: 0.5;
 }
 
 footer {

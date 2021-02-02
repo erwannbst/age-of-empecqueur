@@ -1,5 +1,5 @@
 import Building from "./Building.js";
-import {runAtFrequency} from "../"
+import {runAtFrequency} from "../server.js";
 
 class Personnage extends Building {
   constructor(x, y, damage, ms, as, range, hp, cost, createDelay) {
@@ -71,8 +71,7 @@ class Personnage extends Building {
   }
   
   attaque(building){
-    //if(new Date().getTime() % this._as)
-      building.lowerHp(this._damage);
+    runAtFrequency(this._as, () => building.lowerHp(this._damage));
   }
   
   move(toX, toY){
