@@ -269,7 +269,7 @@ function sendPlayersData(room){
 
 function run(room){
   tic += 1
-  runAtFrequency(1, () => incrementGold(room))
+  runAtFrequency(8, () => incrementGold(room))
   let players = games[room].players;
   players.forEach(player => {
     maps[player].forEach(batiment => {
@@ -293,11 +293,7 @@ function run(room){
 }
 
 export function runAtFrequency(freq, callback){
-  let refreshFreq = 1/gameValues.INTERVAL_SEND_MAP
-  if(freq == 1){
-    console.log("valuefreq: " + (tic% (gameValues.INTERVAL_SEND_MAP/freq)))
-  }
-  if(!(tic% (gameValues.INTERVAL_SEND_MAP)))
+  if(!(tic% (1000/gameValues.INTERVAL_SEND_MAP*freq)))
     callback()
 }
 

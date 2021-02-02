@@ -16,6 +16,19 @@ export function displayMenuBatiments(userId, batiment){
           batiment.lvlUpPrice +
           " pièces d'or" ;
   
+        switch (expr) {
+          case 'Oranges':
+            console.log('Oranges are $0.59 a pound.');
+            break;
+          case 'Mangoes':
+          case 'Papayas':
+            console.log('Mangoes and papayas are $2.79 a pound.');
+            // expected output: "Mangoes and papayas are $2.79 a pound."
+            break;
+          default:
+            console.log(`Sorry, we are out of ${expr}.`);
+        }
+
   
         //button de click d'ajout de personnage
         if(batiment.nom=="caserne"){
@@ -25,7 +38,7 @@ export function displayMenuBatiments(userId, batiment){
           document.getElementById("btnCreateSoldat").innerHTML = "Ajout de soldat";
           document.getElementById("btnPlaceSoldat").style.display = "block";
         }
-        else if(batiment.nom == "portugais"){
+        if(batiment.nom == "portugais"){
           document.getElementById("btnUpgrade").innerHTML = "Améliorer"; 
         }
         else{
