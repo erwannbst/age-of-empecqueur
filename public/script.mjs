@@ -145,6 +145,11 @@ function renderMessage(data){
   console.log("message recu par le serveur : " + data);
   let p = document.createElement('p');
   p.innerHTML = data.pseudo + " : " + data.msg;
+  if(data.pseudo == username){
+    p.style.color = "rgba(0, 170, 0, 0.8)"
+  }else{
+    p.style.color = "rgba(170, 0, 0, 0.8)"
+  }
   p.style.fontSize ="small";
   p.style.height = "14px";
   displayMessage.appendChild(p);

@@ -126,16 +126,19 @@ io.on('connection', function (socket) {
          batiment = new Soldier(data.x, data.y);
         break;
     }
-    if(players[playerId].gold - batiment.getCost() >= 0){
-      players[playerId].gold -= batiment.getCost();
-      if(batiment instanceof Soldier){
-        maps[playerId].forEach(batimentOnMap => {
-          if(batimentOnMap instanceof Caserne){
-            batimentOnMap.addUnit(batiment);
-          }
-        })
-      }else{
-        maps[playerId].push(batiment)
+    
+    if(true){//getNumberOfBatimentCreated(playerId, data.nom) < gameValues.LVL_VALUES[getHdvLvl(playerId)][data.nom]){
+      if(players[playerId].gold - batiment.getCost() >= 0){
+        players[playerId].gold -= batiment.getCost();
+        if(batiment instanceof Soldier){
+          maps[playerId].forEach(batimentOnMap => {
+            if(batimentOnMap instanceof Caserne){
+              batimentOnMap.addUnit(batiment);
+            }
+          })
+        }else{
+          maps[playerId].push(batiment)
+        }
       }
     }
   });
@@ -209,6 +212,18 @@ function sendMap(room){
   })
   io.to(room).emit('receive map', mapToSend);
 }*/
+
+function getNumberOfBatimentCreated(playerId, type){
+  var number = 0;
+  maps[playerId].forEach(batimentOnMap => {
+    number++;
+  });
+  return 0;
+}
+
+function getHdvLvl(playerId){
+  return 1
+}
 
 function sendPlayersData(room){
   let playersId = games[room].players;
