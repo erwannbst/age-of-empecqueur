@@ -101,18 +101,6 @@ btnMurV.addEventListener("click", event => {
   batSelect = btnMurV.value;
 });
 
-if (goldAmount < 80){
-  btnExtracteur.style.display = "none";
-  btnCaserne.style.display = "none";
-  btnPortugais.style.display = "none";
-  btnTrinquette.style.display = "none";
-}
-if (goldAmount >= 80){
-  btnExtracteur.style.display = "block";
-  btnCaserne.style.display = "block";
-  btnPortugais.style.display = "block";
-  btnTrinquette.style.display = "block";
-}
 
 
 let btnCreateSoldat = document.getElementById("btnCreateSoldat");
@@ -287,6 +275,24 @@ function receiveMap(data){
 function receivePlayerItems(data){
   goldAmount = data.gold;
   document.getElementById("gold").innerHTML =  " " + data.gold;
+  if(goldAmount < 80){
+    btnExtracteur.style.filter = "grayscale(100%)";
+    btnCaserne.style.filter = "grayscale(100%)";
+    btnPortugais.style.filter = "grayscale(100%)";
+    btnTrinquette.style.filter = "grayscale(100%)";
+  }
+  else if(goldAmount < 30){
+    btnMurH.style.filter = "grayscale(100%)";
+    btnMurV.style.filter = "grayscale(100%)";
+  }
+  else{
+    btnExtracteur.style.filter = "grayscale(0%)";
+    btnCaserne.style.filter = "grayscale(0%)";
+    btnPortugais.style.filter = "grayscale(0%)";
+    btnTrinquette.style.filter = "grayscale(0%)";
+    btnMurH.style.filter = "grayscale(0%)";00";
+    btnMurV.style.filter = "grayscale(100%)";
+  }
 }
 
 function gotConnected(data) {

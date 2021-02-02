@@ -127,8 +127,7 @@ io.on('connection', function (socket) {
         break;
     }
     
-    console.log(getNumberOfBatimentCreated(playerId, batiment.constructor.name) + "<" + gameValues.LVL_VALUES[getHdvLvl(playerId)][data.nom])
-    if(getNumberOfBatimentCreated(playerId, batiment.constructor.name) < gameValues.LVL_VALUES[getHdvLvl(playerId)][data.nom]){
+    if(canCreateBatimentType(playerId, data.nom)){
       if(players[playerId].gold - batiment.getCost() >= 0){
         players[playerId].gold -= batiment.getCost();
         if(batiment instanceof Soldier){
@@ -144,25 +143,12 @@ io.on('connection', function (socket) {
     }
   });
   
-  /*
-  socket.on('create unit', function(data) { // data:{nom: "soldier", x: 100, y: 100}
-    let playerId = socket.id;
-    let room = players[playerId].roomId;
-    let unit;
-    switch(data.nom){
-      case "soldier":
-        console.log(players[playerId])
-        console.log("players[playerId]")
-          players[playerId].buildings.push({type: "soldier", lvl: 1})
-          break;
-      }
-  });*/
-  
   socket.on('send chat', function(data) { // data:{text: "test", pseudo: "pseudo"}
     let room = players[socket.id].roomId;
     console.log(data)
     if(data.msg == "gold"){
       data.msg = "Essaye pas de tricher"
+      io.to(room).emit('send chat', data);
     }else if(data.msg == "goldd"){
       for (const [playerId, player] of Object.entries(players)) {
         if(player.username == data.pseudo)
@@ -219,12 +205,26 @@ function sendMap(room){
 function getNumberOfBatimentCreated(playerId, type){
   var number = 0;
   maps[playerId].forEach(batimentOnMap => {
-    console.log(batimentOnMap.constructor.name + " == " + type);
-    if(batimentOnMap.constructor.name == type || ((batimentOnMap.constructor.name == "MurH" || batimentOnMap.constructor.name == "MurV") && (type == "MurH" || type == "MurV")) ){
+    if(type == "murH" || type == "murV"){
+      if(batimentOnMap.constructor.name == "MurH" || batimentOnMap.constructor.name == type == "MurV")
+        number++;
+    }else if(batimentOnMap.constructor.name == type){
       number++;
     }
   });
   return number;
+}
+
+function canCreateBatimentType(playerId, type){
+  let max;
+  if(type == "murH" || type == "murV"){
+    console.log(gameValues.LVL_VALUES[getHdvLvl(playerId)].mur)
+    max = gameValues.LVL_VALUES[getHdvLvl(playerId)].mur;
+  }else{
+    max = gameValues.LVL_VALUES[getHdvLvl(playerId)][type]
+  }
+  console.log(getNumberOfBatimentCreated(playerId, type) + "<" + max)
+  return getNumberOfBatimentCreated(playerId, type) < max;
 }
 
 function getHdvLvl(playerId){
