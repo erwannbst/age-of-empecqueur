@@ -45,6 +45,10 @@ body {
   align-items: center;
   background-color: lightgray;
   line-height: 1.5em;
+  -moz-user-select: none; /* Firefox */
+  -webkit-user-select: none; /* Chrome, Safari, Opéra depuis la version 15 */
+  -ms-user-select: none; /* Internet explorer depuis la version 10 et Edge */
+  user-select: none; /* Propriété standard */
 }
 
 .game-status {
@@ -129,10 +133,10 @@ form button {
   position: relative;
 }
 
-.bat-button::after {
-  position: relative;
-  left: 0;
-  top: 0;
+.bat-button:hover:after {
+  position: absolute;
+  left: 50%;
+  top: 70%;
   transform: translate(-50%, -50%);
   content: "80";
   background-color: transparent;
@@ -140,10 +144,10 @@ form button {
 
 
 .bat-button img {
-  -webkit-transition: opacity 0.5s ease-in-out;
-  -moz-transition: opacity 0.5s ease-in-out;
-  -o-transition: opacity 0.5s ease-in-out;
-  transition: opacity 0.5s ease-in-out;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .bat-button img:hover {
