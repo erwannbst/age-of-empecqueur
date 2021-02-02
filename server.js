@@ -293,7 +293,9 @@ function run(room){
 }
 
 export function runAtFrequency(freq, callback){
-  console.log("freq " + freq)
+  if(freq == 1){
+    console.log("valuefreq: " + (tic% (gameValues.INTERVAL_SEND_MAP/freq)))
+  }
   if(!(tic% (gameValues.INTERVAL_SEND_MAP/freq)))
     callback()
 }
