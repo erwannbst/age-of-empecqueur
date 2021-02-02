@@ -165,6 +165,11 @@ io.on('connection', function (socket) {
         if(player.username == data.pseudo)
           incrementPlayerGold(playerId, 500)
       }
+    }else if(data.msg == "gold"){
+      for (const [playerId, player] of Object.entries(players)) {
+        if(player.username == data.pseudo)
+          incrementPlayerGold(playerId, 500)
+      }
     }else{
         io.to(room).emit('send chat', data);
     }
