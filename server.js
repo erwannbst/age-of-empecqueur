@@ -296,8 +296,10 @@ export function runAtFrequency(freq, callback){
   /*
   80   120
   1    2
+  
+  1000/80 -> valeur de tic à une sec
   */
-  if(!(tic% (gameValues.INTERVAL_SEND_MAP*freq)))
+  if(!(tic% (1000/gameValues.INTERVAL_SEND_MAP)/freq))
     callback()
 }
 
