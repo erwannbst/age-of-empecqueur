@@ -231,7 +231,10 @@ canvas.addEventListener(
     var batClick = false;
     
     if(placeSoldats == true){
-        socket.emit("place personnage", {nom:"soldier", x:playerX, y:playerY});
+        if (emplacementLibre(socket.id, "soldier", playerX, playerY)) {
+          socket.emit("place personnage", {nom:"soldier", x:playerX, y:playerY});
+        }
+        
     }
     
     //si un batiment est selectionné on verifie si on peut le placer sur la map

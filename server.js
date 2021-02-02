@@ -269,7 +269,7 @@ function sendPlayersData(room){
 
 function run(room){
   tic += 1
-  runAtFrequency(8, () => incrementGold(room))
+  runAtFrequency(1, () => incrementGold(room))
   let players = games[room].players;
   players.forEach(player => {
     maps[player].forEach(batiment => {
@@ -293,13 +293,7 @@ function run(room){
 }
 
 export function runAtFrequency(freq, callback){
-  //4/sec
-  //frequence raffraichissement = 1000/*gameValues.INTERVAL_SEND_MAP
-  /*
-  50
-  1   4
-  
-  */
+  console.log("freq " + freq)
   if(!(tic% (gameValues.INTERVAL_SEND_MAP/freq)))
     callback()
 }
@@ -316,7 +310,7 @@ function makeid() {
 }
 
 function incrementGold(room){
-  console.log("")
+  console.log("incrementGold " + room)
   games[room].players.forEach(playerId => {
     players[playerId].gold += 1;
   })
