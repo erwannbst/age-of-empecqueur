@@ -127,7 +127,7 @@ io.on('connection', function (socket) {
         break;
     }
     
-    if(true){//getNumberOfBatimentCreated(playerId, data.nom) < gameValues.LVL_VALUES[getHdvLvl(playerId)][data.nom]){
+    if(getNumberOfBatimentCreated(playerId, data.nom) < gameValues.LVL_VALUES[getHdvLvl(playerId)][data.nom]){
       if(players[playerId].gold - batiment.getCost() >= 0){
         players[playerId].gold -= batiment.getCost();
         if(batiment instanceof Soldier){
