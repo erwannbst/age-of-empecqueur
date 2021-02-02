@@ -16,6 +16,7 @@ export const LVL_VALUES = {
     extracteur: 1,
     soldier: 9999,
     portugais: 1,
+    trinquette: 1,
     mur: 3
   },
   2: {
@@ -23,6 +24,7 @@ export const LVL_VALUES = {
     extracteur: 2,
     soldier: 9999,
     portugais: 1,
+    trinquette: 1,
     mur: 6
   }
 }

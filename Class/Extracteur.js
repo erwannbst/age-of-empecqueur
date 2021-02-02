@@ -21,6 +21,10 @@ class Extracteur extends Building {
       lvlUpPrice: 200 + 100*this._lvl,
     };
   }
+  
+  getType(){
+    return "trinquette";
+  }
 }
 
 export default Extracteur

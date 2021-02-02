@@ -67,13 +67,14 @@ function item(x, y, name) {
 
 let batSelect;
 //boutons selection batiments
+var menuElement  = [];
+
 var btnExtracteur = document.getElementById("extracteur");
 var btnCaserne = document.getElementById("caserne");
 var btnPortugais = document.getElementById("portugais");
 var btnTrinquette = document.getElementById("trinquette");
 var btnMurH = document.getElementById("murH");
 var btnMurV = document.getElementById("murV");
-
 
 
 btnExtracteur.addEventListener("click", event => {
@@ -101,6 +102,40 @@ btnMurV.addEventListener("click", event => {
   batSelect = btnMurV.value;
 });
 
+function BatMenuManage(goldAmount){
+  if(goldAmount < 80){
+    btnExtracteur.style.filter = "grayscale(100%)";
+    btnExtracteur.disabled = true;
+    btnCaserne.style.filter = "grayscale(100%)";
+    btnCaserne.disabled = true;
+    btnPortugais.style.filter = "grayscale(100%)";
+    btnPortugais.disabled = true;
+    btnTrinquette.style.filter = "grayscale(100%)";
+    btnTrinquette.disabled = true;
+    
+    if(goldAmount < 35){
+      btnMurH.style.filter = "grayscale(100%)";
+      btnMurH.disabled = true;
+      btnMurV.style.filter = "grayscale(100%)";
+      btnMurV.disabled = true;
+    }
+  }
+  
+  else{
+    btnExtracteur.style.filter = "grayscale(0%)";
+    btnExtracteur.disabled = false;
+    btnCaserne.style.filter = "grayscale(0%)";
+    btnCaserne.disabled = false;
+    btnPortugais.style.filter = "grayscale(0%)";
+    btnPortugais.disabled = false;
+    btnTrinquette.style.filter = "grayscale(0%)";
+    btnTrinquette.disabled = false;
+    btnMurH.style.filter = "grayscale(0%)";
+    btnMurH.disabled = false;
+    btnMurV.style.filter = "grayscale(0%)";
+    btnMurV.disabled = false;
+  }
+}
 
 
 let btnCreateSoldat = document.getElementById("btnCreateSoldat");
@@ -275,24 +310,7 @@ function receiveMap(data){
 function receivePlayerItems(data){
   goldAmount = data.gold;
   document.getElementById("gold").innerHTML =  " " + data.gold;
-  if(goldAmount < 80){
-    btnExtracteur.style.filter = "grayscale(100%)";
-    btnCaserne.style.filter = "grayscale(100%)";
-    btnPortugais.style.filter = "grayscale(100%)";
-    btnTrinquette.style.filter = "grayscale(100%)";
-  }
-  else if(goldAmount < 30){
-    btnMurH.style.filter = "grayscale(100%)";
-    btnMurV.style.filter = "grayscale(100%)";
-  }
-  else{
-    btnExtracteur.style.filter = "grayscale(0%)";
-    btnCaserne.style.filter = "grayscale(0%)";
-    btnPortugais.style.filter = "grayscale(0%)";
-    btnTrinquette.style.filter = "grayscale(0%)";
-    btnMurH.style.filter = "grayscale(0%)";00";
-    btnMurV.style.filter = "grayscale(100%)";
-  }
+  BatMenuManage(goldAmount);
 }
 
 function gotConnected(data) {

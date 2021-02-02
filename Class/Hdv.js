@@ -14,6 +14,10 @@ class Hdv extends Building {
       lvlUpPrice: 200 + 100*this._lvl,
     };
   }
+  
+  getType(){
+    return "hdv";
+  }
 }
 
 export default Hdv

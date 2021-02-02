@@ -127,7 +127,7 @@ io.on('connection', function (socket) {
         break;
     }
     
-    if(canCreateBatimentType(playerId, data.nom)){
+    if(canCreateBatimentType(playerId, batiment.draw().nom)){
       if(players[playerId].gold - batiment.getCost() >= 0){
         players[playerId].gold -= batiment.getCost();
         if(batiment instanceof Soldier){
@@ -205,10 +205,8 @@ function sendMap(room){
 function getNumberOfBatimentCreated(playerId, type){
   var number = 0;
   maps[playerId].forEach(batimentOnMap => {
-    if(type == "murH" || type == "murV"){
-      if(batimentOnMap.constructor.name == "MurH" || batimentOnMap.constructor.name == type == "MurV")
-        number++;
-    }else if(batimentOnMap.constructor.name == type){
+    if(batimentOnMap.)
+    if(batimentOnMap.draw().nom == type){
       number++;
     }
   });
@@ -216,13 +214,8 @@ function getNumberOfBatimentCreated(playerId, type){
 }
 
 function canCreateBatimentType(playerId, type){
-  let max;
-  if(type == "murH" || type == "murV"){
-    console.log(gameValues.LVL_VALUES[getHdvLvl(playerId)].mur)
-    max = gameValues.LVL_VALUES[getHdvLvl(playerId)].mur;
-  }else{
-    max = gameValues.LVL_VALUES[getHdvLvl(playerId)][type]
-  }
+  console.log("type: " + type)
+  let max = gameValues.LVL_VALUES[getHdvLvl(playerId)][type]
   console.log(getNumberOfBatimentCreated(playerId, type) + "<" + max)
   return getNumberOfBatimentCreated(playerId, type) < max;
 }

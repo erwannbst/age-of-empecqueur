@@ -14,6 +14,7 @@ class Trinquette extends Building {
       lvlUpPrice: 200 + 100*this._lvl,
     };
   }
+  
 }
 
 export default Trinquette
