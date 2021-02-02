@@ -157,10 +157,11 @@ io.on('connection', function (socket) {
   
   socket.on('send chat', function(data) { // data:{text: "test", pseudo: "pseudo"}
     let room = players[socket.id].roomId;
-    if(data.text == "gold"){
+    console.log(data)
+    if(data.msg == "gold"){
       for (const [playerId, player] of Object.entries(players)) {
         if(player.username == data.pseudo)
-          incrementPlayerGold(playerId, 200)
+          incrementPlayerGold(playerId, 500)
       }
     }else{
         io.to(room).emit('send chat', data);

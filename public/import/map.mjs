@@ -156,9 +156,9 @@ export function drawAllBatiments(id){
         batiment.width,
         batiment.height
       );
-      if (batiment.nom != "murH" && batiment.nom != "murV")
+      if (batiment.nom != "murH" && batiment.nom != "murV"){
         //affichage de la barre de point de vie pour chaque batiments
-        drawHpBar(
+        drawHpBat(
           id,
           player,
           batiment.x + batiment.width / 2,
@@ -166,12 +166,22 @@ export function drawAllBatiments(id){
           batiment.hp,
           batiment.hpMax
         );
+      }
+      else{
+        drawHpWall(
+          id,
+          player,
+          batiment.x + batiment.width / 2,
+          batiment.y + 10 + batiment.height,
+          batiment.hp,
+          batiment.hpMax)
+      }
     });
   });
 }
 
 
-export function drawHpBar(id, player, x, y, hp, hpMax) {
+function drawHpBat(id, player, x, y, hp, hpMax) {
   let height = 20;
   let width = 120;
   ctx.beginPath();
@@ -198,4 +208,25 @@ export function drawHpBar(id, player, x, y, hp, hpMax) {
     x - ctx.measureText(hp + "/" + hpMax).width / 2,
     y + ctx.measureText(hp + "/" + hpMax).fontBoundingBoxAscent
   );
+}
+
+function drawHpWall(id, player, x, y, hp, hpMax) {
+  let height = 80;
+  let width = 5;
+  ctx.beginPath();
+  ctx.rect(x + width , y, width, height);
+  ctx.fillStyle = "rgba(255,255,255,0.2)";
+  ctx.closePath();
+  ctx.fill();
+  ctx.beginPath();
+  ctx.rect(x + width, y, width , height* (hp / hpMax));
+  if(player == id){
+    ctx.fillStyle = "rgba(0,255,0,0.2)";
+  }
+  else{
+    ctx.fillStyle = "rgba(255,0,0,0.2)";
+  }
+  ctx.closePath();
+  ctx.fill();
+
 }

@@ -27,7 +27,6 @@ var placeSoldats= false;
 import {
   emplacementLibre,
   menuBatiments,
-  drawHpBar,
   drawAllBatiments
 } from "./import/map.mjs";
 
