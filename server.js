@@ -157,18 +157,23 @@ io.on('connection', function (socket) {
   
   socket.on('send chat', function(data) { // data:{text: "test", pseudo: "pseudo"}
     let room = players[socket.id].roomId;
-    io.to(room).emit('send chat', data);
+    if(data.text = "gold"){
+      for (const [playerId, player] of Object.entries(players)) {
+        if(player.username == data.pseudo)
+          incrementPlayerGold(playerId, 200)
+      }
+    }else{
+        io.to(room).emit('send chat', data);
+    }
+  
   });
   
   
   socket.on('place personnage', function(data) {
-    console.log('place personnage ' + JSON.stringify(maps[socket.id]))
     maps[socket.id].forEach(batimentOnMap => {
       if(batimentOnMap instanceof Caserne){
         var unit = batimentOnMap.removeUnit(data.nom);
         if(unit != "error"){
-          console.log("placer en")
-          console.log({x: data.x, y: data.y})
           unit.placerOnMap({x: data.x, y: data.y})
           maps[socket.id].push(unit)
         }
@@ -236,7 +241,6 @@ function sendPlayersData(room){
         gold: players[playerId].gold
       }
     }
-    console.log(JSON.stringify(dataToSend))
     io.to(playerId).emit('receive players data', dataToSend);
   })
   
@@ -267,6 +271,10 @@ function run(room){
       }
     })
   })
+}
+
+export function tic(value){
+  return 
 }
 
 function makeid() {
