@@ -129,6 +129,8 @@ form button {
 }
 
 .bat-button:hover:after {
+  position: absolute;
+  left: 0px;
   content: "80";
   background-color: transparent;
 }

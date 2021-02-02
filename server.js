@@ -249,8 +249,7 @@ function sendPlayersData(room){
 
 function run(room){
   tic += 1
-  if(!(tic % 8))
-    incrementGold(room);
+  runAtFrequency(8, () => incrementGold(room))
   let players = games[room].players;
   players.forEach(player => {
     maps[player].forEach(batiment => {
@@ -273,8 +272,9 @@ function run(room){
   })
 }
 
-export function tic(value){
-  return 
+export function runAtFrequency(freq, callback){
+  if(!(tic%freq))
+    callback()
 }
 
 function makeid() {

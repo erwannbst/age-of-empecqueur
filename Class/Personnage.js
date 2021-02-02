@@ -1,4 +1,5 @@
 import Building from "./Building.js";
+import {runAtFrequency} from "../"
 
 class Personnage extends Building {
   constructor(x, y, damage, ms, as, range, hp, cost, createDelay) {
