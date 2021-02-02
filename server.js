@@ -127,6 +127,7 @@ io.on('connection', function (socket) {
         break;
     }
     
+    console.log(getNumberOfBatimentCreated(playerId, data.nom) + "<" + gameValues.LVL_VALUES[getHdvLvl(playerId)][data.nom])
     if(getNumberOfBatimentCreated(playerId, data.nom) < gameValues.LVL_VALUES[getHdvLvl(playerId)][data.nom]){
       if(players[playerId].gold - batiment.getCost() >= 0){
         players[playerId].gold -= batiment.getCost();
@@ -161,11 +162,8 @@ io.on('connection', function (socket) {
     let room = players[socket.id].roomId;
     console.log(data)
     if(data.msg == "gold"){
-      for (const [playerId, player] of Object.entries(players)) {
-        if(player.username == data.pseudo)
-          incrementPlayerGold(playerId, 500)
-      }
-    }else if(data.msg == "gold"){
+      data.msg = "Essaye pas de tricher"
+    }else if(data.msg == "goldd"){
       for (const [playerId, player] of Object.entries(players)) {
         if(player.username == data.pseudo)
           incrementPlayerGold(playerId, 500)
@@ -221,9 +219,10 @@ function sendMap(room){
 function getNumberOfBatimentCreated(playerId, type){
   var number = 0;
   maps[playerId].forEach(batimentOnMap => {
-    number++;
+    if(batimentOnMap.constructor.name == type)
+      number++;
   });
-  return 0;
+  return number;
 }
 
 function getHdvLvl(playerId){

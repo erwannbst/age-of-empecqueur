@@ -86,6 +86,10 @@ body {
   font-family: "IBM Plex Sans", sans-serif;
 }
 
+.xp {
+  width: 100px;
+}
+
 .theme {
   z-index: 5;
   position: absolute;

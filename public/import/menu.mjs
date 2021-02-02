@@ -25,11 +25,15 @@ export function displayMenuBatiments(userId, batiment){
           document.getElementById("btnCreateSoldat").innerHTML = "Ajout de soldat";
           document.getElementById("btnPlaceSoldat").style.display = "block";
         }
+        else if(batiment.nom == "portugais"){
+          document.getElementById("btnUpgrade").innerHTML = "Améliorer"; 
+        }
         else{
           document.getElementById("btnPlaceSoldat").style.display = "none";
           document.getElementById("btnCreateSoldat").style.display = "none";
           document.getElementById("soldierOnMap").style.display = "none";
           document.getElementById("soldierRest").style.display = "none";
+          document.getElementById("btnUpgrade").style.display = "none";
         }
   
         //button de click de placement de personnage
@@ -44,7 +48,7 @@ export function displayMenuBatiments(userId, batiment){
         }
   
   */
-        document.getElementById("btnUpgrade").innerHTML = "Améliorer";        
+               
 }
 
 

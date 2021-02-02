@@ -13,12 +13,16 @@ export const MUR_VALUES = {
 export const LVL_VALUES = {
   1: {
     caserne : 1,
-    goldExtractor: 1,
+    extracteur: 1,
+    soldier: 9999,
+    portugais: 1,
     Mur: 3
   },
   2: {
     caserne: 2,
-    goldExtractor: 2,
+    extracteur: 2,
+    soldier: 9999,
+    portugais: 1,
     Mur: 6
   }
 }
