@@ -127,8 +127,8 @@ io.on('connection', function (socket) {
         break;
     }
     
-    console.log(getNumberOfBatimentCreated(playerId, data.nom) + "<" + gameValues.LVL_VALUES[getHdvLvl(playerId)][data.nom])
-    if(getNumberOfBatimentCreated(playerId, data.nom) < gameValues.LVL_VALUES[getHdvLvl(playerId)][data.nom]){
+    console.log(getNumberOfBatimentCreated(playerId, batiment.constructor.name) + "<" + gameValues.LVL_VALUES[getHdvLvl(playerId)][data.nom])
+    if(getNumberOfBatimentCreated(playerId, batiment.constructor.name) < gameValues.LVL_VALUES[getHdvLvl(playerId)][data.nom]){
       if(players[playerId].gold - batiment.getCost() >= 0){
         players[playerId].gold -= batiment.getCost();
         if(batiment instanceof Soldier){
@@ -219,8 +219,10 @@ function sendMap(room){
 function getNumberOfBatimentCreated(playerId, type){
   var number = 0;
   maps[playerId].forEach(batimentOnMap => {
-    if(batimentOnMap.constructor.name == type)
+    console.log(batimentOnMap.constructor.name + " == " + type);
+    if(batimentOnMap.constructor.name == type || ((batimentOnMap.constructor.name == "MurH" || batimentOnMap.constructor.name == "MurV") && (type == "MurH" || type == "MurV")) ){
       number++;
+    }
   });
   return number;
 }

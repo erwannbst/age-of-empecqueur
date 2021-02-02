@@ -101,6 +101,19 @@ btnMurV.addEventListener("click", event => {
   batSelect = btnMurV.value;
 });
 
+if (goldAmount < 80){
+  btnExtracteur.style.display = "none";
+  btnCaserne.style.display = "none";
+  btnPortugais.style.display = "none";
+  btnTrinquette.style.display = "none";
+}
+if (goldAmount >= 80){
+  btnExtracteur.style.display = "block";
+  btnCaserne.style.display = "block";
+  btnPortugais.style.display = "block";
+  btnTrinquette.style.display = "block";
+}
+
 
 let btnCreateSoldat = document.getElementById("btnCreateSoldat");
 btnCreateSoldat.addEventListener("click", event => {
