@@ -234,7 +234,6 @@ canvas.addEventListener(
         if (emplacementLibre(socket.id, "soldier", playerX, playerY)) {
           socket.emit("place personnage", {nom:"soldier", x:playerX, y:playerY});
         }
-        
     }
     
     //si un batiment est selectionné on verifie si on peut le placer sur la map
@@ -262,6 +261,7 @@ canvas.addEventListener(
       //sinon on affiche rien
       else {
         menu_bat.style.display = "none";
+        
       }
     }
   },
