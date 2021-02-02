@@ -67,7 +67,6 @@ function item(x, y, name) {
 
 let batSelect;
 //boutons selection batiments
-var menuElement  = [];
 
 var btnExtracteur = document.getElementById("extracteur");
 var btnCaserne = document.getElementById("caserne");

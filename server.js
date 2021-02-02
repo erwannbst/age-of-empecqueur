@@ -205,8 +205,9 @@ function sendMap(room){
 function getNumberOfBatimentCreated(playerId, type){
   var number = 0;
   maps[playerId].forEach(batimentOnMap => {
-    if(batimentOnMap.)
-    if(batimentOnMap.draw().nom == type){
+    if((batimentOnMap.draw().nom == "murV" || batimentOnMap.draw().nom == "murH") && (type == "murV" || type == "murH")){ // Si c'est un mur
+      number++;
+    }else if(batimentOnMap.draw().nom == type){
       number++;
     }
   });
@@ -215,7 +216,12 @@ function getNumberOfBatimentCreated(playerId, type){
 
 function canCreateBatimentType(playerId, type){
   console.log("type: " + type)
-  let max = gameValues.LVL_VALUES[getHdvLvl(playerId)][type]
+  let max;
+  if(type == "murV" || type == "murH"){
+    max = gameValues.LVL_VALUES[getHdvLvl(playerId)].mur
+  }else{
+    max = gameValues.LVL_VALUES[getHdvLvl(playerId)][type]
+  }
   console.log(getNumberOfBatimentCreated(playerId, type) + "<" + max)
   return getNumberOfBatimentCreated(playerId, type) < max;
 }
@@ -310,6 +316,7 @@ function makeid() {
 }
 
 function incrementGold(room){
+  console.log("")
   games[room].players.forEach(playerId => {
     players[playerId].gold += 1;
   })
