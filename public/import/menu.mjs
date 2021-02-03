@@ -71,6 +71,8 @@ checkbox.onchange = function() {
   }
 };
 
+
+
 export function BatMenuManage(goldAmount, btnExtracteur, btnCaserne, btnPortugais, btnTrinquette, btnMurH, btnMurV){
   if(goldAmount < 80){
     btnExtracteur.style.filter = "grayscale(100%)";

@@ -120,7 +120,7 @@ export function emplacementLibre(id, batSelect, clickX, clickY) {
 }
 
 
-export function menuBatiments(id, clickX, clickY){
+export function findClickMenuBatiments(id, clickX, clickY){
   for (var n = 0; n < map[id].length; n++) {
         //console.log(map[socket.id][n].width);
         if (

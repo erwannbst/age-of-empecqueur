@@ -30,7 +30,7 @@ var batClick = false;
 //------------------------------IMPORTATION---------------------------------//
 import {
   emplacementLibre,
-  menuBatiments,
+  findClickMenuBatiments,
   drawAllBatiments
 } from "./import/map.mjs";
 
@@ -242,6 +242,9 @@ canvas.addEventListener(
         }
         else{
           renderMessageLog("impossible de placer un soldat ici")
+          placeSoldats = null;
+          btnPlaceSoldat.style.background = "linear-gradient(-135deg, #5B6E44, #D2EBB5)";
+          batSelect = null;
         }
     }
     
@@ -260,19 +263,17 @@ canvas.addEventListener(
       }
     }
     
-    //si aucun batiment selectionné on verifie si le click porte sur un batiment en particulier
+    // ACCES AUX MENUS DE GESTION DE BATIMENTS
     else {
-      batClick = menuBatiments(socket.id, playerX, playerY);
+      batClick = findClickMenuBatiments(socket.id, playerX, playerY);
       //si oui on affiche le menu du batiment 
       if (batClick) {
         displayMenuBatiments(socket.id, batClick);
         //batClick = batiment sur lequel on a cliqué
-        
       } 
-      //sinon on affiche rien
+      //sinon on desactive le menu de gestion
       else {
         document.getElementById("menu_bat").style.display = "none";
-        
       }
     }
   },
@@ -282,6 +283,7 @@ canvas.addEventListener(
 
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
+
 //déplacement de la souris
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
