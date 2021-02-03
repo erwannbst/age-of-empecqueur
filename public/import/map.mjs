@@ -1,3 +1,4 @@
+
 import {map, ctx, players} from '../script.mjs';
 
 var img = new Image();

@@ -1,13 +1,15 @@
+//------------------------------INITIALISATION---------------------------------//
+
 import {map}  from '../script.mjs';
 
 
-// INIT
 document.getElementById("menu").style.display =" none";
 document.getElementById("bat-container").style.display = "none";
 document.getElementById("menu_bat").style.display = "none";
 document.getElementById("menu-gold").style.display = "none";
 document.getElementById("chat").style.display = "none";
 
+//------------------------------AFFICHAGE DES BATIMENTS---------------------------------//
 
 export function displayMenuBatiments(userId, batiment){
  
@@ -47,31 +49,8 @@ export function displayMenuBatiments(userId, batiment){
    
 }
 
-var checkbox = document.getElementById("theme");
-checkbox.onchange = function() {
-  //darkmode
-  if(checkbox.checked) {
-    document.getElementById("bat-container").style.backgroundColor = "rgba(31, 31, 45, 0.3)";
-    document.getElementById("menu_bat").style.backgroundColor = "rgba(31, 31, 45, 0.3)";
-    document.getElementsByTagName("body")[0].style.backgroundColor= "#34344b";
-    document.getElementById("connexion").style.backgroundColor = "rgba(31, 31, 45, 0.7)";
-    document.getElementById("creation").style.backgroundColor = "rgba(31, 31, 45, 1)";
-    document.getElementById("connect").style.backgroundColor = "rgba(31, 31, 45, 1)";
-    document.getElementById("myCanvas").style.background = "#f3f3f3 url('https://zupimages.net/up/21/03/zicf.png') no-repeat";
-  }
-  //clear mode
-  else{
-    document.getElementById("bat-container").style.backgroundColor = "rgba(255, 255, 255, 0.3)";
-    document.getElementById("menu_bat").style.backgroundColor = "rgba(255, 255, 255, 0.3)";
-    document.getElementsByTagName("body")[0].style.backgroundColor= "lightgray";
-    document.getElementById("connexion").style.backgroundColor = "rgba(255, 255, 255, 0.7)";
-    document.getElementById("creation").style.backgroundColor = "rgba(255, 255, 255, 1)";
-    document.getElementById("connect").style.backgroundColor = "rgba(255, 255, 255, 1)";
-    document.getElementById("myCanvas").style.background = "#f3f3f3 url('https://zupimages.net/up/21/01/z09j.png') no-repeat";
-  }
-};
 
-
+//------------------------------GESTION DU MENU DES BATIMENTS---------------------------------//
 
 export function BatMenuManage(goldAmount, btnExtracteur, btnCaserne, btnPortugais, btnTrinquette, btnMurH, btnMurV){
   if(goldAmount < 80){
@@ -108,3 +87,28 @@ export function BatMenuManage(goldAmount, btnExtracteur, btnCaserne, btnPortugai
   }
 }
 
+//-------------------------------------DARK MODE-------------------------------------------//
+
+var checkbox = document.getElementById("theme");
+checkbox.onchange = function() {
+  //darkmode
+  if(checkbox.checked) {
+    document.getElementById("bat-container").style.backgroundColor = "rgba(31, 31, 45, 0.3)";
+    document.getElementById("menu_bat").style.backgroundColor = "rgba(31, 31, 45, 0.3)";
+    document.getElementsByTagName("body")[0].style.backgroundColor= "#34344b";
+    document.getElementById("connexion").style.backgroundColor = "rgba(31, 31, 45, 0.7)";
+    document.getElementById("creation").style.backgroundColor = "rgba(31, 31, 45, 1)";
+    document.getElementById("connect").style.backgroundColor = "rgba(31, 31, 45, 1)";
+    document.getElementById("myCanvas").style.background = "#f3f3f3 url('https://zupimages.net/up/21/03/zicf.png') no-repeat";
+  }
+  //clear mode
+  else{
+    document.getElementById("bat-container").style.backgroundColor = "rgba(255, 255, 255, 0.3)";
+    document.getElementById("menu_bat").style.backgroundColor = "rgba(255, 255, 255, 0.3)";
+    document.getElementsByTagName("body")[0].style.backgroundColor= "lightgray";
+    document.getElementById("connexion").style.backgroundColor = "rgba(255, 255, 255, 0.7)";
+    document.getElementById("creation").style.backgroundColor = "rgba(255, 255, 255, 1)";
+    document.getElementById("connect").style.backgroundColor = "rgba(255, 255, 255, 1)";
+    document.getElementById("myCanvas").style.background = "#f3f3f3 url('https://zupimages.net/up/21/01/z09j.png') no-repeat";
+  }
+};
