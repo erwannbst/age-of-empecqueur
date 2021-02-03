@@ -39,7 +39,6 @@ export function displayMenuBatiments(userId, batiment){
    
 }
 
-
 var checkbox = document.getElementById("theme");
 checkbox.onchange = function() {
   //darkmode
@@ -64,4 +63,38 @@ checkbox.onchange = function() {
   }
 };
 
+export function BatMenuManage(goldAmount, btnExtracteur, btnCaserne, btnPortugais, btnTrinquette, btnMurH, btnMurV){
+  if(goldAmount < 80){
+    btnExtracteur.style.filter = "grayscale(100%)";
+    btnExtracteur.disabled = true;
+    btnCaserne.style.filter = "grayscale(100%)";
+    btnCaserne.disabled = true;
+    btnPortugais.style.filter = "grayscale(100%)";
+    btnPortugais.disabled = true;
+    btnTrinquette.style.filter = "grayscale(100%)";
+    btnTrinquette.disabled = true;
+    
+    if(goldAmount < 35){
+      btnMurH.style.filter = "grayscale(100%)";
+      btnMurH.disabled = true;
+      btnMurV.style.filter = "grayscale(100%)";
+      btnMurV.disabled = true;
+    }
+  }
+  
+  else{
+    btnExtracteur.style.filter = "grayscale(0%)";
+    btnExtracteur.disabled = false;
+    btnCaserne.style.filter = "grayscale(0%)";
+    btnCaserne.disabled = false;
+    btnPortugais.style.filter = "grayscale(0%)";
+    btnPortugais.disabled = false;
+    btnTrinquette.style.filter = "grayscale(0%)";
+    btnTrinquette.disabled = false;
+    btnMurH.style.filter = "grayscale(0%)";
+    btnMurH.disabled = false;
+    btnMurV.style.filter = "grayscale(0%)";
+    btnMurV.disabled = false;
+  }
+}
 

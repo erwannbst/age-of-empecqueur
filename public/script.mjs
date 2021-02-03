@@ -29,7 +29,7 @@ import {
 
 import {RenduBatiments} from './import/map.mjs'
 
-import {displayMenuBatiments} from './import/menu.mjs';
+import {displayMenuBatiments, BatMenuManage} from './import/menu.mjs';
 
 export var players = [];
 /*
@@ -101,40 +101,6 @@ btnMurV.addEventListener("click", event => {
   batSelect = btnMurV.value;
 });
 
-function BatMenuManage(goldAmount){
-  if(goldAmount < 80){
-    btnExtracteur.style.filter = "grayscale(100%)";
-    btnExtracteur.disabled = true;
-    btnCaserne.style.filter = "grayscale(100%)";
-    btnCaserne.disabled = true;
-    btnPortugais.style.filter = "grayscale(100%)";
-    btnPortugais.disabled = true;
-    btnTrinquette.style.filter = "grayscale(100%)";
-    btnTrinquette.disabled = true;
-    
-    if(goldAmount < 35){
-      btnMurH.style.filter = "grayscale(100%)";
-      btnMurH.disabled = true;
-      btnMurV.style.filter = "grayscale(100%)";
-      btnMurV.disabled = true;
-    }
-  }
-  
-  else{
-    btnExtracteur.style.filter = "grayscale(0%)";
-    btnExtracteur.disabled = false;
-    btnCaserne.style.filter = "grayscale(0%)";
-    btnCaserne.disabled = false;
-    btnPortugais.style.filter = "grayscale(0%)";
-    btnPortugais.disabled = false;
-    btnTrinquette.style.filter = "grayscale(0%)";
-    btnTrinquette.disabled = false;
-    btnMurH.style.filter = "grayscale(0%)";
-    btnMurH.disabled = false;
-    btnMurV.style.filter = "grayscale(0%)";
-    btnMurV.disabled = false;
-  }
-}
 
 
 let btnCreateSoldat = document.getElementById("btnCreateSoldat");
@@ -269,15 +235,6 @@ canvas.addEventListener(
 );
 
 
-let roomID = document.getElementById("status");
-roomID.addEventListener("click", event => {
-  var text = roomID.innerText;
-  event.preventDefault(); // stop our form submission from refreshing the page
-  text.select();
-  document.execCommand("copy");
-  console.log("code partie copié")
-});
-
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
 //déplacement de la souris
@@ -322,7 +279,7 @@ function receiveMap(data){
 function receivePlayerItems(data){
   goldAmount = data.gold;
   document.getElementById("gold").innerHTML =  " " + data.gold;
-  BatMenuManage(goldAmount);
+  BatMenuManage(goldAmount, btnExtracteur, btnCaserne, btnPortugais, btnTrinquette, btnMurH, btnMurV);
 }
 
 function gotConnected(data) {
