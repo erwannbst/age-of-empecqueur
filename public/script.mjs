@@ -146,6 +146,26 @@ btnUpgrade.addEventListener("click", event => {
 });
 
 
+// ************  MENU DE CONNEXION  ************ //
+
+const loginForm = document.getElementById("connect");
+const createForm = document.getElementById("creation");
+
+
+document.getElementById("buttonCreate").addEventListener("click", event => {
+  event.preventDefault(); // stop our form submission from refreshing the page
+  let usname = createForm.elements.username.value;
+  console.log("dreate game for "+usname+".....");
+  socket.emit("create game", usname);
+  
+});
+
+document.getElementById("buttonConnect").addEventListener("click", event => {
+  event.preventDefault(); // stop our form submission from refreshing the page
+  let username = loginForm.elements.pseudo.value;
+  let room = loginForm.elements.gameCode.value;
+  socket.emit("join game", { username, room });
+});
 
 
 
@@ -284,11 +304,13 @@ canvas.addEventListener(
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
 
-//déplacement de la souris
+// Function d'affichage du CANVAS
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  //permet d'afficher le visuel du batiment au deplacement de la souris
+
   if (batSelect != null) {
-    //permet d'afficher le visuel du batiment au deplacement de la souris
     ctx.drawImage(
       RenduBatiments[batSelect].image,
       playerX,
@@ -297,18 +319,25 @@ function draw() {
       RenduBatiments[batSelect].height
     );
   }
-  drawAllBatiments(socket.id); //fonction d'affichage de tous les batiments
+
+  //fonction d'affichage de tous les batiments
+  
+  drawAllBatiments(socket.id); 
   requestAnimationFrame(draw);
 }
 
 
 //-------------------------------------------------------SERVEUR------------------------------------------------------------//
 
+// **************** FUNCTION D'ACTUALISATION DE LA MAP **************************//
+
 function receiveMap(data){
   //console.log("actualisation de la map" + JSON.stringify(data));
   let nbSoldatsOnMaps = 0;
   let nbSoldatsOnRest = 0;
   map = data;
+  
+  //boucle de recherche des soldats contenu dans la map
   map[socket.id].forEach(batiment => {
     if(batiment.nom == "caserne") {
       nbSoldatsOnRest = batiment.unitsInside.length;
@@ -317,20 +346,27 @@ function receiveMap(data){
       nbSoldatsOnMaps++;
     }
   });
-  
+  //actualisation du menu de gestion de la CASERNE
   document.getElementById("btnPlaceSoldat").innerHTML = "Soldats a placer : " + nbSoldatsOnRest ;
   document.getElementById("soldierOnMap").innerHTML = "Soldats en guerre " + nbSoldatsOnMaps ;
 }
 
 
+// ************* FUNCTION D'ACTUALISATION DES DONNEES DU JOUEUR ******************//
+
 function receivePlayerItems(data){
+  
+  // actualisation du niveau d'or du joueur
   goldAmount = data.gold;
   document.getElementById("gold").innerHTML =  " " + data.gold;
   
   //function de gestion d'accesibilité des boutons de batiments
   //Elle est située dans le fichier import/menu.mjs
   BatMenuManage(goldAmount, btnExtracteur, btnCaserne, btnPortugais, btnTrinquette, btnMurH, btnMurV);
+  
 }
+
+// ************************* FUNCTIONS DE LA CONNEXION **************************//
 
 function gotConnected(data) {
   //data: {username, room, playerId}
@@ -368,62 +404,31 @@ function userJoined(user) {
   document.getElementById("chat").style.display = "block";
 }
 
-/********************** DOCUMENTATION API ***********************
-CRÉER UN BATIMENT
-  createBatiment({nom, x, y, width, height})
-      nom = string : "trinquette", "portugais", "hdv", "caserne", "mur", "extracteur"
-
-*********************** DOCUMENTATION API **********************/
-
-draw();
-
-const loginForm = document.getElementById("connect");
-const createForm = document.getElementById("creation");
+// ************************* FUNCTIONS DE CONNEXION AU SOCKET **************************//
 
 
-document.getElementById("buttonCreate").addEventListener("click", event => {
-  event.preventDefault(); // stop our form submission from refreshing the page
-  let usname = createForm.elements.username.value;
-  console.log("dreate game for "+usname+".....");
-  socket.emit("create game", usname);
-  
-});
-
-document.getElementById("buttonConnect").addEventListener("click", event => {
-  event.preventDefault(); // stop our form submission from refreshing the page
-  let username = loginForm.elements.pseudo.value;
-  let room = loginForm.elements.gameCode.value;
-  socket.emit("join game", { username, room });
-});
-
-
-// client.js
+// CONNEXION DU PREMIER CLIENT
 socket.on("connected", function(data) {
   //data: {username, room, otherPlayer?}
   gotConnected(data);
 });
 
+// CONNEXION DU DEUXIEME CLIENT
 socket.on("user joined", function(user) {
   userJoined(user);
 });
 
+// RECEPTION D'UN MESSAGE DANS LE MINI CHAT
 socket.on("send chat", function(data) {
   renderMessage(data);
 });
 
-
+// RECEPTION DES DONNEES DE LA PARTIE
 socket.on("receive players data", function(data) {
   //console.log(data)
   receiveMap(data.map);
   receivePlayerItems(data.items);
 })
-
-/*
-socket.on("item updated", function(data) {
-  //data : {...drawData, owner: playerId}
-  itemUpdated(data);
-});
-*/
 
 socket.on("ping", function(data) {
   console.log("ping");
@@ -438,6 +443,22 @@ function createBatiment(data) {
 function sendChat(data){
   socket.emit("send chat", data);
 }
+
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% //
+
+draw();
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% //
+
+
+
+/********************** DOCUMENTATION API ***********************
+CRÉER UN BATIMENT
+  createBatiment({nom, x, y, width, height})
+      nom = string : "trinquette", "portugais", "hdv", "caserne", "mur", "extracteur"
+
+*********************** DOCUMENTATION API **********************/
 
 
 /*
