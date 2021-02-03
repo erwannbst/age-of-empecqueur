@@ -11,11 +11,21 @@ var playerY = 0;
 var pageWidth = document.documentElement.clientWidth;
 var pageHeight = document.documentElement.clientHeight;
 
+document.addEventListener("mousemove", mouseMoveHandler);
+function mouseMoveHandler(e) {
+  var rect = canvas.getBoundingClientRect();
+  playerX = e.clientX - rect.left;
+  playerY = e.clientY - rect.top;
+
+}
+
+
 //VARIABLES UTILISATEURS
 var connected = false;
 var username = "";
 var goldAmount = 0;
 var placeSoldats= false;
+var batClick = false;
 
 //------------------------------IMPORTATION---------------------------------//
 import {
@@ -152,9 +162,12 @@ chatForm.addEventListener('submit', (event) => {
 
 function renderMessage(data){
   // console.log("message recu par le serveur : " + data);
+  
+  //consitutions du message a envoyer
   let p = document.createElement('p');
   p.innerHTML = data.pseudo + " : " + data.msg;
-  // changement de couleur en fonction du messag
+  
+  // changement de couleur en fonction de l'utilisateur qui l'a envoyé
   if(data.pseudo == username){
     p.style.color = "rgba(0, 170, 0, 0.8)"
   }else{
@@ -162,7 +175,9 @@ function renderMessage(data){
   }
   p.style.fontSize ="small";
   p.style.height = "14px";
+  
   displayMessage.appendChild(p);
+  //scroll automatique du mini chat
   displayMessage.scrollTop = displayMessage.scrollHeight;
 }
 
@@ -185,45 +200,36 @@ else if(e.which) // Netscape/Firefox/Opera
 	if (keynum == 27) batSelect = null;
 }
 
-//-------------------------------------------------------MOUSE-----------------------------------------------------------//
-document.addEventListener("mousemove", mouseMoveHandler);
-function mouseMoveHandler(e) {
-  var rect = canvas.getBoundingClientRect();
-  playerX = e.clientX - rect.left;
-  playerY = e.clientY - rect.top;
-  document.getElementById("output").innerHTML =
-    "Mouse:  <br />" + " x: " + playerX + ", y: " + playerY + "<br />";
-}
-
-
-//-------------------------------------------------------CLICK------------------------------------------------------------//
-
+//-------------------------------------------------------MOUSE CLICK------------------------------------------------------------//
 
 canvas.addEventListener(
   "click",
   function(event) {
-    var menu_bat = document.getElementById("menu_bat");
     var batClick = false;
     
+    
+    // PLACEMENT DE SOLDAT 
     if(placeSoldats == true){
+      // ON VERIFIE SI LE CLICK EST SITUE SUR UN ENDROIT AUTORISE DE LA MAP
         if (emplacementLibre(socket.id, "soldier", playerX, playerY)) {
           socket.emit("place personnage", {nom:"soldier", x:playerX, y:playerY});
         }
     }
     
-    //si un batiment est selectionné on verifie si on peut le placer sur la map
+    // PLACEMENT DE BATIMENT
     if (batSelect != null) {
       if(batSelect != "soldier"){
         if (emplacementLibre(socket.id, batSelect, playerX, playerY)) {
           createBatiment({ nom: batSelect, x: playerX, y: playerY });
+          //remise a 0 de la valeur batSelect
           batSelect = null;
         }
         else{
-          document.getElementById("output").innerHTML =
-            "Vous ne pouvez pas placer un batiment ici";
+          //impossible de placer un batiments
         }
       }
     }
+    
     //si aucun batiment selectionné on verifie si le click porte sur un batiment en particulier
     else {
       batClick = menuBatiments(socket.id, playerX, playerY);
@@ -235,7 +241,7 @@ canvas.addEventListener(
       } 
       //sinon on affiche rien
       else {
-        menu_bat.style.display = "none";
+        document.getElementById("menu_bat").style.display = "none";
         
       }
     }
