@@ -22,3 +22,5 @@ Click `Show` in the header to see your app live. Updates to your code will insta
 
   
 minichat exemple [https://github.com/raynalf/mini-chat]
+
+https://www.w3schools.com/jsref/dom_obj_style.asp

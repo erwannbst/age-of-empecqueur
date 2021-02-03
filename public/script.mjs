@@ -62,6 +62,9 @@ map : {
 */
 
 
+
+
+
 //-----------------------------------------------------PARTIE MENU-------------------------------------------------------//
 
 // Variable contenant le batiment selectionné dans le menu des batiments
@@ -142,6 +145,10 @@ btnUpgrade.addEventListener("click", event => {
   //socket.emit("create batiment", { nom: "soldier" });
 });
 
+
+
+
+
 //--------------------------------------------------CHAT-------------------------------------------------------------//
 
 //initialisaion du formulaire pour le mini-chat
@@ -182,6 +189,22 @@ function renderMessage(data){
 }
 
 
+function renderMessageLog(text){
+
+    let p = document.createElement('p');
+    p.innerHTML = text;
+    p.style.color = "rgba(166, 166, 166, 1)" 
+    p.style.fontSize ="small";
+    p.style.height = "14px";
+    p.style.fontStyle = "italic";
+
+    displayMessage.appendChild(p);
+    //scroll automatique du mini chat
+    displayMessage.scrollTop = displayMessage.scrollHeight;  
+}
+
+
+
 
 //-----------------------------------------------------KEYBOARD----------------------------------------------------------//
 
@@ -200,6 +223,9 @@ else if(e.which) // Netscape/Firefox/Opera
 	if (keynum == 27) batSelect = null;
 }
 
+
+
+
 //-------------------------------------------------------MOUSE CLICK------------------------------------------------------------//
 
 canvas.addEventListener(
@@ -214,6 +240,9 @@ canvas.addEventListener(
         if (emplacementLibre(socket.id, "soldier", playerX, playerY)) {
           socket.emit("place personnage", {nom:"soldier", x:playerX, y:playerY});
         }
+        else{
+          renderMessageLog("impossible de placer un soldat ici")
+        }
     }
     
     // PLACEMENT DE BATIMENT
@@ -226,6 +255,7 @@ canvas.addEventListener(
         }
         else{
           //impossible de placer un batiments
+          renderMessageLog("impossible de placer un batiment ici")
         }
       }
     }
