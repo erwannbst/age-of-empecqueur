@@ -268,6 +268,12 @@ canvas.addEventListener(
   false
 );
 
+document.getElementById("room").addEventListener("click", function() {
+  var copyText = document.getElementById("room");
+  copyText.select();
+  document.execCommand("copy");
+});
+
 
 //-------------------------------------------------------DRAW------------------------------------------------------------//
 //déplacement de la souris
