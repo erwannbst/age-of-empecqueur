@@ -1,6 +1,14 @@
 import {map}  from '../script.mjs';
 
 
+// INIT
+document.getElementById("menu").style.display =" none";
+document.getElementById("bat-container").style.display = "none";
+document.getElementById("menu_bat").style.display = "none";
+document.getElementById("menu-gold").style.display = "none";
+document.getElementById("chat").style.display = "none";
+
+
 export function displayMenuBatiments(userId, batiment){
  
   var menu_bat = document.getElementById("menu_bat");

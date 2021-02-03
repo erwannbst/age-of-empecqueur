@@ -1,26 +1,25 @@
-
-// INIT
-document.getElementById("menu").style.display =" none";
-document.getElementById("bat-container").style.display = "none";
-document.getElementById("menu_bat").style.display = "none";
-document.getElementById("menu-gold").style.display = "none";
-document.getElementById("chat").style.display = "none";
-
 const loginForm = document.getElementById("connect");
 const createForm = document.getElementById("creation");
+
+//INIT CANVAS
 var canvas = document.getElementById("myCanvas");
 export var ctx = canvas.getContext("2d");
 canvas.width = 1900;
 canvas.height = 900;
+
+//VARIABLES DOCS
 var playerX = 0;
 var playerY = 0;
 var pageWidth = document.documentElement.clientWidth;
 var pageHeight = document.documentElement.clientHeight;
+
+//VARIABLES UTILISATEURS
 var connected = false;
 var username = "";
 var goldAmount = 0;
 var placeSoldats= false;
 
+//------------------------------IMPORTATION---------------------------------//
 import {
   emplacementLibre,
   menuBatiments,
@@ -30,6 +29,8 @@ import {
 import {RenduBatiments} from './import/map.mjs'
 
 import {displayMenuBatiments, BatMenuManage} from './import/menu.mjs';
+
+//------------------------------ARCHITECTURE MAP---------------------------------//
 
 export var players = [];
 /*
@@ -51,13 +52,6 @@ map : {
       ]
     }
 */
-
-
-function item(x, y, name) {
-  this.name = name;
-  this.x = x;
-  this.y = y;
-}
 
 
 //-----------------------------------------------------PARTIE MENU-------------------------------------------------------//
@@ -279,6 +273,9 @@ function receiveMap(data){
 function receivePlayerItems(data){
   goldAmount = data.gold;
   document.getElementById("gold").innerHTML =  " " + data.gold;
+  
+  //function de gestion d'accesibilité des boutons de batiments
+  //Elle est située dans le fichier import/menu.mjs
   BatMenuManage(goldAmount, btnExtracteur, btnCaserne, btnPortugais, btnTrinquette, btnMurH, btnMurV);
 }
 
