@@ -268,10 +268,14 @@ canvas.addEventListener(
   false
 );
 
-document.getElementById("room").addEventListener("click", function() {
-  var copyText = document.getElementById("room");
-  copyText.select();
+
+let roomID = document.getElementById("status");
+roomID.addEventListener("click", event => {
+  var text = roomID.innerText;
+  event.preventDefault(); // stop our form submission from refreshing the page
+  text.select();
   document.execCommand("copy");
+  console.log("code partie copié")
 });
 
 
