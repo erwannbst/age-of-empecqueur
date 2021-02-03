@@ -1,5 +1,3 @@
-const loginForm = document.getElementById("connect");
-const createForm = document.getElementById("creation");
 
 //INIT CANVAS
 var canvas = document.getElementById("myCanvas");
@@ -56,12 +54,10 @@ map : {
 
 //-----------------------------------------------------PARTIE MENU-------------------------------------------------------//
 
-
-
-
+// Variable contenant le batiment selectionné dans le menu des batiments
 let batSelect;
-//boutons selection batiments
 
+// boutons selection batiments
 var btnExtracteur = document.getElementById("extracteur");
 var btnCaserne = document.getElementById("caserne");
 var btnPortugais = document.getElementById("portugais");
@@ -69,7 +65,7 @@ var btnTrinquette = document.getElementById("trinquette");
 var btnMurH = document.getElementById("murH");
 var btnMurV = document.getElementById("murV");
 
-
+// Evenements "CLICK" sur les différents boutons du menu
 btnExtracteur.addEventListener("click", event => {
   event.preventDefault();
   batSelect = btnExtracteur.value;
@@ -96,27 +92,40 @@ btnMurV.addEventListener("click", event => {
 });
 
 
+// ************  CASERNE  ************ //
 
+// CLICK sur le bouton de création de soldats du menu de la CASERNE
 let btnCreateSoldat = document.getElementById("btnCreateSoldat");
 btnCreateSoldat.addEventListener("click", event => {
-  event.preventDefault(); // stop our form submission from refreshing the page
+  event.preventDefault(); 
+  
+  //Fonction de création de soldats connecté au socket
   createBatiment({nom :"soldier"});
 });
 
+// CLICK sur le bouton de placements de soldats de soldats du menu de la CASERNE
 let btnPlaceSoldat = document.getElementById("btnPlaceSoldat");
 btnPlaceSoldat.addEventListener("click", event => {
-  event.preventDefault(); // stop our form submission from refreshing the page
-  placeSoldats = !placeSoldats;
+  event.preventDefault(); 
+  placeSoldats = !placeSoldats; // invrsement de l'état du bouton
+  
+  // si le bouton est activé 
   if(placeSoldats == true){
+    // changement de couleur du bouton 
     btnPlaceSoldat.style.background = "linear-gradient(-135deg, #D52802, #E29E8F)";
     batSelect = "soldier";
   }
+  // si le bouton est désactivé 
   else{
+    // changement de couleur du bouton 
     btnPlaceSoldat.style.background = "linear-gradient(-135deg, #5B6E44, #D2EBB5)";
     batSelect = null;
   }
 });
 
+// ************  PORTUGAIS  ************ //
+
+// CLICK sur le bouton d'améliorations de batiments du menu du PORTUGAIS
 let btnUpgrade = document.getElementById("btnUpgrade");
 btnUpgrade.addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
@@ -125,10 +134,12 @@ btnUpgrade.addEventListener("click", event => {
 
 //--------------------------------------------------CHAT-------------------------------------------------------------//
 
+//initialisaion du formulaire pour le mini-chat
 var chatForm = document.getElementById('chat-form');
 var messageInput = document.getElementById("content");
 var displayMessage = document.getElementById("messages-box");
 
+// Evenement lors de l'envoie du message après l'appui sur la touche ENTREE
 chatForm.addEventListener('submit', (event) => {
   event.preventDefault();
   sendChat({msg : messageInput.value, pseudo : username}); // data:{msg: "test", pseudo: "pseudo"}
@@ -136,10 +147,14 @@ chatForm.addEventListener('submit', (event) => {
   messageInput.value = '';
 });
 
+// Fonction d'affichage du message
+// La fonction est appelée lors de la reception d'un nouveau message par le serveur (ligne 370)
+
 function renderMessage(data){
-  console.log("message recu par le serveur : " + data);
+  // console.log("message recu par le serveur : " + data);
   let p = document.createElement('p');
   p.innerHTML = data.pseudo + " : " + data.msg;
+  // changement de couleur en fonction du messag
   if(data.pseudo == username){
     p.style.color = "rgba(0, 170, 0, 0.8)"
   }else{
@@ -323,6 +338,9 @@ CRÉER UN BATIMENT
 *********************** DOCUMENTATION API **********************/
 
 draw();
+
+const loginForm = document.getElementById("connect");
+const createForm = document.getElementById("creation");
 
 
 document.getElementById("buttonCreate").addEventListener("click", event => {
