@@ -396,6 +396,7 @@ function gotConnected(data) {
   if (data.otherPlayer == undefined) {
     document.getElementById("status").innerHTML = 
     username.toUpperCase() + " partie #" + data.room;
+    document.getElementById("game-status").style.display = "flex";
   } else {
     document.getElementById("status").innerHTML =
     "Vous jouez contre " + data.otherPlayer.username;
@@ -404,6 +405,7 @@ function gotConnected(data) {
     document.getElementById("bat-container").style.display = "block";
     document.getElementById("gold").style.display = "block";
     document.getElementById("chat").style.display = "block";
+    document.getElementById("game-status").style.display = "flex";
     }
   //document.getElementById("select").disabled = false;
 }
@@ -417,6 +419,8 @@ function userJoined(user) {
   document.getElementById("bat-container").style.display = "block";
   document.getElementById("gold").style.display = "block";
   document.getElementById("chat").style.display = "block";
+  document.getElementById("game-status").style.display = "flex";
+
 }
 
 // ************************* FUNCTIONS DE CONNEXION AU SOCKET **************************//

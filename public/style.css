@@ -176,7 +176,6 @@ select {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 30%;
   width: 100%;
   place-items: center;
   bottom: 0px;
