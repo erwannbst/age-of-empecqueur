@@ -9,6 +9,9 @@
     <meta charset="UTF-8" />
     <title>Age of Empecqueur</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style></style>
   </head>
   <body>
@@ -73,11 +76,19 @@
         <div class="status user" id="status"><h4></h4></div>
         <div class="status gold" id="gold"><h4></h4></div>
         <div class="status">
-          <div class="progress">
-            <progress id="xp" class="progress-done" data-done="70">
-            70%
-            </progress></div>
-          
+          <progress id="xp" class="xp" max="100" value="70"> 70% </progress>
+        </div>
+        <div class="progress">
+          <div
+            class="progress-bar progress-bar-danger"
+            role="progressbar"
+            aria-valuenow="70"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            style="width:70%"
+          >
+            70% Complete (danger)
+          </div>
         </div>
       </div>
 
