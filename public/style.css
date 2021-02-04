@@ -78,6 +78,7 @@ body {
 
 .gold {
   width: 75px;
+  position: absolute;
   right: 10px;
 }
 
