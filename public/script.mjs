@@ -393,7 +393,7 @@ function gotConnected(data) {
   console.log("gotConnected" + JSON.stringify(data));
   players.push(socket.id);
   document.getElementById("status").innerHTML =
-    "Connected as " + username + "#" + data.room;
+    "Pseudo " + username + " Code partie : #" + data.room;
   document.getElementById("connexion").style.display = "none";
   if (data.otherPlayer == undefined) {
     document.getElementById("room").innerHTML = "En attente d'un autre joueur....";
