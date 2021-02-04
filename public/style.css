@@ -19,9 +19,8 @@
   display: flex;
 }
 canvas {
-  border: 3px solid silver;
-  border-bottom-right-radius: 30px;
-  border-bottom-left-radius: 30px;
+  border: 3px solid white;
+  border-radius: 30px;
   background: #013333
     url(
         https://zupimages.net/up/21/01/z09j.png
@@ -88,10 +87,43 @@ body {
 }
 
 .theme {
-  z-index: 5;
   position: absolute;
-  top:0px;
-  left: 0px;
+  left: 2px;
+  z-index: 5;
+}
+
+input[type="checkbox" i] {
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    margin: 3px 3px 3px 4px;
+    padding: initial;
+    border: initial;
+}
+user agent stylesheet
+input {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: textfield;
+    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
 }
 
 label {
