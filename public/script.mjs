@@ -374,7 +374,7 @@ function receivePlayerItems(data){
   
   // actualisation du niveau d'or du joueur
   goldAmount = data.gold;
-  document.getElementById("gold").innerHTML =  " " + data.gold;
+  document.getElementById("gold").innerHTML =  data.gold +" 💲";
   
   //function de gestion d'accesibilité des boutons de batiments
   //Elle est située dans le fichier import/menu.mjs
@@ -395,10 +395,10 @@ function gotConnected(data) {
   document.getElementById("connexion").style.display = "none";
   if (data.otherPlayer == undefined) {
     document.getElementById("status").innerHTML = 
-    "Pseudo " + username + " Code partie : #" + data.room;
+    username.toUpperCase() + " partie #" + data.room;
   } else {
     document.getElementById("status").innerHTML =
-      "Vous jouez contre " + data.otherPlayer.username;
+    "Vous jouez contre " + data.otherPlayer.username;
     players.push(data.otherPlayer.playerId);
     map[data.otherPlayer.playerId] = [];
     document.getElementById("bat-container").style.display = "block";
@@ -412,7 +412,7 @@ function userJoined(user) {
   //user: {username, playerId}
   map[user.playerId] = [];
   players.push(user.playerId);
-  document.getElementById("room").innerHTML =
+  document.getElementById("status").innerHTML =
     "Vous jouez contre " + user.username;
   document.getElementById("bat-container").style.display = "block";
   document.getElementById("gold").style.display = "block";
