@@ -75,22 +75,10 @@ body {
   line-height: 1.1;
   color: black;
 }
+
 .gold {
+  width: 75px;
   float: right;
-  display: flex;
-  z-index: 2;
-  text-align: center;
-  align-items: center;
-  justify-content: start;
-  top: 1em;
-  width: auto;
-  height: auto;
-  margin: 10px;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 15px;
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
-  font-family: "IBM Plex Sans", sans-serif;
 }
 
 .xp {
@@ -190,7 +178,7 @@ select {
   height: 30%;
   width: 100%;
   place-items: center;
-  bottom: 1em;
+  bottom: 0px;
   padding: 1em;
   z-index: 3;
 }
@@ -199,7 +187,7 @@ select {
 .batiments-container {
   width: auto;
   height: auto;
-  left: 5%;
+  float: left;
   bottom: 1em;
   padding: 1em;
   background-color: rgba(255, 255, 255, 0.3);
@@ -209,13 +197,74 @@ select {
 .menu-batiments-container {
   width: auto;
   height: auto;
-  right: 5%;
+  float: right;
   bottom: 1em;
   padding: 1em;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 15px;
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
 }
+
+
+.regles-liste {
+  justify-content: start;
+}
+
+.chat {
+  width: 25%;
+  height: auto;
+  float: center;
+  bottom: 1em;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1); 
+}
+
+.chat-form{
+  flex-direction: row;
+  display: flex;
+}
+
+.messages {
+  background-color: transparent;
+  padding: 1em;
+  height: 100px;
+  overflow: auto;
+}
+
+.messages::-webkit-scrollbar {
+  width: 5px;
+  background-color: #aaa; /* or add it to the track */
+}
+
+.message {
+  color: white;
+  padding: 0.3em;
+}
+
+.date,
+.author {
+  font-weight: bold;
+}
+
+input {
+  padding: 0.5em;
+  outline:  none;
+}
+
+#content {
+  border: none;
+  background-color: transparent;
+  flex:5;
+}
+
+#send-message{
+  flex: 1;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 
 .connexion {
   position: absolute;
@@ -228,6 +277,7 @@ select {
   place-items: center;
   background-color: rgba(255, 255, 255, 0.7);
 }
+
 
 ::selection {
   background: #4158d0;
@@ -349,62 +399,3 @@ form .signup-link a:hover {
   text-decoration: underline;
 }
 
-.regles-liste {
-  justify-content: start;
-}
-
-.chat {
-  width: 25%;
-  height: auto;
-  right: 30%;
-  bottom: 1em;
-  padding: 5px;
-  position: absolute;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1); 
-}
-
-.chat-form{
-  flex-direction: row;
-  display: flex;
-}
-
-.messages {
-  background-color: transparent;
-  padding: 1em;
-  height: 100px;
-  overflow: auto;
-}
-
-.messages::-webkit-scrollbar {
-  width: 5px;
-  background-color: #aaa; /* or add it to the track */
-}
-
-.message {
-  color: white;
-  padding: 0.3em;
-}
-
-.date,
-.author {
-  font-weight: bold;
-}
-
-input {
-  padding: 0.5em;
-  outline:  none;
-}
-
-#content {
-  border: none;
-  background-color: transparent;
-  flex:5;
-}
-
-#send-message{
-  flex: 1;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.1);
-}
