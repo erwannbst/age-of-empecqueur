@@ -380,6 +380,10 @@ function receivePlayerItems(data){
   //Elle est située dans le fichier import/menu.mjs
   BatMenuManage(goldAmount, btnExtracteur, btnCaserne, btnPortugais, btnTrinquette, btnMurH, btnMurV);
   
+  
+  //test progress bar
+  document.getElementById('xp').value = (goldAmount/1000)*100;
+  
 }
 
 // ************************* FUNCTIONS DE LA CONNEXION **************************//
