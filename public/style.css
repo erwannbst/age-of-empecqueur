@@ -230,7 +230,7 @@ select {
   background-color: transparent;
   padding: 1em;
   height: 100px;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .messages::-webkit-scrollbar {
