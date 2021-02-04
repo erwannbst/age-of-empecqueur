@@ -111,3 +111,12 @@ checkbox.onchange = function() {
     document.getElementById("myCanvas").style.background = "#f3f3f3 url('https://zupimages.net/up/21/01/z09j.png') no-repeat";
   }
 };
+
+
+//-------------------------------------PROGRESS BAR-------------------------------------------//
+
+
+const progress = document.querySelector('.progress-done');
+
+progress.style.width = progress.getAttribute('data-done') + '%';
+progress.style.opacity = 1;

@@ -54,12 +54,7 @@
             <label>Pseudo</label>
           </div>
           <div class="field">
-            <input
-              type="text"
-              name="gameCode"
-              autocomplete="off"
-              required
-            />
+            <input type="text" name="gameCode" autocomplete="off" required />
             <label>Code partie</label>
           </div>
           <div class="field">
@@ -71,15 +66,20 @@
     <div class="game-container" id="game-container">
       <div class="game-status" id="game-status">
         <div class="theme">
-          <input type="checkbox" id="theme" name="theme" class="checkbox"/>
-          <label for="theme" ></label>  
+          <input type="checkbox" id="theme" name="theme" class="checkbox" />
+          <label for="theme"></label>
         </div>
-        
+
         <div class="status user" id="status"><h4></h4></div>
         <div class="status gold" id="gold"><h4></h4></div>
-        <div class="status" ><progress id="xp" class="xp" max="100" value="70"> 70% </progress></div>
-      </div>      
-        
+        <div class="status">
+          <div class="progress">
+            <progress id="xp" class="progress-done" data-done="70">
+            70%
+            </progress></div>
+          
+        </div>
+      </div>
 
       <div id="map">
         <canvas id="myCanvas"></canvas>
@@ -94,7 +94,7 @@
               width="70px"
             />
           </button>
-          
+
           <button class="bat-button" value="extracteur" id="extracteur">
             <img
               src="https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fbanque.png?1607819328536"
@@ -158,7 +158,7 @@
 
             <h4 id="soldierOnMap"></h4>
             <h4 id="soldierRest"></h4>
-            
+
             <button id="btnPlaceSoldat" value="PlaceSoldat"></button>
             <button id="btnCreateSoldat" value="createSoldat"></button>
             <button id="btnUpgrade" value="upgrade"></button>
