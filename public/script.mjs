@@ -43,7 +43,7 @@ var goldAmount = 0;
 var placeSoldats= false;
 var batClick = false;
 
-//------------------------------IMPORTATION---------------------------------//
+//---------------------------------IMPORTATION----------------------------------//
 import {
   emplacementLibre,
   findClickMenuBatiments,
