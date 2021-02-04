@@ -392,18 +392,17 @@ function gotConnected(data) {
   map[socket.id] = [];
   console.log("gotConnected" + JSON.stringify(data));
   players.push(socket.id);
-  document.getElementById("status").innerHTML =
-    "Pseudo " + username + " Code partie : #" + data.room;
   document.getElementById("connexion").style.display = "none";
   if (data.otherPlayer == undefined) {
-    document.getElementById("room").innerHTML = "En attente d'un autre joueur....";
+    document.getElementById("status").innerHTML = 
+    "Pseudo " + username + " Code partie : #" + data.room;
   } else {
-    document.getElementById("room").innerHTML =
+    document.getElementById("status").innerHTML =
       "Vous jouez contre " + data.otherPlayer.username;
     players.push(data.otherPlayer.playerId);
     map[data.otherPlayer.playerId] = [];
     document.getElementById("bat-container").style.display = "block";
-    document.getElementById("menu-gold").style.display = "block";
+    document.getElementById("gold").style.display = "block";
     document.getElementById("chat").style.display = "block";
     }
   //document.getElementById("select").disabled = false;
@@ -416,7 +415,7 @@ function userJoined(user) {
   document.getElementById("room").innerHTML =
     "Vous jouez contre " + user.username;
   document.getElementById("bat-container").style.display = "block";
-  document.getElementById("menu-gold").style.display = "block";
+  document.getElementById("gold").style.display = "block";
   document.getElementById("chat").style.display = "block";
 }
 

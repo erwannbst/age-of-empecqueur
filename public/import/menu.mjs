@@ -6,7 +6,7 @@ import {map}  from '../script.mjs';
 document.getElementById("menu").style.display =" none";
 document.getElementById("bat-container").style.display = "none";
 document.getElementById("menu_bat").style.display = "none";
-document.getElementById("menu-gold").style.display = "none";
+document.getElementById("gold").style.display = "none";
 document.getElementById("chat").style.display = "none";
 
 //------------------------------AFFICHAGE DES BATIMENTS---------------------------------//
