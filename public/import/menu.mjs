@@ -7,6 +7,7 @@ document.getElementById("menu_bat").style.display = "none";
 document.getElementById("gold").style.display = "none";
 document.getElementById("chat").style.display = "none";
 document.getElementById("game-status").style.display = "none";
+document.getElementById("xp-bar").style.display = "none";
 
 //------------------------------AFFICHAGE DES BATIMENTS---------------------------------//
 

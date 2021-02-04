@@ -183,6 +183,14 @@ document.getElementById("buttonConnect").addEventListener("click", event => {
   socket.emit("join game", { username, room });
 });
 
+// ************  MENU HEADER ************ //
+function displayMenuHeaderElement(){
+  document.getElementById("bat-container").style.display = "block";
+  document.getElementById("gold").style.display = "block";
+  document.getElementById("chat").style.display = "block";
+  document.getElementById("game-status").style.display = "flex";
+  document.getElementById("xp-bar").style.display = "flex";
+}
 
 
 //--------------------------------------------------CHAT-------------------------------------------------------------//
@@ -401,15 +409,13 @@ function gotConnected(data) {
     document.getElementById("status").innerHTML = 
     username.toUpperCase() + " partie #" + data.room;
     document.getElementById("game-status").style.display = "flex";
+    
   } else {
     document.getElementById("status").innerHTML =
     "Vous jouez contre " + data.otherPlayer.username;
     players.push(data.otherPlayer.playerId);
     map[data.otherPlayer.playerId] = [];
-    document.getElementById("bat-container").style.display = "block";
-    document.getElementById("gold").style.display = "block";
-    document.getElementById("chat").style.display = "block";
-    document.getElementById("game-status").style.display = "flex";
+    displayMenuHeaderElement();
     }
   //document.getElementById("select").disabled = false;
 }
@@ -420,10 +426,7 @@ function userJoined(user) {
   players.push(user.playerId);
   document.getElementById("status").innerHTML =
     "Vous jouez contre " + user.username;
-  document.getElementById("bat-container").style.display = "block";
-  document.getElementById("gold").style.display = "block";
-  document.getElementById("chat").style.display = "block";
-  document.getElementById("game-status").style.display = "flex";
+  displayMenuHeaderElement();
 
 }
 
