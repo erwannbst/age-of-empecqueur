@@ -88,7 +88,7 @@ body {
 
 .theme {
   position: absolute;
-  left: 2px;
+  left: 1em;
   z-index: 5;
 }
 
