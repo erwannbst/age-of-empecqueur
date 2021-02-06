@@ -371,7 +371,7 @@ function receiveMap(data){
     }
   });
   //actualisation du menu de gestion de la CASERNE
-  document.getElementById("btnPlaceSoldat").innerHTML = "Soldats a placer : " + nbSoldatsOnRest ;
+  document.getElementById("btnPlaceSoldat").innerHTML = "Soldats : " + nbSoldatsOnRest ;
   document.getElementById("soldierOnMap").innerHTML = "Soldats en guerre " + nbSoldatsOnMaps ;
 }
 
