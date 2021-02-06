@@ -108,8 +108,8 @@ form button {
   color: #fff;
   width: 100%;
   border-radius: 10px;
-  padding: 1em;
-  margin-top: auto;
+  padding: 15px;
+  margin: 1em;
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
@@ -133,6 +133,12 @@ form button {
   border: none;
   outline-style: none;
   position: relative;
+}
+
+.boutou-menu-container{
+  display: flex;
+  align-itemps: center;
+  
 }
 
 .bat-button:hover:after {
