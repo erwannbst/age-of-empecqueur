@@ -36,6 +36,11 @@ export function displayMenuBatiments(userId, batiment){
             document.getElementById("btnUpgrade").style.display = "none";
             break;
           case 'portugais':
+            document.getElementById("btnPlaceSoldat").style.display = "none";
+            document.getElementById("btnCreateSoldat").style.display = "none";
+            document.getElementById("soldierOnMap").style.display = "none";
+            document.getElementById("soldierRest").style.display = "none";
+            document.getElementById("btnUpgrade").style.display = "block";
             document.getElementById("btnUpgrade").innerHTML = "Améliorer"; 
             break;
           default:
