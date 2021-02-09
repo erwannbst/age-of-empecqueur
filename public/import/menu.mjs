@@ -93,11 +93,20 @@ export function BatMenuManage(goldAmount, btnExtracteur, btnCaserne, btnPortugai
 }
 
 //-------------------------------------DARK MODE-------------------------------------------//
+var theme = true;
 
-var checkbox = document.getElementById("theme");
-checkbox.onchange = function() {
+let buttonTheme = document.getElementById("theme");
+buttonTheme.addEventListener("click", event => {
+  event.preventDefault(); 
+  theme = !theme; 
+  
+  
+
   //darkmode
-  if(checkbox.checked) {
+  if(theme == false) {
+    
+    buttonTheme.innerHTML = "🌑"
+    
     document.getElementById("bat-container").style.backgroundColor = "rgba(31, 31, 45, 0.3)";
     document.getElementById("menu_bat").style.backgroundColor = "rgba(31, 31, 45, 0.3)";
     document.getElementsByTagName("body")[0].style.backgroundColor= "#34344b";
@@ -110,6 +119,9 @@ checkbox.onchange = function() {
   }
   //clear mode
   else{
+    
+    buttonTheme.innerHTML = "☀"
+    
     document.getElementById("bat-container").style.backgroundColor = "rgba(255, 255, 255, 0.3)";
     document.getElementById("menu_bat").style.backgroundColor = "rgba(255, 255, 255, 0.3)";
     document.getElementsByTagName("body")[0].style.backgroundColor= "lightgray";
@@ -120,8 +132,26 @@ checkbox.onchange = function() {
     document.getElementById("chat").style.backgroundColor = "rgba(255, 255, 255, 0.1)";
     document.getElementById("myCanvas").style.background = "#f3f3f3 url('https://zupimages.net/up/21/01/z09j.png') no-repeat";
   }
-};
 
+});
 
-//-------------------------------------PROGRESS BAR-------------------------------------------//
+//-------------------------------------GAME RULES-------------------------------------------//
+
+var rules = true;
+
+let buttonRules = document.getElementById("button-rules");
+buttonRules.addEventListener("click", event => {
+  event.preventDefault(); 
+  rules = !rules; 
+  
+  //bouton actif
+  if(rules == false) {
+    
+  }
+  //bouton inactif
+  else{ 
+    
+  }
+
+});
 
