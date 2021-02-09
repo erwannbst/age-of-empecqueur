@@ -155,3 +155,11 @@ buttonRules.addEventListener("click", event => {
 
 });
 
+let imgRules = document.getElementById("rules-img");
+imgRules.addEventListener("click", event => {
+    
+  document.getElementById("game-rules").style.display = "none";
+  rules= false;
+  
+});
+

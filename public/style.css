@@ -19,14 +19,14 @@
   display: flex;
 }
 canvas {
-  border: 3px solid white;
+  margin-top: 1em;
+  border: none;
   border-radius: 30px;
   background: #013333
     url(
         https://zupimages.net/up/21/01/z09j.png
       )no-repeat;
   display: block;
-  margin: 0 auto;
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
 }
 #map,
@@ -110,12 +110,15 @@ body {
 .rules{
   position: absolute;
   z-index: 4;
-  display: flex;
+  display: none;
   justify-content: space-around;
   align-items: flex;
-  top: 20%;
-  margin: 0 auto;
+  left: 50%;
+  top: 50%;
   width: 1000px;
+  height: 600px;
+  margin-top: -300px;
+  margin-left: -500px;
   place-items: center;
   background-color: rgba(255, 255, 255, 0.3);
 }
