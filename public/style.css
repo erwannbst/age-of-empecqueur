@@ -94,6 +94,19 @@ body {
   z-index: 5;
 }
 
+.game-rules {
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  border-radius: 17px;
+  padding: 2px;
+  font-size: 20px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  outline-style: none;
+}
+
 
 label {
   padding-right: 10px;
@@ -430,7 +443,7 @@ form .signup-link a:hover {
 }
 [type="checkbox"]:not(:checked) + label:before,
 [type="checkbox"]:checked + label:before {
-  left: 0; top: -.1em;
+  left: 0; 
   width: 4em; height: 1.85em;
   background: #DDDDDD;
   border-radius: 1em;
@@ -442,7 +455,7 @@ form .signup-link a:hover {
   transition: all .2s;
   border-radius: 50%;
   background: #7F8C9A;
-  top: .12em; left: .24em;
+  left: .24em;
 }
 .text {
   display: inline-block;
@@ -472,11 +485,9 @@ form .signup-link a:hover {
 [type="checkbox"]:not(:checked) + label .ui:before {
   content: "no";
   left: 2.35em;
-  top: .2em;
 }
 [type="checkbox"]:checked + label .ui:after {
   content: "yes";
-  top: .2em;
   left: .2em;
   color: #39D2B4;
 }
