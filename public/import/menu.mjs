@@ -146,11 +146,11 @@ buttonRules.addEventListener("click", event => {
   
   //bouton actif
   if(rules == false) {
-    
+    document.getElementById("game-rules").style.display = "none";
   }
   //bouton inactif
   else{ 
-    
+    document.getElementById("game-rules").style.display = "flex";
   }
 
 });
