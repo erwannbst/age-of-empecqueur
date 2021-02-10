@@ -155,6 +155,13 @@ buttonRules.addEventListener("click", event => {
 
 });
 
+let menuRulesBack = document.getElementById("rules-img");
+menuRulesBack.addEventListener("click", event => {
+    
+ document.getElementById("rules-img").src = "https://cdn.glitch.com/ed9ae07c-2c55-4291-ad7a-4f0a45476104%2Fexplication%20regles.png?v=1612965646844";
+  
+});
+
 
 //-----------------------------------MAP IMAGE RULES---------------------------------------//
 
@@ -163,7 +170,7 @@ buttonRules.addEventListener("click", event => {
 let placeBatRules = document.getElementById("placeBatRules");
 placeBatRules.addEventListener("click", event => {
     
-  console.log("placeBatRules");
+ document.getElementById("rules-img").src = "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fhdv_dfous.png?1607876427163";
   
 });
 
