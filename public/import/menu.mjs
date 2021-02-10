@@ -192,7 +192,8 @@ useBatRules.addEventListener("click", event => {
 let ressourcesRules = document.getElementById("ressourcesRules");
 ressourcesRules.addEventListener("click", event => {
     
-  console.log("ressourcesRules");
+  document.getElementById("rules-img").src = "https://cdn.glitch.com/ed9ae07c-2c55-4291-ad7a-4f0a45476104%2FUtiliserUnBatiment.png?v=1612973274876";
+  document.getElementById("rules-img").useMap = null;
   
 });
 
@@ -201,7 +202,8 @@ ressourcesRules.addEventListener("click", event => {
 let attBatRules = document.getElementById("attBatRules");
 attBatRules.addEventListener("click", event => {
     
-  console.log("attBatRules");
+  document.getElementById("rules-img").src = "https://cdn.glitch.com/ed9ae07c-2c55-4291-ad7a-4f0a45476104%2FAttaquerSonAdversaire.png?v=1612975052654";
+  document.getElementById("rules-img").useMap = null;
   
 });
 
