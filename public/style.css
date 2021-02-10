@@ -122,6 +122,8 @@ body {
   place-items: center stretch;
   background: rgba(255, 255, 255, 0.3);
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 20px;
   
 }
 
