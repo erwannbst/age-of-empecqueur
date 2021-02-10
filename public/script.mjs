@@ -175,7 +175,7 @@ document.getElementById("buttonCreate").addEventListener("click", event => {
     console.log("dreate game for "+usname+".....");
     socket.emit("create game", usname);
   }else{
-    
+    document.getElementById("pseudo-creation").innerHTML = "Veuillez renseigner un pseudo"
   }
 });
 
@@ -196,6 +196,12 @@ document.getElementById("buttonConnect").addEventListener("click", event => {
 document.getElementById("area-connexion").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   document.getElementById("pseudo-connexion").innerHTML = "Pseudo"
+});
+
+
+document.getElementById("area-creation").addEventListener("click", event => {
+  event.preventDefault(); // stop our form submission from refreshing the page
+  document.getElementById("pseudo-creation").innerHTML = "Pseudo"
 });
 
 // ************  MENU HEADER ************ //
