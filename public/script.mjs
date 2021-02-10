@@ -170,21 +170,32 @@ const createForm = document.getElementById("creation");
 
 document.getElementById("buttonCreate").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
-  let usname = createForm.elements.username.value;
-  console.log("dreate game for "+usname+".....");
-  socket.emit("create game", usname);
-  
+  if(createForm.elements.username.value != ""){
+    let usname = createForm.elements.username.value;
+    console.log("dreate game for "+usname+".....");
+    socket.emit("create game", usname);
+  }else{
+    
+  }
 });
 
 document.getElementById("buttonConnect").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
   
-  if(loginForm.elements.pseudo.value != "")
-  {
-  let username = loginForm.elements.pseudo.value;
-  let room = loginForm.elements.gameCode.value;
-  socket.emit("join game", { username, room });
+  if(loginForm.elements.pseudo.value != ""){
+    let username = loginForm.elements.pseudo.value;
+    let room = loginForm.elements.gameCode.value;
+    socket.emit("join game", { username, room });
   }
+  else{
+    document.getElementById("pseudo-connexion").innerHTML = "Veuillez renseigner un pseudo"
+  }
+  
+});
+
+document.getElementById("area-connexion").addEventListener("click", event => {
+  event.preventDefault(); // stop our form submission from refreshing the page
+  document.getElementById("pseudo-connexion").innerHTML = "Pseudo"
 });
 
 // ************  MENU HEADER ************ //
