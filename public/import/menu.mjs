@@ -155,18 +155,96 @@ buttonRules.addEventListener("click", event => {
 
 });
 
-let imgRules = document.getElementById("rules-img");
-imgRules.addEventListener("click", event => {
-    
-  document.getElementById("game-rules").style.display = "none";
-  rules= false;
-  
-});
+
+//-----------------------------------MAP IMAGE RULES---------------------------------------//
+
+// Placer un batiments
 
 let placeBatRules = document.getElementById("placeBatRules");
 placeBatRules.addEventListener("click", event => {
     
   console.log("placeBatRules");
+  
+});
+
+// Utiliser ses batiments
+
+let useBatRules = document.getElementById("useBatRules");
+useBatRules.addEventListener("click", event => {
+    
+  console.log("useBatRules");
+  
+});
+
+// les Ressources
+
+let ressourcesRules = document.getElementById("ressourcesRules");
+ressourcesRules.addEventListener("click", event => {
+    
+  console.log("ressourcesRules");
+  
+});
+
+// Attaquer son adversaire
+
+let attBatRules = document.getElementById("attBatRules");
+attBatRules.addEventListener("click", event => {
+    
+  console.log("attBatRules");
+  
+});
+
+// Hotel de ville
+
+let hdvRules = document.getElementById("hdvRules");
+hdvRules.addEventListener("click", event => {
+    
+  console.log("hdvRules");
+  
+});
+
+// Caserne
+
+let caserneRules = document.getElementById("caserneRules");
+caserneRules.addEventListener("click", event => {
+    
+  console.log("caserneRules");
+  
+});
+
+// Portugais
+
+let portugaisRules = document.getElementById("portugaisRules");
+portugaisRules.addEventListener("click", event => {
+    
+  console.log("portugaisRules");
+  
+});
+
+// Trinquette
+
+let trinquetteRules = document.getElementById("trinquetteRules");
+trinquetteRules.addEventListener("click", event => {
+    
+  console.log("trinquetteRules");
+  
+});
+
+// Extracteur
+
+let extracteurRules = document.getElementById("extracteurRules");
+extracteurRules.addEventListener("click", event => {
+    
+  console.log("extracteurRules");
+  
+});
+
+// Mur
+
+let murRules = document.getElementById("murRules");
+murRules.addEventListener("click", event => {
+    
+  console.log("murRules");
   
 });
 
