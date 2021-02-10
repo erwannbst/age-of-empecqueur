@@ -178,9 +178,13 @@ document.getElementById("buttonCreate").addEventListener("click", event => {
 
 document.getElementById("buttonConnect").addEventListener("click", event => {
   event.preventDefault(); // stop our form submission from refreshing the page
+  
+  if(loginForm.elements.pseudo.value != "")
+  {
   let username = loginForm.elements.pseudo.value;
   let room = loginForm.elements.gameCode.value;
   socket.emit("join game", { username, room });
+  }
 });
 
 // ************  MENU HEADER ************ //
