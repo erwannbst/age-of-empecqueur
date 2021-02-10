@@ -137,7 +137,7 @@ buttonTheme.addEventListener("click", event => {
 
 //-------------------------------------GAME RULES-------------------------------------------//
 
-var rules = true;
+var rules = false;
 
 let buttonRules = document.getElementById("button-rules");
 buttonRules.addEventListener("click", event => {
