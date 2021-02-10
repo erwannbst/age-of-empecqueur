@@ -171,7 +171,7 @@ document.getElementById("rules-img").useMap = "#mapRules";
 let placeBatRules = document.getElementById("placeBatRules");
 placeBatRules.addEventListener("click", event => {
     
- document.getElementById("rules-img").src = "https://cdn.glitch.com/ed9ae07c-2c55-4291-ad7a-4f0a45476104%2Fplacer%20un%20batiment.png?v=1612971888992";
+ document.getElementById("rules-img").src = "https://cdn.glitch.com/ed9ae07c-2c55-4291-ad7a-4f0a45476104%2FPlacerUnBatiment.png?v=1612972659230";
  document.getElementById("rules-img").useMap = null;
   
 });
@@ -182,7 +182,7 @@ let useBatRules = document.getElementById("useBatRules");
 useBatRules.addEventListener("click", event => {
     
  
-  document.getElementById("rules-img").src = "https://cdn.glitch.com/ed9ae07c-2c55-4291-ad7a-4f0a45476104%2FPlacer%20un%20batiment.png?v=1612971535015";
+  document.getElementById("rules-img").src = "https://cdn.glitch.com/ed9ae07c-2c55-4291-ad7a-4f0a45476104%2FPlacerUnBatiment.png?v=1612972659230";
   document.getElementById("rules-img").useMap = null;
   
 });
