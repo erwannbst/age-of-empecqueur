@@ -163,3 +163,10 @@ imgRules.addEventListener("click", event => {
   
 });
 
+let placeBatRules = document.getElementById("placeBatRules");
+placeBatRules.addEventListener("click", event => {
+    
+  console.log("placeBatRules");
+  
+});
+
