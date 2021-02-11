@@ -221,7 +221,8 @@ hdvRules.addEventListener("click", event => {
 let caserneRules = document.getElementById("caserneRules");
 caserneRules.addEventListener("click", event => {
     
-  console.log("caserneRules");
+   document.getElementById("rules-img").src = "https://cdn.glitch.com/ed9ae07c-2c55-4291-ad7a-4f0a45476104%2FAttaquerSonAdversaire.png?v=1612975052654";
+   document.getElementById("rules-img").useMap = null;
   
 });
 
