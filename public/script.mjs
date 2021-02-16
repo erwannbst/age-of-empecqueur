@@ -137,19 +137,17 @@ let btnPlaceSoldat = document.getElementById("btnPlaceSoldat");
 btnPlaceSoldat.addEventListener("click", event => {
   event.preventDefault(); 
   placeSoldats = !placeSoldats; // invrsement de l'état du bouton
-  
+  console.log(placeSoldats);
   // si le bouton est activé 
   if(placeSoldats == true){
     // changement de couleur du bouton 
     btnPlaceSoldat.style.background = "linear-gradient(-135deg, #D52802, #E29E8F)";
-    placeSoldats = true;
     batSelect = "soldier";
   }
   // si le bouton est désactivé 
   else{
     // changement de couleur du bouton 
     btnPlaceSoldat.style.background = "linear-gradient(-135deg, #5B6E44, #D2EBB5)";
-    placeSoldats = null;
     batSelect = null;
   }
 });
@@ -309,7 +307,6 @@ canvas.addEventListener(
         }
         else{
           renderMessageLog("impossible de placer un soldat ici");
-          placeSoldats = null;
           btnPlaceSoldat.style.background = "linear-gradient(-135deg, #5B6E44, #D2EBB5)";
           batSelect = null;
         }

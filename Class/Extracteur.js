@@ -8,7 +8,7 @@ class Extracteur extends Building {
   
   run(data){
     let id = data.playerId;
-    runAtFrequency(10, incrementPlayerGold(id, 1));
+    runAtFrequency(10, () => incrementPlayerGold(id, 1));
   }
 
   draw() {
