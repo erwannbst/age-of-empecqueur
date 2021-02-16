@@ -269,7 +269,7 @@ function sendPlayersData(room){
 
 function run(room){
   tic += 1
-  runAtFrequency(8, () => incrementGold(room))
+  runAtFrequency(11, () => incrementGold(room))
   let players = games[room].players;
   players.forEach(player => {
     maps[player].forEach(batiment => {

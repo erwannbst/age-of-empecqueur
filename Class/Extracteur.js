@@ -1,5 +1,5 @@
 import Building from "./Building.js";
-import {incrementPlayerGold, tic} from "../server.js";
+import {incrementPlayerGold, runAtFrequency} from "../server.js";
 
 class Extracteur extends Building {
   constructor(x, y) {
@@ -8,8 +8,7 @@ class Extracteur extends Building {
   
   run(data){
     let id = data.playerId;
-    if(!(tic % 10))
-      incrementPlayerGold(id, 1);
+    runAtFrequency(10, incrementPlayerGold(id, 1));
   }
 
   draw() {

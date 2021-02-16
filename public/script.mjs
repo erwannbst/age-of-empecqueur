@@ -142,12 +142,14 @@ btnPlaceSoldat.addEventListener("click", event => {
   if(placeSoldats == true){
     // changement de couleur du bouton 
     btnPlaceSoldat.style.background = "linear-gradient(-135deg, #D52802, #E29E8F)";
+    placeSoldats = true;
     batSelect = "soldier";
   }
   // si le bouton est désactivé 
   else{
     // changement de couleur du bouton 
     btnPlaceSoldat.style.background = "linear-gradient(-135deg, #5B6E44, #D2EBB5)";
+    placeSoldats = null;
     batSelect = null;
   }
 });
@@ -306,7 +308,7 @@ canvas.addEventListener(
           socket.emit("place personnage", {nom:"soldier", x:playerX, y:playerY});
         }
         else{
-          renderMessageLog("impossible de placer un soldat ici")
+          renderMessageLog("impossible de placer un soldat ici");
           placeSoldats = null;
           btnPlaceSoldat.style.background = "linear-gradient(-135deg, #5B6E44, #D2EBB5)";
           batSelect = null;
