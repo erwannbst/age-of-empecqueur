@@ -12,7 +12,7 @@ Le code du site front sera sur `views/index.html`
 
 
 ## SERVER
-
+Node server
 - your app starts at `server.js`
 - add frameworks and packages in `package.json`
 - safely store app secrets in `.env` (nobody can see this but you and people you invite)
