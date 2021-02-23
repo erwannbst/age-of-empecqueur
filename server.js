@@ -15,7 +15,7 @@ import {Server} from 'socket.io';
 var app = express();
 var server = http.createServer(app);
 var io = new Server(server);
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 80;
 
 server.listen(port, function () {
   console.log('Server listening at port %d', port);
