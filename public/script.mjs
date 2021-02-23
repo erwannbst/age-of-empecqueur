@@ -309,6 +309,7 @@ canvas.addEventListener(
           renderMessageLog("impossible de placer un soldat ici");
           btnPlaceSoldat.style.background = "linear-gradient(-135deg, #5B6E44, #D2EBB5)";
           batSelect = null;
+          placeSoldats = false;
         }
     }
     
@@ -323,6 +324,7 @@ canvas.addEventListener(
         else{
           //impossible de placer un batiments
           renderMessageLog("impossible de placer un batiment ici")
+          batSelect = null;
         }
       }
     }
