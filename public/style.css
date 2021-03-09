@@ -1,461 +1,113 @@
+
+onboarding: The .env file is for storing secrets for your app, like an API key. Any project member can see the contents in the same way that you can, and everyone else can just see the variable names.
+
 /* this file is loaded by index.html and styles the page */
 
+​
+
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+
 @import url("https://fonts.googleapis.com/css?family=IBM Plex Sans:400,500,600,700&display=swap");
 
+​
+
+​
 
 * {
+
   padding: 0;
+
   margin: 0;
+
   box-sizing: border-box;
+
   font-family: "Poppins", sans-serif;
+
 }
+
+​
 
 .game-container {
+
   justify-content: center;
+
   position: absolute;
+
   z-index: 1;
+
   width: 100%;
+
   display: flex;
-}
-canvas {
-  margin-top: 1em;
-  border: none;
-  border-radius: 30px;
-  background: #013333
-    url(
-        https://zupimages.net/up/21/01/z09j.png
-      )no-repeat;
-  display: block;
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
-}
-#map,
-#menu {
-  display: inline-block;
-  verticalalign: top;
-  align-items: center;
+
 }
 
-#menu {
-  top: 0px;
+canvas {
+
+  margin-top: 1em;
+
+  border: none;
+
+  border-radius: 30px;
+
+  background: #013333
+
+    url(
+
+        https://zupimages.net/up/21/01/z09j.png
+
+      )no-repeat;
+
+  display: block;
+
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+
 }
+
+#map,
+
+#menu {
+
+  display: inline-block;
+
+  verticalalign: top;
+
+  align-items: center;
+
+}
+
+​
+
+#menu {
+
+  top: 0px;
+
+}
+
+​
 
 body {
+
   align-items: center;
+
   background-color: lightgray;
+
   line-height: 1.5em;
+
   -moz-user-select: none; /* Firefox */
+
   -webkit-user-select: none; /* Chrome, Safari, Opéra depuis la version 15 */
+
   -ms-user-select: none; /* Internet explorer depuis la version 10 et Edge */
+
   user-select: none; /* Propriété standard */
+
 }
 
-.game-status {
-  position: absolute;
-  z-index: 3;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 5%;
-  width: 90%; 
-  top: 3em;
-  padding: 1em;
-  place-items: center;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 15px;
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
-}
+​
 
-  
+ul {
 
-.status {
-  text-align: left;
-  width: auto;
-  line-height: 1.1;
-  color: black;
-  float: left;
-}
-
-.gold {
-  width: 75px;
-  position: absolute;
-  right: 10px;
-}
-
-.xp {
-  width: 200px;
-  float: right;
-}
-
-
-.theme {
-  position: absolute;
-  left: 1em;
-  z-index: 5;
-}
-
-.game-theme {
-  color: #fff;
-  width: 35px;
-  height: 35px;
-  border-radius: 17px;
-  padding: 2px;
-  font-size: 20px;
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.3);
-  border: none;
-  outline-style: none;
-}
-
-.rules{
-  position: absolute;
-  z-index: 4;
-  display: none;
-  justify-content: space-around;
-  align-items: flex;
-  left: 50%;
-  top: 50%;
-  width: 1000px;
-  height: 600px;
-  margin-top: -300px;
-  margin-left: -500px;
-  place-items: center stretch;
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
-  border: none;
-  border-radius: 20px;
-  
-}
-
-.area-map {
-  cursor: pointer;
-}
-
-.button-rules {
-  color: #fff;
-  width: 35px;
-  height: 35px;
-  border-radius: 17px;
-  padding: 2px;
-  font-size: 20px;
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.3);
-  border: none;
-  outline-style: none;
-}
-
-
-label {
-  padding-right: 10px;
-  font-size: 1rem;
-}
-progress {
-  height: 30px;
   width: 100%;
-}
 
-form button {
-  color: #fff;
-  width: 100%;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px;
-  font-size: 20px;
-  font-weight: 500;
-  cursor: pointer;
-  background: linear-gradient(-135deg, #5B6E44, #D2EBB5);
-  transition: all 0.3s ease;
-  border: 1px solid lightgrey;
-  outline-style: none;
-}
-
-.bat-button {
-  color: #fff;
-  width: auto;
-  border-radius: 10px;
-  padding: 5px;
-  margin: 5px;
-  font-size: 20px;
-  font-weight: 500;
-  cursor: pointer;
-  background-color: transparent;
-  transition: all 0.3s ease;
-  border: none;
-  outline-style: none;
-  position: relative;
-}
-
-.boutou-menu-container{
-  display: flex;
-  align-itemps: center;
-  
-}
-
-.bat-button:hover:after {
-  position: absolute;
-  left: 50%;
-  top: 70%;
-  transform: translate(-50%, -50%);
-  content: "80";
-  background-color: transparent;
-}
-
-
-.bat-button img {
-  -webkit-transition: opacity 0.2s ease-in-out;
-  -moz-transition: opacity 0.2s ease-in-out;
-  -o-transition: opacity 0.2s ease-in-out;
-  transition: opacity 0.2s ease-in-out;
-}
-
-.bat-button img:hover {
-  opacity: 0.5;
-}
-
-footer {
-  margin-top: 3em;
-  padding-top: 1.5em;
-  border-top: 1px solid lightgrey;
-}
-
-select {
-  margin: 1em;
-  background-color: #bbbbf2;
-  cursor: pointer;
-  border-radius: 0.25em;
-  margin-top: 10px;
-  width: 280px;
-  height: 30px;
-}
-
-.menu-bat {
-  position: absolute;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  place-items: center;
-  bottom: 0px;
-  padding: 1em;
-  z-index: 3;
-}
-
-
-.batiments-container {
-  width: auto;
-  height: auto;
-  float: left;
-  bottom: 1em;
-  padding: 1em;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 15px;
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
-}
-.menu-batiments-container {
-  width: auto;
-  height: auto;
-  float: right;
-  bottom: 1em;
-  padding: 1em;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 15px;
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
-}
-
-
-.regles-liste {
-  justify-content: start;
-}
-
-.chat {
-  width: 25%;
-  height: auto;
-  float: center;
-  bottom: 1em;
-  padding: 5px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3); 
-}
-
-.chat-form{
-  flex-direction: row;
-  display: flex;
-}
-
-.messages {
-  background-color: transparent;
-  padding: 1em;
-  height: 100px;
-  overflow: hidden;
-}
-
-.messages::-webkit-scrollbar {
-  width: 5px;
-  background-color: #aaa; /* or add it to the track */
-}
-
-.message {
-  color: white;
-  padding: 0.3em;
-}
-
-.date,
-.author {
-  font-weight: bold;
-}
-
-input {
-  padding: 0.5em;
-  outline:  none;
-}
-
-#content {
-  border: none;
-  background-color: transparent;
-  flex:5;
-}
-
-#send-message{
-  flex: 1;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-
-.connexion {
-  position: absolute;
-  z-index: 4;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex;
-  height: 100%;
-  width: 100%;
-  place-items: center;
-  
-}
-
-
-::selection {
-  background: #4158d0;
-  color: #fff;
-}
-.wrapper {
-  width: 400px;
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
-}
-.wrapper .title {
-  font-size: 35px;
-  font-weight: 600;
-  text-align: center;
-  line-height: 100px;
-  color: #fff;
-  user-select: none;
-  border-radius: 15px 15px 0 0;
-  background: linear-gradient(-135deg, #D2EBB5, #5B6E44);
-}
-.wrapper form {
-  padding: 10px 30px 50px 30px;
-  justify-content: center;
-  
-}
-.wrapper form .field {
-  height: 50px;
-  width: 100%;
-  margin-top: 20px;
-  position: relative;
-}
-.wrapper form .field input {
-  height: 100%;
-  width: 100%;
-  outline: none;
-  font-size: 17px;
-  padding-left: 20px;
-  border: 1px solid lightgrey;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-}
-.wrapper form .field input:focus,
-form .field input:valid {
-  border-color: #4158d0;
-}
-.wrapper form .field label {
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  color: #999999;
-  font-weight: 400;
-  font-size: 17px;
-  pointer-events: none;
-  transform: translateY(-50%);
-  transition: all 0.3s ease;
-}
-
-form .field input:focus ~ label,
-form .field input:valid ~ label {
-  top: 0%;
-  font-size: 16px;
-  color: #4158d0;
-  background: #fff;
-  transform: translateY(-50%);
-}
-form .content {
-  display: flex;
-  width: 100%;
-  height: 50px;
-  font-size: 16px;
-  align-items: center;
-  justify-content: space-around;
-}
-form .content .checkbox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-form .content input {
-  width: 15px;
-  height: 15px;
-  background: red;
-}
-form .content label {
-  color: #262626;
-  user-select: none;
-  padding-left: 5px;
-}
-form .content .pass-link {
-  color: "";
-}
-form .field input[type="submit"] {
-  color: #fff;
-  border: none;
-  padding-left: 0;
-  margin-top: -10px;
-  font-size: 20px;
-  font-weight: 500;
-  cursor: pointer;
-  background: linear-gradient(-135deg, #5B6E44, #D2EBB5);
-  transition: all 0.3s ease;
-}
-form .field input[type="submit"]:active {
-  transform: scale(0.95);
-}
-form .signup-link {
-  color: #262626;
-  margin-top: 20px;
-  text-align: center;
-}
-form .pass-link a,
-form .signup-link a {
-  color: #4158d0;
-  text-decoration: none;
-}
-form .pass-link a:hover,
-form .signup-link a:hover {
-  text-decoration: underline;
-}
-
-
-
+  list-style:none;
 
