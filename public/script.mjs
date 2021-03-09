@@ -155,11 +155,7 @@ btnPlaceSoldat.addEventListener("click", event => {
 // ************  PORTUGAIS  ************ //
 
 // CLICK sur le bouton d'améliorations de batiments du menu du PORTUGAIS
-let btnUpgrade = document.getElementById("btnUpgrade");
-btnUpgrade.addEventListener("click", event => {
-  event.preventDefault(); // stop our form submission from refreshing the page
-  //socket.emit("create batiment", { nom: "soldier" });
-});
+
 
 
 // ************  MENU DE CONNEXION  ************ //
@@ -184,7 +180,7 @@ document.getElementById("buttonConnect").addEventListener("click", event => {
   
   if(loginForm.elements.pseudo.value != ""){
     let username = loginForm.elements.pseudo.value;
-    let room = loginForm.elements.gameCode.value;
+    let room = loginForm.elements.gameCode.value.toUpperCase();
     socket.emit("join game", { username, room });
   }
   else{
@@ -334,7 +330,7 @@ canvas.addEventListener(
       batClick = findClickMenuBatiments(socket.id, playerX, playerY);
       //si oui on affiche le menu du batiment 
       if (batClick) {
-        displayMenuBatiments(socket.id, batClick);
+        displayMenuBatiments(socket.id, batClick, map);
         //batClick = batiment sur lequel on a cliqué
       } 
       //sinon on desactive le menu de gestion

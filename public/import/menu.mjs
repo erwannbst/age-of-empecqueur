@@ -9,12 +9,17 @@ document.getElementById("chat").style.display = "none";
 document.getElementById("game-status").style.display = "none";
 document.getElementById("xp-bar").style.display = "none";
 
+function strUcFirst(a){return (a+'').charAt(0).toUpperCase()+a.substr(1);}
+
+
 //------------------------------AFFICHAGE DES BATIMENTS---------------------------------//
 
-export function displayMenuBatiments(userId, batiment){
+export function displayMenuBatiments(userId, batiment, map){
  
   var menu_bat = document.getElementById("menu_bat");
         menu_bat.style.display = "block";
+  
+        console.log(map[userId]);
         
         //menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;
         document.getElementById("form_bat").style.opacity = 0.8;
@@ -28,31 +33,79 @@ export function displayMenuBatiments(userId, batiment){
   
         switch (batiment.nom) {
           case 'caserne':
+            
+            document.getElementById("listeBatPortugais").style.display = "none";
             document.getElementById("soldierOnMap").style.display = "block";
             document.getElementById("soldierRest").style.display = "block";
             document.getElementById("btnCreateSoldat").style.display = "block";
             document.getElementById("btnCreateSoldat").innerHTML = "Ajout de soldat";
             document.getElementById("btnPlaceSoldat").style.display = "block";
-            document.getElementById("btnUpgrade").style.display = "none";
             break;
           case 'portugais':
+            
+            document.getElementById("listeBatPortugais").style.display = "block";
             document.getElementById("btnPlaceSoldat").style.display = "none";
             document.getElementById("btnCreateSoldat").style.display = "none";
             document.getElementById("soldierOnMap").style.display = "none";
             document.getElementById("soldierRest").style.display = "none";
-            document.getElementById("btnUpgrade").style.display = "block";
-            document.getElementById("btnUpgrade").innerHTML = "Améliorer"; 
+            
+            let ul = document.getElementById("listeBatPortugais");
+            
+             while (ul.firstChild)
+            {
+                ul.removeChild(ul.firstChild);
+            }
+ 
+  
+            var listPortugais = new Array();
+            
+            for (var i = 0; i < map[userId].length; i++) {
+              
+              
+                let li = document.createElement('li');
+
+                let btn = document.createElement('button')
+                btn.innerHTML = "Améliorer";
+                btn.value = map[userId][i].nom;
+                btn.className = "btn-li";
+                btn.onclick = function(){
+                  console.log(i);
+                  //appel de la fonction permettant d'ameliorer avec comme argument l'index du bat dans le tableau map
+                  console.log("nom du bat a ameliorer :" + this.value);
+                  return false;
+                };
+
+
+                let pNom = document.createElement('p');
+                pNom.innerHTML = strUcFirst(map[userId][i].nom);
+                pNom.className = "pNom-li";
+
+                let pLvl = document.createElement('p');
+                pLvl.innerHTML = " lvl." + map[userId][i].lvl;
+                pLvl.className = "pLvl-li";
+
+
+                li.appendChild(btn);
+                li.appendChild(pNom);
+                li.appendChild(pLvl);
+            
+              
+              ul.appendChild(li);
+            }
+            
             break;
+            
           default:
+            document.getElementById("listeBatPortugais").style.display = "none";
             document.getElementById("btnPlaceSoldat").style.display = "none";
             document.getElementById("btnCreateSoldat").style.display = "none";
             document.getElementById("soldierOnMap").style.display = "none";
             document.getElementById("soldierRest").style.display = "none";
-            document.getElementById("btnUpgrade").style.display = "none";
         }
 
    
 }
+
 
 
 //------------------------------GESTION DU MENU DES BATIMENTS---------------------------------//
