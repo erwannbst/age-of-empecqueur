@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Age of Empecqueur</title>
     <link rel="stylesheet" href="style.css" />
-    <style></style>
+    <script defer src="https://friconix.com/cdn/friconix.js"> </script>
   </head>
   <body>
     <div class="connexion" id="connexion">
@@ -38,7 +38,7 @@
             <label id="pseudo-connexion">Pseudo</label>
           </div>
           <div class="field">
-            <input type="text" name="gameCode" autocomplete="off" required />
+            <input type="text" name="gameCode" autocomplete="off" style="text-transform: uppercase" required />
             <label>Code partie</label>
           </div>
           <div class="field">
@@ -239,8 +239,10 @@
             <div class="boutou-menu-container">
               <button id="btnPlaceSoldat" value="PlaceSoldat"></button>
               <button id="btnCreateSoldat" value="createSoldat"></button>
-              <button id="btnUpgrade" value="upgrade"></button>
             </div>
+            
+            <ul id="listeBatPortugais">
+            </ul>
           </form>
         </div>
       </div>
@@ -254,3 +256,4 @@
     <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
   </body>
 </html>
+
