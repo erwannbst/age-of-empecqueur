@@ -12,15 +12,13 @@ document.getElementById("xp-bar").style.display = "none";
 function strUcFirst(a){return (a+'').charAt(0).toUpperCase()+a.substr(1);}
 
 
-//------------------------------AFFICHAGE DES BATIMENTS---------------------------------//
+//------------------------------AFFICHAGE DU MENU BATIMENT---------------------------------//
 
 export function displayMenuBatiments(userId, batiment, map){
  
   var menu_bat = document.getElementById("menu_bat");
         menu_bat.style.display = "block";
-  
-        console.log(map[userId]);
-        
+
         //menu_bat.innerHTML = "le bat sur lequel tu a cliqué est " + batClick;
         document.getElementById("form_bat").style.opacity = 0.8;
         document.getElementById("nom_bat").innerHTML = batiment.nom.toUpperCase();
@@ -31,6 +29,8 @@ export function displayMenuBatiments(userId, batiment, map){
           batiment.lvlUpPrice +
           " pièces d'or" ;
   
+
+        // ce switch permet de changer l'affichage du menu en fonction du batiment sélectionné
         switch (batiment.nom) {
           case 'caserne':
             
@@ -56,12 +56,12 @@ export function displayMenuBatiments(userId, batiment, map){
                 ul.removeChild(ul.firstChild);
             }
  
-  
+            //création d'un tableau contenant les batiments à afficher dans le menu du portugais
             var listPortugais = new Array();
             
             for (var i = 0; i < map[userId].length; i++) {
               
-              
+                //création d'un bouton pour chaque batiment de la liste
                 let li = document.createElement('li');
 
                 let btn = document.createElement('button')
@@ -109,6 +109,8 @@ export function displayMenuBatiments(userId, batiment, map){
 
 
 //------------------------------GESTION DU MENU DES BATIMENTS---------------------------------//
+
+//gestion du menu de selection de batiment
 
 export function BatMenuManage(goldAmount, btnExtracteur, btnCaserne, btnPortugais, btnTrinquette, btnMurH, btnMurV){
   if(goldAmount < 80){
