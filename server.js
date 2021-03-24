@@ -74,7 +74,7 @@ io.on('connection', function (socket) {
   
   socket.on('join game', function (data) { //data: {username, room}
     let {username, room} = data
-    if(games[room] != undefined && Object.keys(games[room].players).length < 2){
+    if(games[room] != undefined && Object.keys(games[room].players).length < 2){ // Si la partie existe et qu'il n'y a qu'un seul joueur dessus
       console.log('adding ' + username + " to " + room)
       let newPlayer = {roomId: room, username, gold: gameValues.INITIAL_GOLD_AMOUNT};
       let playerId = socket.id
@@ -84,9 +84,9 @@ io.on('connection', function (socket) {
       maps[playerId] = [];
       io.to(games[room].players[0]).emit('user joined', {playerId, username}); //Préviens le premier joueur créateur de la game qu'un autre s'est connecté
       socket.emit('connected', {username, room, otherPlayer: {playerId: games[room].players[0], ...players[games[room].players[0]]}});
-      setInterval(() => sendPlayersData(room), gameValues.INTERVAL_SEND_MAP);
+      setInterval(() => sendPlayersData(room), gameValues.INTERVAL_SEND_MAP); // Lance la récurrence d'envoie des valeurs de la map au deux clients
       setInterval(() => run(room), gameValues.INTERVAL_SEND_MAP);
-      var hdvXPos = 170;
+      var hdvXPos = 170; //Positionne l'HDV du premier joueur
       games[room].players.forEach(playerId => {
         let hdv = new Hdv(hdvXPos, 400, playerId);
         hdvXPos = 1650
@@ -95,11 +95,12 @@ io.on('connection', function (socket) {
     }
   });
   
+    //Fonction appelée par le client quand il créé un batiment
   socket.on('create batiment', function(data) { // data:{nom: "soldier", x: 100, y: 100}
     let playerId = socket.id;
     let room = players[playerId].roomId;
     let batiment;
-    switch(data.nom){
+    switch(data.nom){// Créée le batiment correspondant
       case "hdv":
          batiment = new Hdv(data.x, data.y, playerId);
         break;
@@ -126,8 +127,8 @@ io.on('connection', function (socket) {
         break;
     }
     
-    if(canCreateBatimentType(playerId, batiment.draw().nom)){
-      if(players[playerId].gold - batiment.getCost() >= 0){
+    if(canCreateBatimentType(playerId, batiment.draw().nom)){ // Si on a pas déjà le max de batiment créés
+      if(players[playerId].gold - batiment.getCost() >= 0){ // Si on a assez d'or
         players[playerId].gold -= batiment.getCost();
         if(batiment instanceof Soldier){
           maps[playerId].forEach(batimentOnMap => {
@@ -136,12 +137,13 @@ io.on('connection', function (socket) {
             }
           })
         }else{
-          maps[playerId].push(batiment)
+          maps[playerId].push(batiment) // Ajout du batiment à la carte
         }
       }
     }
   });
   
+    //Fonction appelée quand on envoie un msg sur le chat
   socket.on('send chat', function(data) { // data:{text: "test", pseudo: "pseudo"}
     let room = players[socket.id].roomId;
     console.log(data)
@@ -159,7 +161,7 @@ io.on('connection', function (socket) {
   
   });
   
-  
+  // Appelée quand on place un soldat
   socket.on('place personnage', function(data) {
     maps[socket.id].forEach(batimentOnMap => {
       if(batimentOnMap instanceof Caserne){
@@ -174,10 +176,10 @@ io.on('connection', function (socket) {
   
 });
 
-function getNumberOfBatimentCreated(playerId, type){
+function getNumberOfBatimentCreated(playerId, type){ // Savoir combien de batiment d'un type sont présents sur la map
   var number = 0;
   maps[playerId].forEach(batimentOnMap => {
-    if((batimentOnMap.draw().nom == "murV" || batimentOnMap.draw().nom == "murH") && (type == "murV" || type == "murH")){ // Si c'est un mur
+    if((batimentOnMap.draw().nom == "murV" || batimentOnMap.draw().nom == "murH") && (type == "murV" || type == "murH")){ // Si c'est un mur (un mur vertical ou horizontal, ca reste un mur)
       number++;
     }else if(batimentOnMap.draw().nom == type){
       number++;
@@ -198,11 +200,11 @@ function canCreateBatimentType(playerId, type){
   return getNumberOfBatimentCreated(playerId, type) < max;
 }
 
-function getHdvLvl(playerId){
+function getHdvLvl(playerId){   //Pour de futures améliorations ou on pourra augmenter le niveau de l'HDV
   return 1
 }
 
-function sendPlayersData(room){
+function sendPlayersData(room){ // Envoie les infos d'un joueur (sa carte et ses batiments)
   let playersId = games[room].players;
   var map = {}
   /* 
@@ -239,7 +241,7 @@ function sendPlayersData(room){
   
 }
 
-function run(room){
+function run(room){ // Fonction appelée périodiquement qui gère le déroulement du jeu
   tic += 1
   runAtFrequency(11, () => incrementGold(room))
   let players = games[room].players;
@@ -264,11 +266,13 @@ function run(room){
   })
 }
 
+// Cette fonction est appelée à chaque unité de temps du serveur, si on veut en exécuter à une fréquence plus faible, on l'envoie en callback avec un diviseur de fréquence
 export function runAtFrequency(freq, callback){
   if(!(tic%freq))
     callback()
 }
 
+// Génère un identifiant unique
 function makeid() {
    var result           = '';
    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -279,6 +283,7 @@ function makeid() {
    return result;
 }
 
+// Incrémente l'or des deux joueurs
 function incrementGold(room){
   console.log("incrementGold " + room)
   games[room].players.forEach(playerId => {
@@ -286,6 +291,7 @@ function incrementGold(room){
   })
 }
 
+// Augmente d'un certain montant l'or d'un seul joueur
 export function incrementPlayerGold(playerId, amount){
   players[playerId].gold += amount;
   io.to(playerId).emit('gold amount updated', players[playerId].gold);
