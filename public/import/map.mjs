@@ -1,6 +1,8 @@
 
 import {map, ctx, players} from '../script.mjs';
 
+//création de toutes les rendus nécessaire a l'affichage des batiments sur la map
+
 var img = new Image();
 var hdvImg = new Image();
 var caserneImg = new Image();
@@ -27,6 +29,8 @@ portugaisImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2Fthumbnails%2Fcabane.png?1607820151355";
 soldierImg.src =
   "https://cdn.glitch.com/8d02ca95-ce82-4fca-ad42-d3d9bd309d64%2FIOP.png?v=1608813171788";
+
+//la variable renduBatiments contient l'image de chaque batiment qui va être affiché sur le curseur de la souris lors du déplacement de celle ci
 
 export var RenduBatiments = {
   murH: {
@@ -71,7 +75,10 @@ export var RenduBatiments = {
   }
 };
 
+//variable de définition du coté du joueur 
 var side;
+
+//fonction qui renvoie une autorisation de placer un batiment ou non a l'emplacement fournit en paramètre de celle ci
 export function emplacementLibre(id, batSelect, clickX, clickY) {
   console.log(map);
   var autorisation = true;
@@ -120,6 +127,7 @@ export function emplacementLibre(id, batSelect, clickX, clickY) {
   return autorisation;
 }
 
+//fonction renvoyant le batiment sur lequel le joueur a cliqué 
 
 export function findClickMenuBatiments(id, clickX, clickY){
   for (var n = 0; n < map[id].length; n++) {
@@ -138,6 +146,8 @@ export function findClickMenuBatiments(id, clickX, clickY){
         }
       }
 }
+
+//fonction d'affichage de tous les batiments sur la map
 
 export function drawAllBatiments(id){
   players.forEach(player => {
@@ -196,6 +206,7 @@ export function drawAllBatiments(id){
   });
 }
 
+//fonction d'affichage de la création de la barre d'hp du batiment
 
 function drawHpBat(id, player, x, y, hp, hpMax) {
   let height = 20;
