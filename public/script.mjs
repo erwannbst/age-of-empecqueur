@@ -1,17 +1,4 @@
-/*
-SOMMAIRE :
 
-l.17  ....  INITIALISATION
-l.47  ....  IMPORTATION
-l.47  ....  ARCHITECTURE MAP
-l.58  ....  MENU
-l.189 ....  CHAT
-l.246 ....  KERYBOARD
-l.266 ....  CLICK
-l.322 ....  DRAW CANVAS
-l.347 ....  SERVEUR
-
-*/
 
 //------------------------------INITIALISATION---------------------------------//
 
@@ -164,8 +151,9 @@ const loginForm = document.getElementById("connect");
 const createForm = document.getElementById("creation");
 
 
+//action lors de l'envoie du formulaire de création de partie
 document.getElementById("buttonCreate").addEventListener("click", event => {
-  event.preventDefault(); // stop our form submission from refreshing the page
+  event.preventDefault();
   if(createForm.elements.username.value != ""){
     let usname = createForm.elements.username.value;
     console.log("dreate game for "+usname+".....");
@@ -175,8 +163,9 @@ document.getElementById("buttonCreate").addEventListener("click", event => {
   }
 });
 
+//action lors de l'envoie du formulaire de connexion à une partie
 document.getElementById("buttonConnect").addEventListener("click", event => {
-  event.preventDefault(); // stop our form submission from refreshing the page
+  event.preventDefault(); 
   
   if(loginForm.elements.pseudo.value != ""){
     let username = loginForm.elements.pseudo.value;
@@ -201,6 +190,9 @@ document.getElementById("area-creation").addEventListener("click", event => {
 });
 
 // ************  MENU HEADER ************ //
+
+//fonction d'affichage des éléments du menu d'information de chaque joueurs situés en haut de l'écran
+
 function displayMenuHeaderElement(){
   document.getElementById("bat-container").style.display = "block";
   document.getElementById("gold").style.display = "block";
